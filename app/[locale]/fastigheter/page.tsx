@@ -1,5 +1,6 @@
 import { Suspense } from 'react';
 import PropertyCard from '@/components/property/PropertyCard';
+import PropertyListing from '@/components/property/PropertyListing';
 import FilterWithModal from '@/components/search/FilterWithModal';
 import { fetchProperties } from '@/lib/xml-parser';
 import { filterProperties, parseSearchParams } from '@/lib/filters';
@@ -32,26 +33,10 @@ async function PropertyGrid({
     const filteredProperties = filterProperties(properties, filters);
 
     return (
-        <>
-            <p className="text-gray-500 font-light text-sm mb-8">
-                Visar {filteredProperties.length} av {properties.length} objekt
-            </p>
-
-            {filteredProperties.length === 0 ? (
-                <div className="text-center py-16">
-                    <p className="text-xl text-gray-500">Inga fastigheter hittades</p>
-                    <p className="text-sm text-gray-400 mt-2">
-                        Försök justera dina sökkriterier
-                    </p>
-                </div>
-            ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
-                    {filteredProperties.map((property) => (
-                        <PropertyCard key={property.id} property={property} />
-                    ))}
-                </div>
-            )}
-        </>
+        <PropertyListing
+            properties={filteredProperties}
+            totalProperties={properties.length}
+        />
     );
 }
 

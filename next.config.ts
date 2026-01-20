@@ -16,7 +16,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  transpilePackages: ['@react-pdf/renderer'],
+  transpilePackages: ['@react-pdf/renderer', 'react-map-gl', 'mapbox-gl'],
   webpack: (config) => {
     config.resolve.alias.canvas = false;
     return config;

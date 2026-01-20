@@ -1,0 +1,110 @@
+/**
+ * Research script for Torrevieja - Run via Node.js
+ * Usage: npx ts-node --esm lib/research/run-research.ts
+ */
+
+const PERPLEXITY_API_KEY = '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';
+const API_URL = 'https://api.perplexity.ai/chat/completions';
+
+interface PerplexityResponse {
+    choices: Array<{
+        message: { content: string };
+    }>;
+    citations?: string[];
+}
+
+async function queryPerplexity(query: string): Promise<{ content: string; citations: string[] }> {
+    const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${PERPLEXITY_API_KEY}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            model: 'sonar-pro',
+            messages: [
+                {
+                    role: 'system',
+                    content: 'You are a research assistant specializing in Spanish real estate for Swedish buyers. Always provide specific numbers, dates, and cite sources. Focus on facts relevant to Scandinavian expatriates. Respond in English with precise data.'
+                },
+                { role: 'user', content: query }
+            ],
+            max_tokens: 2000,
+            temperature: 0.2,
+            return_citations: true
+        })
+    });
+
+    if (!response.ok) {
+        throw new Error(`API error: ${response.status}`);
+    }
+
+    const data: PerplexityResponse = await response.json();
+    return {
+        content: data.choices[0]?.message?.content || '',
+        citations: data.citations || []
+    };
+}
+
+// Research queries for Torrevieja
+const TORREVIEJA_QUERIES = [
+    'Torrevieja Spain population 2024 2025 demographics foreigners residents expats breakdown statistics',
+    'Torrevieja Spain property prices per square meter average 2024 2025 apartments villas real estate market',
+    'Torrevieja Spain Swedish Scandinavian Norwegian expat community how many Swedish residents',
+    'Torrevieja Spain best neighborhoods districts areas for living La Mata Acequion Los Locos character prices',
+    'Torrevieja Spain climate temperature sunshine hours rain annual averages compared Stockholm weather',
+    'Torrevieja Alicante airport distance km flights Sweden SAS Norwegian Ryanair direct routes',
+    'Torrevieja Spain healthcare hospital clinic Quironsalud international private English speaking doctors',
+    'Torrevieja Spain real estate market trend 2024 2025 rental yield tourist license VUT investment',
+    'Torrevieja Spain salt lakes pink lagoon beaches golf courses restaurants lifestyle amenities',
+    'Torrevieja vs Orihuela Costa vs Guardamar comparison property prices lifestyle pros cons'
+];
+
+async function runResearch() {
+    console.log('🔍 Starting Torrevieja research...\n');
+
+    const results: Record<string, { content: string; citations: string[] }> = {};
+    const allSources: string[] = [];
+
+    for (let i = 0; i < TORREVIEJA_QUERIES.length; i++) {
+        const query = TORREVIEJA_QUERIES[i];
+        console.log(`📝 Query ${i + 1}/${TORREVIEJA_QUERIES.length}: ${query.substring(0, 50)}...`);
+
+        try {
+            const result = await queryPerplexity(query);
+            results[`query_${i + 1}`] = result;
+            allSources.push(...result.citations);
+            console.log(`   ✅ Got ${result.content.length} chars, ${result.citations.length} citations\n`);
+
+            // Delay 1.5s between queries to respect rate limits
+            if (i < TORREVIEJA_QUERIES.length - 1) {
+                await new Promise(r => setTimeout(r, 1500));
+            }
+        } catch (error) {
+            console.log(`   ❌ Error: ${error}\n`);
+            results[`query_${i + 1}`] = { content: '', citations: [] };
+        }
+    }
+
+    // Dedupe and save
+    const uniqueSources = [...new Set(allSources)];
+
+    console.log('\n📊 Research complete!');
+    console.log(`   Total queries: ${TORREVIEJA_QUERIES.length}`);
+    console.log(`   Unique sources: ${uniqueSources.length}`);
+
+    // Save to file
+    const fs = await import('fs/promises');
+    const path = await import('path');
+    const outputPath = path.resolve('lib/research/torrevieja.json');
+
+    await fs.writeFile(outputPath, JSON.stringify({
+        date: new Date().toISOString(),
+        queries: results,
+        sources: uniqueSources
+    }, null, 2));
+
+    console.log(`\n💾 Saved results to: ${outputPath}`);
+}
+
+runResearch().catch(console.error);

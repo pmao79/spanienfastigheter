@@ -33,6 +33,7 @@ import {
 import { Property } from '@/types/property';
 import ImageLightbox from './ImageLightbox';
 import FavoriteButton from '@/components/ui/FavoriteButton';
+import PropertyMap from '@/components/map/PropertyMap';
 import SearchServiceModal from '@/components/modals/SearchServiceModal';
 
 interface PropertyDetailsProps {
@@ -432,6 +433,17 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
                                     <span className="font-serif text-navy text-lg">5 min</span>
                                 </div>
                             </div>
+
+                            {/* Map Section */}
+                            {(property.coordinates?.lat && property.coordinates?.lng) && (
+                                <div className="mt-8 rounded-sm overflow-hidden border border-gray-100 shadow-sm relative z-0">
+                                    <PropertyMap
+                                        latitude={property.coordinates.lat}
+                                        longitude={property.coordinates.lng}
+                                        className="w-full h-[400px]"
+                                    />
+                                </div>
+                            )}
                         </div>
 
                         {/* Concierge CTA */}
