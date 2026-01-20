@@ -1,91 +1,139 @@
-import React from 'react';
-import { ShieldCheck, MessageCircleHeart, FileCheck, Key } from 'lucide-react';
+import { Check } from 'lucide-react';
 
-export const TrustSignals: React.FC = () => {
-  const features = [
+export default function TrustSignals() {
+  const signals = [
     {
-      icon: <ShieldCheck size={28} strokeWidth={1.2} />,
-      title: "Juridisk Garanti",
-      subtitle: "Inga risker.",
-      description: "Varje fastighet genomgår en strikt 'Due Diligence' av våra oberoende advokater innan den presenteras för dig. Vi garanterar att lagfarter och licenser är i sin ordning."
+      title: 'Juridisk Garanti',
+      text: 'Vi kontrollerar alla licenser och lagfarter innan vi publicerar.',
     },
     {
-      icon: <MessageCircleHeart size={28} strokeWidth={1.2} />,
-      title: "Hemma fast borta",
-      subtitle: "Vi talar ditt språk.",
-      description: "Vårt team består av svenskar bosatta på plats. Vi förstår både den svenska mentaliteten och den spanska byråkratin – och överbryggar gapet däremellan."
+      title: 'Svenska Kontrakt',
+      text: 'All dokumentation översätts och gås igenom på svenska.',
     },
     {
-      icon: <FileCheck size={28} strokeWidth={1.2} />,
-      title: "Total Transparens",
-      subtitle: "Inga dolda kostnader.",
-      description: "Du får en fullständig kostnadskalkyl inkl. skatter, notarieavgifter och juridiska kostnader innan du lägger ett bud. Inga överraskningar."
+      title: 'Livslång Service',
+      text: 'Vi hjälper till med el, vatten och renovering även efter tillträdet.',
     },
-    {
-      icon: <Key size={28} strokeWidth={1.2} />,
-      title: "VIP-Tillgång",
-      subtitle: "Före marknaden.",
-      description: "Genom våra exklusiva samarbeten med ledande byggherrar får våra kunder ofta förtur till de bästa lägena i nyproduktionsprojekt."
-    }
   ];
 
   return (
-    <section className="bg-alabaster py-24 border-b border-gray-100 relative overflow-hidden">
-      {/* Decorative Background Elements */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-greige/20 -skew-x-12 translate-x-32 z-0"></div>
+    <section className="py-24 bg-navy relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-0 right-0 w-2/3 h-full bg-gradient-to-l from-white/5 to-transparent pointer-events-none" />
 
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
-        
-        {/* Editorial Header */}
-        <div className="mb-20 max-w-2xl">
-          <span className="text-sage text-[10px] uppercase tracking-[0.25em] font-bold mb-4 block animate-fade-in">
-            Varför Spanienfastigheter.se?
-          </span>
-          <h2 className="text-4xl md:text-5xl font-serif text-navy mb-6 leading-[1.15]">
-            Vi gör det komplexa <br />
-            <span className="italic text-sand">enkelt & tryggt.</span>
-          </h2>
-          <p className="text-gray-500 font-light text-lg leading-relaxed">
-            Att köpa bostad utomlands är en stor affär. Därför har vi byggt en tjänst som eliminerar osäkerhet och låter dig fokusera på det roliga – att hitta ditt drömhem.
-          </p>
-        </div>
+      <div className="max-w-[1200px] mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+          {/* Left Side: Value Prop */}
+          <div className="text-white">
+            <span className="text-sand text-[10px] uppercase tracking-[0.25em] font-bold mb-4 block">
+              Vår filosofi
+            </span>
+            <h2 className="text-4xl md:text-5xl font-serif text-white mb-8 leading-tight">
+              Trygghet genom <br />
+              <span className="italic text-sand/90">hela affären.</span>
+            </h2>
 
-        {/* Feature Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {features.map((feature, index) => (
-            <div 
-              key={index} 
-              className="group bg-white p-8 border border-gray-100 shadow-soft hover:shadow-hover hover:-translate-y-2 transition-all duration-500 ease-out rounded-sm relative"
-            >
-              {/* Top Accent Line */}
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-navy to-navy/80 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
-              
-              {/* Icon */}
-              <div className="w-14 h-14 bg-greige/50 rounded-full flex items-center justify-center text-navy mb-6 group-hover:bg-navy group-hover:text-white transition-colors duration-500">
-                {feature.icon}
-              </div>
+            <p className="text-white/70 font-light text-lg mb-10 max-w-md leading-relaxed">
+              Vi vet att ett bostadsköp i Spanien är en stor livshändelse.
+              Därför har vi skapat en process som är lika säker som den är
+              inspirerande.
+            </p>
 
-              {/* Text Content */}
-              <div className="space-y-3">
-                <span className="text-[10px] uppercase tracking-widest text-sage font-bold block opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-500 delay-100">
-                  {feature.subtitle}
-                </span>
-                <h3 className="text-xl font-serif text-navy">
-                  {feature.title}
+            <div className="space-y-8">
+              {signals.map((item, i) => (
+                <div key={i} className="flex gap-5 group cursor-default">
+                  <div className="mt-1 w-10 h-10 rounded-full bg-white/10 border border-white/10 flex items-center justify-center flex-shrink-0 text-sand group-hover:bg-sand group-hover:text-navy transition-all duration-300">
+                    <Check size={18} strokeWidth={2.5} />
+                  </div>
+                  <div>
+                    <h4 className="font-serif text-lg text-white mb-1 group-hover:text-sand transition-colors">
+                      {item.title}
+                    </h4>
+                    <p className="text-white/50 font-light text-sm group-hover:text-white/70 transition-colors">
+                      {item.text}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right Side: Contact Form Placeholder */}
+          <div className="relative">
+            <div className="absolute top-0 left-8 right-8 h-1 bg-sand z-20" />
+            <div className="bg-white p-8 md:p-12 shadow-2xl rounded-sm relative z-10">
+              <div className="mb-8">
+                <h3 className="text-3xl font-serif text-navy mb-2">
+                  Boka rådgivning
                 </h3>
-                <p className="text-sm text-charcoal/70 font-light leading-relaxed">
-                  {feature.description}
+                <p className="text-gray-400 font-light text-sm">
+                  Fyll i formuläret så kontaktar en av våra mäklare dig inom
+                  24h.
                 </p>
               </div>
 
-              {/* Bottom Decorative Arrow */}
-              <div className="mt-8 flex justify-end opacity-20 group-hover:opacity-100 transition-opacity duration-500">
-                 <div className="w-8 h-px bg-sand"></div>
-              </div>
+              <form className="space-y-5">
+                <div className="grid grid-cols-2 gap-5">
+                  <div className="space-y-1.5 group">
+                    <label className="text-[10px] uppercase tracking-widest text-sage font-bold group-focus-within:text-navy transition-colors">
+                      Förnamn
+                    </label>
+                    <input
+                      type="text"
+                      className="w-full bg-greige/30 border border-transparent focus:bg-white focus:border-navy focus:ring-4 focus:ring-gray-100 transition-all duration-300 rounded-sm px-4 py-3.5 text-sm outline-none placeholder-gray-400 text-charcoal"
+                      placeholder="Anna"
+                    />
+                  </div>
+                  <div className="space-y-1.5 group">
+                    <label className="text-[10px] uppercase tracking-widest text-sage font-bold group-focus-within:text-navy transition-colors">
+                      Efternamn
+                    </label>
+                    <input
+                      type="text"
+                      className="w-full bg-greige/30 border border-transparent focus:bg-white focus:border-navy focus:ring-4 focus:ring-gray-100 transition-all duration-300 rounded-sm px-4 py-3.5 text-sm outline-none placeholder-gray-400 text-charcoal"
+                      placeholder="Andersson"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-1.5 group">
+                  <label className="text-[10px] uppercase tracking-widest text-sage font-bold group-focus-within:text-navy transition-colors">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    className="w-full bg-greige/30 border border-transparent focus:bg-white focus:border-navy focus:ring-4 focus:ring-gray-100 transition-all duration-300 rounded-sm px-4 py-3.5 text-sm outline-none placeholder-gray-400 text-charcoal"
+                    placeholder="anna@exempel.se"
+                  />
+                </div>
+
+                <div className="space-y-1.5 group">
+                  <label className="text-[10px] uppercase tracking-widest text-sage font-bold group-focus-within:text-navy transition-colors">
+                    Telefon
+                  </label>
+                  <input
+                    type="tel"
+                    className="w-full bg-greige/30 border border-transparent focus:bg-white focus:border-navy focus:ring-4 focus:ring-gray-100 transition-all duration-300 rounded-sm px-4 py-3.5 text-sm outline-none placeholder-gray-400 text-charcoal"
+                    placeholder="+46..."
+                  />
+                </div>
+
+                <div className="pt-4">
+                  <button
+                    type="submit"
+                    className="w-full bg-navy text-white py-4 uppercase tracking-[0.2em] text-xs font-bold hover:bg-charcoal transition-all duration-300 flex items-center justify-center gap-3 shadow-lg shadow-navy/20 hover:shadow-xl hover:-translate-y-0.5"
+                  >
+                    Bli kontaktad
+                  </button>
+                  <p className="text-center text-[10px] text-gray-400 mt-4">
+                    Genom att skicka godkänner du vår integritetspolicy.
+                  </p>
+                </div>
+              </form>
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </section>
   );
-};
+}

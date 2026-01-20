@@ -1,0 +1,127 @@
+{
+    "nav": {
+        "forSale": "For Sale",
+        "newBuild": "New Build",
+        "areas": "Areas",
+        "sell": "Sell",
+        "contact": "Contact",
+        "favorites": "Favorites",
+        "savedSearches": "Saved Searches",
+        "login": "Log in"
+    },
+    "hero": {
+        "title": "Find your dream home in Spain",
+        "subtitle": "Swedish-speaking agents on Costa Blanca & Costa del Sol",
+        "searchPlaceholder": "Search area, city..."
+    },
+    "search": {
+        "filter": "Filter",
+        "clearAll": "Clear all",
+        "searchRef": "Search reference...",
+        "region": "Region",
+        "price": "Price",
+        "beds": "Bedrooms",
+        "baths": "Bathrooms",
+        "features": "Features",
+        "showResults": "Show {count} properties",
+        "noResults": "No properties found"
+    },
+    "propertyTypes": {
+        "apartment": "Apartment",
+        "villa": "Villa",
+        "townhouse": "Townhouse",
+        "penthouse": "Penthouse",
+        "bungalow": "Bungalow",
+        "plot": "Plot"
+    },
+    "features": {
+        "pool": "Pool",
+        "parking": "Parking",
+        "elevator": "Elevator",
+        "garden": "Garden",
+        "gated": "Gated community",
+        "airCon": "Air conditioning",
+        "seaview": "Sea view",
+        "newBuild": "New build",
+        "terrace": "Terrace",
+        "touristLicense": "Tourist license"
+    },
+    "property": {
+        "beds": "beds",
+        "baths": "baths",
+        "builtArea": "built area",
+        "plotArea": "plot",
+        "price": "Price",
+        "ref": "Ref",
+        "description": "Description",
+        "location": "Location",
+        "propertyFeatures": "Features",
+        "distances": {
+            "beach": "To beach",
+            "golf": "Near golf",
+            "schools": "Near schools",
+            "airport": "To airport"
+        },
+        "contact": "Contact us about this property",
+        "favorite": {
+            "add": "Save as favorite",
+            "remove": "Remove favorite",
+            "loginRequired": "Log in to save favorites"
+        }
+    },
+    "areas": {
+        "title": "Destinations",
+        "subtitle": "Discover life along the coast",
+        "description": "From vibrant city life in Palma to peaceful mountain villages on the mainland. We help you navigate Spain's most sought-after addresses.",
+        "viewAll": "View all areas"
+    },
+    "trust": {
+        "philosophy": "Our Philosophy",
+        "headline": "Security throughout the entire process.",
+        "description": "We know that buying a home in Spain is a major life event. That's why we've created a process that's as secure as it is inspiring.",
+        "legal": {
+            "title": "Legal Guarantee",
+            "text": "We verify all licenses and deeds before publishing."
+        },
+        "swedish": {
+            "title": "Swedish Contracts",
+            "text": "All documentation is translated and reviewed in Swedish."
+        },
+        "service": {
+            "title": "Lifetime Service",
+            "text": "We help with utilities and renovations even after closing."
+        }
+    },
+    "contact": {
+        "title": "Book a consultation",
+        "subtitle": "Fill out the form and one of our agents will contact you within 24h.",
+        "form": {
+            "firstName": "First name",
+            "lastName": "Last name",
+            "email": "Email",
+            "phone": "Phone",
+            "message": "Message",
+            "submit": "Get contacted",
+            "consent": "By submitting you agree to our privacy policy.",
+            "success": "Thank you! We'll be in touch soon.",
+            "error": "Something went wrong. Please try again."
+        }
+    },
+    "concierge": {
+        "title": "Can't find what you're looking for?",
+        "description": "Let us search for you, free of charge.",
+        "cta": "Start monitoring"
+    },
+    "footer": {
+        "about": "About us",
+        "contact": "Contact",
+        "privacy": "Privacy policy",
+        "terms": "Terms"
+    },
+    "common": {
+        "back": "Back",
+        "viewAll": "View all",
+        "loading": "Loading...",
+        "error": "An error occurred"
+    }
+}

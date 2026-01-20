@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: theme('colors.alabaster');
+  color: theme('colors.charcoal');
+}
+
+::selection {
+  background-color: theme('colors.navy');
+  color: white;
+}

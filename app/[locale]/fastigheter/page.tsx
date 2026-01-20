@@ -1,0 +1,111 @@
+import { Suspense } from 'react';
+import PropertyCard from '@/components/property/PropertyCard';
+import FilterWithModal from '@/components/search/FilterWithModal';
+import { fetchProperties } from '@/lib/xml-parser';
+import { filterProperties, parseSearchParams } from '@/lib/filters';
+import { MOCK_PROPERTIES } from '@/lib/mock-data';
+
+interface Props {
+    searchParams: Promise<Record<string, string | string[] | undefined>>;
+}
+
+export const metadata = {
+    title: 'Fastigheter till salu i Spanien | Spanienfastigheter.se',
+    description:
+        'Upptäck vårt utbud av fastigheter till salu på Costa del Sol och Costa Blanca. Villor, lägenheter och radhus i Spaniens mest eftertraktade områden.',
+};
+
+async function PropertyGrid({
+    searchParams,
+}: {
+    searchParams: Record<string, string | string[] | undefined>;
+}) {
+    // Fetch real properties from XML, fallback to mock data
+    let properties = await fetchProperties();
+
+    if (properties.length === 0) {
+        properties = MOCK_PROPERTIES;
+    }
+
+    // Apply filters
+    const filters = parseSearchParams(searchParams);
+    const filteredProperties = filterProperties(properties, filters);
+
+    return (
+        <>
+            <p className="text-gray-500 font-light text-sm mb-8">
+                Visar {filteredProperties.length} av {properties.length} objekt
+            </p>
+
+            {filteredProperties.length === 0 ? (
+                <div className="text-center py-16">
+                    <p className="text-xl text-gray-500">Inga fastigheter hittades</p>
+                    <p className="text-sm text-gray-400 mt-2">
+                        Försök justera dina sökkriterier
+                    </p>
+                </div>
+            ) : (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
+                    {filteredProperties.map((property) => (
+                        <PropertyCard key={property.id} property={property} />
+                    ))}
+                </div>
+            )}
+        </>
+    );
+}
+
+export default async function PropertiesPage({ searchParams }: Props) {
+    const resolvedSearchParams = await searchParams;
+
+    return (
+        <main className="min-h-screen bg-alabaster">
+            {/* Hero */}
+            <section className="bg-navy py-20">
+                <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+                    <span className="text-sand text-[10px] uppercase tracking-[0.25em] font-bold mb-4 block">
+                        Fastigheter
+                    </span>
+                    <h1 className="text-4xl md:text-5xl font-serif text-white mb-4">
+                        Alla fastigheter till salu
+                    </h1>
+                    <p className="text-white/70 font-light max-w-2xl">
+                        Utforska vårt kompletta utbud av bostäder på Costa del Sol och
+                        Costa Blanca. Filtrera efter region, pris, storlek och egenskaper
+                        för att hitta ditt drömboende.
+                    </p>
+                </div>
+            </section>
+
+            {/* Content */}
+            <section className="py-16 bg-greige/30">
+                <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+                    <div className="flex flex-col lg:flex-row gap-16">
+                        {/* Filter Sidebar */}
+                        <aside className="hidden lg:block w-80 flex-shrink-0">
+                            <FilterWithModal />
+                        </aside>
+
+                        {/* Property Grid */}
+                        <div className="flex-1">
+                            <Suspense
+                                fallback={
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
+                                        {[...Array(4)].map((_, i) => (
+                                            <div
+                                                key={i}
+                                                className="bg-white animate-pulse rounded-sm h-96"
+                                            />
+                                        ))}
+                                    </div>
+                                }
+                            >
+                                <PropertyGrid searchParams={resolvedSearchParams} />
+                            </Suspense>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    );
+}

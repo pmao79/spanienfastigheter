@@ -1,0 +1,127 @@
+{
+    "nav": {
+        "forSale": "Till Salu",
+        "newBuild": "Nyproduktion",
+        "areas": "Områden",
+        "sell": "Sälja",
+        "contact": "Kontakt",
+        "favorites": "Favoriter",
+        "savedSearches": "Sparade sökningar",
+        "login": "Logga in"
+    },
+    "hero": {
+        "title": "Hitta ditt drömboende i Spanien",
+        "subtitle": "Svensktalande mäklare på Costa Blanca & Costa del Sol",
+        "searchPlaceholder": "Sök område, stad..."
+    },
+    "search": {
+        "filter": "Filtrera",
+        "clearAll": "Rensa allt",
+        "searchRef": "Sök referensnr...",
+        "region": "Region",
+        "price": "Pris",
+        "beds": "Sovrum",
+        "baths": "Badrum",
+        "features": "Egenskaper",
+        "showResults": "Visa {count} bostäder",
+        "noResults": "Inga fastigheter hittades"
+    },
+    "propertyTypes": {
+        "apartment": "Lägenhet",
+        "villa": "Villa",
+        "townhouse": "Radhus",
+        "penthouse": "Takvåning",
+        "bungalow": "Bungalow",
+        "plot": "Tomt"
+    },
+    "features": {
+        "pool": "Pool",
+        "parking": "Parkering",
+        "elevator": "Hiss",
+        "garden": "Trädgård",
+        "gated": "Gated community",
+        "airCon": "AC",
+        "seaview": "Havsutsikt",
+        "newBuild": "Nyproduktion",
+        "terrace": "Terrass",
+        "touristLicense": "Turistlicens"
+    },
+    "property": {
+        "beds": "sovrum",
+        "baths": "badrum",
+        "builtArea": "boyta",
+        "plotArea": "tomt",
+        "price": "Pris",
+        "ref": "Ref",
+        "description": "Beskrivning",
+        "location": "Läge",
+        "propertyFeatures": "Egenskaper",
+        "distances": {
+            "beach": "Till strand",
+            "golf": "Nära golf",
+            "schools": "Nära skolor",
+            "airport": "Till flygplats"
+        },
+        "contact": "Kontakta oss om denna fastighet",
+        "favorite": {
+            "add": "Spara som favorit",
+            "remove": "Ta bort favorit",
+            "loginRequired": "Logga in för att spara favoriter"
+        }
+    },
+    "areas": {
+        "title": "Destinationer",
+        "subtitle": "Upptäck livet längs kusten",
+        "description": "Från pulserande stadsliv i Palma till lugna bergsbyar på fastlandet. Vi hjälper dig navigera bland Spaniens mest eftertraktade adresser.",
+        "viewAll": "Visa alla områden"
+    },
+    "trust": {
+        "philosophy": "Vår filosofi",
+        "headline": "Trygghet genom hela affären.",
+        "description": "Vi vet att ett bostadsköp i Spanien är en stor livshändelse. Därför har vi skapat en process som är lika säker som den är inspirerande.",
+        "legal": {
+            "title": "Juridisk Garanti",
+            "text": "Vi kontrollerar alla licenser och lagfarter innan vi publicerar."
+        },
+        "swedish": {
+            "title": "Svenska Kontrakt",
+            "text": "All dokumentation översätts och gås igenom på svenska."
+        },
+        "service": {
+            "title": "Livslång Service",
+            "text": "Vi hjälper till med el, vatten och renovering även efter tillträdet."
+        }
+    },
+    "contact": {
+        "title": "Boka rådgivning",
+        "subtitle": "Fyll i formuläret så kontaktar en av våra mäklare dig inom 24h.",
+        "form": {
+            "firstName": "Förnamn",
+            "lastName": "Efternamn",
+            "email": "Email",
+            "phone": "Telefon",
+            "message": "Meddelande",
+            "submit": "Bli kontaktad",
+            "consent": "Genom att skicka godkänner du vår integritetspolicy.",
+            "success": "Tack! Vi hör av oss snart.",
+            "error": "Något gick fel. Försök igen."
+        }
+    },
+    "concierge": {
+        "title": "Hittar du inte rätt?",
+        "description": "Låt oss söka åt dig kostnadsfritt.",
+        "cta": "Starta bevakning"
+    },
+    "footer": {
+        "about": "Om oss",
+        "contact": "Kontakt",
+        "privacy": "Integritetspolicy",
+        "terms": "Villkor"
+    },
+    "common": {
+        "back": "Tillbaka",
+        "viewAll": "Visa alla",
+        "loading": "Laddar...",
+        "error": "Ett fel uppstod"
+    }
+}

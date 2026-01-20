@@ -1,0 +1,127 @@
+{
+    "nav": {
+        "forSale": "En Venta",
+        "newBuild": "Obra Nueva",
+        "areas": "Zonas",
+        "sell": "Vender",
+        "contact": "Contacto",
+        "favorites": "Favoritos",
+        "savedSearches": "Búsquedas guardadas",
+        "login": "Iniciar sesión"
+    },
+    "hero": {
+        "title": "Encuentra tu hogar soñado en España",
+        "subtitle": "Agentes de habla sueca en Costa Blanca y Costa del Sol",
+        "searchPlaceholder": "Buscar zona, ciudad..."
+    },
+    "search": {
+        "filter": "Filtrar",
+        "clearAll": "Borrar todo",
+        "searchRef": "Buscar referencia...",
+        "region": "Región",
+        "price": "Precio",
+        "beds": "Dormitorios",
+        "baths": "Baños",
+        "features": "Características",
+        "showResults": "Mostrar {count} propiedades",
+        "noResults": "No se encontraron propiedades"
+    },
+    "propertyTypes": {
+        "apartment": "Apartamento",
+        "villa": "Villa",
+        "townhouse": "Adosado",
+        "penthouse": "Ático",
+        "bungalow": "Bungalow",
+        "plot": "Parcela"
+    },
+    "features": {
+        "pool": "Piscina",
+        "parking": "Aparcamiento",
+        "elevator": "Ascensor",
+        "garden": "Jardín",
+        "gated": "Urbanización cerrada",
+        "airCon": "Aire acondicionado",
+        "seaview": "Vistas al mar",
+        "newBuild": "Obra nueva",
+        "terrace": "Terraza",
+        "touristLicense": "Licencia turística"
+    },
+    "property": {
+        "beds": "dormitorios",
+        "baths": "baños",
+        "builtArea": "superficie construida",
+        "plotArea": "parcela",
+        "price": "Precio",
+        "ref": "Ref",
+        "description": "Descripción",
+        "location": "Ubicación",
+        "propertyFeatures": "Características",
+        "distances": {
+            "beach": "A la playa",
+            "golf": "Cerca del golf",
+            "schools": "Cerca de colegios",
+            "airport": "Al aeropuerto"
+        },
+        "contact": "Contáctenos sobre esta propiedad",
+        "favorite": {
+            "add": "Guardar como favorito",
+            "remove": "Eliminar favorito",
+            "loginRequired": "Inicie sesión para guardar favoritos"
+        }
+    },
+    "areas": {
+        "title": "Destinos",
+        "subtitle": "Descubre la vida en la costa",
+        "description": "Desde la vibrante vida urbana en Palma hasta los tranquilos pueblos de montaña del interior. Te ayudamos a navegar por las direcciones más codiciadas de España.",
+        "viewAll": "Ver todas las zonas"
+    },
+    "trust": {
+        "philosophy": "Nuestra Filosofía",
+        "headline": "Seguridad durante todo el proceso.",
+        "description": "Sabemos que comprar una vivienda en España es un acontecimiento importante. Por eso hemos creado un proceso tan seguro como inspirador.",
+        "legal": {
+            "title": "Garantía Legal",
+            "text": "Verificamos todas las licencias y escrituras antes de publicar."
+        },
+        "swedish": {
+            "title": "Contratos en Sueco",
+            "text": "Toda la documentación se traduce y revisa en sueco."
+        },
+        "service": {
+            "title": "Servicio de por Vida",
+            "text": "Ayudamos con los suministros y reformas incluso después del cierre."
+        }
+    },
+    "contact": {
+        "title": "Reservar una consulta",
+        "subtitle": "Complete el formulario y uno de nuestros agentes le contactará en 24h.",
+        "form": {
+            "firstName": "Nombre",
+            "lastName": "Apellido",
+            "email": "Email",
+            "phone": "Teléfono",
+            "message": "Mensaje",
+            "submit": "Ser contactado",
+            "consent": "Al enviar acepta nuestra política de privacidad.",
+            "success": "¡Gracias! Nos pondremos en contacto pronto.",
+            "error": "Algo salió mal. Inténtelo de nuevo."
+        }
+    },
+    "concierge": {
+        "title": "¿No encuentras lo que buscas?",
+        "description": "Déjanos buscar por ti, sin coste.",
+        "cta": "Iniciar seguimiento"
+    },
+    "footer": {
+        "about": "Sobre nosotros",
+        "contact": "Contacto",
+        "privacy": "Política de privacidad",
+        "terms": "Términos"
+    },
+    "common": {
+        "back": "Volver",
+        "viewAll": "Ver todo",
+        "loading": "Cargando...",
+        "error": "Se produjo un error"
+    }
+}
