@@ -11,3 +11,41 @@ body {
   background-color: theme('colors.navy');
   color: white;
 }
+
+@layer components {
+
+  /* Golf-badges */
+  .golf-badge {
+    @apply text-[10px] uppercase tracking-[0.2em] px-3 py-1 rounded-sm;
+  }
+
+  .golf-badge-featured {
+    @apply bg-sand text-navy;
+  }
+
+  .golf-badge-difficulty-easy {
+    @apply bg-sage/20 text-sage;
+  }
+
+  .golf-badge-difficulty-medium {
+    @apply bg-navy/10 text-navy;
+  }
+
+  .golf-badge-difficulty-hard {
+    @apply bg-navy text-white;
+  }
+
+  /* Golf-kort hover */
+  .golf-card {
+    @apply transition-all duration-300;
+  }
+
+  .golf-card:hover {
+    @apply shadow-hover transform -translate-y-1;
+  }
+
+  /* Prismarkeringar */
+  .golf-price-highlight {
+    @apply font-serif text-2xl text-navy;
+  }
+}

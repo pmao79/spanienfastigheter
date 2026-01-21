@@ -1,0 +1,103 @@
+{
+  "id": "vistabella",
+  "slug": "vistabella",
+  "name": "Vistabella Golf",
+  "shortName": "Vistabella",
+  "tagline": "Championship-standard golfbana på Costa Blanca",
+  "description": "Vistabella Golf är en prémiergolfbana nära Torrevieja på Costa Blanca med championship-layout, böljande greener och utmanande design.",
+  "longDescription": "Vistabella Golf är en prémiergolfbana belägen i lugn naturmiljö mellan San Miguel de Salinas och Los Montesinos på Costa Blanca. Banan har en championship-standard layout som respekteras även av låghandikappare och är utformad för att passa alla spelarnivåer. Banans böljande greener är enorma och rullande, medan fairways är väl underhållna med bermudagräs i det grova som presenterar en betydande utmaning.\n\nBanan kännetecknas av ett löjligt högt antal greensidebunkrar och kräver respekt från alla spelare. En normal rond för en fyrsparkoll tar mellan 4 timmar 20 minuter och 5 timmar. Webbplatsen erbjuder flera barer, restauranger och en butik, samt en gastropub med engelsk frukost och levande underhållning på kvällar.",
+  "region": "costa-blanca",
+  "subRegion": "Orihuela",
+  "province": "Alicante",
+  "address": {
+    "street": "",
+    "postalCode": "",
+    "city": "Orihuela",
+    "country": "ES"
+  },
+  "coordinates": {
+    "lat": 38.0,
+    "lng": -0.7
+  },
+  "courseInfo": {
+    "holes": 18,
+    "par": 0,
+    "length": {
+      "meters": 0,
+      "yards": 0
+    },
+    "architect": "",
+    "openedYear": 0
+  },
+  "difficulty": {
+    "level": "medium-hard",
+    "description": "Championship-standard bana med utmanande layout och många greensidebunkrar. Kräver respekt även från låghandikappare. Böljande greener och bermudagräs gör spelet tekniskt krävande."
+  },
+  "pricing": {
+    "greenFee": {
+      "lowSeason": {
+        "weekday": {
+          "min": 0,
+          "max": 0
+        },
+        "weekend": {
+          "min": 0,
+          "max": 0
+        }
+      },
+      "highSeason": {
+        "weekday": {
+          "min": 0,
+          "max": 0
+        },
+        "weekend": {
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    "currency": "EUR"
+  },
+  "facilities": {
+    "course": {
+      "drivingRange": true,
+      "puttingGreen": true,
+      "chippingGreen": true,
+      "practiceBunker": true
+    },
+    "clubhouse": {
+      "restaurant": true,
+      "proshop": true,
+      "locker": false,
+      "bar": true,
+      "terrace": true,
+      "shower": false
+    },
+    "services": {
+      "golfSchool": true,
+      "proAvailable": true,
+      "clubFitting": false,
+      "clubRepair": false,
+      "caddie": false
+    },
+    "other": {
+      "spa": false,
+      "pool": false,
+      "gym": false,
+      "tennis": false,
+      "padel": true,
+      "hotel": false
+    }
+  },
+  "contact": {
+    "phone": "",
+    "email": "",
+    "website": "vistabellagolf.com"
+  },
+  "rating": {
+    "overall": 4.5,
+    "totalReviews": 0
+  },
+  "holes": [],
+  "signatureHoles": []
+}

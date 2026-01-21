@@ -1,0 +1,108 @@
+{
+  "id": "las-colinas",
+  "slug": "las-colinas",
+  "name": "Las Colinas Golf & Country Club",
+  "shortName": "Las Colinas",
+  "tagline": "Spaniens bästa golfupplevelse i en grön dal",
+  "description": "Prisbelönt 18-håls mästerskapsbana i vacker dal på Costa Blanca. Varierad layout med breda fairways och kuperade greener. Perfekt för alla nivåer.[1]",
+  "longDescription": "Las Colinas Golf & Country Club är en av Spaniens främsta golfbanor, invigd 2010 och belönad flera gånger som bästa golfbana vid World Golf Awards. Banan sträcker sig genom en grönskande dal omgiven av trädbevuxna kullar, med en fantastisk integration av naturen som ger en avskärmad och naturnära upplevelse. Layouten är varierad med breda fairways, kuperade greener och fem olika utslagsplatser, vilket gör den spännande för både amatörer och proffs.[1][3]\n\nDenna par 72-bana erbjuder en utmanande men rättvis spelupplevelse, med signifikanta hål som det avslutande par 5-hålet bevakat av bunkrar och vattenhinder. Arkitekten Caball B. Robinson har skapat en harmonisk kontrast mellan den gröna banan och de vita husen runt omkring. Träningsfaciliteterna är toppklass med driving range på gräs, putting green och närspelsområde designat av Miguel Ángel Jiménez.[1]\n\nUpplevelsen förstärks av resortens lyxiga faciliteter, inklusive klubbhus, restaurang och närhet till strandklubb. Banan passar perfekt för en oförglömlig golfvistelse i Medelhavsklimatet på Costa Blanca.[1][2]",
+  "region": "costa-blanca",
+  "subRegion": "Dehesa de Campoamor",
+  "province": "Alicante",
+  "address": {
+    "street": "Las Colinas Golf & Country Club",
+    "postalCode": "03189",
+    "city": "Dehesa de Campoamor",
+    "country": "ES"
+  },
+  "coordinates": {
+    "lat": 37.941,
+    "lng": -0.702
+  },
+  "courseInfo": {
+    "holes": 18,
+    "par": 72,
+    "length": {
+      "meters": 6000,
+      "yards": 6560
+    },
+    "architect": "Caball B. Robinson",
+    "openedYear": 2010
+  },
+  "difficulty": {
+    "level": "medium",
+    "description": "Medelutmanande med varierad layout, breda fairways och kuperade greener som passar alla nivåer, men kräver precision på bevakade hål."
+  },
+  "pricing": {
+    "greenFee": {
+      "lowSeason": {
+        "weekday": {
+          "min": 0,
+          "max": 0
+        },
+        "weekend": {
+          "min": 0,
+          "max": 0
+        }
+      },
+      "highSeason": {
+        "weekday": {
+          "min": 0,
+          "max": 0
+        },
+        "weekend": {
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    "currency": "EUR"
+  },
+  "facilities": {
+    "course": {
+      "drivingRange": true,
+      "puttingGreen": true,
+      "chippingGreen": true,
+      "practiceBunker": true
+    },
+    "clubhouse": {
+      "restaurant": true,
+      "proshop": true,
+      "locker": true,
+      "bar": true,
+      "terrace": true,
+      "shower": true
+    },
+    "services": {
+      "golfSchool": true,
+      "proAvailable": true,
+      "clubFitting": false,
+      "clubRepair": false,
+      "caddie": false
+    },
+    "other": {
+      "spa": true,
+      "pool": true,
+      "gym": true,
+      "tennis": true,
+      "padel": true,
+      "hotel": false
+    }
+  },
+  "contact": {
+    "phone": "+34 966 769 228",
+    "email": "info@lascolinasgolf.com",
+    "website": "www.lascolinasgolf.com"
+  },
+  "rating": {
+    "overall": 9.9,
+    "totalReviews": 19
+  },
+  "holes": [],
+  "signatureHoles": [
+    {
+      "number": 18,
+      "description": "Fantastiskt par 5 med fairway avgränsad av bunkrar och stort vattenhinder, green väl skyddad av vatten och bunkrar."
+    }
+  ]
+}

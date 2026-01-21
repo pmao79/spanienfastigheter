@@ -1,6 +1,6 @@
 import { AreaResearch } from '@/types/property';
 
-const PERPLEXITY_API_KEY = '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';
+const PERPLEXITY_API_KEY = process.env.PERPLEXITY_API_KEY;
 const API_URL = 'https://api.perplexity.ai/chat/completions';
 
 interface PerplexityMessage {

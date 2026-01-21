@@ -1,0 +1,39 @@
+{
+  "id": "bonalba",
+  "slug": "bonalba",
+  "name": "Bonalba Golf",
+  "shortName": "Bonalba Golf",
+  "tagline": "Golf med Medelhavets bästa vyer och spännande utmaningar",
+  "description": "Bonalba Golf är en par 72-bana i Costa Blanca med 5 sjöar på 7 hål och strategiska bunkrar. Perfekt för alla nivåer med fantastiska vyer.[1]",
+  "longDescription": "Bonalba Golf i Costa Blanca, Spanien, är en parklandbana designad av D. Ramón Espinosa. Banan mäter upp till 6096 meter från gula tees och erbjuder en öppen layout omgiven av vegetation och grönområden, skyddad av Sierra de Bonalba med sensationell havsutsikt.[1][3]\n\nMed 5 stora sjöar som påverkar 7 hål och många strategiskt placerade bunkrar ger banan en spännande utmaning för golfare på alla nivåer. Den är platt men undulerad med smala fairways, vilket kräver precision och strategi.[2][4]\n\nUpplevelsen är rolig och varierad, med vacker natur och närhet till Hotel Bonalba Alicante. En perfekt bana för en minnesvärd golfrunda i Medelhavsklimatet.[3][5]",
+  "region": "costa-blanca",
+  "subRegion": "Mutxamel",
+  "province": "Alicante",
+  "address": { "street": "C/ Verspre 6 bis urb Bonalba", "postalCode": "03110", "city": "Mutxamel", "country": "ES" },
+  "coordinates": { "lat": 38.35, "lng": -0.47 },
+  "courseInfo": {
+    "holes": 18,
+    "par": 72,
+    "length": { "meters": 6096, "yards": 6667 },
+    "architect": "D. Ramón Espinosa",
+    "openedYear": 2002
+  },
+  "difficulty": { "level": "medium", "description": "Medelsvår bana med sjöar på 7 hål, strategiska bunkrar och undulerade fairways som utmanar alla nivåer." },
+  "pricing": {
+    "greenFee": {
+      "lowSeason": { "weekday": { "min": 0, "max": 0 }, "weekend": { "min": 0, "max": 0 } },
+      "highSeason": { "weekday": { "min": 0, "max": 0 }, "weekend": { "min": 0, "max": 0 } }
+    },
+    "currency": "EUR"
+  },
+  "facilities": {
+    "course": { "drivingRange": true, "puttingGreen": true, "chippingGreen": true, "practiceBunker": true },
+    "clubhouse": { "restaurant": true, "proshop": true, "locker": true, "bar": true, "terrace": true, "shower": true },
+    "services": { "golfSchool": true, "proAvailable": true, "clubFitting": false, "clubRepair": false, "caddie": false },
+    "other": { "spa": true, "pool": true, "gym": false, "tennis": false, "padel": false, "hotel": true }
+  },
+  "contact": { "phone": "+34 965 955 955", "email": "info@bonalbagolf.com", "website": "www.bonalbagolf.com" },
+  "rating": { "overall": 4.2, "totalReviews": 150 },
+  "holes": [],
+  "signatureHoles": [{ "number": 1, "description": "Första hålet introducerar banans karaktär med sjöar och bunkrar i vacker medelhavsmiljö." }]
+}

@@ -7,7 +7,8 @@
         "contact": "Kontakt",
         "favorites": "Favoriter",
         "savedSearches": "Sparade sökningar",
-        "login": "Logga in"
+        "login": "Logga in",
+        "golf": "Golf"
     },
     "hero": {
         "title": "Hitta ditt drömboende i Spanien",
@@ -123,5 +124,50 @@
         "viewAll": "Visa alla",
         "loading": "Laddar...",
         "error": "Ett fel uppstod"
+    },
+    "golf": {
+        "title": "Golfguiden",
+        "subtitle": "Komplett guide till Costa Blanca & Costa del Sol",
+        "courses": "golfbanor",
+        "course": "golfbana",
+        "greenFee": "Green fee",
+        "holes": "hål",
+        "par": "Par",
+        "length": "Längd",
+        "difficulty": "Svårighetsgrad",
+        "facilities": "Faciliteter",
+        "pricing": "Priser",
+        "reviews": "Recensioner",
+        "bookTeeTime": "Boka starttid",
+        "compare": "Jämför",
+        "map": "Karta",
+        "nearbyProperties": "Fastigheter i närheten",
+        "viewAll": "Visa alla",
+        "difficulty_levels": {
+            "beginner": "Nybörjarvänlig",
+            "easy": "Lätt",
+            "medium": "Medel",
+            "challenging": "Utmanande",
+            "expert": "Expert"
+        },
+        "seasons": {
+            "low": "Lågsäsong",
+            "high": "Högsäsong",
+            "twilight": "Twilight"
+        },
+        "facilities_labels": {
+            "drivingRange": "Driving range",
+            "puttingGreen": "Putting green",
+            "proshop": "Pro shop",
+            "restaurant": "Restaurang",
+            "golfSchool": "Golfskola",
+            "buggyRental": "Buggy-hyra",
+            "clubRental": "Klubbhyra"
+        },
+        "cta": {
+            "viewProperties": "Se golffastigheter",
+            "contactUs": "Kontakta oss",
+            "bookViewing": "Boka visning"
+        }
     }
 }

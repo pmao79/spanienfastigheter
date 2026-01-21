@@ -1,0 +1,39 @@
+{
+  "id": "la-quinta",
+  "slug": "la-quinta",
+  "name": "La Quinta Golf & Country Club",
+  "shortName": "La Quinta",
+  "tagline": "Golf i Medelhavets hjärta mellan hav och berg",
+  "description": "Unik 27-hålsbana i Marbellas Golf Valley, designad av Manuel Piñero. Varierad layout med fantastisk utsikt, lämplig för alla nivåer (max 128 tecken).",
+  "longDescription": "La Quinta Golf & Country Club ligger i Marbellas Golf Valley, omgiven av hav och berg i ett område av exceptionell skönhet. Banan består av tre 9-håls slingor (A, B och C) som kan kombineras till varierade 18-hålsrundor, designade av den legendariske spanska golfaren Manuel Piñero. Invigd 1989 erbjuder den en perfekt blandning av utmaning och njutning i ett medelhavsmiljö.\n\nLayouten är varierad med doglegs, vattenhinder, mogna träd och tekniska greener. Fairways är av medelbredd och banan är inte överdrivet lång, vilket ger birdiemöjligheter för den raka slagarens. Den är särskilt lämplig för medel- till höghandicapare, bekväm och spelbar för alla nivåer med pittoreska vyer över bergen och havet.\n\nUpplevelsen präglas av lugn och naturkänsla trots närheten till bebyggelse. Klubben har utmärkt service med restaurang, pro shop och driving range, vilket gör den ideal för både amatörer och proffs.",
+  "region": "costa-del-sol",
+  "subRegion": "Nueva Andalucía",
+  "province": "Málaga",
+  "address": { "street": "Urb. La Quinta Avda. Tomas Pascual s/n", "postalCode": "29660", "city": "Marbella", "country": "ES" },
+  "coordinates": { "lat": 36.474, "lng": -5.006 },
+  "courseInfo": {
+    "holes": 27,
+    "par": 72,
+    "length": { "meters": 5500, "yards": 6010 },
+    "architect": "Manuel Piñero",
+    "openedYear": 1989
+  },
+  "difficulty": { "level": "medium", "description": "Bekväm och rolig bana med varierande utmaningar som doglegs och vattenhinder, ideal för medel- till höghandicapare." },
+  "pricing": {
+    "greenFee": {
+      "lowSeason": { "weekday": { "min": 0, "max": 0 }, "weekend": { "min": 0, "max": 0 } },
+      "highSeason": { "weekday": { "min": 0, "max": 0 }, "weekend": { "min": 0, "max": 0 } }
+    },
+    "currency": "EUR"
+  },
+  "facilities": {
+    "course": { "drivingRange": true, "puttingGreen": true, "chippingGreen": true, "practiceBunker": true },
+    "clubhouse": { "restaurant": true, "proshop": true, "locker": true, "bar": true, "terrace": true, "shower": true },
+    "services": { "golfSchool": true, "proAvailable": true, "clubFitting": false, "clubRepair": false, "caddie": false },
+    "other": { "spa": false, "pool": false, "gym": false, "tennis": false, "padel": false, "hotel": true }
+  },
+  "contact": { "phone": "+34 952 76 20 00", "email": "reservations@westinlaquinta.com", "website": "www.westinlaquinta.com" },
+  "rating": { "overall": 4.2, "totalReviews": 256 },
+  "holes": [],
+  "signatureHoles": [{ "number": 1, "description": "Öppningshål med bred fairway och inbjudande layout som sätter tonen för rundan med vacker utsikt." }]
+}

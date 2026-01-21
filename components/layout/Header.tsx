@@ -26,6 +26,7 @@ export default function Header() {
         { key: 'forSale', href: '/fastigheter' },
         { key: 'newBuild', href: '/fastigheter?newBuild=true' },
         { key: 'areas', href: '/omraden' },
+        { key: 'golf', href: '/golf' },
         { key: 'sell', href: '/salja' },
         { key: 'contact', href: '/kontakt' },
     ];

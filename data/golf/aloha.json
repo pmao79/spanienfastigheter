@@ -1,0 +1,39 @@
+{
+  "id": "aloha",
+  "slug": "aloha",
+  "name": "Aloha Golf Club",
+  "shortName": "Aloha Golf",
+  "tagline": "En av Spaniens vackraste och bäst underhållna banor i Golfdalen",
+  "description": "Aloha Golf Club är en prestigefylld bana i Marbellas Golfdal med par 72, trädbevakade fairways och sjöar. Designad av Javier Arana 1975 med fantastisk utsikt.[1][2]",
+  "longDescription": "Aloha Golf Club, belägen i Nueva Andalucía i Marbellas Golfdal, är en av Costa del Sols mest respekterade och välunderhållna banor. Designad av Javier Arana och invigd 1975, erbjuder den en parklandbana med par 72, uppdelad i 4 par 5, 10 par 4 och 4 par 3. Banan mäter cirka 6246 meter från de vita tee och präglas av smala, trädbevakade fairways, sjöar och bäckar som kräver precision och kraft från spelaren.[1][2][3]\n\nLayouten slingrar sig genom varierad vegetation med utsikt över La Concha-berget och Medelhavet. De snabba, välförsvarade greenerna ställer höga krav på järnspel och putting. Banan har en naturlig karaktär där varje dag känns unik tack vare årstidsvariationer i träd och buskar.[1][3]\n\nUpplevelsen förstärks av den lyxiga klubbhuset med terrass, restaurang och utmärkta faciliteter. Som privat medlemsklubb med historia av professionella turneringar ger Aloha en social och exklusiv atmosfär för golfentusiaster.[1][4]",
+  "region": "costa-del-sol",
+  "subRegion": "Nueva Andalucía",
+  "province": "Málaga",
+  "address": { "street": "Urb. Aloha Golf, s/n", "postalCode": "29660", "city": "Marbella", "country": "ES" },
+  "coordinates": { "lat": 36.508, "lng": -4.926 },
+  "courseInfo": {
+    "holes": 18,
+    "par": 72,
+    "length": { "meters": 6246, "yards": 6830 },
+    "architect": "Javier Arana",
+    "openedYear": 1975
+  },
+  "difficulty": { "level": "medium", "description": "Banan kräver precision på smala fairways med träd och sjöar, plus snabba greener som testar järnspel och putting." },
+  "pricing": {
+    "greenFee": {
+      "lowSeason": { "weekday": { "min": 0, "max": 0 }, "weekend": { "min": 0, "max": 0 } },
+      "highSeason": { "weekday": { "min": 0, "max": 0 }, "weekend": { "min": 0, "max": 0 } }
+    },
+    "currency": "EUR"
+  },
+  "facilities": {
+    "course": { "drivingRange": true, "puttingGreen": true, "chippingGreen": true, "practiceBunker": true },
+    "clubhouse": { "restaurant": true, "proshop": true, "locker": true, "bar": true, "terrace": true, "shower": true },
+    "services": { "golfSchool": true, "proAvailable": true, "clubFitting": false, "clubRepair": false, "caddie": true },
+    "other": { "spa": false, "pool": true, "gym": true, "tennis": false, "padel": false, "hotel": false }
+  },
+  "contact": { "phone": "+34 952 90 70 85", "email": "reservas@clubdegolfaloha.com", "website": "www.clubdegolfaloha.com" },
+  "rating": { "overall": 4.5, "totalReviews": 150 },
+  "holes": [],
+  "signatureHoles": [{ "number": 1, "description": "Hål 1 vid poolen med spektakulär start och utsikt över banan." }]
+}

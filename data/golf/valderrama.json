@@ -1,0 +1,112 @@
+{
+  "id": "valderrama",
+  "slug": "valderrama",
+  "name": "Real Club Valderrama",
+  "shortName": "Valderrama",
+  "tagline": "Europas finaste parklandbana och ett golfhistoriskt mästerverk",
+  "description": "Real Club Valderrama är Europas ledande golfbana, designad av Robert Trent Jones Sr. Belägen i Sotogrande på Costa del Sol, väl känd för sitt imponerande greenfee och exklusiva medlemskap.",
+  "longDescription": "Real Club Valderrama är en privat golfklubb som anses vara kontinentaleuropas finaste golfbana. Banan, designad av legendariska Robert Trent Jones Sr., ligger vackert inbäddad i höglandet på Costa del Sols fokuserade parklandskap. Från starten som en anonym bana kallad \"Sotogrande New\" har den transformerats till en världskänd destination under ledning av den golfengagerade ägaren James Ortiz-Patino.\n\nBanan är ett strikt test även för erfarna golfspelare. Med snäva fairways omgivna av korkträd och olivträd, nästan 100 bunkrar, upphöjda gröna skyddade av träd och många vattenhinder erfordras precision och noggrann banhantering. De första nio hålen är relativt snävare, medan tillbakasidan erbjuder mer varierad terräng med utsikt över Medelhavet.\n\nValderrama har varit värd för några av golfens största turneringar, inklusive Ryder Cup 1997, Volvo Masters (16 gånger mellan 1988-2008) och World Golf Championships. Klubben erbjuder begränsad allmän spel mellan klockan 12-14 och är klassificerad som nummer 1 i Europa och Spanien.",
+  "region": "costa-del-sol",
+  "subRegion": "Sotogrande",
+  "province": "Andalusien",
+  "address": {
+    "street": "Avenida de los Cortijos",
+    "postalCode": "11310",
+    "city": "Sotogrande",
+    "country": "ES"
+  },
+  "coordinates": {
+    "lat": 36.18,
+    "lng": -5.28
+  },
+  "courseInfo": {
+    "holes": 18,
+    "par": 72,
+    "length": {
+      "meters": 6226,
+      "yards": 6800
+    },
+    "architect": "Robert Trent Jones Sr.",
+    "openedYear": 1975
+  },
+  "difficulty": {
+    "level": "hard",
+    "description": "Mycket svår bana som är ett strikt test även för proffs. Snäva fairways omgivna av korkträd och olivträd, nästan 100 bunkrar, upphöjda gröna och många vattenhinder gör denna bana till en av Europas mest utmanande."
+  },
+  "pricing": {
+    "greenFee": {
+      "lowSeason": {
+        "weekday": {
+          "min": 0,
+          "max": 0
+        },
+        "weekend": {
+          "min": 0,
+          "max": 0
+        }
+      },
+      "highSeason": {
+        "weekday": {
+          "min": 275,
+          "max": 320
+        },
+        "weekend": {
+          "min": 275,
+          "max": 320
+        }
+      }
+    },
+    "currency": "EUR"
+  },
+  "facilities": {
+    "course": {
+      "drivingRange": true,
+      "puttingGreen": true,
+      "chippingGreen": true,
+      "practiceBunker": true
+    },
+    "clubhouse": {
+      "restaurant": true,
+      "proshop": true,
+      "locker": true,
+      "bar": true,
+      "terrace": true,
+      "shower": true
+    },
+    "services": {
+      "golfSchool": true,
+      "proAvailable": true,
+      "clubFitting": false,
+      "clubRepair": false,
+      "caddie": false
+    },
+    "other": {
+      "spa": true,
+      "pool": false,
+      "gym": false,
+      "tennis": false,
+      "padel": false,
+      "hotel": true
+    }
+  },
+  "contact": {
+    "phone": "+34 956 613 061",
+    "email": "",
+    "website": "www.valderrama.com"
+  },
+  "rating": {
+    "overall": 4.8,
+    "totalReviews": 0
+  },
+  "holes": [],
+  "signatureHoles": [
+    {
+      "number": 4,
+      "description": "Par 5 'La Cascada'. Robert Trent Jones Sr:s favoritthål på banan. Ett mästerverk med höjdförändring och konstant skugga som skyddar det lilla grön."
+    },
+    {
+      "number": 17,
+      "description": "Par 5 på 515 yards med vatten framför grön. Kan nås på två slag men är mycket utmanande. Omdesignad av Seve Ballesteros inför Ryder Cup 1997."
+    }
+  ]
+}

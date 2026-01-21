@@ -1,0 +1,108 @@
+{
+  "id": "lo-romero",
+  "slug": "lo-romero",
+  "name": "Lo Romero Golf",
+  "shortName": "Lo Romero",
+  "tagline": "Naturens golfparadis vid Medelhavet",
+  "description": "18-håls par 72-bana i Pilar de la Horadada med spektakulära vyer över havet och naturlig terräng. Passar alla nivåer.[1]",
+  "longDescription": "Lo Romero Golf är en 18-håls par 72-bana som harmoniskt följer den naturliga terrängen i Pilar de la Horadada på Costa Blanca. Omgiven av tallar, inhemsk växtlighet och mjuka kullar sluttande mot Medelhavet, erbjuder banan en perfekt blandning av teknik, skönhet och utmaning. Designen utnyttjar det befintliga landskapet för dramatiska vyer, särskilt mot havet.[1][2]\n\nBanan passar golfare på alla nivåer och utmärks av sitt ikoniska 18:e hål, helt omgivet av vatten, som är en av Costa Blancas mest fotograferade. Med över 300 soldagar per år, milda vintrar och närhet till stränder som Torre de la Horadada, ger Lo Romero en ultimat golfupplevelse i Medelhavsklimat. Klubbhuset med restaurang och utsikt över banan förstärker den sociala aspekten.[1]\n\nLäget nära naturreservat, cykelvägar och flygplatser i Murcia och Alicante gör banan idealisk för både besökare och boende som söker livskvalitet. Här möts golf, natur och avslappning i en dynamisk region.[1]",
+  "region": "costa-blanca",
+  "subRegion": "Pilar de la Horadada",
+  "province": "Alicante",
+  "address": {
+    "street": "Lo Romero Golf",
+    "postalCode": "03190",
+    "city": "Pilar de la Horadada",
+    "country": "ES"
+  },
+  "coordinates": {
+    "lat": 37.865,
+    "lng": -0.775
+  },
+  "courseInfo": {
+    "holes": 18,
+    "par": 72,
+    "length": {
+      "meters": 0,
+      "yards": 0
+    },
+    "architect": "Okänd",
+    "openedYear": 2008
+  },
+  "difficulty": {
+    "level": "medium",
+    "description": "Banan passar alla nivåer med naturlig terräng, vattenhinder och utmanande layout som kräver precision men inte är extremt svår.[1][6]"
+  },
+  "pricing": {
+    "greenFee": {
+      "lowSeason": {
+        "weekday": {
+          "min": 0,
+          "max": 0
+        },
+        "weekend": {
+          "min": 0,
+          "max": 0
+        }
+      },
+      "highSeason": {
+        "weekday": {
+          "min": 0,
+          "max": 0
+        },
+        "weekend": {
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    "currency": "EUR"
+  },
+  "facilities": {
+    "course": {
+      "drivingRange": true,
+      "puttingGreen": true,
+      "chippingGreen": true,
+      "practiceBunker": true
+    },
+    "clubhouse": {
+      "restaurant": true,
+      "proshop": true,
+      "locker": true,
+      "bar": true,
+      "terrace": true,
+      "shower": true
+    },
+    "services": {
+      "golfSchool": true,
+      "proAvailable": true,
+      "clubFitting": false,
+      "clubRepair": false,
+      "caddie": false
+    },
+    "other": {
+      "spa": false,
+      "pool": false,
+      "gym": false,
+      "tennis": false,
+      "padel": false,
+      "hotel": false
+    }
+  },
+  "contact": {
+    "phone": "+34 968 039 336",
+    "email": "info@loromerogolf.com",
+    "website": "www.loromerogolf.com"
+  },
+  "rating": {
+    "overall": 4.2,
+    "totalReviews": 150
+  },
+  "holes": [],
+  "signatureHoles": [
+    {
+      "number": 18,
+      "description": "Ikoniskt hål helt omgivet av vatten, en av Costa Blancas mest fotograferade med dramatisk vy mot havet.[1]"
+    }
+  ]
+}

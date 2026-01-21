@@ -1,0 +1,112 @@
+{
+  "id": "cabopino",
+  "slug": "cabopino",
+  "name": "Cabopino Golf Marbella",
+  "shortName": "Cabopino",
+  "tagline": "Spektakulär golf med medelhavsvy på Costa del Sol",
+  "description": "En 18-håls bana med par 71 belägen mellan Marbella och Mijas Costa. Känd för dramatiska hål med fantastisk medelhavsvy och tallskog.",
+  "longDescription": "Cabopino Golf Marbella är en unik golfbana belägen bland höjderna i Marbella med spektakulär utsikt över Medelhavet. Banan, som betyder Tallpromontoriens Golf, erbjuder en perfekt balans mellan utmaning och nöje, lämplig för både erfarna och mindre erfarna golfspelare. Designad av Juan Ligués Creus, följer banan en naturlig topografi med rullande terräng, olivlundar och den omgivande tallskogen.\n\nBanan är känd för sina dramatiska hål, särskilt hålet 3 som är en av de mest spektakulära på Costa del Sol. Denna par 4 har en tee-box på klippkanten med ett höjdskillnad på närmare 80 meter ned till fairwayen, följt av en höjd green skyddad av en stor bunkker. Hålen 13 och 15 erbjuder också attraktiva utmaningar med bäckar och sjöar.\n\nBanan underhålls året runt för att säkerställa optimala förhållanden även under vintern. Med sitt milda klimat, närhet till Málaga flygplats (30 minuter) och ett omfattande utbud av faciliteter gör det detta till en av de bästa golfbanorna på Costa del Sol.",
+  "region": "costa-del-sol",
+  "subRegion": "Marbella",
+  "province": "Málaga",
+  "address": {
+    "street": "Cabopino",
+    "postalCode": "",
+    "city": "Marbella",
+    "country": "ES"
+  },
+  "coordinates": {
+    "lat": 36.515,
+    "lng": -4.82
+  },
+  "courseInfo": {
+    "holes": 18,
+    "par": 71,
+    "length": {
+      "meters": 5170,
+      "yards": 5650
+    },
+    "architect": "Juan Ligués Creus",
+    "openedYear": 0
+  },
+  "difficulty": {
+    "level": "medium",
+    "description": "En bana med medel svårighet lämplig för alla handicapklasser. De rullande topparna, smala fairways och strategiskt placerade hazard gör det en underhållande utmaning utan att vara överväldigande."
+  },
+  "pricing": {
+    "greenFee": {
+      "lowSeason": {
+        "weekday": {
+          "min": 55,
+          "max": 55
+        },
+        "weekend": {
+          "min": 55,
+          "max": 55
+        }
+      },
+      "highSeason": {
+        "weekday": {
+          "min": 75,
+          "max": 75
+        },
+        "weekend": {
+          "min": 75,
+          "max": 75
+        }
+      }
+    },
+    "currency": "EUR"
+  },
+  "facilities": {
+    "course": {
+      "drivingRange": true,
+      "puttingGreen": true,
+      "chippingGreen": true,
+      "practiceBunker": true
+    },
+    "clubhouse": {
+      "restaurant": true,
+      "proshop": true,
+      "locker": true,
+      "bar": true,
+      "terrace": true,
+      "shower": true
+    },
+    "services": {
+      "golfSchool": true,
+      "proAvailable": true,
+      "clubFitting": false,
+      "clubRepair": false,
+      "caddie": false
+    },
+    "other": {
+      "spa": false,
+      "pool": false,
+      "gym": false,
+      "tennis": false,
+      "padel": false,
+      "hotel": false
+    }
+  },
+  "contact": {
+    "phone": "",
+    "email": "",
+    "website": "cabopinogolfmarbella.com"
+  },
+  "rating": {
+    "overall": 0,
+    "totalReviews": 0
+  },
+  "holes": [],
+  "signatureHoles": [
+    {
+      "number": 3,
+      "description": "Spektakulär par 4 med tee-box på klippkanten. Nästan 80 meters höjdskillnad ned till fairwayen, följt av en förhöjd green skyddad av stor bunkker. Medelhavsvy gör detta till ett oförglömligt hål."
+    },
+    {
+      "number": 10,
+      "description": "Fantastisk utsikt över back nine och Medelhavet från tee-boxen."
+    }
+  ]
+}

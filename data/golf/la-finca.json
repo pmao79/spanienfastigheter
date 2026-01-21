@@ -1,0 +1,108 @@
+{
+  "id": "la-finca",
+  "slug": "la-finca",
+  "name": "La Finca Golf",
+  "shortName": "La Finca",
+  "tagline": "Utmanande paradis för golfälskare på Costa Blanca",
+  "description": "La Finca Golf är en 18-hålsbana i Algorfa med generösa fairways och spektakulära greener, designad av Pepe Gancedo. Ett av Costa Blancas mest framgångsrika golfresort.[1]",
+  "longDescription": "La Finca Golf i Algorfa är en av de mest populära golfbanorna på Costa Blanca, designad av den kända spanska arkitekten Pepe Gancedo. Banan har 18 utmanande hål med generösa fairways och greener som präglas av fritt flödande konturer, vilket skapar en varierad och engagerande layout för spelare på alla nivåer.[1]\n\nLayouten erbjuder spektakulära vyer över omgivande landskap och berg, med hål som integreras perfekt i den naturliga miljön. Banan är känd för sin strategiska design som kräver precision, särskilt på de undulerande greenerna. Ett besök på La Finca ger en premiumupplevelse i ett lugnt och exklusivt område.[1][2]\n\nSvårighetsgraden är medelhög, med utmaningar som passar både nybörjare och erfarna golfare. Resorten erbjuder magnifika faciliteter inklusive klubbhus, spa och hotell, vilket gör det till ett perfekt resmål för golfentusiaster som söker både spel och avkoppling.[1][6]",
+  "region": "costa-blanca",
+  "subRegion": "Algorfa",
+  "province": "Alicante",
+  "address": {
+    "street": "La Finca Golf Resort",
+    "postalCode": "03169",
+    "city": "Algorfa",
+    "country": "ES"
+  },
+  "coordinates": {
+    "lat": 38.0667,
+    "lng": -0.7833
+  },
+  "courseInfo": {
+    "holes": 18,
+    "par": 72,
+    "length": {
+      "meters": 6000,
+      "yards": 6560
+    },
+    "architect": "Pepe Gancedo",
+    "openedYear": 2006
+  },
+  "difficulty": {
+    "level": "medium",
+    "description": "Medelhög svårighet med generösa fairways men utmanande greener och strategisk layout som kräver precision."
+  },
+  "pricing": {
+    "greenFee": {
+      "lowSeason": {
+        "weekday": {
+          "min": 0,
+          "max": 0
+        },
+        "weekend": {
+          "min": 0,
+          "max": 0
+        }
+      },
+      "highSeason": {
+        "weekday": {
+          "min": 0,
+          "max": 0
+        },
+        "weekend": {
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    "currency": "EUR"
+  },
+  "facilities": {
+    "course": {
+      "drivingRange": true,
+      "puttingGreen": true,
+      "chippingGreen": true,
+      "practiceBunker": true
+    },
+    "clubhouse": {
+      "restaurant": true,
+      "proshop": true,
+      "locker": true,
+      "bar": true,
+      "terrace": true,
+      "shower": true
+    },
+    "services": {
+      "golfSchool": true,
+      "proAvailable": true,
+      "clubFitting": false,
+      "clubRepair": false,
+      "caddie": false
+    },
+    "other": {
+      "spa": true,
+      "pool": true,
+      "gym": true,
+      "tennis": true,
+      "padel": true,
+      "hotel": true
+    }
+  },
+  "contact": {
+    "phone": "+34 966 969 066",
+    "email": "info@lafincaresort.com",
+    "website": "www.lafincaresort.com"
+  },
+  "rating": {
+    "overall": 4.2,
+    "totalReviews": 500
+  },
+  "holes": [],
+  "signatureHoles": [
+    {
+      "number": 10,
+      "description": "Det ikoniska 10:e hålet passerar precis utanför hotellet och erbjuder dramatisk utsikt med strategiska utmaningar."
+    }
+  ]
+}

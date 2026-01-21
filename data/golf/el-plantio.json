@@ -1,0 +1,103 @@
+{
+  "id": "el-plantio",
+  "slug": "el-plantio",
+  "name": "El Plantio Golf",
+  "shortName": "El Plantio",
+  "tagline": "Prisvärd parkbana nära Alicante med palmträd och vattenhinder",
+  "description": "Välunderhållen 18-hålers parkbana på flackt område kantat av palmer och färgsprakande vegetation, belägen 10 minuter från Alicante flygplats",
+  "longDescription": "El Plantio är en väl komponerad parkbana utlagd i ett ganska flackt område med palmer och blomstrande vegetation. Banan ligger i perfekt harmoni med sin omgivning och bjuder på ett spektakulärt naturupplevelse.\n\nBanan presenterar en strategisk design med vattenhinder och placerade bunkrar som erbjuder en viss utmaning utan att vara extremt svår. Banan är lämplig för de flesta golfares nivåer och erbjuder en balanserad upplevelse för både nybörjare och erfarna spelare.\n\nEl Plantio är ett komplett golfresort med moderna lägenhetsbostäder bara 10 minuter från Alicante flygplats. Resorten erbjuder utmärkta faciliteter inklusive restaurang, pro-shop, 24-timmars reception och anslutning till andra fina banor i området som Seve Ballesteros Alicante och Alicante Golf.",
+  "region": "costa-blanca",
+  "subRegion": "Alicante",
+  "province": "Alicante",
+  "address": {
+    "street": "",
+    "postalCode": "",
+    "city": "Alicante",
+    "country": "ES"
+  },
+  "coordinates": {
+    "lat": 38.08,
+    "lng": -0.62
+  },
+  "courseInfo": {
+    "holes": 18,
+    "par": 0,
+    "length": {
+      "meters": 0,
+      "yards": 0
+    },
+    "architect": "",
+    "openedYear": 0
+  },
+  "difficulty": {
+    "level": "medium",
+    "description": "Flackt terräng med strategiskt placerade vattenhinder och bunkrar som erbjuder måttlig utmaning för golfare på alla nivåer"
+  },
+  "pricing": {
+    "greenFee": {
+      "lowSeason": {
+        "weekday": {
+          "min": 0,
+          "max": 0
+        },
+        "weekend": {
+          "min": 0,
+          "max": 0
+        }
+      },
+      "highSeason": {
+        "weekday": {
+          "min": 0,
+          "max": 0
+        },
+        "weekend": {
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    "currency": "EUR"
+  },
+  "facilities": {
+    "course": {
+      "drivingRange": true,
+      "puttingGreen": true,
+      "chippingGreen": false,
+      "practiceBunker": true
+    },
+    "clubhouse": {
+      "restaurant": true,
+      "proshop": true,
+      "locker": true,
+      "bar": false,
+      "terrace": true,
+      "shower": true
+    },
+    "services": {
+      "golfSchool": false,
+      "proAvailable": true,
+      "clubFitting": false,
+      "clubRepair": false,
+      "caddie": false
+    },
+    "other": {
+      "spa": false,
+      "pool": true,
+      "gym": true,
+      "tennis": false,
+      "padel": false,
+      "hotel": true
+    }
+  },
+  "contact": {
+    "phone": "",
+    "email": "",
+    "website": ""
+  },
+  "rating": {
+    "overall": 0,
+    "totalReviews": 0
+  },
+  "holes": [],
+  "signatureHoles": []
+}

@@ -1,0 +1,103 @@
+{
+  "id": "la-cala",
+  "slug": "la-cala",
+  "name": "La Cala Golf Resort",
+  "shortName": "La Cala",
+  "tagline": "Spaniens största golfkomplex med tre mästerskapsbanor på Costa del Sol",
+  "description": "La Cala Golf Resort är Spaniens största golfkomplex beläget i Mijas på Costa del Sol, med tre kompletta 18-håls mästerskapsbanor designade av Cabell B. Robinson.",
+  "longDescription": "La Cala Golf Resort är en exklusiv golfanläggning och semesterort belägen mellan nationalparken Sierra de Mijas och Medelhavet i Mijas, Costa del Sol. Resorten omfattar tre kompletta 18-håls mästerskapsbanor - Campo América, Asia och Europa - designade av världskända arkitekten Cabell B. Robinson. Varje bana erbjuder distinkta utmaningar, varierade par-värden och spektakulära panoramavyer över Andalusiens landskap och Medelhavet.\n\nResorten är mycket mer än bara en golfanläggning. Den kombinerar världsklass golfupplevelser med lyxigt boende, utmärkt gastronomi och spa-tjänster. La Cala Golf Academy erbjuder träning för alla nivåer med flerspråkiga proffs, en sexhåls par-3 pitch-and-putt-bana, driving range, chipping- och bunkerzoner samt en komplett simulatorsvit. Efter en dag på banan väntar clubbhuset med bar och restaurang som serverar både internationella och lokala rätter.\n\nLäget är idealiskt för resor till Costa del Sol. Resorten ligger omkring 35 minuters bilresa från Málagas internationella flygplats och cirka 15 minuters bilresa från Marbella. De närmaste stränderna ligger bara 10 minuters bilresa bort. Gästerna kan välja mellan elegant boende i rymliga rum med möblerade balkonger och utsikt över golfbanorna, eller investera i nya fastigheter på golfresorten.",
+  "region": "costa-del-sol",
+  "subRegion": "Mijas",
+  "province": "Málaga",
+  "address": {
+    "street": "Calle Barrientos, Cala-Golf, 11",
+    "postalCode": "29649",
+    "city": "Mijas",
+    "country": "ES"
+  },
+  "coordinates": {
+    "lat": 36.59,
+    "lng": -4.64
+  },
+  "courseInfo": {
+    "holes": 18,
+    "par": 0,
+    "length": {
+      "meters": 0,
+      "yards": 0
+    },
+    "architect": "Cabell B. Robinson",
+    "openedYear": 0
+  },
+  "difficulty": {
+    "level": "medium",
+    "description": "La Cala Golf Resort erbjuder tre mästerskapsbanor med varierande svårighetsgrad. Banorna är designade för att utmana erfarna golfspelare samtidigt som de är tillgängliga för nybörjare och utvecklingsspelare. Alla tre banor - Campo América, Asia och Europa - erbjuder unika spelutmaningar med panoramavyer."
+  },
+  "pricing": {
+    "greenFee": {
+      "lowSeason": {
+        "weekday": {
+          "min": 0,
+          "max": 0
+        },
+        "weekend": {
+          "min": 0,
+          "max": 0
+        }
+      },
+      "highSeason": {
+        "weekday": {
+          "min": 0,
+          "max": 0
+        },
+        "weekend": {
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    "currency": "EUR"
+  },
+  "facilities": {
+    "course": {
+      "drivingRange": true,
+      "puttingGreen": true,
+      "chippingGreen": true,
+      "practiceBunker": true
+    },
+    "clubhouse": {
+      "restaurant": true,
+      "proshop": true,
+      "locker": true,
+      "bar": true,
+      "terrace": true,
+      "shower": true
+    },
+    "services": {
+      "golfSchool": true,
+      "proAvailable": true,
+      "clubFitting": false,
+      "clubRepair": false,
+      "caddie": false
+    },
+    "other": {
+      "spa": true,
+      "pool": true,
+      "gym": false,
+      "tennis": false,
+      "padel": false,
+      "hotel": true
+    }
+  },
+  "contact": {
+    "phone": "0",
+    "email": "0",
+    "website": "0"
+  },
+  "rating": {
+    "overall": 0,
+    "totalReviews": 0
+  },
+  "holes": [],
+  "signatureHoles": []
+}

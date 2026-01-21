@@ -1,0 +1,123 @@
+{
+  "id": "miraflores",
+  "slug": "miraflores",
+  "name": "Miraflores Golf Club",
+  "shortName": "Miraflores",
+  "tagline": "Costa del Sols mest sociala golfklubb",
+  "description": "En utmanande 18-håls golfbana mellan Fuengirola och Marbella med fantastiska vyer över Costa del Sol och havet.",
+  "longDescription": "Miraflores Golf Club ligger beläget mellan Fuengirola och Marbella i hjärtat av Costa del Sol, omgivet av vackra kullar i Calahonda. Banan designades av Falco Nardi och öppnades 1990. Den är känd som \"Costa del Sols mest sociala golfklubb\" och erbjuder en välskött och utmanande upplevelse för golfspelare på alla nivåer.\n\nBanan följer naturliga dalgångar och är flackare än den första anblicken antyder. Med 18 hål presenteras olika utmaningar, inklusive vatten som kommer in i spel på flera hål. Många hål har upphöjda tee-boxar med panoramautsikt över kustklinten och bergsketen. Särskilt svåra hål inkluderar hål 12 (en par 5 på 570 meter med en sjö i mitten av fairwayan), hål 5 och 6 (med vatten på utslaget) och hål 15 (där vatten omger grönt).\n\nKlubbhuset omges av bar och restaurang i en varm och välkomnande miljö. Miraflores Academy Driving Range erbjuder golfundervisning med professionella instruktörer och ligger nära 2:a tee. Banan är öppen 365 dagar om året (under förutsättning av väder) och det rekommenderas att boka tee-tider i förväg.",
+  "region": "costa-del-sol",
+  "subRegion": "Mijas",
+  "province": "Málaga",
+  "address": {
+    "street": "Calle Severiano Ballesteros De Riviera 8",
+    "postalCode": "29649",
+    "city": "Mijas",
+    "country": "ES"
+  },
+  "coordinates": {
+    "lat": 36.5,
+    "lng": -4.65
+  },
+  "courseInfo": {
+    "holes": 18,
+    "par": 71,
+    "length": {
+      "meters": 5148,
+      "yards": 5625
+    },
+    "architect": "Falco Nardi",
+    "openedYear": 1990
+  },
+  "difficulty": {
+    "level": "medium",
+    "description": "En utmanande men rättvis bana för alla spelarnivåer. Breda fairways och stora upphöjda gröna gör den tillgänglig, men vatten i spel på flera hål och naturlig terräng erbjuder en solid utmaning för medelspelaren."
+  },
+  "pricing": {
+    "greenFee": {
+      "lowSeason": {
+        "weekday": {
+          "min": 0,
+          "max": 0
+        },
+        "weekend": {
+          "min": 0,
+          "max": 0
+        }
+      },
+      "highSeason": {
+        "weekday": {
+          "min": 0,
+          "max": 0
+        },
+        "weekend": {
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    "currency": "EUR",
+    "averageGreenFee": 70
+  },
+  "facilities": {
+    "course": {
+      "drivingRange": true,
+      "puttingGreen": true,
+      "chippingGreen": true,
+      "practiceBunker": true
+    },
+    "clubhouse": {
+      "restaurant": true,
+      "proshop": true,
+      "locker": true,
+      "bar": true,
+      "terrace": true,
+      "shower": true
+    },
+    "services": {
+      "golfSchool": true,
+      "proAvailable": true,
+      "clubFitting": false,
+      "clubRepair": false,
+      "caddie": false
+    },
+    "other": {
+      "spa": true,
+      "pool": false,
+      "gym": true,
+      "tennis": false,
+      "padel": false,
+      "hotel": false
+    }
+  },
+  "contact": {
+    "phone": "",
+    "email": "",
+    "website": "www.mirafloresgolf.es"
+  },
+  "rating": {
+    "overall": 3.8,
+    "totalReviews": 89
+  },
+  "hours": {
+    "monday": "08:00-20:00",
+    "tuesday": "08:00-20:00",
+    "wednesday": "08:00-20:00",
+    "thursday": "08:00-20:00",
+    "friday": "08:00-20:00",
+    "saturday": "08:00-20:00",
+    "sunday": "08:00-20:00"
+  },
+  "signatureHoles": [
+    {
+      "number": 12,
+      "par": 5,
+      "length": 570,
+      "description": "En utmanande par 5 där en sjö i mitten av fairwayan gör andrslaget komplext."
+    },
+    {
+      "number": 15,
+      "description": "Vatten omger grönt, vilket gör detta hål särskilt utmanande."
+    }
+  ]
+}

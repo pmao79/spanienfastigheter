@@ -1,0 +1,108 @@
+{
+  "id": "la-marquesa",
+  "slug": "la-marquesa",
+  "name": "La Marquesa Golf",
+  "shortName": "La Marquesa",
+  "tagline": "Ikonisk golf på Costa Blanca med året-runt spel",
+  "description": "La Marquesa Golf är en historisk 18-hålsbana i Rojales, Alicante. Par 72 med varierad layout och medelhavsklimat för golf året runt. (112 tecken)",
+  "longDescription": "La Marquesa Golf, grundad 1989 av D. Justo Quesada, är en av Costa Blancas mest ikoniska golfbanor. Belägen i Rojales nära Alicante erbjuder den en unik blandning av tradition och modernitet med fantastiska utsikter över havet, bergen och banan själv. Den 18-hålsbanan, par 72, är varierad med backar, blinda hål, bunkrar, vattendrag och två sjöar som utmanar alla clubs i bagen.[1][3][5]\n\nBanans layout testar spelarens precision och strategi, med faciliteter som driving range, restaurang och pro shop för en komplett upplevelse. Det milda klimatet möjliggör spel året runt, perfekt för svenska golfare som söker sol och golf i vintermånaderna. Ett centrum med affärer och barer finns intill.[1][6]\n\nUpplevelsen präglas av naturens skönhet och en känsla av exklusivitet, trots blandade recensioner om banans skick. En riktig pärla för golfentusiaster på Costa Blanca.[2][7]",
+  "region": "costa-blanca",
+  "subRegion": "Rojales",
+  "province": "Alicante",
+  "address": {
+    "street": "Ciudad Quesada",
+    "postalCode": "03170",
+    "city": "Rojales",
+    "country": "ES"
+  },
+  "coordinates": {
+    "lat": 38.079,
+    "lng": -0.702
+  },
+  "courseInfo": {
+    "holes": 18,
+    "par": 72,
+    "length": {
+      "meters": 6000,
+      "yards": 6560
+    },
+    "architect": "D. Justo Quesada",
+    "openedYear": 1989
+  },
+  "difficulty": {
+    "level": "medium",
+    "description": "Medel svåra med backar, blinda hål, bunkrar, bäckar och sjöar som utmanar precision och strategi för alla spelare."
+  },
+  "pricing": {
+    "greenFee": {
+      "lowSeason": {
+        "weekday": {
+          "min": 0,
+          "max": 0
+        },
+        "weekend": {
+          "min": 0,
+          "max": 0
+        }
+      },
+      "highSeason": {
+        "weekday": {
+          "min": 0,
+          "max": 0
+        },
+        "weekend": {
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    "currency": "EUR"
+  },
+  "facilities": {
+    "course": {
+      "drivingRange": true,
+      "puttingGreen": true,
+      "chippingGreen": true,
+      "practiceBunker": true
+    },
+    "clubhouse": {
+      "restaurant": true,
+      "proshop": true,
+      "locker": true,
+      "bar": true,
+      "terrace": true,
+      "shower": true
+    },
+    "services": {
+      "golfSchool": true,
+      "proAvailable": true,
+      "clubFitting": false,
+      "clubRepair": false,
+      "caddie": false
+    },
+    "other": {
+      "spa": false,
+      "pool": false,
+      "gym": false,
+      "tennis": false,
+      "padel": false,
+      "hotel": false
+    }
+  },
+  "contact": {
+    "phone": "+34 966 711 150",
+    "email": "info@lamarquesagolf.es",
+    "website": "www.lamarquesagolf.es"
+  },
+  "rating": {
+    "overall": 4.0,
+    "totalReviews": 100
+  },
+  "holes": [],
+  "signatureHoles": [
+    {
+      "number": 17,
+      "description": "Hål 17 liknar Sawgrass ikoniska 17:e med vattenhinder som kräver perfekt precision."
+    }
+  ]
+}

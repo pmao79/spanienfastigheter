@@ -1,0 +1,39 @@
+{
+  "id": "lauro",
+  "slug": "lauro",
+  "name": "Lauro Golf",
+  "shortName": "Lauro Golf",
+  "tagline": "Golf i hjärtat av naturen på Costa del Sol",
+  "description": "Lauro Golf är en naturskön 27-hålsbana i orörd miljö vid Mijas-bergen med fantastiska vyer över Guadalhorce-dalen. Tekniskt utmanande men rättvis för alla spelare.",
+  "longDescription": "Lauro Golf Resort ligger i en exceptionell naturmiljö på Costa del Sol, omgiven av Mijas-bergen och med panoramautsikt över Guadalhorce-dalen. Banan består av 27 hål som kan spelas i tre olika 18-håls kombinationer, alla med par 72. Designen av den avlidne Folco Nardi och Mariano Benitez fokuserar på respekt för naturen genom att bevara befintliga träd och plantera tusentals nya inhemska arter.[1][2]\n\nBanan är måttligt kuperad med två hål på bergssidan som erbjuder spektakulära vyer över Medelhavet. Den är tekniskt krävande med fokus på kortspel, pitch och putt, men inte överväldigande svår – perfekt för koncentrerad spel med rätt klubbval. Fjorton sjöar och vildliv som kaniner, ankor och örnar skapar en levande upplevelse i mikroklimate skapat av vegetationen.[2][7]\n\nKlubbhuset i den gamla andalusiska byggnaden Cortijo el Paredón erbjuder restaurang, pro shop och utsikt från den vackra innergården med en enorm fikus. En idealisk bana för både tävlingar och avkoppling i harmoni med naturen.[2]",
+  "region": "costa-del-sol",
+  "subRegion": "Alhaurín de la Torre",
+  "province": "Málaga",
+  "address": { "street": "Urb. Lauro Golf Resort", "postalCode": "29140", "city": "Alhaurín de la Torre", "country": "ES" },
+  "coordinates": { "lat": 36.7925, "lng": -4.6025 },
+  "courseInfo": {
+    "holes": 27,
+    "par": 72,
+    "length": { "meters": 6000, "yards": 6560 },
+    "architect": "Folco Nardi & Mariano Benitez",
+    "openedYear": 1999
+  },
+  "difficulty": { "level": "medium", "description": "Tekniskt utmanande med fokus på kortspel och precision, men rättvis och inte överväldigande. Måttligt kuperad terräng med sjöar och träd som kräver koncentration." },
+  "pricing": {
+    "greenFee": {
+      "lowSeason": { "weekday": { "min": 0, "max": 0 }, "weekend": { "min": 0, "max": 0 } },
+      "highSeason": { "weekday": { "min": 0, "max": 0 }, "weekend": { "min": 0, "max": 0 } }
+    },
+    "currency": "EUR"
+  },
+  "facilities": {
+    "course": { "drivingRange": true, "puttingGreen": true, "chippingGreen": true, "practiceBunker": true },
+    "clubhouse": { "restaurant": true, "proshop": true, "locker": true, "bar": true, "terrace": true, "shower": true },
+    "services": { "golfSchool": true, "proAvailable": true, "clubFitting": false, "clubRepair": false, "caddie": false },
+    "other": { "spa": false, "pool": true, "gym": false, "tennis": false, "padel": true, "hotel": false }
+  },
+  "contact": { "phone": "+34 952 412 767", "email": "info@laurogolf.com", "website": "www.laurogolf.com" },
+  "rating": { "overall": 4.0, "totalReviews": 100 },
+  "holes": [],
+  "signatureHoles": [{ "number": 19, "description": "Första hålet på bergssidan med spektakulär utsikt över Guadalhorce-dalen och Medelhavet – kräver precision i den kuperade terrängen." }]
+}

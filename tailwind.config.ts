@@ -14,6 +14,10 @@ const config: Config = {
                 sand: '#D9B18E',
                 charcoal: '#36454F',
                 sage: '#557373',
+                // Golf specific accents
+                fairway: '#4A7C59',
+                bunker: '#E8DCC4',
+                flagYellow: '#F4D03F',
             },
             fontFamily: {
                 serif: ['"Playfair Display"', 'serif'],

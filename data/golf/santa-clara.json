@@ -1,0 +1,124 @@
+{
+  "id": "santa-clara",
+  "slug": "santa-clara",
+  "name": "Santa Clara Golf Marbella",
+  "shortName": "Santa Clara",
+  "tagline": "En utmanande golfbana med spektakulär utsikt över Medelhavet",
+  "description": "18-håls golfbana designad av Enrique Canales Busquets, belägen några minuter från Marbella centrum med utmanande layout och strategiska krav.",
+  "longDescription": "Santa Clara Golf Marbella är en av Costa del Sols mest ikoniska golfbanor, belägen på en 150 hektar stor komplex med spektakulär utsikt över Medelhavet. Banan är designad av Enrique Canales Busquets och ligger bara några minuter från Marbella centrum, vilket gör den lätt tillgänglig för gäster.\n\nBanan är känd för sin utmanande layout som testar golfare på alla nivåer. Med strategisk bunkerplacering, smala landningsområden och undulerade gröna kräver kursen både precision och smart spelstrategi. Den berömda \"Santa Clara Corner\" består av hålen 12, 13 och 14, vilka kräver långa och korrekta slag. Hålen är utformade med både höjdskillnader och doglegs som belönar kreativitet men straffar slarviga slag.\n\nBanan passar både nybörjare och erfarna golfare. För nya spelare erbjuder de första nio hålen ett bra introduktionskurs med bredare fairways, medan erfarna golfare finner en drömkurs som ständigt utmanar med smart spelkrav. Restaurangen håller hygglig standard och klubbhuset är väl utformat.",
+  "region": "costa-del-sol",
+  "subRegion": "Marbella",
+  "province": "Málaga",
+  "address": {
+    "street": "Ctra. N-340 Málaga Cádiz, Km. 187,5",
+    "postalCode": "",
+    "city": "Marbella",
+    "country": "ES"
+  },
+  "coordinates": {
+    "lat": 36.5,
+    "lng": -4.85
+  },
+  "courseInfo": {
+    "holes": 18,
+    "par": 71,
+    "length": {
+      "meters": 0,
+      "yards": 0
+    },
+    "architect": "Enrique Canales Busquets",
+    "openedYear": 0
+  },
+  "difficulty": {
+    "level": "medium-hard",
+    "description": "Utmanande bana som kräver strategi, precision och god beslutskraft. Strategisk bunkerplacering, smala landningsområden och undulerade gröna testar golfare på alla nivåer. Banan belönar smart spelstrategi men straffar slarviga slag."
+  },
+  "pricing": {
+    "greenFee": {
+      "lowSeason": {
+        "weekday": {
+          "min": 0,
+          "max": 0
+        },
+        "weekend": {
+          "min": 0,
+          "max": 0
+        }
+      },
+      "highSeason": {
+        "weekday": {
+          "min": 0,
+          "max": 0
+        },
+        "weekend": {
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    "currency": "EUR"
+  },
+  "facilities": {
+    "course": {
+      "drivingRange": true,
+      "puttingGreen": true,
+      "chippingGreen": false,
+      "practiceBunker": false
+    },
+    "clubhouse": {
+      "restaurant": true,
+      "proshop": true,
+      "locker": false,
+      "bar": false,
+      "terrace": false,
+      "shower": false
+    },
+    "services": {
+      "golfSchool": false,
+      "proAvailable": false,
+      "clubFitting": false,
+      "clubRepair": false,
+      "caddie": false
+    },
+    "other": {
+      "spa": false,
+      "pool": false,
+      "gym": false,
+      "tennis": false,
+      "padel": false,
+      "hotel": false
+    }
+  },
+  "contact": {
+    "phone": "+34 952 850 111",
+    "email": "",
+    "website": "santaclaragolfmarbella.com"
+  },
+  "rating": {
+    "overall": 4.0,
+    "totalReviews": 92
+  },
+  "holes": [],
+  "signatureHoles": [
+    {
+      "number": 12,
+      "description": "Första hålet i den berömda \"Santa Clara Corner\" som kräver långa och korrekta slag"
+    },
+    {
+      "number": 13,
+      "description": "Del av \"Santa Clara Corner\" som testar golfares precision och strategi"
+    },
+    {
+      "number": 14,
+      "description": "Sista hålet i den berömda \"Santa Clara Corner\" med utmaningar för höga handicapspelare"
+    },
+    {
+      "number": 15,
+      "description": "Hålet med knepig approach som testar tålamod och beslutsfattande"
+    },
+    {
+      "number": 9,
+      "description": "Par-5 hålet där klubbval och fairwayplacering är avgörande"
+    }
+  ]
+}
