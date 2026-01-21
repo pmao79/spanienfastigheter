@@ -27,6 +27,13 @@ import { ALFAZ_DEL_PI_ENHANCED_DATA } from './area-data/alfaz-del-pi';
 import { ROJALES_ENHANCED_DATA } from './area-data/rojales';
 import { PLAYA_SAN_JUAN_ENHANCED_DATA } from './area-data/playa-san-juan';
 import { CIUDAD_QUESADA_ENHANCED_DATA } from './area-data/ciudad-quesada';
+import { ESTEPONA_ENHANCED_DATA } from './area-data/estepona';
+import { SAN_PEDRO_ENHANCED_DATA } from './area-data/san-pedro-de-alcantara';
+import { PUERTO_BANUS_ENHANCED_DATA } from './area-data/puerto-banus';
+import { MIJAS_ENHANCED_DATA } from './area-data/mijas';
+import { BENALMADENA_ENHANCED_DATA } from './area-data/benalmadena';
+import { TORREMOLINOS_ENHANCED_DATA } from './area-data/torremolinos';
+import { MALAGA_ENHANCED_DATA } from './area-data/malaga';
 
 // Combined area data
 export const ALL_COSTA_BLANCA_AREAS: AreaDetail[] = [
@@ -117,6 +124,27 @@ export function getAreaDetailBySlug(slug: string): AreaDetail | undefined {
     }
     if (slug === 'ciudad-quesada') {
         return { ...area, ...CIUDAD_QUESADA_ENHANCED_DATA };
+    }
+    if (slug === 'estepona') {
+        return { ...area, ...ESTEPONA_ENHANCED_DATA };
+    }
+    if (slug === 'san-pedro-de-alcantara') {
+        return { ...area, ...SAN_PEDRO_ENHANCED_DATA };
+    }
+    if (slug === 'puerto-banus') {
+        return { ...area, ...PUERTO_BANUS_ENHANCED_DATA };
+    }
+    if (slug === 'mijas') {
+        return { ...area, ...MIJAS_ENHANCED_DATA };
+    }
+    if (slug === 'benalmadena') {
+        return { ...area, ...BENALMADENA_ENHANCED_DATA };
+    }
+    if (slug === 'torremolinos') {
+        return { ...area, ...TORREMOLINOS_ENHANCED_DATA };
+    }
+    if (slug === 'malaga') {
+        return { ...area, ...MALAGA_ENHANCED_DATA };
     }
 
     return area;
