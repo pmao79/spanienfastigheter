@@ -49,7 +49,7 @@ export const PLAYA_SAN_JUAN_ENHANCED_DATA: Partial<AreaDetail> = {
             coordinates: { lat: 38.3650, lng: -0.4150 }
         }
     ],
-    whySwedesLoveIt: [
+    whySwedes: [
         'Kombinationen av storstad och strand: Du bor på en av Spaniens bästa stränder men har Alicantes citypuls 15 min bort med spårvagnen.',
         'Moderniteten: PAU 5 erbjuder den typ av hypermoderna lägenhetskomplex som många svenskar efterfrågar.',
         'Aktiviteterna: Golf, surfing, beachvolleyboll och enorma parker gör det perfekt för aktiva livsstilar.',

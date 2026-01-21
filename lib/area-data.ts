@@ -26,6 +26,7 @@ import { EL_CAMPELLO_ENHANCED_DATA } from './area-data/el-campello';
 import { ALFAZ_DEL_PI_ENHANCED_DATA } from './area-data/alfaz-del-pi';
 import { ROJALES_ENHANCED_DATA } from './area-data/rojales';
 import { PLAYA_SAN_JUAN_ENHANCED_DATA } from './area-data/playa-san-juan';
+import { CIUDAD_QUESADA_ENHANCED_DATA } from './area-data/ciudad-quesada';
 
 // Combined area data
 export const ALL_COSTA_BLANCA_AREAS: AreaDetail[] = [
@@ -113,6 +114,9 @@ export function getAreaDetailBySlug(slug: string): AreaDetail | undefined {
     }
     if (slug === 'playa-san-juan') {
         return { ...area, ...PLAYA_SAN_JUAN_ENHANCED_DATA };
+    }
+    if (slug === 'ciudad-quesada') {
+        return { ...area, ...CIUDAD_QUESADA_ENHANCED_DATA };
     }
 
     return area;
