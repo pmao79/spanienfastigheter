@@ -172,6 +172,7 @@ export interface AreaDetail extends Area {
         suitableFor: string[];
         pros: string[];
         cons: string[];
+        coordinates?: { lat: number; lng: number };
     }[];
 
     // Why Swedes choose this area

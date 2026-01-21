@@ -62,66 +62,64 @@ export default function AreaClimate({
 
             {/* Comparison Table */}
             <div className="bg-white rounded-sm shadow-soft overflow-hidden">
-                <div className="overflow-x-auto">
-                    <table className="w-full min-w-[600px]">
-                        <thead>
-                            <tr className="bg-navy text-white">
-                                <th className="px-6 py-4 text-left text-xs uppercase tracking-wide font-semibold">
-                                    Månad
-                                </th>
+                <table className="w-full">
+                    <thead>
+                        <tr className="bg-navy text-white">
+                            <th className="px-6 py-4 text-left text-xs uppercase tracking-wide font-semibold">
+                                Månad
+                            </th>
+                            <th className="px-6 py-4 text-center text-xs uppercase tracking-wide font-semibold">
+                                {areaName}
+                            </th>
+                            <th className="px-6 py-4 text-center text-xs uppercase tracking-wide font-semibold">
+                                Stockholm
+                            </th>
+                            <th className="px-6 py-4 text-center text-xs uppercase tracking-wide font-semibold">
+                                Skillnad
+                            </th>
+                            {data[0]?.seaTemp !== undefined && (
                                 <th className="px-6 py-4 text-center text-xs uppercase tracking-wide font-semibold">
-                                    {areaName}
+                                    Havstemp
                                 </th>
-                                <th className="px-6 py-4 text-center text-xs uppercase tracking-wide font-semibold">
-                                    Stockholm
-                                </th>
-                                <th className="px-6 py-4 text-center text-xs uppercase tracking-wide font-semibold">
-                                    Skillnad
-                                </th>
-                                {data[0]?.seaTemp !== undefined && (
-                                    <th className="px-6 py-4 text-center text-xs uppercase tracking-wide font-semibold">
-                                        Havstemp
-                                    </th>
-                                )}
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {data.map((row, index) => (
-                                <tr
-                                    key={index}
-                                    className={`
+                            )}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {data.map((row, index) => (
+                            <tr
+                                key={index}
+                                className={`
                                     border-b border-greige/50 
                                     hover:bg-alabaster transition-colors
                                     ${index % 2 === 0 ? 'bg-white' : 'bg-greige/20'}
                                 `}
-                                >
-                                    <td className="px-6 py-4 font-semibold text-navy">{row.month}</td>
-                                    <td className="px-6 py-4 text-center">
-                                        <span className="font-serif text-lg text-navy">{row.areaTemp}°C</span>
-                                    </td>
-                                    <td className="px-6 py-4 text-center">
-                                        <span className="font-serif text-lg text-charcoal/60">{row.stockholmTemp}°C</span>
-                                    </td>
-                                    <td className="px-6 py-4 text-center">
-                                        <span className={`
+                            >
+                                <td className="px-6 py-4 font-semibold text-navy">{row.month}</td>
+                                <td className="px-6 py-4 text-center">
+                                    <span className="font-serif text-lg text-navy">{row.areaTemp}°C</span>
+                                </td>
+                                <td className="px-6 py-4 text-center">
+                                    <span className="font-serif text-lg text-charcoal/60">{row.stockholmTemp}°C</span>
+                                </td>
+                                <td className="px-6 py-4 text-center">
+                                    <span className={`
                                         inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-semibold
                                         ${row.difference > 0
-                                                ? 'bg-sand/20 text-navy'
-                                                : 'bg-navy/5 text-navy'}
+                                            ? 'bg-sand/20 text-navy'
+                                            : 'bg-navy/5 text-navy'}
                                     `}>
-                                            {row.difference > 0 ? '+' : ''}{row.difference}°C
-                                        </span>
+                                        {row.difference > 0 ? '+' : ''}{row.difference}°C
+                                    </span>
+                                </td>
+                                {row.seaTemp !== undefined && (
+                                    <td className="px-6 py-4 text-center">
+                                        <span className="font-serif text-lg text-cyan-600">{row.seaTemp}°C</span>
                                     </td>
-                                    {row.seaTemp !== undefined && (
-                                        <td className="px-6 py-4 text-center">
-                                            <span className="font-serif text-lg text-cyan-600">{row.seaTemp}°C</span>
-                                        </td>
-                                    )}
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
+                                )}
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
             </div>
         </section>
     );

@@ -9,17 +9,19 @@ interface District {
     suitableFor: string[];
     pros: string[];
     cons: string[];
+    coordinates?: { lat: number; lng: number };
 }
 
 interface AreaDistrictsProps {
     districts: District[];
     areaName: string;
+    onShowOnMap?: (coordinates: { lat: number; lng: number }) => void;
 }
 
 /**
  * Districts/Neighborhoods section with cards
  */
-export default function AreaDistricts({ districts, areaName }: AreaDistrictsProps) {
+export default function AreaDistricts({ districts, areaName, onShowOnMap }: AreaDistrictsProps) {
     return (
         <section className="py-12">
             {/* Header */}
@@ -39,6 +41,7 @@ export default function AreaDistricts({ districts, areaName }: AreaDistrictsProp
                             group bg-white rounded-sm shadow-soft
                             hover:shadow-hover transition-all duration-300
                             overflow-hidden border border-transparent hover:border-sand/30
+                            flex flex-col
                         "
                     >
                         {/* Header */}
@@ -56,7 +59,7 @@ export default function AreaDistricts({ districts, areaName }: AreaDistrictsProp
                         </div>
 
                         {/* Content */}
-                        <div className="p-6 space-y-4">
+                        <div className="p-6 space-y-4 flex-grow">
                             {/* Character */}
                             <p className="text-charcoal leading-relaxed">{district.character}</p>
 
@@ -108,6 +111,25 @@ export default function AreaDistricts({ districts, areaName }: AreaDistrictsProp
                                 </div>
                             </div>
                         </div>
+
+                        {/* Footer Action */}
+                        {onShowOnMap && district.coordinates && (
+                            <div className="px-6 pb-6 pt-0 mt-auto">
+                                <button
+                                    onClick={() => onShowOnMap(district.coordinates!)}
+                                    className="
+                                        w-full py-2 px-4 rounded-sm border border-navy/10 
+                                        text-navy text-sm font-medium
+                                        flex items-center justify-center gap-2
+                                        hover:bg-navy hover:text-white hover:border-navy
+                                        transition-all duration-300
+                                    "
+                                >
+                                    <MapPin size={16} />
+                                    Visa på karta
+                                </button>
+                            </div>
+                        )}
                     </div>
                 ))}
             </div>
