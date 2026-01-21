@@ -34,6 +34,11 @@ import { MIJAS_ENHANCED_DATA } from './area-data/mijas';
 import { BENALMADENA_ENHANCED_DATA } from './area-data/benalmadena';
 import { TORREMOLINOS_ENHANCED_DATA } from './area-data/torremolinos';
 import { MALAGA_ENHANCED_DATA } from './area-data/malaga';
+import { TORROX_ENHANCED_DATA } from './area-data/torrox';
+import { RINCON_ENHANCED_DATA } from './area-data/rincon-de-la-victoria';
+import { MANILVA_ENHANCED_DATA } from './area-data/manilva';
+import { CASARES_ENHANCED_DATA } from './area-data/casares';
+import { SOTOGRANDE_ENHANCED_DATA } from './area-data/sotogrande';
 
 // Combined area data
 export const ALL_COSTA_BLANCA_AREAS: AreaDetail[] = [
@@ -145,6 +150,21 @@ export function getAreaDetailBySlug(slug: string): AreaDetail | undefined {
     }
     if (slug === 'malaga') {
         return { ...area, ...MALAGA_ENHANCED_DATA };
+    }
+    if (slug === 'torrox') {
+        return { ...area, ...TORROX_ENHANCED_DATA };
+    }
+    if (slug === 'rincon-de-la-victoria') {
+        return { ...area, ...RINCON_ENHANCED_DATA };
+    }
+    if (slug === 'manilva') {
+        return { ...area, ...MANILVA_ENHANCED_DATA };
+    }
+    if (slug === 'casares') {
+        return { ...area, ...CASARES_ENHANCED_DATA };
+    }
+    if (slug === 'sotogrande') {
+        return { ...area, ...SOTOGRANDE_ENHANCED_DATA };
     }
 
     return area;
