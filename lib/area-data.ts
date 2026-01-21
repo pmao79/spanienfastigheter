@@ -39,6 +39,8 @@ import { RINCON_ENHANCED_DATA } from './area-data/rincon-de-la-victoria';
 import { MANILVA_ENHANCED_DATA } from './area-data/manilva';
 import { CASARES_ENHANCED_DATA } from './area-data/casares';
 import { SOTOGRANDE_ENHANCED_DATA } from './area-data/sotogrande';
+import { NUEVA_ANDALUCIA_ENHANCED_DATA } from './area-data/nueva-andalucia';
+import { VELEZ_MALAGA_ENHANCED_DATA } from './area-data/velez-malaga';
 
 // Combined area data
 export const ALL_COSTA_BLANCA_AREAS: AreaDetail[] = [
@@ -165,6 +167,12 @@ export function getAreaDetailBySlug(slug: string): AreaDetail | undefined {
     }
     if (slug === 'sotogrande') {
         return { ...area, ...SOTOGRANDE_ENHANCED_DATA };
+    }
+    if (slug === 'nueva-andalucia') {
+        return { ...area, ...NUEVA_ANDALUCIA_ENHANCED_DATA };
+    }
+    if (slug === 'velez-malaga') {
+        return { ...area, ...VELEZ_MALAGA_ENHANCED_DATA };
     }
 
     return area;
