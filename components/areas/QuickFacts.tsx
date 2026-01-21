@@ -29,7 +29,7 @@ export default function QuickFacts({ facts, areaName }: QuickFactsProps) {
             'Population': Users,
             'Utländsk andel': Building2,
             'Svenska invånare': Users,
-            'Flygplatsavstånd': Plane,
+            'Avstånd till flygplats': Plane,
             'Direktflyg': Plane,
             'Pris/m²': Euro,
             'Soltimmar/år': Sun,

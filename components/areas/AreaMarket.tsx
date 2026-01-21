@@ -65,9 +65,15 @@ export default function AreaMarket({
                                 {priceChange5Year >= 0 ? <TrendingUp size={20} /> : <TrendingDown size={20} />}
                             </div>
                         </div>
-                        <p className="text-sm text-charcoal/80">
-                            Stabilt ökande trend sedan 2020. Attraktiv investering.
-                        </p>
+                        <div className="relative group/tooltip">
+                            <p className="text-sm text-charcoal/80 border-b border-dashed border-charcoal/30 inline-block cursor-help">
+                                Stabilt ökande trend sedan 2020
+                            </p>
+                            <div className="absolute bottom-full left-0 mb-2 w-64 bg-navy text-white text-xs p-3 rounded shadow-lg opacity-0 invisible group-hover/tooltip:opacity-100 group-hover/tooltip:visible transition-all z-10 pointer-events-none">
+                                Baserat på genomsnittlig prisdata från Idealista och Ministerio de Fomento (2020-2024).
+                                <div className="absolute top-full left-4 -mt-1 border-4 border-transparent border-t-navy"></div>
+                            </div>
+                        </div>
                     </div>
 
                     {/* Rental Yield */}
@@ -81,9 +87,15 @@ export default function AreaMarket({
                                 <Building size={20} />
                             </div>
                         </div>
-                        <p className="text-sm text-charcoal/80">
-                            Bruttoavkastning vid långtidsuthyrning.
-                        </p>
+                        <div className="relative group/tooltip">
+                            <p className="text-sm text-charcoal/80 border-b border-dashed border-charcoal/30 inline-block cursor-help">
+                                Bruttoavkastning vid långtidsuthyrning
+                            </p>
+                            <div className="absolute bottom-full left-0 mb-2 w-64 bg-navy text-white text-xs p-3 rounded shadow-lg opacity-0 invisible group-hover/tooltip:opacity-100 group-hover/tooltip:visible transition-all z-10 pointer-events-none">
+                                Estimerad bruttoavkastning baserad på genomsnittliga årshyror i relation till köpeskilling, före skatt och avgifter.
+                                <div className="absolute top-full left-4 -mt-1 border-4 border-transparent border-t-navy"></div>
+                            </div>
+                        </div>
                     </div>
 
                     {/* Tourist License */}
@@ -153,6 +165,6 @@ export default function AreaMarket({
                     </div>
                 </div>
             </div>
-        </section>
+        </section >
     );
 }
