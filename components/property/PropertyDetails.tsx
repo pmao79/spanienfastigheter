@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState } from 'react';
 import Link from 'next/link';
@@ -29,6 +29,10 @@ import {
     ChevronDown,
     ArrowRight,
     Star,
+    Zap,
+    School,
+    ShoppingBag,
+    Scan,
 } from 'lucide-react';
 import { Property } from '@/types/property';
 import ImageLightbox from './ImageLightbox';
@@ -36,7 +40,11 @@ import FavoriteButton from '@/components/ui/FavoriteButton';
 import PropertyMap from '@/components/map/PropertyMap';
 import SearchServiceModal from '@/components/modals/SearchServiceModal';
 import CostCalculator from '@/app/[locale]/guide/kopa-salja-spanien-2025/CostCalculator';
-
+import BookingModal from '@/components/modals/BookingModal';
+import ContactAgentModal from '@/components/modals/ContactAgentModal';
+import dynamic from 'next/dynamic';
+import PropertyProspectus from './PropertyProspectus';
+import { usePropertyDistances } from '@/hooks/usePropertyDistances';
 interface PropertyDetailsProps {
     property: Property;
 }
@@ -56,12 +64,77 @@ const getFeatureIcon = (text: string, size: number = 20, className: string = '')
     return <Check {...props} />;
 };
 
+const PDFDownloadLink = dynamic(
+    () => import('@react-pdf/renderer').then((mod) => mod.PDFDownloadLink),
+    {
+        ssr: false,
+        loading: () => (
+            <div className="bg-charcoal text-white p-6 flex justify-between items-center opacity-70">
+                <div>
+                    <span className="text-[10px] uppercase tracking-widest opacity-60 block mb-1">
+                        Dokument
+                    </span>
+                    <span className="font-serif text-lg">
+                        Laddar PDF-verktyg...
+                    </span>
+                </div>
+            </div>
+        ),
+    }
+);
+
+const ClientOnlyPDFDownload = ({ property }: { property: Property }) => {
+    // Create a human-readable filename from property type and location
+    const sanitizedFileName = `${property.type} i ${property.town}`
+        .replace(/[^a-zA-ZåäöÅÄÖ0-9\s]/g, '')
+        .replace(/\s+/g, '_');
+
+    return (
+        <PDFDownloadLink
+            document={<PropertyProspectus property={property} />}
+            fileName={`${sanitizedFileName}.pdf`}
+            className="block"
+        >
+            {/* Using 'any' for the render prop because typings with dynamic imports can be tricky */}
+            {({ blob, url, loading, error }: any) => (
+                <div className="bg-charcoal text-white p-6 flex justify-between items-center cursor-pointer hover:bg-navy transition-colors group">
+                    <div>
+                        <span className="text-[10px] uppercase tracking-widest opacity-60 block mb-1">
+                            Dokument
+                        </span>
+                        <span className="font-serif text-lg group-hover:text-sand transition-colors">
+                            {loading
+                                ? 'Skapar prospekt...'
+                                : error
+                                    ? 'Fel vid skapande'
+                                    : 'Ladda ner prospekt'}
+                        </span>
+                    </div>
+                    <FileText
+                        size={24}
+                        className={`text-sand/50 group-hover:text-sand transition-colors transform duration-300 ${loading ? 'animate-pulse' : 'group-hover:-translate-y-1'
+                            }`}
+                    />
+                </div>
+            )}
+        </PDFDownloadLink>
+    );
+};
+
 export default function PropertyDetails({ property }: PropertyDetailsProps) {
     const [activeImage, setActiveImage] = useState(0);
     const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
+    const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+    const [isContactModalOpen, setIsContactModalOpen] = useState(false);
     const [isLightboxOpen, setIsLightboxOpen] = useState(false);
     const [lightboxIndex, setLightboxIndex] = useState(0);
     const [isExpanded, setIsExpanded] = useState(false);
+
+    const { distances: googleDistances, isLoaded: googleLoaded, elevation } = usePropertyDistances(
+        property.coordinates?.lat || 0,
+        property.coordinates?.lng || 0,
+        property.locationDetail || property.town // Using locationDetail as address proxy
+    );
 
     const galleryImages =
         property.images.length > 0
@@ -100,10 +173,22 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
     if (property.features.storage) displayFeatures.push('Förråd');
 
     return (
-        <div className="bg-alabaster min-h-screen pb-32 animate-fade-in">
+        <div className="bg-alabaster min-h-screen pb-32 animate-fade-in pt-[69px] md:pt-[73px]">
             <SearchServiceModal
                 isOpen={isSearchModalOpen}
                 onClose={() => setIsSearchModalOpen(false)}
+            />
+
+            <BookingModal
+                isOpen={isBookingModalOpen}
+                onClose={() => setIsBookingModalOpen(false)}
+                property={property}
+            />
+
+            <ContactAgentModal
+                isOpen={isContactModalOpen}
+                onClose={() => setIsContactModalOpen(false)}
+                property={property}
             />
 
             <ImageLightbox
@@ -114,7 +199,7 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
             />
 
             {/* 1. Header Navigation */}
-            <div className="bg-white border-b border-gray-100 sticky top-0 z-40">
+            <div className="bg-white border-b border-gray-100 sticky top-[69px] md:top-[73px] z-40">
                 <div className="max-w-[1400px] mx-auto px-4 md:px-12 h-16 md:h-20 flex items-center justify-between">
                     <Link
                         href="/fastigheter"
@@ -234,6 +319,15 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
                                     variant="outline"
                                     size="sm"
                                 />
+                                <span className="px-3 py-1 bg-gray-50 text-gray-400 text-[10px] uppercase tracking-widest font-bold rounded-sm border border-gray-100">
+                                    Ref: {property.ref}
+                                </span>
+                                {property.energyRating && (
+                                    <span className="px-3 py-1 bg-green-50 text-green-600 text-[10px] uppercase tracking-widest font-bold rounded-sm border border-green-100 flex items-center gap-1">
+                                        <Zap size={10} />
+                                        Energiklass: {property.energyRating}
+                                    </span>
+                                )}
                             </div>
 
                             <h1 className="text-4xl md:text-5xl font-serif text-navy mb-4 leading-tight">
@@ -300,6 +394,19 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
                                     </div>
                                     <span className="text-xl font-serif text-navy">
                                         {property.terraceArea} m²
+                                    </span>
+                                </div>
+                            )}
+                            {property.plotArea && (
+                                <div className="p-4 bg-white border border-gray-100 rounded-sm hover:shadow-soft transition-shadow">
+                                    <div className="flex items-center gap-3 mb-1">
+                                        <Scan size={20} className="text-sand" />
+                                        <span className="text-xs uppercase tracking-widest text-gray-400 font-bold">
+                                            Tomt
+                                        </span>
+                                    </div>
+                                    <span className="text-xl font-serif text-navy">
+                                        {property.plotArea} m²
                                     </span>
                                 </div>
                             )}
@@ -393,9 +500,9 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
                                         Strand
                                     </span>
                                     <span className="font-serif text-navy text-lg">
-                                        {property.distances.beach
+                                        {googleDistances.beach || (property.distances.beach
                                             ? `${property.distances.beach}m`
-                                            : 'N/A'}
+                                            : 'N/A')}
                                     </span>
                                 </div>
                                 <div className="flex flex-col items-center justify-center p-6 bg-white border border-gray-100 text-center gap-3 hover:border-sand hover:shadow-soft transition-all duration-300 group">
@@ -407,7 +514,9 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
                                     <span className="text-[10px] uppercase tracking-widest text-gray-400 group-hover:text-navy">
                                         Flygplats
                                     </span>
-                                    <span className="font-serif text-navy text-lg">45 min</span>
+                                    <span className="font-serif text-navy text-lg">
+                                        {googleDistances.airport || '45 min'}
+                                    </span>
                                 </div>
                                 <div className="flex flex-col items-center justify-center p-6 bg-white border border-gray-100 text-center gap-3 hover:border-sand hover:shadow-soft transition-all duration-300 group">
                                     <Trees
@@ -419,7 +528,7 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
                                         Golf
                                     </span>
                                     <span className="font-serif text-navy text-lg">
-                                        {property.distances.golf ? 'Ja' : 'N/A'}
+                                        {googleDistances.golf || (property.distances.golf ? 'Nära' : 'N/A')}
                                     </span>
                                 </div>
                                 <div className="flex flex-col items-center justify-center p-6 bg-white border border-gray-100 text-center gap-3 hover:border-sand hover:shadow-soft transition-all duration-300 group">
@@ -431,21 +540,65 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
                                     <span className="text-[10px] uppercase tracking-widest text-gray-400 group-hover:text-navy">
                                         Centrum
                                     </span>
-                                    <span className="font-serif text-navy text-lg">5 min</span>
+                                    <span className="font-serif text-navy text-lg">
+                                        {googleDistances.shopping ? 'Nära' : '5 min'}
+                                    </span>
+                                </div>
+                                {(property.distances.schools || googleDistances.shopping) && (
+                                    <div className="flex flex-col items-center justify-center p-6 bg-white border border-gray-100 text-center gap-3 hover:border-sand hover:shadow-soft transition-all duration-300 group">
+                                        <School
+                                            size={24}
+                                            className="text-gray-300 group-hover:text-sage transition-colors"
+                                            strokeWidth={1.5}
+                                        />
+                                        <span className="text-[10px] uppercase tracking-widest text-gray-400 group-hover:text-navy">
+                                            Skolor
+                                        </span>
+                                        <span className="font-serif text-navy text-lg">Nära</span>
+                                    </div>
+                                )}
+                                {(property.distances.commercialCenter || googleDistances.shopping) && (
+                                    <div className="flex flex-col items-center justify-center p-6 bg-white border border-gray-100 text-center gap-3 hover:border-sand hover:shadow-soft transition-all duration-300 group">
+                                        <ShoppingBag
+                                            size={24}
+                                            className="text-gray-300 group-hover:text-sage transition-colors"
+                                            strokeWidth={1.5}
+                                        />
+                                        <span className="text-[10px] uppercase tracking-widest text-gray-400 group-hover:text-navy">
+                                            Shopping
+                                        </span>
+                                        <span className="font-serif text-navy text-lg">
+                                            {googleDistances.shopping || 'Nära'}
+                                        </span>
+                                    </div>
+                                )}
+                                <div className="flex flex-col items-center justify-center p-6 bg-white border border-gray-100 text-center gap-3 hover:border-sand hover:shadow-soft transition-all duration-300 group">
+                                    <Expand
+                                        size={24}
+                                        className="text-gray-300 group-hover:text-sage transition-colors"
+                                        strokeWidth={1.5}
+                                    />
+                                    <span className="text-[10px] uppercase tracking-widest text-gray-400 group-hover:text-navy">
+                                        Höjd
+                                    </span>
+                                    <span className="font-serif text-navy text-lg">
+                                        {elevation || 'Hämtar...'}
+                                    </span>
                                 </div>
                             </div>
-
-                            {/* Map Section */}
-                            {(property.coordinates?.lat && property.coordinates?.lng) && (
-                                <div className="mt-8 rounded-sm overflow-hidden border border-gray-100 shadow-sm relative z-0">
-                                    <PropertyMap
-                                        latitude={property.coordinates.lat}
-                                        longitude={property.coordinates.lng}
-                                        className="w-full h-[400px]"
-                                    />
-                                </div>
-                            )}
                         </div>
+
+                        {/* Map Section */}
+                        {(property.coordinates?.lat && property.coordinates?.lng) && (
+                            <div className="mt-8 rounded-sm overflow-hidden border border-gray-100 shadow-sm relative z-0">
+                                <PropertyMap
+                                    latitude={property.coordinates.lat}
+                                    longitude={property.coordinates.lng}
+                                    className="w-full h-[400px]"
+                                />
+                            </div>
+                        )}
+
 
                         {/* Concierge CTA */}
                         <div
@@ -453,7 +606,7 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
                             onClick={() => setIsSearchModalOpen(true)}
                         >
                             <Image
-                                src="https://images.unsplash.com/photo-1594498653385-d5172c532c00?q=80&w=2070"
+                                src="/images/fastigheter-spanien-bg.png"
                                 alt="Search service"
                                 width={1200}
                                 height={400}
@@ -525,11 +678,17 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
                                 </div>
 
                                 <div className="space-y-3">
-                                    <button className="w-full bg-navy text-white h-12 uppercase tracking-[0.2em] text-xs font-bold hover:bg-charcoal transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl hover:-translate-y-0.5 group/btn">
+                                    <button
+                                        onClick={() => setIsBookingModalOpen(true)}
+                                        className="w-full bg-navy text-white h-12 uppercase tracking-[0.2em] text-xs font-bold hover:bg-charcoal transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl hover:-translate-y-0.5 group/btn"
+                                    >
                                         <Calendar size={16} className="group-hover/btn:text-sand transition-colors" />
                                         Boka Visning
                                     </button>
-                                    <button className="w-full bg-white border border-navy text-navy h-12 uppercase tracking-[0.2em] text-xs font-bold hover:bg-navy hover:text-white transition-all duration-300 flex items-center justify-center gap-3">
+                                    <button
+                                        onClick={() => setIsContactModalOpen(true)}
+                                        className="w-full bg-white border border-navy text-navy h-12 uppercase tracking-[0.2em] text-xs font-bold hover:bg-navy hover:text-white transition-all duration-300 flex items-center justify-center gap-3"
+                                    >
                                         <Mail size={16} />
                                         Kontakta mig
                                     </button>
@@ -559,75 +718,23 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
                         </div>
                     </div>
                 </div>
-            </div>
 
-            {/* Mobile Sticky Action Bar */}
-            <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4 md:hidden z-50 flex gap-3 shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">
-                <a
-                    href="tel:+34612345678"
-                    className="flex-1 bg-white border border-navy text-navy py-3 uppercase tracking-widest text-xs font-bold rounded-sm flex items-center justify-center gap-2"
-                >
-                    Ring
-                </a>
-                <button className="flex-[2] bg-navy text-white py-3 uppercase tracking-widest text-xs font-bold rounded-sm flex items-center justify-center gap-2">
-                    Boka Visning
-                </button>
+                {/* Mobile Sticky Action Bar */}
+                <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4 md:hidden z-50 flex gap-3 shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">
+                    <button
+                        onClick={() => setIsContactModalOpen(true)}
+                        className="flex-1 bg-white border border-navy text-navy py-3 uppercase tracking-widest text-xs font-bold rounded-sm flex items-center justify-center gap-2"
+                    >
+                        Kontakta
+                    </button>
+                    <button
+                        onClick={() => setIsBookingModalOpen(true)}
+                        className="flex-[2] bg-navy text-white py-3 uppercase tracking-widest text-xs font-bold rounded-sm flex items-center justify-center gap-2"
+                    >
+                        Boka Visning
+                    </button>
+                </div>
             </div>
-        </div >
+        </div>
     );
 }
-
-// Separate component for Client-side PDF generation to handle Next.js SSR
-// In a real app, you might put this in a separate file, but here for simplicity:
-import dynamic from 'next/dynamic';
-import PropertyProspectus from './PropertyProspectus';
-
-const PDFDownloadLink = dynamic(
-    () => import('@react-pdf/renderer').then((mod) => mod.PDFDownloadLink),
-    {
-        ssr: false,
-        loading: () => (
-            <div className="bg-charcoal text-white p-6 flex justify-between items-center opacity-70">
-                <div>
-                    <span className="text-[10px] uppercase tracking-widest opacity-60 block mb-1">
-                        Dokument
-                    </span>
-                    <span className="font-serif text-lg">
-                        Laddar PDF-verktyg...
-                    </span>
-                </div>
-            </div>
-        ),
-    }
-);
-
-const ClientOnlyPDFDownload = ({ property }: { property: Property }) => {
-    // Create a human-readable filename from property type and location
-    const sanitizedFileName = `${property.type} i ${property.town}`.replace(/[^a-zA-ZåäöÅÄÖ0-9\s]/g, '').replace(/\s+/g, '_');
-
-    return (
-        <PDFDownloadLink
-            document={<PropertyProspectus property={property} />}
-            fileName={`${sanitizedFileName}.pdf`}
-            className="block"
-        >
-            {/* Using 'any' for the render prop because typings with dynamic imports can be tricky */}
-            {({ blob, url, loading, error }: any) => (
-                <div className="bg-charcoal text-white p-6 flex justify-between items-center cursor-pointer hover:bg-navy transition-colors group">
-                    <div>
-                        <span className="text-[10px] uppercase tracking-widest opacity-60 block mb-1">
-                            Dokument
-                        </span>
-                        <span className="font-serif text-lg group-hover:text-sand transition-colors">
-                            {loading ? 'Skapar prospekt...' : error ? 'Fel vid skapande' : 'Ladda ner prospekt'}
-                        </span>
-                    </div>
-                    <FileText
-                        size={24}
-                        className={`text-sand/50 group-hover:text-sand transition-colors transform duration-300 ${loading ? 'animate-pulse' : 'group-hover:-translate-y-1'}`}
-                    />
-                </div>
-            )}
-        </PDFDownloadLink>
-    );
-};

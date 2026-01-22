@@ -46,7 +46,7 @@ const guideCards: GuideCard[] = [
         badge: '3-5 dagar',
         title: 'Visningsresa',
         description: 'Upplev Spanien på plats – vi guidar dig till 8-12 utvalda fastigheter',
-        image: '/images/visningsresa-hero.png',
+        image: '/images/areas/mojacar.png',
         imageAlt: 'Visningsresa till Spanien - besök bostäder med svensk guide',
         href: '/visningsresa',
         ctaText: 'Läs mer',

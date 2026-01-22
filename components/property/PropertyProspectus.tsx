@@ -221,7 +221,7 @@ const PropertyProspectus: React.FC<PropertyProspectusProps> = ({ property }) => 
                         {property.type} i {property.town}
                     </Text>
                     <Text style={{ color: '#94A3B8', fontSize: 12, marginTop: 15 }}>
-                        REF: {property.id}
+                        REF: {property.ref}
                     </Text>
                 </View>
 

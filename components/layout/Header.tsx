@@ -8,11 +8,17 @@ import LanguageSwitcher from './LanguageSwitcher';
 import MobileMenu from './MobileMenu';
 import { useFavoritesCount } from '@/components/ui/FavoriteButton';
 
+import { usePathname } from 'next/navigation';
+
 export default function Header() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const pathname = usePathname();
     const t = useTranslations('nav');
     const favoritesCount = useFavoritesCount();
+
+    // Check if we are on the homepage (localized or root)
+    const isHomePage = pathname === '/' || pathname === '/sv' || pathname === '/en' || pathname === '/es';
 
     useEffect(() => {
         const handleScroll = () => {
@@ -21,6 +27,9 @@ export default function Header() {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    // Force solid state if NOT on homepage
+    const shouldBeSolid = !isHomePage || isScrolled;
 
     const navItems = [
         { key: 'forSale', href: '/fastigheter' },
@@ -35,7 +44,7 @@ export default function Header() {
     return (
         <>
             <header
-                className={`fixed w-full z-50 transition-all duration-500 border-b ${isScrolled
+                className={`fixed w-full z-50 transition-all duration-500 border-b ${shouldBeSolid
                     ? 'bg-white/95 backdrop-blur-md border-gray-100 py-3 shadow-sm'
                     : 'bg-transparent border-transparent py-6'
                     }`}
@@ -45,7 +54,7 @@ export default function Header() {
                     <div className="flex items-center gap-2 z-50">
                         <Link
                             href="/"
-                            className={`text-2xl md:text-3xl font-serif font-medium tracking-tight ${isScrolled ? 'text-navy' : 'text-white'
+                            className={`text-2xl md:text-3xl font-serif font-medium tracking-tight ${shouldBeSolid ? 'text-navy' : 'text-white'
                                 }`}
                         >
                             Spanienfastigheter<span className="text-sand">.se</span>
@@ -54,7 +63,7 @@ export default function Header() {
 
                     {/* Desktop Nav */}
                     <nav
-                        className={`hidden lg:flex items-center gap-10 ${isScrolled ? 'text-charcoal' : 'text-white/90'
+                        className={`hidden lg:flex items-center gap-10 ${shouldBeSolid ? 'text-charcoal' : 'text-white/90'
                             }`}
                     >
                         {navItems.map((item) => (
@@ -71,7 +80,7 @@ export default function Header() {
 
                     {/* Utilities */}
                     <div
-                        className={`hidden lg:flex items-center gap-6 ${isScrolled ? 'text-navy' : 'text-white'
+                        className={`hidden lg:flex items-center gap-6 ${shouldBeSolid ? 'text-navy' : 'text-white'
                             }`}
                     >
                         <LanguageSwitcher />
@@ -94,7 +103,7 @@ export default function Header() {
 
                     {/* Mobile Menu Button */}
                     <button
-                        className={`lg:hidden z-[60] p-2 transition-colors ${isScrolled ? 'text-navy' : 'text-white'
+                        className={`lg:hidden z-[60] p-2 transition-colors ${shouldBeSolid ? 'text-navy' : 'text-white'
                             }`}
                         onClick={() => setIsMobileMenuOpen(true)}
                         aria-expanded={isMobileMenuOpen}

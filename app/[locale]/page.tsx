@@ -3,13 +3,17 @@ import { ArrowRight } from 'lucide-react';
 import Hero from '@/components/Hero';
 import TrustSignals from '@/components/TrustSignals';
 import PropertyCard from '@/components/property/PropertyCard';
-import AreaCard from '@/components/areas/AreaCard';
 import FilterWithModal from '@/components/search/FilterWithModal';
 import ExploreSection from '@/components/home/ExploreSection';
 import VisningsresaTeaser from '@/components/home/VisningsresaTeaser';
-import { MOCK_PROPERTIES, MOCK_AREAS } from '@/lib/mock-data';
+import RegionCards from '@/components/home/RegionCards';
+import { fetchProperties } from '@/lib/xml-parser';
 
-export default function HomePage() {
+export default async function HomePage() {
+    // Fetch real properties from XML API
+    const allProperties = await fetchProperties();
+    const properties = allProperties.slice(0, 4); // Show first 4 properties
+    const totalCount = allProperties.length;
     return (
         <>
             <Hero />
@@ -31,7 +35,7 @@ export default function HomePage() {
                                         Utvalda bostäder till salu i Spanien
                                     </h2>
                                     <p className="text-gray-500 font-light text-sm">
-                                        Visar 4 av 2,450 objekt på Costa Blanca, Costa del Sol och fler regioner
+                                        Visar {properties.length} av {totalCount.toLocaleString('sv-SE')} objekt på Costa Blanca, Costa del Sol och fler regioner
                                     </p>
                                 </div>
                                 <div className="hidden md:flex gap-8 border-b border-gray-200 pb-2">
@@ -48,7 +52,7 @@ export default function HomePage() {
                             </div>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
-                                {MOCK_PROPERTIES.map((property) => (
+                                {properties.map((property) => (
                                     <PropertyCard key={property.id} property={property} />
                                 ))}
                             </div>
@@ -100,12 +104,8 @@ export default function HomePage() {
                         </Link>
                     </div>
 
-                    {/* Area Cards Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {MOCK_AREAS.map((area) => (
-                            <AreaCard key={area.slug} area={area} />
-                        ))}
-                    </div>
+                    {/* Region Cards Grid - 4 regions */}
+                    <RegionCards />
                 </div>
             </section>
 
