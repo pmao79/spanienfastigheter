@@ -36,13 +36,13 @@
   "pricing": {
     "greenFee": {
       "highSeason": {
-        "18holes": {
-          "weekday": 109,
-          "weekend": 109
+        "weekday": {
+          "min": 109,
+          "max": 109
         },
-        "9holes": {
-          "weekday": 58,
-          "weekend": 58
+        "weekend": {
+          "min": 109,
+          "max": 109
         }
       },
       "lowSeason": {

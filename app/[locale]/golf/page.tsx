@@ -20,7 +20,7 @@ export default function GolfPage() {
     // Best value (Rating > 4.2 sorted by price)
     const valueCourses = [...GOLF_COURSES]
         .filter(course => course.rating.overall >= 4.2)
-        .sort((a, b) => a.pricing.greenFee.highSeason.weekday.min - b.pricing.greenFee.highSeason.weekday.min)
+        .sort((a, b) => (a.pricing?.greenFee?.highSeason?.weekday?.min || 999) - (b.pricing?.greenFee?.highSeason?.weekday?.min || 999))
         .slice(0, 4);
 
     return (
