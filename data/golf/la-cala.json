@@ -10,14 +10,14 @@
   "subRegion": "Mijas",
   "province": "Málaga",
   "address": {
-    "street": "Calle Barrientos, Cala-Golf, 11",
+    "street": "Calle Mirador del Golf 1",
     "postalCode": "29649",
     "city": "Mijas",
     "country": "ES"
   },
   "coordinates": {
-    "lat": 36.59,
-    "lng": -4.64
+    "lat": 36.5420229,
+    "lng": -4.720009999999999
   },
   "courseInfo": {
     "holes": 18,
@@ -35,28 +35,37 @@
   },
   "pricing": {
     "greenFee": {
-      "lowSeason": {
-        "weekday": {
-          "min": 0,
-          "max": 0
-        },
-        "weekend": {
-          "min": 0,
-          "max": 0
-        }
-      },
       "highSeason": {
         "weekday": {
-          "min": 0,
-          "max": 0
+          "min": 115,
+          "max": 126
         },
         "weekend": {
-          "min": 0,
-          "max": 0
+          "min": 115,
+          "max": 126
+        }
+      },
+      "lowSeason": {
+        "weekday": {
+          "min": 70,
+          "max": 70
+        },
+        "weekend": {
+          "min": 70,
+          "max": 70
         }
       }
     },
-    "currency": "EUR"
+    "currency": "EUR",
+    "priceSource": "https://www.1golf.eu/club/la-cala-resort/ [1]",
+    "lastUpdated": "2026-01-21T21:04:48.847Z",
+    "extras": {
+      "buggy": 0,
+      "clubRental": 0,
+      "trolley": 0,
+      "rangeBalls": 5,
+      "rangeBallsIncluded": false
+    }
   },
   "facilities": {
     "course": {
@@ -95,9 +104,10 @@
     "website": "0"
   },
   "rating": {
-    "overall": 0,
-    "totalReviews": 0
+    "overall": 4.8,
+    "totalReviews": 723
   },
   "holes": [],
-  "signatureHoles": []
+  "signatureHoles": [],
+  "googlePlaceId": "ChIJefsHTifhcg0RIwL-MuMvVrQ"
 }

@@ -9,31 +9,119 @@
   "region": "costa-del-sol",
   "subRegion": "Alhaurín de la Torre",
   "province": "Málaga",
-  "address": { "street": "Urb. Lauro Golf Resort", "postalCode": "29140", "city": "Alhaurín de la Torre", "country": "ES" },
-  "coordinates": { "lat": 36.7925, "lng": -4.6025 },
+  "address": {
+    "street": "Ctra. Málaga a Coín A-404",
+    "postalCode": "29130",
+    "city": "Alhaurín de la Torre",
+    "country": "ES"
+  },
+  "coordinates": {
+    "lat": 36.651329,
+    "lng": -4.6307769
+  },
   "courseInfo": {
     "holes": 27,
     "par": 72,
-    "length": { "meters": 6000, "yards": 6560 },
+    "length": {
+      "meters": 6000,
+      "yards": 6560
+    },
     "architect": "Folco Nardi & Mariano Benitez",
     "openedYear": 1999
   },
-  "difficulty": { "level": "medium", "description": "Tekniskt utmanande med fokus på kortspel och precision, men rättvis och inte överväldigande. Måttligt kuperad terräng med sjöar och träd som kräver koncentration." },
+  "difficulty": {
+    "level": "medium",
+    "description": "Tekniskt utmanande med fokus på kortspel och precision, men rättvis och inte överväldigande. Måttligt kuperad terräng med sjöar och träd som kräver koncentration."
+  },
   "pricing": {
     "greenFee": {
-      "lowSeason": { "weekday": { "min": 0, "max": 0 }, "weekend": { "min": 0, "max": 0 } },
-      "highSeason": { "weekday": { "min": 0, "max": 0 }, "weekend": { "min": 0, "max": 0 } }
+      "highSeason": {
+        "weekday": {
+          "min": 87.5,
+          "max": 99
+        },
+        "weekend": {
+          "min": 96,
+          "max": 111
+        }
+      },
+      "midSeason": {
+        "weekday": {
+          "min": 77.5,
+          "max": 86
+        },
+        "weekend": {
+          "min": 82.5,
+          "max": 103
+        }
+      },
+      "lowSeason": {
+        "weekday": {
+          "min": 65,
+          "max": 73
+        },
+        "weekend": {
+          "min": 65,
+          "max": 73
+        }
+      }
     },
-    "currency": "EUR"
+    "currency": "EUR",
+    "priceSource": "https://www.laurogolf.com/en/golf/prices-and-memberships/",
+    "lastUpdated": "2026-01-21T21:04:48.850Z",
+    "extras": {
+      "buggy": 45,
+      "twilightGreenFee": 55,
+      "rangeBalls": 5,
+      "rangeBallsIncluded": false
+    }
   },
   "facilities": {
-    "course": { "drivingRange": true, "puttingGreen": true, "chippingGreen": true, "practiceBunker": true },
-    "clubhouse": { "restaurant": true, "proshop": true, "locker": true, "bar": true, "terrace": true, "shower": true },
-    "services": { "golfSchool": true, "proAvailable": true, "clubFitting": false, "clubRepair": false, "caddie": false },
-    "other": { "spa": false, "pool": true, "gym": false, "tennis": false, "padel": true, "hotel": false }
+    "course": {
+      "drivingRange": true,
+      "puttingGreen": true,
+      "chippingGreen": true,
+      "practiceBunker": true
+    },
+    "clubhouse": {
+      "restaurant": true,
+      "proshop": true,
+      "locker": true,
+      "bar": true,
+      "terrace": true,
+      "shower": true
+    },
+    "services": {
+      "golfSchool": true,
+      "proAvailable": true,
+      "clubFitting": false,
+      "clubRepair": false,
+      "caddie": false
+    },
+    "other": {
+      "spa": false,
+      "pool": true,
+      "gym": false,
+      "tennis": false,
+      "padel": true,
+      "hotel": false
+    }
   },
-  "contact": { "phone": "+34 952 412 767", "email": "info@laurogolf.com", "website": "www.laurogolf.com" },
-  "rating": { "overall": 4.0, "totalReviews": 100 },
+  "contact": {
+    "phone": "+34 952 412 767",
+    "email": "info@laurogolf.com",
+    "website": "www.laurogolf.com"
+  },
+  "rating": {
+    "overall": 4.4,
+    "totalReviews": 895
+  },
   "holes": [],
-  "signatureHoles": [{ "number": 19, "description": "Första hålet på bergssidan med spektakulär utsikt över Guadalhorce-dalen och Medelhavet – kräver precision i den kuperade terrängen." }]
+  "signatureHoles": [
+    {
+      "number": 19,
+      "description": "Första hålet på bergssidan med spektakulär utsikt över Guadalhorce-dalen och Medelhavet – kräver precision i den kuperade terrängen."
+    }
+  ],
+  "googlePlaceId": "ChIJZ-F8r8vlcg0RoRkJaTO-8KI"
 }

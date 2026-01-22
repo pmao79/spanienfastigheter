@@ -10,14 +10,14 @@
   "subRegion": "Marbella",
   "province": "Málaga",
   "address": {
-    "street": "Ctra. N-340 Málaga Cádiz, Km. 187,5",
-    "postalCode": "",
+    "street": "Calle Sand, Carr. de Cadiz, 17, Km 187,5",
+    "postalCode": "29603",
     "city": "Marbella",
     "country": "ES"
   },
   "coordinates": {
-    "lat": 36.5,
-    "lng": -4.85
+    "lat": 36.50839,
+    "lng": -4.81654
   },
   "courseInfo": {
     "holes": 18,
@@ -95,8 +95,8 @@
     "website": "santaclaragolfmarbella.com"
   },
   "rating": {
-    "overall": 4.0,
-    "totalReviews": 92
+    "overall": 4.4,
+    "totalReviews": 1020
   },
   "holes": [],
   "signatureHoles": [
@@ -120,5 +120,6 @@
       "number": 9,
       "description": "Par-5 hålet där klubbval och fairwayplacering är avgörande"
     }
-  ]
+  ],
+  "googlePlaceId": "ChIJZS2T7lgncw0RJwPXESIws8M"
 }

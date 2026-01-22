@@ -1,1 +1,118 @@
-{"id":"campoamor","slug":"campoamor","name":"Real Club de Golf Campoamor","shortName":"Campoamor","tagline":"Kunglig golf i skyddade dalar på Costa Blanca","description":"Real Club de Golf Campoamor är en 18-hålsbana med par 72, 6277 meter lång, invigd 1988 i vild natur mellan dalar omgivna av kullar.[1]","longDescription":"Real Club de Golf Campoamor ligger i den vilda skönheten i Dehesa de Campoamor, uppbyggd mellan två sammanlänkade dalar omgivna av små kullar som skyddar banan från vind och skapar ett mikroklimat för spel året runt. Banan utmanar erfarna spelare med sin varierade layout och höga underhållsstandard, förstärkt av frodig vegetation och rikt djurliv.[1]\n\nMed längd på 6277 meter och par 72 erbjuder banan en klassisk parkbanaupplevelse med utsikt över landskapet. Invigd 1988 av SAR D. Juan de Borbón arrangeras årligen en turnering till hans ära, vilket understryker banans kungliga status och tradition.[1][2]\n\nSvårighetsgraden är medelhög med tekniska hål som kräver precision, perfekt för både lokala spelare och golfresenärer på Costa Blanca.","region":"costa-blanca","subRegion":"Orihuela Costa","province":"Alicante","address":{"street":"Urb. Campoamor","postalCode":"03178","city":"Orihuela Costa","country":"ES"},"coordinates":{"lat":38.032,"lng":-0.85},"courseInfo":{"holes":18,"par":72,"length":{"meters":6277,"yards":6865},"architect":"Okänd","openedYear":1988},"difficulty":{"level":"medium","description":"Banan utmanar erfarna spelare med varierad layout i skyddade dalar, medelhård svårighet som kräver precision och strategi."},"pricing":{"greenFee":{"lowSeason":{"weekday":{"min":0,"max":0},"weekend":{"min":0,"max":0}},"highSeason":{"weekday":{"min":0,"max":0},"weekend":{"min":0,"max":0}}},"currency":"EUR"},"facilities":{"course":{"drivingRange":true,"puttingGreen":true,"chippingGreen":true,"practiceBunker":true},"clubhouse":{"restaurant":true,"proshop":true,"locker":true,"bar":true,"terrace":true,"shower":true},"services":{"golfSchool":true,"proAvailable":true,"clubFitting":false,"clubRepair":false,"caddie":false},"other":{"spa":false,"pool":false,"gym":false,"tennis":false,"padel":false,"hotel":true}},"contact":{"phone":"+34 965 32 21 51","email":"info@campoamorgolf.com","website":"www.campoamorgolf.com"},"rating":{"overall":4.0,"totalReviews":100},"holes":[],"signatureHoles":[{"number":1,"description":"Första hålet inleder med utsikt över dalen och kräver rak drive för att undvika bunkrar."}]}
+{
+  "id": "campoamor",
+  "slug": "campoamor",
+  "name": "Real Club de Golf Campoamor",
+  "shortName": "Campoamor",
+  "tagline": "Kunglig golf i skyddade dalar på Costa Blanca",
+  "description": "Real Club de Golf Campoamor är en 18-hålsbana med par 72, 6277 meter lång, invigd 1988 i vild natur mellan dalar omgivna av kullar.[1]",
+  "longDescription": "Real Club de Golf Campoamor ligger i den vilda skönheten i Dehesa de Campoamor, uppbyggd mellan två sammanlänkade dalar omgivna av små kullar som skyddar banan från vind och skapar ett mikroklimat för spel året runt. Banan utmanar erfarna spelare med sin varierade layout och höga underhållsstandard, förstärkt av frodig vegetation och rikt djurliv.[1]\n\nMed längd på 6277 meter och par 72 erbjuder banan en klassisk parkbanaupplevelse med utsikt över landskapet. Invigd 1988 av SAR D. Juan de Borbón arrangeras årligen en turnering till hans ära, vilket understryker banans kungliga status och tradition.[1][2]\n\nSvårighetsgraden är medelhög med tekniska hål som kräver precision, perfekt för både lokala spelare och golfresenärer på Costa Blanca.",
+  "region": "costa-blanca",
+  "subRegion": "Orihuela Costa",
+  "province": "Alicante",
+  "address": {
+    "street": "Avenida Conde de Barcelona 12",
+    "postalCode": "03189",
+    "city": "Dehesa de Campoamor",
+    "country": "ES"
+  },
+  "coordinates": {
+    "lat": 37.9283284,
+    "lng": -0.7790005
+  },
+  "courseInfo": {
+    "holes": 18,
+    "par": 72,
+    "length": {
+      "meters": 6277,
+      "yards": 6865
+    },
+    "architect": "Okänd",
+    "openedYear": 1988
+  },
+  "difficulty": {
+    "level": "medium",
+    "description": "Banan utmanar erfarna spelare med varierad layout i skyddade dalar, medelhård svårighet som kräver precision och strategi."
+  },
+  "pricing": {
+    "greenFee": {
+      "highSeason": {
+        "weekday": {
+          "min": 81,
+          "max": 192
+        },
+        "weekend": {
+          "min": 81,
+          "max": 192
+        }
+      },
+      "lowSeason": {
+        "weekday": {
+          "min": 50,
+          "max": 170
+        },
+        "weekend": {
+          "min": 50,
+          "max": 170
+        }
+      }
+    },
+    "currency": "EUR",
+    "priceSource": "Multiple sources: 1golf.eu, costalessgolf.com, sunnyalgarvetravel.com, golf-service.com",
+    "lastUpdated": "2026-01-21T21:04:48.836Z",
+    "extras": {
+      "buggy": 35,
+      "clubRental": 35,
+      "trolley": null,
+      "rangeBalls": 5,
+      "rangeBallsIncluded": false
+    }
+  },
+  "facilities": {
+    "course": {
+      "drivingRange": true,
+      "puttingGreen": true,
+      "chippingGreen": true,
+      "practiceBunker": true
+    },
+    "clubhouse": {
+      "restaurant": true,
+      "proshop": true,
+      "locker": true,
+      "bar": true,
+      "terrace": true,
+      "shower": true
+    },
+    "services": {
+      "golfSchool": true,
+      "proAvailable": true,
+      "clubFitting": false,
+      "clubRepair": false,
+      "caddie": false
+    },
+    "other": {
+      "spa": false,
+      "pool": false,
+      "gym": false,
+      "tennis": false,
+      "padel": false,
+      "hotel": true
+    }
+  },
+  "contact": {
+    "phone": "+34 965 32 21 51",
+    "email": "info@lomasdecampoamor.es",
+    "website": "https://lomasdecampoamor.es/en/golf-club"
+  },
+  "rating": {
+    "overall": 4.3,
+    "totalReviews": 1636
+  },
+  "holes": [],
+  "signatureHoles": [
+    {
+      "number": 1,
+      "description": "Första hålet inleder med utsikt över dalen och kräver rak drive för att undvika bunkrar."
+    }
+  ],
+  "googlePlaceId": "ChIJ28YQIPQIYw0RE5ryByXEh2I"
+}

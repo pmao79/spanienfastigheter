@@ -11,13 +11,15 @@ import { GOLF_COURSES } from '@/data/golf/courses';
 export default function GolfPage() {
     const t = useTranslations('golf');
 
-    // Featured courses (Top rated)
+    // Featured courses (Top rated > 4.6)
     const topCourses = [...GOLF_COURSES]
+        .filter(course => course.rating.overall >= 4.6)
         .sort((a, b) => b.rating.overall - a.rating.overall)
         .slice(0, 4);
 
-    // Best value (This logic is simple for now)
+    // Best value (Rating > 4.2 sorted by price)
     const valueCourses = [...GOLF_COURSES]
+        .filter(course => course.rating.overall >= 4.2)
         .sort((a, b) => a.pricing.greenFee.highSeason.weekday.min - b.pricing.greenFee.highSeason.weekday.min)
         .slice(0, 4);
 
@@ -113,7 +115,7 @@ export default function GolfPage() {
                                 Topprankade banor
                             </h2>
                         </div>
-                        <Link href="/golf/jamfor" className="text-navy hover:text-sand transition-colors font-medium">
+                        <Link href="/golf" className="text-navy hover:text-sand transition-colors font-medium">
                             {t('viewAll')} →
                         </Link>
                     </div>

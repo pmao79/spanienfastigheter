@@ -3,13 +3,31 @@ const path = require('path');
 
 const DATA_DIR = path.join(__dirname, '..', 'data', 'golf');
 const OUTPUT_FILE = path.join(DATA_DIR, 'courses.ts');
+const PRICES_FILE = path.join(DATA_DIR, 'prices.json');
 
 if (!fs.existsSync(DATA_DIR)) {
     console.error('Data dir not found');
     process.exit(1);
 }
 
-const files = fs.readdirSync(DATA_DIR).filter(f => f.endsWith('.json'));
+// Load prices.json if it exists
+let pricesData = {};
+if (fs.existsSync(PRICES_FILE)) {
+    try {
+        const pricesArray = JSON.parse(fs.readFileSync(PRICES_FILE, 'utf8'));
+        // Build lookup by slug, prefer entries with found: true
+        for (const price of pricesArray) {
+            if (price.found && price.greenFee) {
+                pricesData[price.slug] = price;
+            }
+        }
+        console.log(`📊 Loaded prices for ${Object.keys(pricesData).length} courses`);
+    } catch (e) {
+        console.error('Error parsing prices.json', e);
+    }
+}
+
+const files = fs.readdirSync(DATA_DIR).filter(f => f.endsWith('.json') && f !== 'prices.json');
 const courses = [];
 
 for (const file of files) {
@@ -45,6 +63,78 @@ for (const file of files) {
                 highSeason: { from: '01-10', to: '31-05' },
                 lowSeason: { from: '01-06', to: '30-09' }
             };
+        }
+
+        // Merge real prices from prices.json if available
+        if (pricesData[data.slug]) {
+            const realPrices = pricesData[data.slug];
+            const gf = realPrices.greenFee;
+
+            // Helper to extract min/max from various formats
+            const extractPrice = (val) => {
+                if (typeof val === 'number') return { min: val, max: val };
+                if (val && typeof val === 'object' && 'min' in val) return val;
+                if (val && typeof val === 'object' && 'weekday' in val) {
+                    // Already has weekday/weekend structure
+                    return null;
+                }
+                return { min: 0, max: 0 };
+            };
+
+            // Normalize prices into expected structure
+            const normalizeSeasonPrices = (season) => {
+                if (!season) return null;
+
+                // If already weekday/weekend with min/max
+                if (season.weekday && typeof season.weekday === 'object' && 'min' in season.weekday) {
+                    return {
+                        weekday: { min: season.weekday.min || 0, max: season.weekday.max || 0 },
+                        weekend: { min: season.weekend?.min || season.weekday.min || 0, max: season.weekend?.max || season.weekday.max || 0 }
+                    };
+                }
+
+                // If flat 18holes price
+                if ('18holes' in season && typeof season['18holes'] === 'number') {
+                    const price = season['18holes'];
+                    return {
+                        weekday: { min: price, max: price },
+                        weekend: { min: price, max: price }
+                    };
+                }
+
+                // If 18holes is object with weekday/weekend
+                if (season['18holes'] && typeof season['18holes'] === 'object') {
+                    const wkd = season['18holes'].weekday || 0;
+                    const wke = season['18holes'].weekend || wkd;
+                    return {
+                        weekday: { min: wkd, max: wkd },
+                        weekend: { min: wke, max: wke }
+                    };
+                }
+
+                return null;
+            };
+
+            if (gf.highSeason) {
+                const normalized = normalizeSeasonPrices(gf.highSeason);
+                if (normalized) {
+                    data.pricing.greenFee.highSeason = normalized;
+                }
+            }
+
+            if (gf.lowSeason) {
+                const normalized = normalizeSeasonPrices(gf.lowSeason);
+                if (normalized) {
+                    data.pricing.greenFee.lowSeason = normalized;
+                }
+            }
+
+            // Merge extras if available
+            if (realPrices.extras) {
+                data.pricing.extras = { ...data.pricing.extras, ...realPrices.extras };
+            }
+
+            console.log(`  💰 Merged real prices for ${data.name}`);
         }
 
         // Inject Defaults for strict Types

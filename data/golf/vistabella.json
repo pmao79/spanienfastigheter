@@ -10,14 +10,14 @@
   "subRegion": "Orihuela",
   "province": "Alicante",
   "address": {
-    "street": "",
-    "postalCode": "",
+    "street": "Avenida del Golf 447",
+    "postalCode": "03319",
     "city": "Orihuela",
     "country": "ES"
   },
   "coordinates": {
-    "lat": 38.0,
-    "lng": -0.7
+    "lat": 38.0381682,
+    "lng": -0.8236597999999999
   },
   "courseInfo": {
     "holes": 18,
@@ -35,28 +35,37 @@
   },
   "pricing": {
     "greenFee": {
-      "lowSeason": {
-        "weekday": {
-          "min": 0,
-          "max": 0
-        },
-        "weekend": {
-          "min": 0,
-          "max": 0
-        }
-      },
       "highSeason": {
         "weekday": {
-          "min": 0,
-          "max": 0
+          "min": 75,
+          "max": 75
         },
         "weekend": {
-          "min": 0,
-          "max": 0
+          "min": 75,
+          "max": 75
+        }
+      },
+      "lowSeason": {
+        "weekday": {
+          "min": 75,
+          "max": 75
+        },
+        "weekend": {
+          "min": 75,
+          "max": 75
         }
       }
     },
-    "currency": "EUR"
+    "currency": "EUR",
+    "priceSource": "https://vistabellagolf.com/en/golf-course-price-golf/ (official site)",
+    "lastUpdated": "2026-01-21T21:04:48.844Z",
+    "extras": {
+      "buggy": 0,
+      "clubRental": 0,
+      "trolley": 0,
+      "rangeBalls": 5,
+      "rangeBallsIncluded": false
+    }
   },
   "facilities": {
     "course": {
@@ -95,9 +104,10 @@
     "website": "vistabellagolf.com"
   },
   "rating": {
-    "overall": 4.5,
-    "totalReviews": 0
+    "overall": 4.4,
+    "totalReviews": 386
   },
   "holes": [],
-  "signatureHoles": []
+  "signatureHoles": [],
+  "googlePlaceId": "ChIJq2BE78mmYw0RI69NNrK9IXU"
 }

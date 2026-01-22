@@ -10,6 +10,8 @@ import GolfCourseSchema from '@/components/golf/GolfCourseSchema';
 import GolfBreadcrumbSchema from '@/components/golf/GolfBreadcrumbSchema';
 import GolfCourseMap from '@/components/golf/GolfCourseMap';
 import NearbyProperties from '@/components/golf/NearbyProperties';
+import GolfDescription from '@/components/golf/GolfDescription';
+import GolfGoogleReviews from '@/components/golf/GolfGoogleReviews';
 
 interface PageProps {
     params: Promise<{
@@ -58,56 +60,62 @@ export default async function GolfCoursePage({ params }: PageProps) {
             <div className="container mx-auto px-4 -mt-10 relative z-10">
                 <div className="bg-white rounded-sm shadow-lg p-6 mb-8 text-sm text-center md:text-left flex flex-col md:flex-row gap-4 justify-between items-center text-gray-500">
                     <GolfBreadcrumbs region={course.region} courseName={course.name} />
-                    <div className="text-xs">
-                        Betyg: {course.rating.overall > 0 ? `${course.rating.overall}/5` : 'Ej betygsatt'}
-                        {course.rating.totalReviews > 0 && ` (${course.rating.totalReviews} omdömen)`}
-                    </div>
+
                 </div>
 
                 <div className="grid lg:grid-cols-3 gap-8">
                     {/* Main Content */}
                     <div className="lg:col-span-2 space-y-8">
-                        {/* Description */}
-                        <div className="bg-white p-8 rounded-sm shadow-soft">
-                            <h2 className="font-serif text-3xl text-navy mb-6">Om banan</h2>
-                            <div className="prose max-w-none text-charcoal">
-                                <p className="text-lg leading-relaxed mb-6 font-medium">
-                                    {course.longDescription || course.description}
-                                </p>
+                        {/* Description with read more */}
+                        <GolfDescription
+                            description={course.description}
+                            longDescription={course.longDescription}
+                            maxLength={350}
+                        />
 
-                                {/* Additional details if available */}
-                                {(course.courseLayout || course.difficulty.description || (course.signatureHoles && course.signatureHoles.length > 0)) && (
-                                    <div className="grid md:grid-cols-2 gap-6 my-8 bg-greige/30 p-6 rounded-sm">
-                                        <div>
-                                            <h4 className="font-bold text-navy mb-2">Banans karaktär</h4>
-                                            {course.courseLayout?.courseType && (
-                                                <p className="text-sm">{course.courseLayout.courseType}</p>
-                                            )}
-                                            {course.difficulty.description && (
-                                                <p className="text-sm mt-2 italic">&quot;{course.difficulty.description}&quot;</p>
-                                            )}
-                                        </div>
-                                        <div>
-                                            <h4 className="font-bold text-navy mb-2">Signaturhål</h4>
-                                            {course.signatureHoles && course.signatureHoles.length > 0 ? (
-                                                <ul className="list-disc pl-4 text-sm space-y-1">
-                                                    {course.signatureHoles.map((hole, nr) => (
-                                                        <li key={nr}>
-                                                            <span className="font-medium">Hål {hole.number || hole.holeNumber || hole.hole}:</span> {hole.description}
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            ) : (
-                                                <p className="text-sm text-gray-400">Information saknas.</p>
-                                            )}
-                                        </div>
+                        {/* Course details box */}
+                        {(course.courseLayout || course.difficulty.description || (course.signatureHoles && course.signatureHoles.length > 0)) && (
+                            <div className="bg-white p-6 rounded-sm shadow-soft">
+                                <div className="grid md:grid-cols-2 gap-6">
+                                    <div>
+                                        <h4 className="font-bold text-navy mb-2">Banans karaktär</h4>
+                                        {course.courseLayout?.courseType && (
+                                            <p className="text-sm text-charcoal">{course.courseLayout.courseType}</p>
+                                        )}
+                                        {course.difficulty.description && (
+                                            <p className="text-sm mt-2 italic text-gray-600">
+                                                &quot;{course.difficulty.description.replace(/\[\d+\]/g, '').trim()}&quot;
+                                            </p>
+                                        )}
                                     </div>
-                                )}
+                                    <div>
+                                        <h4 className="font-bold text-navy mb-2">Signaturhål</h4>
+                                        {course.signatureHoles && course.signatureHoles.length > 0 ? (
+                                            <ul className="list-disc pl-4 text-sm space-y-1 text-charcoal">
+                                                {course.signatureHoles.map((hole, nr) => (
+                                                    <li key={nr}>
+                                                        <span className="font-medium">Hål {hole.number || hole.holeNumber || hole.hole}:</span>{' '}
+                                                        {(hole.description || '').replace(/\[\d+\]/g, '').trim()}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        ) : (
+                                            <p className="text-sm text-gray-400">Information saknas.</p>
+                                        )}
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        )}
 
                         {/* Facilities */}
                         <GolfFacilities course={course} />
+
+                        {/* Google Reviews */}
+                        <GolfGoogleReviews
+                            courseName={course.name}
+                            location={course.subRegion || course.address.city}
+                            googlePlaceId={course.googlePlaceId}
+                        />
 
                         {/* Map */}
                         <div className="bg-white p-8 rounded-sm shadow-soft">

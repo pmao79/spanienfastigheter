@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { GolfCourse } from '@/types/golf';
@@ -12,6 +13,42 @@ interface GolfCourseCardProps {
 }
 
 export default function GolfCourseCard({ course, showPrice = true }: GolfCourseCardProps) {
+    const [rating, setRating] = useState(course.rating.overall);
+    const [totalReviews, setTotalReviews] = useState(course.rating.totalReviews);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchRating = async () => {
+            try {
+                const params = new URLSearchParams();
+                if (course.googlePlaceId) {
+                    params.set('placeId', course.googlePlaceId);
+                } else {
+                    let query = `${course.name} ${course.subRegion} Spain`;
+                    if (!course.name.toLowerCase().includes('golf')) {
+                        query = `${course.name} golf ${course.subRegion} Spain`;
+                    }
+                    params.set('query', query);
+                }
+
+                const response = await fetch(`/api/golf/reviews?${params.toString()}`);
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.rating) setRating(data.rating);
+                    if (data.totalReviews) setTotalReviews(data.totalReviews);
+                }
+            } catch (error) {
+                // Silently fail and use default data
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        // Only fetch if we're in the browser to avoid server/client mismatch during hydration if possible, 
+        // though useEffect runs on client anyway.
+        fetchRating();
+    }, [course]);
+
     // Determine difficulty badge class
     const getDifficultyBadge = (level: string) => {
         switch (level) {
@@ -68,7 +105,7 @@ export default function GolfCourseCard({ course, showPrice = true }: GolfCourseC
                             Utvald
                         </span>
                     )}
-                    {course.rating.overall >= 4.5 && (
+                    {rating >= 4.5 && (
                         <span className="bg-navy text-white text-[10px] uppercase tracking-[0.2em] px-3 py-1 rounded-sm flex items-center gap-1">
                             <Trophy size={10} className="text-sand" />
                             Top Rated
@@ -77,10 +114,10 @@ export default function GolfCourseCard({ course, showPrice = true }: GolfCourseC
                 </div>
 
                 {/* Rating */}
-                <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-sm flex items-center gap-1">
+                <div className={`absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-sm flex items-center gap-1 transition-opacity duration-500 ${isLoading ? 'opacity-70' : 'opacity-100'}`}>
                     <Star size={12} className="fill-sand text-sand" />
-                    <span className="text-xs font-medium text-navy">{course.rating.overall}</span>
-                    <span className="text-[10px] text-gray-500">({course.rating.totalReviews})</span>
+                    <span className="text-xs font-medium text-navy">{rating.toFixed(1)}</span>
+                    <span className="text-[10px] text-gray-500">({totalReviews})</span>
                 </div>
             </div>
 
@@ -122,7 +159,11 @@ export default function GolfCourseCard({ course, showPrice = true }: GolfCourseC
                     <div className="mt-4 flex items-end justify-between">
                         <div>
                             <span className="text-xs text-gray-400 block">Green fee från</span>
-                            <span className="golf-price-highlight">{formatPrice(currentPrice)}</span>
+                            {currentPrice > 0 ? (
+                                <span className="golf-price-highlight">{formatPrice(currentPrice)}</span>
+                            ) : (
+                                <span className="text-sm text-charcoal font-medium">Se priser</span>
+                            )}
                         </div>
                         <div className="text-xs font-medium text-navy uppercase tracking-widest group-hover:translate-x-1 transition-transform">
                             Boka tid →

@@ -365,6 +365,9 @@ export interface GolfCourse {
         sunday?: string;
     };
 
+    // Google Places integration
+    googlePlaceId?: string;
+
     // Allow any additional fields from Perplexity
     [key: string]: unknown;
 }

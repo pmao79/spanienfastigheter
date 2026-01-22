@@ -9,31 +9,111 @@
   "region": "costa-blanca",
   "subRegion": "Mutxamel",
   "province": "Alicante",
-  "address": { "street": "C/ Verspre 6 bis urb Bonalba", "postalCode": "03110", "city": "Mutxamel", "country": "ES" },
-  "coordinates": { "lat": 38.35, "lng": -0.47 },
+  "address": {
+    "street": "Carrer del Vespre 6 bis",
+    "postalCode": "03110",
+    "city": "Mutxamel",
+    "country": "ES"
+  },
+  "coordinates": {
+    "lat": 38.4430355,
+    "lng": -0.4323317
+  },
   "courseInfo": {
     "holes": 18,
     "par": 72,
-    "length": { "meters": 6096, "yards": 6667 },
+    "length": {
+      "meters": 6096,
+      "yards": 6667
+    },
     "architect": "D. Ramón Espinosa",
     "openedYear": 2002
   },
-  "difficulty": { "level": "medium", "description": "Medelsvår bana med sjöar på 7 hål, strategiska bunkrar och undulerade fairways som utmanar alla nivåer." },
+  "difficulty": {
+    "level": "medium",
+    "description": "Medelsvår bana med sjöar på 7 hål, strategiska bunkrar och undulerade fairways som utmanar alla nivåer."
+  },
   "pricing": {
     "greenFee": {
-      "lowSeason": { "weekday": { "min": 0, "max": 0 }, "weekend": { "min": 0, "max": 0 } },
-      "highSeason": { "weekday": { "min": 0, "max": 0 }, "weekend": { "min": 0, "max": 0 } }
+      "highSeason": {
+        "18holes": {
+          "weekday": 109,
+          "weekend": 109
+        },
+        "9holes": {
+          "weekday": 58,
+          "weekend": 58
+        }
+      },
+      "lowSeason": {
+        "18holes": {
+          "weekday": 77,
+          "weekend": 77
+        },
+        "9holes": {
+          "weekday": 45,
+          "weekend": 45
+        }
+      }
     },
-    "currency": "EUR"
+    "currency": "EUR",
+    "priceSource": "https://golfbonalba.com/en/rates",
+    "lastUpdated": "2026-01-21T21:04:48.835Z",
+    "extras": {
+      "buggy": 25,
+      "clubRental": 35,
+      "trolley": 5,
+      "electricTrolley": 12,
+      "rangeBalls": 5,
+      "rangeBallsIncluded": false
+    }
   },
   "facilities": {
-    "course": { "drivingRange": true, "puttingGreen": true, "chippingGreen": true, "practiceBunker": true },
-    "clubhouse": { "restaurant": true, "proshop": true, "locker": true, "bar": true, "terrace": true, "shower": true },
-    "services": { "golfSchool": true, "proAvailable": true, "clubFitting": false, "clubRepair": false, "caddie": false },
-    "other": { "spa": true, "pool": true, "gym": false, "tennis": false, "padel": false, "hotel": true }
+    "course": {
+      "drivingRange": true,
+      "puttingGreen": true,
+      "chippingGreen": true,
+      "practiceBunker": true
+    },
+    "clubhouse": {
+      "restaurant": true,
+      "proshop": true,
+      "locker": true,
+      "bar": true,
+      "terrace": true,
+      "shower": true
+    },
+    "services": {
+      "golfSchool": true,
+      "proAvailable": true,
+      "clubFitting": false,
+      "clubRepair": false,
+      "caddie": false
+    },
+    "other": {
+      "spa": true,
+      "pool": true,
+      "gym": false,
+      "tennis": false,
+      "padel": false,
+      "hotel": true
+    }
   },
-  "contact": { "phone": "+34 965 955 955", "email": "info@bonalbagolf.com", "website": "www.bonalbagolf.com" },
-  "rating": { "overall": 4.2, "totalReviews": 150 },
+  "contact": {
+    "phone": "+34 965 955 955",
+    "email": "info@golfbonalba.com",
+    "website": "https://golfbonalba.com/en"
+  },
+  "rating": {
+    "overall": 4.2,
+    "totalReviews": 1778
+  },
   "holes": [],
-  "signatureHoles": [{ "number": 1, "description": "Första hålet introducerar banans karaktär med sjöar och bunkrar i vacker medelhavsmiljö." }]
+  "signatureHoles": [
+    {
+      "number": 1,
+      "description": "Första hålet introducerar banans karaktär med sjöar och bunkrar i vacker medelhavsmiljö."
+    }
+  ],
+  "googlePlaceId": "ChIJmXlGR4o6Yg0RrjhxKIV0jhI"
 }

@@ -1,8 +1,8 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import mapboxgl from 'mapbox-gl';
-import 'mapbox-gl/dist/mapbox-gl.css';
+import { GoogleMap, useLoadScript, Marker, Libraries } from '@react-google-maps/api';
+
+const libraries: Libraries = ['places'];
 
 interface GolfCourseMapProps {
     coordinates: {
@@ -14,46 +14,12 @@ interface GolfCourseMapProps {
 }
 
 export default function GolfCourseMap({ coordinates, courseName, className = '' }: GolfCourseMapProps) {
-    const mapContainerRef = useRef<HTMLDivElement>(null);
-    const mapRef = useRef<mapboxgl.Map | null>(null);
+    const { isLoaded } = useLoadScript({
+        googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || '',
+        libraries,
+    });
 
-    // Check if coordinates are valid (not 0,0)
     const hasValidCoordinates = coordinates.lat !== 0 && coordinates.lng !== 0;
-
-    useEffect(() => {
-        if (!mapContainerRef.current || !hasValidCoordinates) return;
-
-        const token = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
-        if (!token) {
-            console.error('Mapbox token missing');
-            return;
-        }
-
-        mapboxgl.accessToken = token;
-
-        mapRef.current = new mapboxgl.Map({
-            container: mapContainerRef.current,
-            style: 'mapbox://styles/mapbox/satellite-streets-v12',
-            center: [coordinates.lng, coordinates.lat],
-            zoom: 14,
-            attributionControl: false
-        });
-
-        // Add navigation controls
-        mapRef.current.addControl(new mapboxgl.NavigationControl(), 'top-right');
-
-        // Add marker for golf course
-        new mapboxgl.Marker({ color: '#1B365D' })
-            .setLngLat([coordinates.lng, coordinates.lat])
-            .setPopup(new mapboxgl.Popup().setHTML(`<strong>${courseName}</strong>`))
-            .addTo(mapRef.current);
-
-        return () => {
-            if (mapRef.current) {
-                mapRef.current.remove();
-            }
-        };
-    }, [coordinates, courseName, hasValidCoordinates]);
 
     if (!hasValidCoordinates) {
         return (
@@ -69,11 +35,33 @@ export default function GolfCourseMap({ coordinates, courseName, className = '' 
         );
     }
 
+    if (!isLoaded) {
+        return (
+            <div className={`bg-gray-100 rounded-sm flex items-center justify-center ${className}`} style={{ minHeight: '300px' }}>
+                <p className="text-sm text-gray-500">Laddar karta...</p>
+            </div>
+        );
+    }
+
     return (
-        <div
-            ref={mapContainerRef}
-            className={`rounded-sm overflow-hidden ${className}`}
-            style={{ minHeight: '300px' }}
-        />
+        <div className={`rounded-sm overflow-hidden ${className}`}>
+            <GoogleMap
+                mapContainerStyle={{ width: '100%', height: '300px' }}
+                center={coordinates}
+                zoom={15}
+                mapTypeId='satellite'
+                options={{
+                    disableDefaultUI: false,
+                    streetViewControl: false,
+                    mapTypeControl: false,
+                    fullscreenControl: true,
+                }}
+            >
+                <Marker
+                    position={coordinates}
+                    title={courseName}
+                />
+            </GoogleMap>
+        </div>
     );
 }

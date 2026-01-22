@@ -10,14 +10,14 @@
   "subRegion": "Rojales",
   "province": "Alicante",
   "address": {
-    "street": "Ciudad Quesada",
+    "street": "Calle Quesada Ballester 1",
     "postalCode": "03170",
-    "city": "Rojales",
+    "city": "Rojals",
     "country": "ES"
   },
   "coordinates": {
-    "lat": 38.079,
-    "lng": -0.702
+    "lat": 38.0846806,
+    "lng": -0.7098799
   },
   "courseInfo": {
     "holes": 18,
@@ -35,28 +35,37 @@
   },
   "pricing": {
     "greenFee": {
-      "lowSeason": {
-        "weekday": {
-          "min": 0,
-          "max": 0
-        },
-        "weekend": {
-          "min": 0,
-          "max": 0
-        }
-      },
       "highSeason": {
         "weekday": {
-          "min": 0,
-          "max": 0
+          "min": 87,
+          "max": 87
         },
         "weekend": {
-          "min": 0,
-          "max": 0
+          "min": 87,
+          "max": 87
+        }
+      },
+      "lowSeason": {
+        "weekday": {
+          "min": 80,
+          "max": 80
+        },
+        "weekend": {
+          "min": 80,
+          "max": 80
         }
       }
     },
-    "currency": "EUR"
+    "currency": "EUR",
+    "priceSource": "https://www.lamarquesagolf.es/en/golf-rates/",
+    "lastUpdated": "2026-01-21T21:04:48.839Z",
+    "extras": {
+      "buggy": 37,
+      "clubRental": 38,
+      "trolley": 8,
+      "rangeBalls": 5,
+      "rangeBallsIncluded": false
+    }
   },
   "facilities": {
     "course": {
@@ -95,8 +104,8 @@
     "website": "www.lamarquesagolf.es"
   },
   "rating": {
-    "overall": 4.0,
-    "totalReviews": 100
+    "overall": 4,
+    "totalReviews": 390
   },
   "holes": [],
   "signatureHoles": [
@@ -104,5 +113,6 @@
       "number": 17,
       "description": "Hål 17 liknar Sawgrass ikoniska 17:e med vattenhinder som kräver perfekt precision."
     }
-  ]
+  ],
+  "googlePlaceId": "ChIJw36ODueuYw0RUdYIxgb2WS8"
 }

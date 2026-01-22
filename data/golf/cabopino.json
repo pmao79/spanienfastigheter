@@ -10,14 +10,14 @@
   "subRegion": "Marbella",
   "province": "Málaga",
   "address": {
-    "street": "Cabopino",
-    "postalCode": "",
+    "street": "Urbanización Artola Baja s/n",
+    "postalCode": "29604",
     "city": "Marbella",
     "country": "ES"
   },
   "coordinates": {
-    "lat": 36.515,
-    "lng": -4.82
+    "lat": 36.4939952,
+    "lng": -4.7403275
   },
   "courseInfo": {
     "holes": 18,
@@ -35,28 +35,37 @@
   },
   "pricing": {
     "greenFee": {
-      "lowSeason": {
-        "weekday": {
-          "min": 55,
-          "max": 55
-        },
-        "weekend": {
-          "min": 55,
-          "max": 55
-        }
-      },
       "highSeason": {
         "weekday": {
-          "min": 75,
-          "max": 75
+          "min": 98,
+          "max": 98
         },
         "weekend": {
-          "min": 75,
-          "max": 75
+          "min": 98,
+          "max": 98
+        }
+      },
+      "lowSeason": {
+        "weekday": {
+          "min": 62,
+          "max": 62
+        },
+        "weekend": {
+          "min": 62,
+          "max": 62
         }
       }
     },
-    "currency": "EUR"
+    "currency": "EUR",
+    "priceSource": "https://www.cabopinogolfmarbella.com/en/rates/",
+    "lastUpdated": "2026-01-21T21:04:48.846Z",
+    "extras": {
+      "buggy": 40,
+      "clubRental": 25,
+      "trolley": 6,
+      "rangeBalls": 5,
+      "rangeBallsIncluded": false
+    }
   },
   "facilities": {
     "course": {
@@ -95,8 +104,8 @@
     "website": "cabopinogolfmarbella.com"
   },
   "rating": {
-    "overall": 0,
-    "totalReviews": 0
+    "overall": 4.3,
+    "totalReviews": 835
   },
   "holes": [],
   "signatureHoles": [
@@ -108,5 +117,6 @@
       "number": 10,
       "description": "Fantastisk utsikt över back nine och Medelhavet från tee-boxen."
     }
-  ]
+  ],
+  "googlePlaceId": "ChIJU0Abt2Ygcw0Rrf767Mq844c"
 }

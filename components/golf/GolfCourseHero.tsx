@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { GolfCourse } from '@/types/golf';
 import { MapPin, Star, Trophy, Calendar, Ruler, Flag } from 'lucide-react';
@@ -9,6 +10,40 @@ interface GolfCourseHeroProps {
 }
 
 export default function GolfCourseHero({ course }: GolfCourseHeroProps) {
+    const [rating, setRating] = useState(course.rating.overall);
+    const [totalReviews, setTotalReviews] = useState(course.rating.totalReviews);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchRating = async () => {
+            try {
+                const params = new URLSearchParams();
+                if (course.googlePlaceId) {
+                    params.set('placeId', course.googlePlaceId);
+                } else {
+                    let query = `${course.name} ${course.subRegion} Spain`;
+                    if (!course.name.toLowerCase().includes('golf')) {
+                        query = `${course.name} golf ${course.subRegion} Spain`;
+                    }
+                    params.set('query', query);
+                }
+
+                const response = await fetch(`/api/golf/reviews?${params.toString()}`);
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.rating) setRating(data.rating);
+                    if (data.totalReviews) setTotalReviews(data.totalReviews);
+                }
+            } catch (error) {
+                console.error('Failed to fetch rating:', error);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        fetchRating();
+    }, [course]);
+
     return (
         <section className="relative h-[60vh] min-h-[500px] w-full bg-navy">
             {/* Background Image */}
@@ -36,7 +71,7 @@ export default function GolfCourseHero({ course }: GolfCourseHeroProps) {
                             <span className="bg-sand text-navy text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-sm">
                                 {course.region === 'costa-blanca' ? 'Costa Blanca' : 'Costa del Sol'}
                             </span>
-                            {course.rating.overall >= 4.5 && (
+                            {rating >= 4.5 && (
                                 <span className="bg-white/10 backdrop-blur-md text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-sm flex items-center gap-2">
                                     <Trophy size={14} className="text-sand" />
                                     Top Rated
@@ -55,21 +90,21 @@ export default function GolfCourseHero({ course }: GolfCourseHeroProps) {
                                 <MapPin size={18} className="text-sand" />
                                 <span className="text-lg">{course.subRegion}, {course.province}</span>
                             </div>
-                            <div className="flex items-center gap-2">
+                            <div className={`flex items-center gap-2 transition-opacity duration-500 ${isLoading ? 'opacity-50' : 'opacity-100'}`}>
                                 <div className="flex">
                                     {[...Array(5)].map((_, i) => (
                                         <Star
                                             key={i}
                                             size={18}
-                                            className={`${i < Math.floor(course.rating.overall)
-                                                    ? 'fill-sand text-sand'
-                                                    : 'text-gray-500'
+                                            className={`${i < Math.floor(rating)
+                                                ? 'fill-sand text-sand'
+                                                : 'text-gray-500'
                                                 }`}
                                         />
                                     ))}
                                 </div>
-                                <span className="font-bold">{course.rating.overall}</span>
-                                <span className="text-white/60">({course.rating.totalReviews} recensioner)</span>
+                                <span className="font-bold">{rating.toFixed(1)}</span>
+                                <span className="text-white/60">({totalReviews} recensioner)</span>
                             </div>
                         </div>
 

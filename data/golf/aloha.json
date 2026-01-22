@@ -9,31 +9,101 @@
   "region": "costa-del-sol",
   "subRegion": "Nueva Andalucía",
   "province": "Málaga",
-  "address": { "street": "Urb. Aloha Golf, s/n", "postalCode": "29660", "city": "Marbella", "country": "ES" },
-  "coordinates": { "lat": 36.508, "lng": -4.926 },
+  "address": {
+    "street": "Urb. Aloha Golf, s/n",
+    "postalCode": "29660",
+    "city": "Marbella",
+    "country": "ES"
+  },
+  "coordinates": {
+    "lat": 36.508,
+    "lng": -4.926
+  },
   "courseInfo": {
     "holes": 18,
     "par": 72,
-    "length": { "meters": 6246, "yards": 6830 },
+    "length": {
+      "meters": 6246,
+      "yards": 6830
+    },
     "architect": "Javier Arana",
     "openedYear": 1975
   },
-  "difficulty": { "level": "medium", "description": "Banan kräver precision på smala fairways med träd och sjöar, plus snabba greener som testar järnspel och putting." },
+  "difficulty": {
+    "level": "medium",
+    "description": "Banan kräver precision på smala fairways med träd och sjöar, plus snabba greener som testar järnspel och putting."
+  },
   "pricing": {
     "greenFee": {
-      "lowSeason": { "weekday": { "min": 0, "max": 0 }, "weekend": { "min": 0, "max": 0 } },
-      "highSeason": { "weekday": { "min": 0, "max": 0 }, "weekend": { "min": 0, "max": 0 } }
+      "lowSeason": {
+        "weekday": {
+          "min": 0,
+          "max": 0
+        },
+        "weekend": {
+          "min": 0,
+          "max": 0
+        }
+      },
+      "highSeason": {
+        "weekday": {
+          "min": 0,
+          "max": 0
+        },
+        "weekend": {
+          "min": 0,
+          "max": 0
+        }
+      }
     },
     "currency": "EUR"
   },
   "facilities": {
-    "course": { "drivingRange": true, "puttingGreen": true, "chippingGreen": true, "practiceBunker": true },
-    "clubhouse": { "restaurant": true, "proshop": true, "locker": true, "bar": true, "terrace": true, "shower": true },
-    "services": { "golfSchool": true, "proAvailable": true, "clubFitting": false, "clubRepair": false, "caddie": true },
-    "other": { "spa": false, "pool": true, "gym": true, "tennis": false, "padel": false, "hotel": false }
+    "course": {
+      "drivingRange": true,
+      "puttingGreen": true,
+      "chippingGreen": true,
+      "practiceBunker": true
+    },
+    "clubhouse": {
+      "restaurant": true,
+      "proshop": true,
+      "locker": true,
+      "bar": true,
+      "terrace": true,
+      "shower": true
+    },
+    "services": {
+      "golfSchool": true,
+      "proAvailable": true,
+      "clubFitting": false,
+      "clubRepair": false,
+      "caddie": true
+    },
+    "other": {
+      "spa": false,
+      "pool": true,
+      "gym": true,
+      "tennis": false,
+      "padel": false,
+      "hotel": false
+    }
   },
-  "contact": { "phone": "+34 952 90 70 85", "email": "reservas@clubdegolfaloha.com", "website": "www.clubdegolfaloha.com" },
-  "rating": { "overall": 4.5, "totalReviews": 150 },
+  "contact": {
+    "phone": "+34 952 90 70 85",
+    "email": "reservas@clubdegolfaloha.com",
+    "website": "www.clubdegolfaloha.com"
+  },
+  "rating": {
+    "overall": 4.6,
+    "totalReviews": 589
+  },
   "holes": [],
-  "signatureHoles": [{ "number": 1, "description": "Hål 1 vid poolen med spektakulär start och utsikt över banan." }]
+  "signatureHoles": [
+    {
+      "number": 1,
+      "description": "Hål 1 vid poolen med spektakulär start och utsikt över banan."
+    }
+  ],
+  "googlePlaceId": "ChIJjxOV2h7Wcg0RO6U_QwWDNCw"
 }

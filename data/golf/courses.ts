@@ -13,14 +13,14 @@ export const GOLF_COURSES: GolfCourse[] = [
     "subRegion": "Monforte del Cid",
     "province": "Alicante",
     "address": {
-      "street": "Avenida del Mediterráneo, 52 URB ALENDA GOLF",
+      "street": "Avenida del Mediterráneo 52",
       "postalCode": "03679",
       "city": "Monforte del Cid",
       "country": "ES"
     },
     "coordinates": {
-      "lat": 38.35959,
-      "lng": -0.67198
+      "lat": 38.359500000000004,
+      "lng": -0.67238
     },
     "courseInfo": {
       "holes": 18,
@@ -38,28 +38,36 @@ export const GOLF_COURSES: GolfCourse[] = [
     },
     "pricing": {
       "greenFee": {
-        "lowSeason": {
-          "weekday": {
-            "min": 0,
-            "max": 0
-          },
-          "weekend": {
-            "min": 0,
-            "max": 0
-          }
-        },
         "highSeason": {
-          "weekday": {
-            "min": 0,
-            "max": 0
-          },
-          "weekend": {
-            "min": 0,
-            "max": 0
-          }
+          "18holes": 102,
+          "9holes": 53
+        },
+        "lowSeason": {
+          "18holes": 95,
+          "9holes": 49
+        },
+        "currentPeriod": {
+          "date": "2026-01-26 to 2026-05-31",
+          "18holes": 102,
+          "9holes": 0,
+          "twilight": "consult caddymaster"
         }
       },
       "currency": "EUR",
+      "priceSource": "https://www.alendagolf.com/en/rates-and-offers/ and https://www.golf-service.com/book/tee-times/select-tee-time.asp?corid=97",
+      "lastUpdated": "2026-01-21T21:04:48.833Z",
+      "extras": {
+        "buggy": 40,
+        "clubRental": 30,
+        "trolley": 5,
+        "rangeBalls": 5,
+        "rangeBallsIncluded": false,
+        "buggy_18holes": 40,
+        "buggy_9holes": 20,
+        "electricTrolley_18holes": 10,
+        "electricTrolley_9holes": 8,
+        "juniorGreenFee_18holes": 51
+      },
       "seasonDates": {
         "highSeason": {
           "from": "01-10",
@@ -69,14 +77,6 @@ export const GOLF_COURSES: GolfCourse[] = [
           "from": "01-06",
           "to": "30-09"
         }
-      },
-      "lastUpdated": "2026-01-21T20:35:55.421Z",
-      "extras": {
-        "buggy": 40,
-        "clubRental": 30,
-        "trolley": 5,
-        "rangeBalls": 4,
-        "rangeBallsIncluded": false
       }
     },
     "facilities": {
@@ -117,8 +117,8 @@ export const GOLF_COURSES: GolfCourse[] = [
       "phoneInternational": "+34 965 620 521"
     },
     "rating": {
-      "overall": 4,
-      "totalReviews": 100
+      "overall": 4.3,
+      "totalReviews": 1171
     },
     "holes": [],
     "signatureHoles": [
@@ -127,6 +127,7 @@ export const GOLF_COURSES: GolfCourse[] = [
         "description": "Knepiga 16:e hålet kräver stor koncentration med vatten och sluttande green."
       }
     ],
+    "googlePlaceId": "ChIJJdfZXNPLYw0RIDbQ1G-vAg8",
     "media": {
       "heroImage": "/images/golf/alenda-hero.png",
       "gallery": []
@@ -201,7 +202,7 @@ export const GOLF_COURSES: GolfCourse[] = [
           "to": "30-09"
         }
       },
-      "lastUpdated": "2026-01-21T20:35:55.422Z",
+      "lastUpdated": "2026-01-22T00:55:32.668Z",
       "extras": {
         "buggy": 40,
         "clubRental": 30,
@@ -248,8 +249,8 @@ export const GOLF_COURSES: GolfCourse[] = [
       "phoneInternational": "+34 952 90 70 85"
     },
     "rating": {
-      "overall": 4.5,
-      "totalReviews": 150
+      "overall": 4.6,
+      "totalReviews": 589
     },
     "holes": [],
     "signatureHoles": [
@@ -258,6 +259,7 @@ export const GOLF_COURSES: GolfCourse[] = [
         "description": "Hål 1 vid poolen med spektakulär start och utsikt över banan."
       }
     ],
+    "googlePlaceId": "ChIJjxOV2h7Wcg0RO6U_QwWDNCw",
     "media": {
       "heroImage": "/images/golf/aloha-hero.png",
       "gallery": []
@@ -275,14 +277,14 @@ export const GOLF_COURSES: GolfCourse[] = [
     "subRegion": "Mutxamel",
     "province": "Alicante",
     "address": {
-      "street": "C/ Verspre 6 bis urb Bonalba",
+      "street": "Carrer del Vespre 6 bis",
       "postalCode": "03110",
       "city": "Mutxamel",
       "country": "ES"
     },
     "coordinates": {
-      "lat": 38.35,
-      "lng": -0.47
+      "lat": 38.4430355,
+      "lng": -0.4323317
     },
     "courseInfo": {
       "holes": 18,
@@ -300,28 +302,38 @@ export const GOLF_COURSES: GolfCourse[] = [
     },
     "pricing": {
       "greenFee": {
-        "lowSeason": {
-          "weekday": {
-            "min": 0,
-            "max": 0
+        "highSeason": {
+          "18holes": {
+            "weekday": 109,
+            "weekend": 109
           },
-          "weekend": {
-            "min": 0,
-            "max": 0
+          "9holes": {
+            "weekday": 58,
+            "weekend": 58
           }
         },
-        "highSeason": {
-          "weekday": {
-            "min": 0,
-            "max": 0
+        "lowSeason": {
+          "18holes": {
+            "weekday": 77,
+            "weekend": 77
           },
-          "weekend": {
-            "min": 0,
-            "max": 0
+          "9holes": {
+            "weekday": 45,
+            "weekend": 45
           }
         }
       },
       "currency": "EUR",
+      "priceSource": "https://golfbonalba.com/en/rates",
+      "lastUpdated": "2026-01-21T21:04:48.835Z",
+      "extras": {
+        "buggy": 25,
+        "clubRental": 35,
+        "trolley": 5,
+        "rangeBalls": 5,
+        "rangeBallsIncluded": false,
+        "electricTrolley": 12
+      },
       "seasonDates": {
         "highSeason": {
           "from": "01-10",
@@ -331,14 +343,6 @@ export const GOLF_COURSES: GolfCourse[] = [
           "from": "01-06",
           "to": "30-09"
         }
-      },
-      "lastUpdated": "2026-01-21T20:35:55.422Z",
-      "extras": {
-        "buggy": 40,
-        "clubRental": 30,
-        "trolley": 5,
-        "rangeBalls": 4,
-        "rangeBallsIncluded": false
       }
     },
     "facilities": {
@@ -374,13 +378,13 @@ export const GOLF_COURSES: GolfCourse[] = [
     },
     "contact": {
       "phone": "+34 965 955 955",
-      "email": "info@bonalbagolf.com",
-      "website": "www.bonalbagolf.com",
+      "email": "info@golfbonalba.com",
+      "website": "https://golfbonalba.com/en",
       "phoneInternational": "+34 965 955 955"
     },
     "rating": {
       "overall": 4.2,
-      "totalReviews": 150
+      "totalReviews": 1778
     },
     "holes": [],
     "signatureHoles": [
@@ -389,6 +393,7 @@ export const GOLF_COURSES: GolfCourse[] = [
         "description": "Första hålet introducerar banans karaktär med sjöar och bunkrar i vacker medelhavsmiljö."
       }
     ],
+    "googlePlaceId": "ChIJmXlGR4o6Yg0RrjhxKIV0jhI",
     "media": {
       "heroImage": "/images/golf/bonalba-hero.png",
       "gallery": []
@@ -406,14 +411,14 @@ export const GOLF_COURSES: GolfCourse[] = [
     "subRegion": "Marbella",
     "province": "Málaga",
     "address": {
-      "street": "Cabopino",
-      "postalCode": "",
+      "street": "Urbanización Artola Baja s/n",
+      "postalCode": "29604",
       "city": "Marbella",
       "country": "ES"
     },
     "coordinates": {
-      "lat": 36.515,
-      "lng": -4.82
+      "lat": 36.4939952,
+      "lng": -4.7403275
     },
     "courseInfo": {
       "holes": 18,
@@ -431,28 +436,37 @@ export const GOLF_COURSES: GolfCourse[] = [
     },
     "pricing": {
       "greenFee": {
-        "lowSeason": {
-          "weekday": {
-            "min": 55,
-            "max": 55
-          },
-          "weekend": {
-            "min": 55,
-            "max": 55
-          }
-        },
         "highSeason": {
           "weekday": {
-            "min": 75,
-            "max": 75
+            "min": 98,
+            "max": 98
           },
           "weekend": {
-            "min": 75,
-            "max": 75
+            "min": 98,
+            "max": 98
+          }
+        },
+        "lowSeason": {
+          "weekday": {
+            "min": 62,
+            "max": 62
+          },
+          "weekend": {
+            "min": 62,
+            "max": 62
           }
         }
       },
       "currency": "EUR",
+      "priceSource": "https://www.cabopinogolfmarbella.com/en/rates/",
+      "lastUpdated": "2026-01-21T21:04:48.846Z",
+      "extras": {
+        "buggy": 40,
+        "clubRental": 25,
+        "trolley": 6,
+        "rangeBalls": 5,
+        "rangeBallsIncluded": false
+      },
       "seasonDates": {
         "highSeason": {
           "from": "01-10",
@@ -462,14 +476,6 @@ export const GOLF_COURSES: GolfCourse[] = [
           "from": "01-06",
           "to": "30-09"
         }
-      },
-      "lastUpdated": "2026-01-21T20:35:55.422Z",
-      "extras": {
-        "buggy": 40,
-        "clubRental": 30,
-        "trolley": 5,
-        "rangeBalls": 4,
-        "rangeBallsIncluded": false
       }
     },
     "facilities": {
@@ -510,8 +516,8 @@ export const GOLF_COURSES: GolfCourse[] = [
       "phoneInternational": ""
     },
     "rating": {
-      "overall": 0,
-      "totalReviews": 0
+      "overall": 4.3,
+      "totalReviews": 835
     },
     "holes": [],
     "signatureHoles": [
@@ -524,6 +530,7 @@ export const GOLF_COURSES: GolfCourse[] = [
         "description": "Fantastisk utsikt över back nine och Medelhavet från tee-boxen."
       }
     ],
+    "googlePlaceId": "ChIJU0Abt2Ygcw0Rrf767Mq844c",
     "media": {
       "heroImage": "/images/golf/cabopino-hero.png",
       "gallery": []
@@ -541,14 +548,14 @@ export const GOLF_COURSES: GolfCourse[] = [
     "subRegion": "Orihuela Costa",
     "province": "Alicante",
     "address": {
-      "street": "Urb. Campoamor",
-      "postalCode": "03178",
-      "city": "Orihuela Costa",
+      "street": "Avenida Conde de Barcelona 12",
+      "postalCode": "03189",
+      "city": "Dehesa de Campoamor",
       "country": "ES"
     },
     "coordinates": {
-      "lat": 38.032,
-      "lng": -0.85
+      "lat": 37.9283284,
+      "lng": -0.7790005
     },
     "courseInfo": {
       "holes": 18,
@@ -566,28 +573,37 @@ export const GOLF_COURSES: GolfCourse[] = [
     },
     "pricing": {
       "greenFee": {
-        "lowSeason": {
-          "weekday": {
-            "min": 0,
-            "max": 0
-          },
-          "weekend": {
-            "min": 0,
-            "max": 0
-          }
-        },
         "highSeason": {
           "weekday": {
-            "min": 0,
-            "max": 0
+            "min": 81,
+            "max": 192
           },
           "weekend": {
-            "min": 0,
-            "max": 0
+            "min": 81,
+            "max": 192
+          }
+        },
+        "lowSeason": {
+          "weekday": {
+            "min": 50,
+            "max": 170
+          },
+          "weekend": {
+            "min": 50,
+            "max": 170
           }
         }
       },
       "currency": "EUR",
+      "priceSource": "Multiple sources: 1golf.eu, costalessgolf.com, sunnyalgarvetravel.com, golf-service.com",
+      "lastUpdated": "2026-01-21T21:04:48.836Z",
+      "extras": {
+        "buggy": 35,
+        "clubRental": 35,
+        "trolley": null,
+        "rangeBalls": 5,
+        "rangeBallsIncluded": false
+      },
       "seasonDates": {
         "highSeason": {
           "from": "01-10",
@@ -597,14 +613,6 @@ export const GOLF_COURSES: GolfCourse[] = [
           "from": "01-06",
           "to": "30-09"
         }
-      },
-      "lastUpdated": "2026-01-21T20:35:55.423Z",
-      "extras": {
-        "buggy": 40,
-        "clubRental": 30,
-        "trolley": 5,
-        "rangeBalls": 4,
-        "rangeBallsIncluded": false
       }
     },
     "facilities": {
@@ -640,13 +648,13 @@ export const GOLF_COURSES: GolfCourse[] = [
     },
     "contact": {
       "phone": "+34 965 32 21 51",
-      "email": "info@campoamorgolf.com",
-      "website": "www.campoamorgolf.com",
+      "email": "info@lomasdecampoamor.es",
+      "website": "https://lomasdecampoamor.es/en/golf-club",
       "phoneInternational": "+34 965 32 21 51"
     },
     "rating": {
-      "overall": 4,
-      "totalReviews": 100
+      "overall": 4.3,
+      "totalReviews": 1636
     },
     "holes": [],
     "signatureHoles": [
@@ -655,6 +663,7 @@ export const GOLF_COURSES: GolfCourse[] = [
         "description": "Första hålet inleder med utsikt över dalen och kräver rak drive för att undvika bunkrar."
       }
     ],
+    "googlePlaceId": "ChIJ28YQIPQIYw0RE5ryByXEh2I",
     "media": {
       "heroImage": "/images/golf/campoamor-hero.png",
       "gallery": []
@@ -672,14 +681,14 @@ export const GOLF_COURSES: GolfCourse[] = [
     "subRegion": "Alicante",
     "province": "Alicante",
     "address": {
-      "street": "",
-      "postalCode": "",
+      "street": "Antigua Carretera Alicante-Elche, Km 3",
+      "postalCode": "03114",
       "city": "Alicante",
       "country": "ES"
     },
     "coordinates": {
-      "lat": 38.08,
-      "lng": -0.62
+      "lat": 38.3096893,
+      "lng": -0.5401117
     },
     "courseInfo": {
       "holes": 18,
@@ -729,7 +738,7 @@ export const GOLF_COURSES: GolfCourse[] = [
           "to": "30-09"
         }
       },
-      "lastUpdated": "2026-01-21T20:35:55.423Z",
+      "lastUpdated": "2026-01-22T00:55:32.670Z",
       "extras": {
         "buggy": 40,
         "clubRental": 30,
@@ -772,15 +781,16 @@ export const GOLF_COURSES: GolfCourse[] = [
     "contact": {
       "phone": "",
       "email": "",
-      "website": "",
+      "website": "https://www.elplantio.com/index.php",
       "phoneInternational": ""
     },
     "rating": {
-      "overall": 0,
-      "totalReviews": 0
+      "overall": 4.2,
+      "totalReviews": 1966
     },
     "holes": [],
     "signatureHoles": [],
+    "googlePlaceId": "ChIJqR7ihQo1Yg0RMA0-XBghi40",
     "media": {
       "heroImage": "/images/golf/el-plantio-hero.png",
       "gallery": []
@@ -798,14 +808,14 @@ export const GOLF_COURSES: GolfCourse[] = [
     "subRegion": "Mijas",
     "province": "Málaga",
     "address": {
-      "street": "Calle Barrientos, Cala-Golf, 11",
+      "street": "Calle Mirador del Golf 1",
       "postalCode": "29649",
       "city": "Mijas",
       "country": "ES"
     },
     "coordinates": {
-      "lat": 36.59,
-      "lng": -4.64
+      "lat": 36.5420229,
+      "lng": -4.720009999999999
     },
     "courseInfo": {
       "holes": 18,
@@ -823,28 +833,37 @@ export const GOLF_COURSES: GolfCourse[] = [
     },
     "pricing": {
       "greenFee": {
-        "lowSeason": {
-          "weekday": {
-            "min": 0,
-            "max": 0
-          },
-          "weekend": {
-            "min": 0,
-            "max": 0
-          }
-        },
         "highSeason": {
           "weekday": {
-            "min": 0,
-            "max": 0
+            "min": 115,
+            "max": 126
           },
           "weekend": {
-            "min": 0,
-            "max": 0
+            "min": 115,
+            "max": 126
+          }
+        },
+        "lowSeason": {
+          "weekday": {
+            "min": 70,
+            "max": 70
+          },
+          "weekend": {
+            "min": 70,
+            "max": 70
           }
         }
       },
       "currency": "EUR",
+      "priceSource": "https://www.1golf.eu/club/la-cala-resort/ [1]",
+      "lastUpdated": "2026-01-21T21:04:48.847Z",
+      "extras": {
+        "buggy": 0,
+        "clubRental": 0,
+        "trolley": 0,
+        "rangeBalls": 5,
+        "rangeBallsIncluded": false
+      },
       "seasonDates": {
         "highSeason": {
           "from": "01-10",
@@ -854,14 +873,6 @@ export const GOLF_COURSES: GolfCourse[] = [
           "from": "01-06",
           "to": "30-09"
         }
-      },
-      "lastUpdated": "2026-01-21T20:35:55.423Z",
-      "extras": {
-        "buggy": 40,
-        "clubRental": 30,
-        "trolley": 5,
-        "rangeBalls": 4,
-        "rangeBallsIncluded": false
       }
     },
     "facilities": {
@@ -902,11 +913,12 @@ export const GOLF_COURSES: GolfCourse[] = [
       "phoneInternational": "0"
     },
     "rating": {
-      "overall": 0,
-      "totalReviews": 0
+      "overall": 4.8,
+      "totalReviews": 723
     },
     "holes": [],
     "signatureHoles": [],
+    "googlePlaceId": "ChIJefsHTifhcg0RIwL-MuMvVrQ",
     "media": {
       "heroImage": "/images/golf/la-cala-hero.png",
       "gallery": []
@@ -924,14 +936,14 @@ export const GOLF_COURSES: GolfCourse[] = [
     "subRegion": "Algorfa",
     "province": "Alicante",
     "address": {
-      "street": "La Finca Golf Resort",
+      "street": "Avda. Antonio Pedrera Soler",
       "postalCode": "03169",
       "city": "Algorfa",
       "country": "ES"
     },
     "coordinates": {
-      "lat": 38.0667,
-      "lng": -0.7833
+      "lat": 38.0584935,
+      "lng": -0.7972077999999999
     },
     "courseInfo": {
       "holes": 18,
@@ -949,28 +961,37 @@ export const GOLF_COURSES: GolfCourse[] = [
     },
     "pricing": {
       "greenFee": {
-        "lowSeason": {
-          "weekday": {
-            "min": 0,
-            "max": 0
-          },
-          "weekend": {
-            "min": 0,
-            "max": 0
-          }
-        },
         "highSeason": {
           "weekday": {
-            "min": 0,
-            "max": 0
+            "min": 140,
+            "max": 140
           },
           "weekend": {
-            "min": 0,
-            "max": 0
+            "min": 140,
+            "max": 140
+          }
+        },
+        "lowSeason": {
+          "weekday": {
+            "min": 90,
+            "max": 90
+          },
+          "weekend": {
+            "min": 90,
+            "max": 90
           }
         }
       },
       "currency": "EUR",
+      "priceSource": "https://golf.tgbspain.com/golf-course/la-finca-golf/ and https://inmoinvestments.com/news/4293/costa-blanca-golf-course-green-fees-and-prices/",
+      "lastUpdated": "2026-01-21T21:04:48.838Z",
+      "extras": {
+        "buggy": 46,
+        "clubRental": 45,
+        "trolley": 9,
+        "rangeBalls": 5,
+        "rangeBallsIncluded": false
+      },
       "seasonDates": {
         "highSeason": {
           "from": "01-10",
@@ -980,14 +1001,6 @@ export const GOLF_COURSES: GolfCourse[] = [
           "from": "01-06",
           "to": "30-09"
         }
-      },
-      "lastUpdated": "2026-01-21T20:35:55.423Z",
-      "extras": {
-        "buggy": 40,
-        "clubRental": 30,
-        "trolley": 5,
-        "rangeBalls": 4,
-        "rangeBallsIncluded": false
       }
     },
     "facilities": {
@@ -1028,8 +1041,8 @@ export const GOLF_COURSES: GolfCourse[] = [
       "phoneInternational": "+34 966 969 066"
     },
     "rating": {
-      "overall": 4.2,
-      "totalReviews": 500
+      "overall": 4.6,
+      "totalReviews": 303
     },
     "holes": [],
     "signatureHoles": [
@@ -1038,6 +1051,7 @@ export const GOLF_COURSES: GolfCourse[] = [
         "description": "Det ikoniska 10:e hålet passerar precis utanför hotellet och erbjuder dramatisk utsikt med strategiska utmaningar."
       }
     ],
+    "googlePlaceId": "ChIJHUvG19ulYw0RgZWBgHce7nM",
     "media": {
       "heroImage": "/images/golf/la-finca-hero.png",
       "gallery": []
@@ -1055,14 +1069,14 @@ export const GOLF_COURSES: GolfCourse[] = [
     "subRegion": "Rojales",
     "province": "Alicante",
     "address": {
-      "street": "Ciudad Quesada",
+      "street": "Calle Quesada Ballester 1",
       "postalCode": "03170",
-      "city": "Rojales",
+      "city": "Rojals",
       "country": "ES"
     },
     "coordinates": {
-      "lat": 38.079,
-      "lng": -0.702
+      "lat": 38.0846806,
+      "lng": -0.7098799
     },
     "courseInfo": {
       "holes": 18,
@@ -1080,28 +1094,37 @@ export const GOLF_COURSES: GolfCourse[] = [
     },
     "pricing": {
       "greenFee": {
-        "lowSeason": {
-          "weekday": {
-            "min": 0,
-            "max": 0
-          },
-          "weekend": {
-            "min": 0,
-            "max": 0
-          }
-        },
         "highSeason": {
           "weekday": {
-            "min": 0,
-            "max": 0
+            "min": 87,
+            "max": 87
           },
           "weekend": {
-            "min": 0,
-            "max": 0
+            "min": 87,
+            "max": 87
+          }
+        },
+        "lowSeason": {
+          "weekday": {
+            "min": 80,
+            "max": 80
+          },
+          "weekend": {
+            "min": 80,
+            "max": 80
           }
         }
       },
       "currency": "EUR",
+      "priceSource": "https://www.lamarquesagolf.es/en/golf-rates/",
+      "lastUpdated": "2026-01-21T21:04:48.839Z",
+      "extras": {
+        "buggy": 37,
+        "clubRental": 38,
+        "trolley": 8,
+        "rangeBalls": 5,
+        "rangeBallsIncluded": false
+      },
       "seasonDates": {
         "highSeason": {
           "from": "01-10",
@@ -1111,14 +1134,6 @@ export const GOLF_COURSES: GolfCourse[] = [
           "from": "01-06",
           "to": "30-09"
         }
-      },
-      "lastUpdated": "2026-01-21T20:35:55.423Z",
-      "extras": {
-        "buggy": 40,
-        "clubRental": 30,
-        "trolley": 5,
-        "rangeBalls": 4,
-        "rangeBallsIncluded": false
       }
     },
     "facilities": {
@@ -1160,7 +1175,7 @@ export const GOLF_COURSES: GolfCourse[] = [
     },
     "rating": {
       "overall": 4,
-      "totalReviews": 100
+      "totalReviews": 390
     },
     "holes": [],
     "signatureHoles": [
@@ -1169,6 +1184,7 @@ export const GOLF_COURSES: GolfCourse[] = [
         "description": "Hål 17 liknar Sawgrass ikoniska 17:e med vattenhinder som kräver perfekt precision."
       }
     ],
+    "googlePlaceId": "ChIJw36ODueuYw0RUdYIxgb2WS8",
     "media": {
       "heroImage": "/images/golf/la-marquesa-hero.png",
       "gallery": []
@@ -1186,14 +1202,14 @@ export const GOLF_COURSES: GolfCourse[] = [
     "subRegion": "Nueva Andalucía",
     "province": "Málaga",
     "address": {
-      "street": "Urb. La Quinta Avda. Tomas Pascual s/n",
-      "postalCode": "29660",
-      "city": "Marbella",
+      "street": "Avenida Tomás Pascual 22",
+      "postalCode": "29678",
+      "city": "Benahavís",
       "country": "ES"
     },
     "coordinates": {
-      "lat": 36.474,
-      "lng": -5.006
+      "lat": 36.512381,
+      "lng": -4.9947731
     },
     "courseInfo": {
       "holes": 27,
@@ -1211,28 +1227,37 @@ export const GOLF_COURSES: GolfCourse[] = [
     },
     "pricing": {
       "greenFee": {
-        "lowSeason": {
-          "weekday": {
-            "min": 0,
-            "max": 0
-          },
-          "weekend": {
-            "min": 0,
-            "max": 0
-          }
-        },
         "highSeason": {
           "weekday": {
-            "min": 0,
-            "max": 0
+            "min": 103,
+            "max": 103
           },
           "weekend": {
-            "min": 0,
-            "max": 0
+            "min": 103,
+            "max": 103
+          }
+        },
+        "lowSeason": {
+          "weekday": {
+            "min": 103,
+            "max": 103
+          },
+          "weekend": {
+            "min": 103,
+            "max": 103
           }
         }
       },
       "currency": "EUR",
+      "priceSource": "https://www.1golf.eu/en/club/la-quinta-golf-country-club/",
+      "lastUpdated": "2026-01-21T21:04:48.848Z",
+      "extras": {
+        "buggy": 24,
+        "clubRental": 33,
+        "trolley": 4,
+        "rangeBalls": 5,
+        "rangeBallsIncluded": false
+      },
       "seasonDates": {
         "highSeason": {
           "from": "01-10",
@@ -1242,14 +1267,6 @@ export const GOLF_COURSES: GolfCourse[] = [
           "from": "01-06",
           "to": "30-09"
         }
-      },
-      "lastUpdated": "2026-01-21T20:35:55.423Z",
-      "extras": {
-        "buggy": 40,
-        "clubRental": 30,
-        "trolley": 5,
-        "rangeBalls": 4,
-        "rangeBallsIncluded": false
       }
     },
     "facilities": {
@@ -1290,8 +1307,8 @@ export const GOLF_COURSES: GolfCourse[] = [
       "phoneInternational": "+34 952 76 20 00"
     },
     "rating": {
-      "overall": 4.2,
-      "totalReviews": 256
+      "overall": 4.4,
+      "totalReviews": 859
     },
     "holes": [],
     "signatureHoles": [
@@ -1300,6 +1317,7 @@ export const GOLF_COURSES: GolfCourse[] = [
         "description": "Öppningshål med bred fairway och inbjudande layout som sätter tonen för rundan med vacker utsikt."
       }
     ],
+    "googlePlaceId": "ChIJGS9jvevVcg0Rcm7DcguECpI",
     "media": {
       "heroImage": "/images/golf/la-quinta-hero.png",
       "gallery": []
@@ -1317,14 +1335,14 @@ export const GOLF_COURSES: GolfCourse[] = [
     "subRegion": "Dehesa de Campoamor",
     "province": "Alicante",
     "address": {
-      "street": "Las Colinas Golf & Country Club",
+      "street": "Avenida de las Colinas 2",
       "postalCode": "03189",
       "city": "Dehesa de Campoamor",
       "country": "ES"
     },
     "coordinates": {
-      "lat": 37.941,
-      "lng": -0.702
+      "lat": 37.9279868,
+      "lng": -0.8090537999999999
     },
     "courseInfo": {
       "holes": 18,
@@ -1342,28 +1360,37 @@ export const GOLF_COURSES: GolfCourse[] = [
     },
     "pricing": {
       "greenFee": {
-        "lowSeason": {
-          "weekday": {
-            "min": 0,
-            "max": 0
-          },
-          "weekend": {
-            "min": 0,
-            "max": 0
-          }
-        },
         "highSeason": {
           "weekday": {
-            "min": 0,
-            "max": 0
+            "min": 153,
+            "max": 153
           },
           "weekend": {
-            "min": 0,
-            "max": 0
+            "min": 153,
+            "max": 153
+          }
+        },
+        "lowSeason": {
+          "weekday": {
+            "min": 115,
+            "max": 115
+          },
+          "weekend": {
+            "min": 115,
+            "max": 115
           }
         }
       },
       "currency": "EUR",
+      "priceSource": "https://inmoinvestments.com/news/4293/costa-blanca-golf-course-green-fees-and-prices/",
+      "lastUpdated": "2026-01-21T21:04:48.840Z",
+      "extras": {
+        "buggy": 46,
+        "clubRental": 0,
+        "trolley": 5,
+        "rangeBalls": 5,
+        "rangeBallsIncluded": false
+      },
       "seasonDates": {
         "highSeason": {
           "from": "01-10",
@@ -1373,14 +1400,6 @@ export const GOLF_COURSES: GolfCourse[] = [
           "from": "01-06",
           "to": "30-09"
         }
-      },
-      "lastUpdated": "2026-01-21T20:35:55.423Z",
-      "extras": {
-        "buggy": 40,
-        "clubRental": 30,
-        "trolley": 5,
-        "rangeBalls": 4,
-        "rangeBallsIncluded": false
       }
     },
     "facilities": {
@@ -1421,8 +1440,8 @@ export const GOLF_COURSES: GolfCourse[] = [
       "phoneInternational": "+34 966 769 228"
     },
     "rating": {
-      "overall": 9.9,
-      "totalReviews": 19
+      "overall": 4.6,
+      "totalReviews": 1906
     },
     "holes": [],
     "signatureHoles": [
@@ -1431,6 +1450,7 @@ export const GOLF_COURSES: GolfCourse[] = [
         "description": "Fantastiskt par 5 med fairway avgränsad av bunkrar och stort vattenhinder, green väl skyddad av vatten och bunkrar."
       }
     ],
+    "googlePlaceId": "ChIJey_TTi8GYw0RG4CGIftW5S0",
     "media": {
       "heroImage": "/images/golf/las-colinas-hero.png",
       "gallery": []
@@ -1448,14 +1468,14 @@ export const GOLF_COURSES: GolfCourse[] = [
     "subRegion": "Alhaurín de la Torre",
     "province": "Málaga",
     "address": {
-      "street": "Urb. Lauro Golf Resort",
-      "postalCode": "29140",
+      "street": "Ctra. Málaga a Coín A-404",
+      "postalCode": "29130",
       "city": "Alhaurín de la Torre",
       "country": "ES"
     },
     "coordinates": {
-      "lat": 36.7925,
-      "lng": -4.6025
+      "lat": 36.651329,
+      "lng": -4.6307769
     },
     "courseInfo": {
       "holes": 27,
@@ -1473,28 +1493,48 @@ export const GOLF_COURSES: GolfCourse[] = [
     },
     "pricing": {
       "greenFee": {
-        "lowSeason": {
-          "weekday": {
-            "min": 0,
-            "max": 0
-          },
-          "weekend": {
-            "min": 0,
-            "max": 0
-          }
-        },
         "highSeason": {
           "weekday": {
-            "min": 0,
-            "max": 0
+            "min": 87.5,
+            "max": 99
           },
           "weekend": {
-            "min": 0,
-            "max": 0
+            "min": 96,
+            "max": 111
+          }
+        },
+        "midSeason": {
+          "weekday": {
+            "min": 77.5,
+            "max": 86
+          },
+          "weekend": {
+            "min": 82.5,
+            "max": 103
+          }
+        },
+        "lowSeason": {
+          "weekday": {
+            "min": 65,
+            "max": 73
+          },
+          "weekend": {
+            "min": 65,
+            "max": 73
           }
         }
       },
       "currency": "EUR",
+      "priceSource": "https://www.laurogolf.com/en/golf/prices-and-memberships/",
+      "lastUpdated": "2026-01-21T21:04:48.850Z",
+      "extras": {
+        "buggy": 45,
+        "clubRental": 30,
+        "trolley": 5,
+        "rangeBalls": 5,
+        "rangeBallsIncluded": false,
+        "twilightGreenFee": 55
+      },
       "seasonDates": {
         "highSeason": {
           "from": "01-10",
@@ -1504,14 +1544,6 @@ export const GOLF_COURSES: GolfCourse[] = [
           "from": "01-06",
           "to": "30-09"
         }
-      },
-      "lastUpdated": "2026-01-21T20:35:55.424Z",
-      "extras": {
-        "buggy": 40,
-        "clubRental": 30,
-        "trolley": 5,
-        "rangeBalls": 4,
-        "rangeBallsIncluded": false
       }
     },
     "facilities": {
@@ -1552,8 +1584,8 @@ export const GOLF_COURSES: GolfCourse[] = [
       "phoneInternational": "+34 952 412 767"
     },
     "rating": {
-      "overall": 4,
-      "totalReviews": 100
+      "overall": 4.4,
+      "totalReviews": 895
     },
     "holes": [],
     "signatureHoles": [
@@ -1562,6 +1594,7 @@ export const GOLF_COURSES: GolfCourse[] = [
         "description": "Första hålet på bergssidan med spektakulär utsikt över Guadalhorce-dalen och Medelhavet – kräver precision i den kuperade terrängen."
       }
     ],
+    "googlePlaceId": "ChIJZ-F8r8vlcg0RoRkJaTO-8KI",
     "media": {
       "heroImage": "/images/golf/lauro-hero.png",
       "gallery": []
@@ -1636,7 +1669,7 @@ export const GOLF_COURSES: GolfCourse[] = [
           "to": "30-09"
         }
       },
-      "lastUpdated": "2026-01-21T20:35:55.424Z",
+      "lastUpdated": "2026-01-22T00:55:32.671Z",
       "extras": {
         "buggy": 40,
         "clubRental": 30,
@@ -1683,8 +1716,8 @@ export const GOLF_COURSES: GolfCourse[] = [
       "phoneInternational": "+34 968 039 336"
     },
     "rating": {
-      "overall": 4.2,
-      "totalReviews": 150
+      "overall": 4.6,
+      "totalReviews": 1591
     },
     "holes": [],
     "signatureHoles": [
@@ -1693,6 +1726,7 @@ export const GOLF_COURSES: GolfCourse[] = [
         "description": "Ikoniskt hål helt omgivet av vatten, en av Costa Blancas mest fotograferade med dramatisk vy mot havet.[1]"
       }
     ],
+    "googlePlaceId": "ChIJD_Uf2KsOYw0R6pOGl0f-h0o",
     "media": {
       "heroImage": "/images/golf/lo-romero-hero.png",
       "gallery": []
@@ -1710,14 +1744,14 @@ export const GOLF_COURSES: GolfCourse[] = [
     "subRegion": "Nueva Andalucía",
     "province": "Málaga",
     "address": {
-      "street": "Plaza de Cibeles, S/N",
+      "street": "Plaza de Cibeles S/N",
       "postalCode": "29660",
       "city": "Marbella",
       "country": "ES"
     },
     "coordinates": {
-      "lat": 36.511,
-      "lng": -4.989
+      "lat": 36.5098252,
+      "lng": -4.9803127
     },
     "courseInfo": {
       "holes": 18,
@@ -1735,28 +1769,37 @@ export const GOLF_COURSES: GolfCourse[] = [
     },
     "pricing": {
       "greenFee": {
-        "lowSeason": {
-          "weekday": {
-            "min": 0,
-            "max": 0
-          },
-          "weekend": {
-            "min": 0,
-            "max": 0
-          }
-        },
         "highSeason": {
           "weekday": {
-            "min": 0,
-            "max": 0
+            "min": 150,
+            "max": 161
           },
           "weekend": {
-            "min": 0,
-            "max": 0
+            "min": 150,
+            "max": 161
+          }
+        },
+        "lowSeason": {
+          "weekday": {
+            "min": 121,
+            "max": 139
+          },
+          "weekend": {
+            "min": 121,
+            "max": 139
           }
         }
       },
       "currency": "EUR",
+      "priceSource": "https://losnaranjos.com/en/rates/",
+      "lastUpdated": "2026-01-21T21:04:48.851Z",
+      "extras": {
+        "buggy": 54,
+        "clubRental": 49,
+        "trolley": 10,
+        "rangeBalls": 5,
+        "rangeBallsIncluded": false
+      },
       "seasonDates": {
         "highSeason": {
           "from": "01-10",
@@ -1766,14 +1809,6 @@ export const GOLF_COURSES: GolfCourse[] = [
           "from": "01-06",
           "to": "30-09"
         }
-      },
-      "lastUpdated": "2026-01-21T20:35:55.424Z",
-      "extras": {
-        "buggy": 40,
-        "clubRental": 30,
-        "trolley": 5,
-        "rangeBalls": 4,
-        "rangeBallsIncluded": false
       }
     },
     "facilities": {
@@ -1814,8 +1849,8 @@ export const GOLF_COURSES: GolfCourse[] = [
       "phoneInternational": "+34 952 811 200"
     },
     "rating": {
-      "overall": 4.5,
-      "totalReviews": 150
+      "overall": 4.4,
+      "totalReviews": 1228
     },
     "holes": [],
     "signatureHoles": [
@@ -1824,6 +1859,7 @@ export const GOLF_COURSES: GolfCourse[] = [
         "description": "Avslutar med spektakulär utsikt från tee till klubbhuset, omgiven av palmer och medelhavsvyer."
       }
     ],
+    "googlePlaceId": "ChIJHxR4V_kpcw0RhDwyB4XGMf8",
     "media": {
       "heroImage": "/images/golf/los-naranjos-hero.png",
       "gallery": []
@@ -1866,29 +1902,38 @@ export const GOLF_COURSES: GolfCourse[] = [
     },
     "pricing": {
       "greenFee": {
-        "lowSeason": {
-          "weekday": {
-            "min": 0,
-            "max": 0
-          },
-          "weekend": {
-            "min": 0,
-            "max": 0
-          }
-        },
         "highSeason": {
           "weekday": {
-            "min": 0,
-            "max": 0
+            "min": 68,
+            "max": 68
           },
           "weekend": {
-            "min": 0,
-            "max": 0
+            "min": 68,
+            "max": 68
+          }
+        },
+        "lowSeason": {
+          "weekday": {
+            "min": 68,
+            "max": 68
+          },
+          "weekend": {
+            "min": 68,
+            "max": 68
           }
         }
       },
       "currency": "EUR",
       "averageGreenFee": 70,
+      "priceSource": "https://www.1golf.eu/en/club/miraflores-golf-club/",
+      "lastUpdated": "2026-01-21T21:04:48.853Z",
+      "extras": {
+        "buggy": 0,
+        "clubRental": 0,
+        "trolley": 0,
+        "rangeBalls": 5,
+        "rangeBallsIncluded": false
+      },
       "seasonDates": {
         "highSeason": {
           "from": "01-10",
@@ -1898,14 +1943,6 @@ export const GOLF_COURSES: GolfCourse[] = [
           "from": "01-06",
           "to": "30-09"
         }
-      },
-      "lastUpdated": "2026-01-21T20:35:55.424Z",
-      "extras": {
-        "buggy": 40,
-        "clubRental": 30,
-        "trolley": 5,
-        "rangeBalls": 4,
-        "rangeBallsIncluded": false
       }
     },
     "facilities": {
@@ -1946,8 +1983,8 @@ export const GOLF_COURSES: GolfCourse[] = [
       "phoneInternational": ""
     },
     "rating": {
-      "overall": 3.8,
-      "totalReviews": 89
+      "overall": 4.3,
+      "totalReviews": 770
     },
     "hours": {
       "monday": "08:00-20:00",
@@ -1970,6 +2007,7 @@ export const GOLF_COURSES: GolfCourse[] = [
         "description": "Vatten omger grönt, vilket gör detta hål särskilt utmanande."
       }
     ],
+    "googlePlaceId": "ChIJlVPJysMfcw0RpjQXrfJ9doE",
     "media": {
       "heroImage": "/images/golf/miraflores-hero.png",
       "gallery": []
@@ -1987,14 +2025,14 @@ export const GOLF_COURSES: GolfCourse[] = [
     "subRegion": "Marbella",
     "province": "Málaga",
     "address": {
-      "street": "Ctra. N-340 Málaga Cádiz, Km. 187,5",
-      "postalCode": "",
+      "street": "Calle Sand, Carr. de Cadiz, 17, Km 187,5",
+      "postalCode": "29603",
       "city": "Marbella",
       "country": "ES"
     },
     "coordinates": {
-      "lat": 36.5,
-      "lng": -4.85
+      "lat": 36.50839,
+      "lng": -4.81654
     },
     "courseInfo": {
       "holes": 18,
@@ -2044,7 +2082,7 @@ export const GOLF_COURSES: GolfCourse[] = [
           "to": "30-09"
         }
       },
-      "lastUpdated": "2026-01-21T20:35:55.424Z",
+      "lastUpdated": "2026-01-22T00:55:32.672Z",
       "extras": {
         "buggy": 40,
         "clubRental": 30,
@@ -2091,8 +2129,8 @@ export const GOLF_COURSES: GolfCourse[] = [
       "phoneInternational": "+34 952 850 111"
     },
     "rating": {
-      "overall": 4,
-      "totalReviews": 92
+      "overall": 4.4,
+      "totalReviews": 1020
     },
     "holes": [],
     "signatureHoles": [
@@ -2117,6 +2155,7 @@ export const GOLF_COURSES: GolfCourse[] = [
         "description": "Par-5 hålet där klubbval och fairwayplacering är avgörande"
       }
     ],
+    "googlePlaceId": "ChIJZS2T7lgncw0RJwPXESIws8M",
     "media": {
       "heroImage": "/images/golf/santa-clara-hero.png",
       "gallery": []
@@ -2134,14 +2173,14 @@ export const GOLF_COURSES: GolfCourse[] = [
     "subRegion": "Benalmádena",
     "province": "Málaga",
     "address": {
-      "street": "Urb. Torrequebrada",
+      "street": "Calle Club de Golf 1",
       "postalCode": "29630",
       "city": "Benalmádena",
       "country": "ES"
     },
     "coordinates": {
-      "lat": 36.596,
-      "lng": -4.565
+      "lat": 36.588600199999995,
+      "lng": -4.551770299999999
     },
     "courseInfo": {
       "holes": 18,
@@ -2191,7 +2230,7 @@ export const GOLF_COURSES: GolfCourse[] = [
           "to": "30-09"
         }
       },
-      "lastUpdated": "2026-01-21T20:35:55.424Z",
+      "lastUpdated": "2026-01-22T00:55:32.672Z",
       "extras": {
         "buggy": 40,
         "clubRental": 30,
@@ -2238,8 +2277,8 @@ export const GOLF_COURSES: GolfCourse[] = [
       "phoneInternational": "+34 952 669 206"
     },
     "rating": {
-      "overall": 4.2,
-      "totalReviews": 150
+      "overall": 4.4,
+      "totalReviews": 1674
     },
     "holes": [],
     "signatureHoles": [
@@ -2248,6 +2287,7 @@ export const GOLF_COURSES: GolfCourse[] = [
         "description": "Första hålet ger en vacker välkomst med utsikt över havet och kräver en rak drive för att undvika bunkrar."
       }
     ],
+    "googlePlaceId": "ChIJ9VqWQrj8cg0RSCYhimXMrPY",
     "media": {
       "heroImage": "/images/golf/torrequebrada-hero.png",
       "gallery": []
@@ -2265,14 +2305,14 @@ export const GOLF_COURSES: GolfCourse[] = [
     "subRegion": "Sotogrande",
     "province": "Andalusien",
     "address": {
-      "street": "Avenida de los Cortijos",
+      "street": "Avenida los Cortijos s/n",
       "postalCode": "11310",
       "city": "Sotogrande",
       "country": "ES"
     },
     "coordinates": {
-      "lat": 36.18,
-      "lng": -5.28
+      "lat": 36.283086399999995,
+      "lng": -5.3273717
     },
     "courseInfo": {
       "holes": 18,
@@ -2290,6 +2330,16 @@ export const GOLF_COURSES: GolfCourse[] = [
     },
     "pricing": {
       "greenFee": {
+        "highSeason": {
+          "weekday": {
+            "min": 600,
+            "max": 600
+          },
+          "weekend": {
+            "min": 0,
+            "max": 0
+          }
+        },
         "lowSeason": {
           "weekday": {
             "min": 0,
@@ -2299,19 +2349,18 @@ export const GOLF_COURSES: GolfCourse[] = [
             "min": 0,
             "max": 0
           }
-        },
-        "highSeason": {
-          "weekday": {
-            "min": 275,
-            "max": 320
-          },
-          "weekend": {
-            "min": 275,
-            "max": 320
-          }
         }
       },
       "currency": "EUR",
+      "priceSource": "https://www.valderrama.com/golf-course-rates/ och https://www.costalessgolf.com/golf-course/valderrama-golf/",
+      "lastUpdated": "2026-01-21T21:04:48.854Z",
+      "extras": {
+        "buggy": 60,
+        "clubRental": 50,
+        "trolley": 25,
+        "rangeBalls": 5,
+        "rangeBallsIncluded": false
+      },
       "seasonDates": {
         "highSeason": {
           "from": "01-10",
@@ -2321,14 +2370,6 @@ export const GOLF_COURSES: GolfCourse[] = [
           "from": "01-06",
           "to": "30-09"
         }
-      },
-      "lastUpdated": "2026-01-21T20:35:55.424Z",
-      "extras": {
-        "buggy": 40,
-        "clubRental": 30,
-        "trolley": 5,
-        "rangeBalls": 4,
-        "rangeBallsIncluded": false
       }
     },
     "facilities": {
@@ -2369,8 +2410,8 @@ export const GOLF_COURSES: GolfCourse[] = [
       "phoneInternational": "+34 956 613 061"
     },
     "rating": {
-      "overall": 4.8,
-      "totalReviews": 0
+      "overall": 4.6,
+      "totalReviews": 688
     },
     "holes": [],
     "signatureHoles": [
@@ -2383,6 +2424,7 @@ export const GOLF_COURSES: GolfCourse[] = [
         "description": "Par 5 på 515 yards med vatten framför grön. Kan nås på två slag men är mycket utmanande. Omdesignad av Seve Ballesteros inför Ryder Cup 1997."
       }
     ],
+    "googlePlaceId": "ChIJv3KiCOTEDA0Rm-c28nBq-qI",
     "media": {
       "heroImage": "/images/golf/valderrama-hero.png",
       "gallery": []
@@ -2400,14 +2442,14 @@ export const GOLF_COURSES: GolfCourse[] = [
     "subRegion": "Orihuela Costa",
     "province": "Alicante",
     "address": {
-      "street": "Av. de las Brisas, 8",
+      "street": "Avenida de las Brisas 8",
       "postalCode": "03189",
-      "city": "Orihuela",
+      "city": "Villamartín",
       "country": "ES"
     },
     "coordinates": {
-      "lat": 37.995,
-      "lng": -0.702
+      "lat": 37.9413714,
+      "lng": -0.7582728
     },
     "courseInfo": {
       "holes": 18,
@@ -2425,28 +2467,37 @@ export const GOLF_COURSES: GolfCourse[] = [
     },
     "pricing": {
       "greenFee": {
-        "lowSeason": {
-          "weekday": {
-            "min": 0,
-            "max": 0
-          },
-          "weekend": {
-            "min": 0,
-            "max": 0
-          }
-        },
         "highSeason": {
           "weekday": {
-            "min": 0,
-            "max": 0
+            "min": 105,
+            "max": 105
           },
           "weekend": {
-            "min": 0,
-            "max": 0
+            "min": 105,
+            "max": 105
+          }
+        },
+        "lowSeason": {
+          "weekday": {
+            "min": 80,
+            "max": 80
+          },
+          "weekend": {
+            "min": 80,
+            "max": 80
           }
         }
       },
       "currency": "EUR",
+      "priceSource": "https://inmoinvestments.com/de/nachrichten/4293/greenfees-und-preise-des-golfplatzes-costa-blanca/[2]",
+      "lastUpdated": "2026-01-21T21:04:48.842Z",
+      "extras": {
+        "buggy": 40,
+        "clubRental": 40,
+        "trolley": 6,
+        "rangeBalls": 5,
+        "rangeBallsIncluded": false
+      },
       "seasonDates": {
         "highSeason": {
           "from": "01-10",
@@ -2456,14 +2507,6 @@ export const GOLF_COURSES: GolfCourse[] = [
           "from": "01-06",
           "to": "30-09"
         }
-      },
-      "lastUpdated": "2026-01-21T20:35:55.425Z",
-      "extras": {
-        "buggy": 40,
-        "clubRental": 30,
-        "trolley": 5,
-        "rangeBalls": 4,
-        "rangeBallsIncluded": false
       }
     },
     "facilities": {
@@ -2499,13 +2542,13 @@ export const GOLF_COURSES: GolfCourse[] = [
     },
     "contact": {
       "phone": "+34 96 672 90 10",
-      "email": "info@villamartingolf.com",
-      "website": "www.villamartingolf.com",
+      "email": "info@villamartingolfclub.com",
+      "website": "https://www.villamartingolfclub.com/home",
       "phoneInternational": "+34 96 672 90 10"
     },
     "rating": {
       "overall": 4.2,
-      "totalReviews": 150
+      "totalReviews": 737
     },
     "holes": [],
     "signatureHoles": [
@@ -2514,6 +2557,7 @@ export const GOLF_COURSES: GolfCourse[] = [
         "description": "Första hålet introducerar banans karaktär med fairway omgiven av palmer och sjö, som sätter tonen för rundan."
       }
     ],
+    "googlePlaceId": "ChIJuR943O2oYw0R6IBI8YT5vJA",
     "media": {
       "heroImage": "/images/golf/villamartin-hero.png",
       "gallery": []
@@ -2531,14 +2575,14 @@ export const GOLF_COURSES: GolfCourse[] = [
     "subRegion": "Orihuela",
     "province": "Alicante",
     "address": {
-      "street": "",
-      "postalCode": "",
+      "street": "Avenida del Golf 447",
+      "postalCode": "03319",
       "city": "Orihuela",
       "country": "ES"
     },
     "coordinates": {
-      "lat": 38,
-      "lng": -0.7
+      "lat": 38.0381682,
+      "lng": -0.8236597999999999
     },
     "courseInfo": {
       "holes": 18,
@@ -2556,28 +2600,37 @@ export const GOLF_COURSES: GolfCourse[] = [
     },
     "pricing": {
       "greenFee": {
-        "lowSeason": {
-          "weekday": {
-            "min": 0,
-            "max": 0
-          },
-          "weekend": {
-            "min": 0,
-            "max": 0
-          }
-        },
         "highSeason": {
           "weekday": {
-            "min": 0,
-            "max": 0
+            "min": 75,
+            "max": 75
           },
           "weekend": {
-            "min": 0,
-            "max": 0
+            "min": 75,
+            "max": 75
+          }
+        },
+        "lowSeason": {
+          "weekday": {
+            "min": 75,
+            "max": 75
+          },
+          "weekend": {
+            "min": 75,
+            "max": 75
           }
         }
       },
       "currency": "EUR",
+      "priceSource": "https://vistabellagolf.com/en/golf-course-price-golf/ (official site)",
+      "lastUpdated": "2026-01-21T21:04:48.844Z",
+      "extras": {
+        "buggy": 0,
+        "clubRental": 0,
+        "trolley": 0,
+        "rangeBalls": 5,
+        "rangeBallsIncluded": false
+      },
       "seasonDates": {
         "highSeason": {
           "from": "01-10",
@@ -2587,14 +2640,6 @@ export const GOLF_COURSES: GolfCourse[] = [
           "from": "01-06",
           "to": "30-09"
         }
-      },
-      "lastUpdated": "2026-01-21T20:35:55.425Z",
-      "extras": {
-        "buggy": 40,
-        "clubRental": 30,
-        "trolley": 5,
-        "rangeBalls": 4,
-        "rangeBallsIncluded": false
       }
     },
     "facilities": {
@@ -2635,11 +2680,12 @@ export const GOLF_COURSES: GolfCourse[] = [
       "phoneInternational": ""
     },
     "rating": {
-      "overall": 4.5,
-      "totalReviews": 0
+      "overall": 4.4,
+      "totalReviews": 386
     },
     "holes": [],
     "signatureHoles": [],
+    "googlePlaceId": "ChIJq2BE78mmYw0RI69NNrK9IXU",
     "media": {
       "heroImage": "/images/golf/vistabella-hero.png",
       "gallery": []

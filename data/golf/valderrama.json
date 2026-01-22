@@ -10,14 +10,14 @@
   "subRegion": "Sotogrande",
   "province": "Andalusien",
   "address": {
-    "street": "Avenida de los Cortijos",
+    "street": "Avenida los Cortijos s/n",
     "postalCode": "11310",
     "city": "Sotogrande",
     "country": "ES"
   },
   "coordinates": {
-    "lat": 36.18,
-    "lng": -5.28
+    "lat": 36.283086399999995,
+    "lng": -5.3273717
   },
   "courseInfo": {
     "holes": 18,
@@ -35,6 +35,16 @@
   },
   "pricing": {
     "greenFee": {
+      "highSeason": {
+        "weekday": {
+          "min": 600,
+          "max": 600
+        },
+        "weekend": {
+          "min": 0,
+          "max": 0
+        }
+      },
       "lowSeason": {
         "weekday": {
           "min": 0,
@@ -44,19 +54,18 @@
           "min": 0,
           "max": 0
         }
-      },
-      "highSeason": {
-        "weekday": {
-          "min": 275,
-          "max": 320
-        },
-        "weekend": {
-          "min": 275,
-          "max": 320
-        }
       }
     },
-    "currency": "EUR"
+    "currency": "EUR",
+    "priceSource": "https://www.valderrama.com/golf-course-rates/ och https://www.costalessgolf.com/golf-course/valderrama-golf/",
+    "lastUpdated": "2026-01-21T21:04:48.854Z",
+    "extras": {
+      "buggy": 60,
+      "clubRental": 50,
+      "trolley": 25,
+      "rangeBalls": 5,
+      "rangeBallsIncluded": false
+    }
   },
   "facilities": {
     "course": {
@@ -95,8 +104,8 @@
     "website": "www.valderrama.com"
   },
   "rating": {
-    "overall": 4.8,
-    "totalReviews": 0
+    "overall": 4.6,
+    "totalReviews": 688
   },
   "holes": [],
   "signatureHoles": [
@@ -108,5 +117,6 @@
       "number": 17,
       "description": "Par 5 på 515 yards med vatten framför grön. Kan nås på två slag men är mycket utmanande. Omdesignad av Seve Ballesteros inför Ryder Cup 1997."
     }
-  ]
+  ],
+  "googlePlaceId": "ChIJv3KiCOTEDA0Rm-c28nBq-qI"
 }

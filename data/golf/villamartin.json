@@ -9,31 +9,110 @@
   "region": "costa-blanca",
   "subRegion": "Orihuela Costa",
   "province": "Alicante",
-  "address": { "street": "Av. de las Brisas, 8", "postalCode": "03189", "city": "Orihuela", "country": "ES" },
-  "coordinates": { "lat": 37.995, "lng": -0.702 },
+  "address": {
+    "street": "Avenida de las Brisas 8",
+    "postalCode": "03189",
+    "city": "Villamartín",
+    "country": "ES"
+  },
+  "coordinates": {
+    "lat": 37.9413714,
+    "lng": -0.7582728
+  },
   "courseInfo": {
     "holes": 18,
     "par": 72,
-    "length": { "meters": 6277, "yards": 6865 },
+    "length": {
+      "meters": 6277,
+      "yards": 6865
+    },
     "architect": "Paul Putman",
     "openedYear": 1972
   },
-  "difficulty": { "level": "medium", "description": "Medelhög svårighet med stora greener, vattenhinder och variation som utmanar alla nivåer, från nybörjare till proffs." },
+  "difficulty": {
+    "level": "medium",
+    "description": "Medelhög svårighet med stora greener, vattenhinder och variation som utmanar alla nivåer, från nybörjare till proffs."
+  },
   "pricing": {
     "greenFee": {
-      "lowSeason": { "weekday": { "min": 0, "max": 0 }, "weekend": { "min": 0, "max": 0 } },
-      "highSeason": { "weekday": { "min": 0, "max": 0 }, "weekend": { "min": 0, "max": 0 } }
+      "highSeason": {
+        "weekday": {
+          "min": 105,
+          "max": 105
+        },
+        "weekend": {
+          "min": 105,
+          "max": 105
+        }
+      },
+      "lowSeason": {
+        "weekday": {
+          "min": 80,
+          "max": 80
+        },
+        "weekend": {
+          "min": 80,
+          "max": 80
+        }
+      }
     },
-    "currency": "EUR"
+    "currency": "EUR",
+    "priceSource": "https://inmoinvestments.com/de/nachrichten/4293/greenfees-und-preise-des-golfplatzes-costa-blanca/[2]",
+    "lastUpdated": "2026-01-21T21:04:48.842Z",
+    "extras": {
+      "buggy": 40,
+      "clubRental": 40,
+      "trolley": 6,
+      "rangeBalls": 5,
+      "rangeBallsIncluded": false
+    }
   },
   "facilities": {
-    "course": { "drivingRange": true, "puttingGreen": true, "chippingGreen": true, "practiceBunker": true },
-    "clubhouse": { "restaurant": true, "proshop": true, "locker": true, "bar": true, "terrace": true, "shower": true },
-    "services": { "golfSchool": true, "proAvailable": true, "clubFitting": false, "clubRepair": false, "caddie": false },
-    "other": { "spa": false, "pool": false, "gym": false, "tennis": false, "padel": false, "hotel": false }
+    "course": {
+      "drivingRange": true,
+      "puttingGreen": true,
+      "chippingGreen": true,
+      "practiceBunker": true
+    },
+    "clubhouse": {
+      "restaurant": true,
+      "proshop": true,
+      "locker": true,
+      "bar": true,
+      "terrace": true,
+      "shower": true
+    },
+    "services": {
+      "golfSchool": true,
+      "proAvailable": true,
+      "clubFitting": false,
+      "clubRepair": false,
+      "caddie": false
+    },
+    "other": {
+      "spa": false,
+      "pool": false,
+      "gym": false,
+      "tennis": false,
+      "padel": false,
+      "hotel": false
+    }
   },
-  "contact": { "phone": "+34 96 672 90 10", "email": "info@villamartingolf.com", "website": "www.villamartingolf.com" },
-  "rating": { "overall": 4.2, "totalReviews": 150 },
+  "contact": {
+    "phone": "+34 96 672 90 10",
+    "email": "info@villamartingolfclub.com",
+    "website": "https://www.villamartingolfclub.com/home"
+  },
+  "rating": {
+    "overall": 4.2,
+    "totalReviews": 737
+  },
   "holes": [],
-  "signatureHoles": [{ "number": 1, "description": "Första hålet introducerar banans karaktär med fairway omgiven av palmer och sjö, som sätter tonen för rundan." }]
+  "signatureHoles": [
+    {
+      "number": 1,
+      "description": "Första hålet introducerar banans karaktär med fairway omgiven av palmer och sjö, som sätter tonen för rundan."
+    }
+  ],
+  "googlePlaceId": "ChIJuR943O2oYw0R6IBI8YT5vJA"
 }

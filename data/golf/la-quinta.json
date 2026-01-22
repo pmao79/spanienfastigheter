@@ -9,31 +9,110 @@
   "region": "costa-del-sol",
   "subRegion": "Nueva Andalucía",
   "province": "Málaga",
-  "address": { "street": "Urb. La Quinta Avda. Tomas Pascual s/n", "postalCode": "29660", "city": "Marbella", "country": "ES" },
-  "coordinates": { "lat": 36.474, "lng": -5.006 },
+  "address": {
+    "street": "Avenida Tomás Pascual 22",
+    "postalCode": "29678",
+    "city": "Benahavís",
+    "country": "ES"
+  },
+  "coordinates": {
+    "lat": 36.512381,
+    "lng": -4.9947731
+  },
   "courseInfo": {
     "holes": 27,
     "par": 72,
-    "length": { "meters": 5500, "yards": 6010 },
+    "length": {
+      "meters": 5500,
+      "yards": 6010
+    },
     "architect": "Manuel Piñero",
     "openedYear": 1989
   },
-  "difficulty": { "level": "medium", "description": "Bekväm och rolig bana med varierande utmaningar som doglegs och vattenhinder, ideal för medel- till höghandicapare." },
+  "difficulty": {
+    "level": "medium",
+    "description": "Bekväm och rolig bana med varierande utmaningar som doglegs och vattenhinder, ideal för medel- till höghandicapare."
+  },
   "pricing": {
     "greenFee": {
-      "lowSeason": { "weekday": { "min": 0, "max": 0 }, "weekend": { "min": 0, "max": 0 } },
-      "highSeason": { "weekday": { "min": 0, "max": 0 }, "weekend": { "min": 0, "max": 0 } }
+      "highSeason": {
+        "weekday": {
+          "min": 103,
+          "max": 103
+        },
+        "weekend": {
+          "min": 103,
+          "max": 103
+        }
+      },
+      "lowSeason": {
+        "weekday": {
+          "min": 103,
+          "max": 103
+        },
+        "weekend": {
+          "min": 103,
+          "max": 103
+        }
+      }
     },
-    "currency": "EUR"
+    "currency": "EUR",
+    "priceSource": "https://www.1golf.eu/en/club/la-quinta-golf-country-club/",
+    "lastUpdated": "2026-01-21T21:04:48.848Z",
+    "extras": {
+      "buggy": 24,
+      "clubRental": 33,
+      "trolley": 4,
+      "rangeBalls": 5,
+      "rangeBallsIncluded": false
+    }
   },
   "facilities": {
-    "course": { "drivingRange": true, "puttingGreen": true, "chippingGreen": true, "practiceBunker": true },
-    "clubhouse": { "restaurant": true, "proshop": true, "locker": true, "bar": true, "terrace": true, "shower": true },
-    "services": { "golfSchool": true, "proAvailable": true, "clubFitting": false, "clubRepair": false, "caddie": false },
-    "other": { "spa": false, "pool": false, "gym": false, "tennis": false, "padel": false, "hotel": true }
+    "course": {
+      "drivingRange": true,
+      "puttingGreen": true,
+      "chippingGreen": true,
+      "practiceBunker": true
+    },
+    "clubhouse": {
+      "restaurant": true,
+      "proshop": true,
+      "locker": true,
+      "bar": true,
+      "terrace": true,
+      "shower": true
+    },
+    "services": {
+      "golfSchool": true,
+      "proAvailable": true,
+      "clubFitting": false,
+      "clubRepair": false,
+      "caddie": false
+    },
+    "other": {
+      "spa": false,
+      "pool": false,
+      "gym": false,
+      "tennis": false,
+      "padel": false,
+      "hotel": true
+    }
   },
-  "contact": { "phone": "+34 952 76 20 00", "email": "reservations@westinlaquinta.com", "website": "www.westinlaquinta.com" },
-  "rating": { "overall": 4.2, "totalReviews": 256 },
+  "contact": {
+    "phone": "+34 952 76 20 00",
+    "email": "reservations@westinlaquinta.com",
+    "website": "www.westinlaquinta.com"
+  },
+  "rating": {
+    "overall": 4.4,
+    "totalReviews": 859
+  },
   "holes": [],
-  "signatureHoles": [{ "number": 1, "description": "Öppningshål med bred fairway och inbjudande layout som sätter tonen för rundan med vacker utsikt." }]
+  "signatureHoles": [
+    {
+      "number": 1,
+      "description": "Öppningshål med bred fairway och inbjudande layout som sätter tonen för rundan med vacker utsikt."
+    }
+  ],
+  "googlePlaceId": "ChIJGS9jvevVcg0Rcm7DcguECpI"
 }

@@ -9,31 +9,110 @@
   "region": "costa-del-sol",
   "subRegion": "Nueva Andalucía",
   "province": "Málaga",
-  "address": { "street": "Plaza de Cibeles, S/N", "postalCode": "29660", "city": "Marbella", "country": "ES" },
-  "coordinates": { "lat": 36.511, "lng": -4.989 },
+  "address": {
+    "street": "Plaza de Cibeles S/N",
+    "postalCode": "29660",
+    "city": "Marbella",
+    "country": "ES"
+  },
+  "coordinates": {
+    "lat": 36.5098252,
+    "lng": -4.9803127
+  },
   "courseInfo": {
     "holes": 18,
     "par": 72,
-    "length": { "meters": 6532, "yards": 7140 },
+    "length": {
+      "meters": 6532,
+      "yards": 7140
+    },
     "architect": "Robert Trent Jones Sr.",
     "openedYear": 1977
   },
-  "difficulty": { "level": "medium", "description": "Medel svår med långa hål, snabba kuperade greener och strategiska vattenhinder, men breda fairways gör den spelbar för alla nivåer." },
+  "difficulty": {
+    "level": "medium",
+    "description": "Medel svår med långa hål, snabba kuperade greener och strategiska vattenhinder, men breda fairways gör den spelbar för alla nivåer."
+  },
   "pricing": {
     "greenFee": {
-      "lowSeason": { "weekday": { "min": 0, "max": 0 }, "weekend": { "min": 0, "max": 0 } },
-      "highSeason": { "weekday": { "min": 0, "max": 0 }, "weekend": { "min": 0, "max": 0 } }
+      "highSeason": {
+        "weekday": {
+          "min": 150,
+          "max": 161
+        },
+        "weekend": {
+          "min": 150,
+          "max": 161
+        }
+      },
+      "lowSeason": {
+        "weekday": {
+          "min": 121,
+          "max": 139
+        },
+        "weekend": {
+          "min": 121,
+          "max": 139
+        }
+      }
     },
-    "currency": "EUR"
+    "currency": "EUR",
+    "priceSource": "https://losnaranjos.com/en/rates/",
+    "lastUpdated": "2026-01-21T21:04:48.851Z",
+    "extras": {
+      "buggy": 54,
+      "clubRental": 49,
+      "trolley": 10,
+      "rangeBalls": 5,
+      "rangeBallsIncluded": false
+    }
   },
   "facilities": {
-    "course": { "drivingRange": true, "puttingGreen": true, "chippingGreen": true, "practiceBunker": true },
-    "clubhouse": { "restaurant": true, "proshop": true, "locker": true, "bar": true, "terrace": true, "shower": true },
-    "services": { "golfSchool": true, "proAvailable": true, "clubFitting": false, "clubRepair": false, "caddie": false },
-    "other": { "spa": false, "pool": false, "gym": false, "tennis": false, "padel": false, "hotel": false }
+    "course": {
+      "drivingRange": true,
+      "puttingGreen": true,
+      "chippingGreen": true,
+      "practiceBunker": true
+    },
+    "clubhouse": {
+      "restaurant": true,
+      "proshop": true,
+      "locker": true,
+      "bar": true,
+      "terrace": true,
+      "shower": true
+    },
+    "services": {
+      "golfSchool": true,
+      "proAvailable": true,
+      "clubFitting": false,
+      "clubRepair": false,
+      "caddie": false
+    },
+    "other": {
+      "spa": false,
+      "pool": false,
+      "gym": false,
+      "tennis": false,
+      "padel": false,
+      "hotel": false
+    }
   },
-  "contact": { "phone": "+34 952 811 200", "email": "info@losnaranjosgolfclub.com", "website": "www.losnaranjosgolfclub.com" },
-  "rating": { "overall": 4.5, "totalReviews": 150 },
+  "contact": {
+    "phone": "+34 952 811 200",
+    "email": "info@losnaranjosgolfclub.com",
+    "website": "www.losnaranjosgolfclub.com"
+  },
+  "rating": {
+    "overall": 4.4,
+    "totalReviews": 1228
+  },
   "holes": [],
-  "signatureHoles": [{ "number": 18, "description": "Avslutar med spektakulär utsikt från tee till klubbhuset, omgiven av palmer och medelhavsvyer." }]
+  "signatureHoles": [
+    {
+      "number": 18,
+      "description": "Avslutar med spektakulär utsikt från tee till klubbhuset, omgiven av palmer och medelhavsvyer."
+    }
+  ],
+  "googlePlaceId": "ChIJHxR4V_kpcw0RhDwyB4XGMf8"
 }

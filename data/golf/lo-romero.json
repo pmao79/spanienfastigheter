@@ -95,8 +95,8 @@
     "website": "www.loromerogolf.com"
   },
   "rating": {
-    "overall": 4.2,
-    "totalReviews": 150
+    "overall": 4.6,
+    "totalReviews": 1591
   },
   "holes": [],
   "signatureHoles": [
@@ -104,5 +104,6 @@
       "number": 18,
       "description": "Ikoniskt hål helt omgivet av vatten, en av Costa Blancas mest fotograferade med dramatisk vy mot havet.[1]"
     }
-  ]
+  ],
+  "googlePlaceId": "ChIJD_Uf2KsOYw0R6pOGl0f-h0o"
 }

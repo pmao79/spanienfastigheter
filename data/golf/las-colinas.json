@@ -10,14 +10,14 @@
   "subRegion": "Dehesa de Campoamor",
   "province": "Alicante",
   "address": {
-    "street": "Las Colinas Golf & Country Club",
+    "street": "Avenida de las Colinas 2",
     "postalCode": "03189",
     "city": "Dehesa de Campoamor",
     "country": "ES"
   },
   "coordinates": {
-    "lat": 37.941,
-    "lng": -0.702
+    "lat": 37.9279868,
+    "lng": -0.8090537999999999
   },
   "courseInfo": {
     "holes": 18,
@@ -35,28 +35,37 @@
   },
   "pricing": {
     "greenFee": {
-      "lowSeason": {
-        "weekday": {
-          "min": 0,
-          "max": 0
-        },
-        "weekend": {
-          "min": 0,
-          "max": 0
-        }
-      },
       "highSeason": {
         "weekday": {
-          "min": 0,
-          "max": 0
+          "min": 153,
+          "max": 153
         },
         "weekend": {
-          "min": 0,
-          "max": 0
+          "min": 153,
+          "max": 153
+        }
+      },
+      "lowSeason": {
+        "weekday": {
+          "min": 115,
+          "max": 115
+        },
+        "weekend": {
+          "min": 115,
+          "max": 115
         }
       }
     },
-    "currency": "EUR"
+    "currency": "EUR",
+    "priceSource": "https://inmoinvestments.com/news/4293/costa-blanca-golf-course-green-fees-and-prices/",
+    "lastUpdated": "2026-01-21T21:04:48.840Z",
+    "extras": {
+      "buggy": 46,
+      "clubRental": 0,
+      "trolley": 5,
+      "rangeBalls": 5,
+      "rangeBallsIncluded": false
+    }
   },
   "facilities": {
     "course": {
@@ -95,8 +104,8 @@
     "website": "www.lascolinasgolf.com"
   },
   "rating": {
-    "overall": 9.9,
-    "totalReviews": 19
+    "overall": 4.6,
+    "totalReviews": 1906
   },
   "holes": [],
   "signatureHoles": [
@@ -104,5 +113,6 @@
       "number": 18,
       "description": "Fantastiskt par 5 med fairway avgränsad av bunkrar och stort vattenhinder, green väl skyddad av vatten och bunkrar."
     }
-  ]
+  ],
+  "googlePlaceId": "ChIJey_TTi8GYw0RG4CGIftW5S0"
 }

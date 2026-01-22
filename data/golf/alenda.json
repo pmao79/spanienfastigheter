@@ -9,31 +9,106 @@
   "region": "costa-blanca",
   "subRegion": "Monforte del Cid",
   "province": "Alicante",
-  "address": { "street": "Avenida del Mediterráneo, 52 URB ALENDA GOLF", "postalCode": "03679", "city": "Monforte del Cid", "country": "ES" },
-  "coordinates": { "lat": 38.35959, "lng": -0.67198 },
+  "address": {
+    "street": "Avenida del Mediterráneo 52",
+    "postalCode": "03679",
+    "city": "Monforte del Cid",
+    "country": "ES"
+  },
+  "coordinates": {
+    "lat": 38.359500000000004,
+    "lng": -0.67238
+  },
   "courseInfo": {
     "holes": 18,
     "par": 72,
-    "length": { "meters": 6257, "yards": 6840 },
+    "length": {
+      "meters": 6257,
+      "yards": 6840
+    },
     "architect": "Roland Favrat",
     "openedYear": 1999
   },
-  "difficulty": { "level": "medium", "description": "Medelsvår parkbana med platt layout, tekniska greener och krav på precision framför kraft." },
+  "difficulty": {
+    "level": "medium",
+    "description": "Medelsvår parkbana med platt layout, tekniska greener och krav på precision framför kraft."
+  },
   "pricing": {
     "greenFee": {
-      "lowSeason": { "weekday": { "min": 0, "max": 0 }, "weekend": { "min": 0, "max": 0 } },
-      "highSeason": { "weekday": { "min": 0, "max": 0 }, "weekend": { "min": 0, "max": 0 } }
+      "highSeason": {
+        "18holes": 102,
+        "9holes": 53
+      },
+      "lowSeason": {
+        "18holes": 95,
+        "9holes": 49
+      },
+      "currentPeriod": {
+        "date": "2026-01-26 to 2026-05-31",
+        "18holes": 102,
+        "9holes": null,
+        "twilight": "consult caddymaster"
+      }
     },
-    "currency": "EUR"
+    "currency": "EUR",
+    "priceSource": "https://www.alendagolf.com/en/rates-and-offers/ and https://www.golf-service.com/book/tee-times/select-tee-time.asp?corid=97",
+    "lastUpdated": "2026-01-21T21:04:48.833Z",
+    "extras": {
+      "buggy_18holes": 40,
+      "buggy_9holes": 20,
+      "electricTrolley_18holes": 10,
+      "electricTrolley_9holes": 8,
+      "juniorGreenFee_18holes": 51,
+      "rangeBalls": 5,
+      "rangeBallsIncluded": false
+    }
   },
   "facilities": {
-    "course": { "drivingRange": true, "puttingGreen": true, "chippingGreen": true, "practiceBunker": true },
-    "clubhouse": { "restaurant": true, "proshop": true, "locker": true, "bar": true, "terrace": true, "shower": true },
-    "services": { "golfSchool": true, "proAvailable": true, "clubFitting": false, "clubRepair": false, "caddie": false },
-    "other": { "spa": false, "pool": false, "gym": true, "tennis": false, "padel": false, "hotel": false }
+    "course": {
+      "drivingRange": true,
+      "puttingGreen": true,
+      "chippingGreen": true,
+      "practiceBunker": true
+    },
+    "clubhouse": {
+      "restaurant": true,
+      "proshop": true,
+      "locker": true,
+      "bar": true,
+      "terrace": true,
+      "shower": true
+    },
+    "services": {
+      "golfSchool": true,
+      "proAvailable": true,
+      "clubFitting": false,
+      "clubRepair": false,
+      "caddie": false
+    },
+    "other": {
+      "spa": false,
+      "pool": false,
+      "gym": true,
+      "tennis": false,
+      "padel": false,
+      "hotel": false
+    }
   },
-  "contact": { "phone": "+34 965 620 521", "email": "caddymaster@alendagolf.com", "website": "www.alendagolf.com" },
-  "rating": { "overall": 4.0, "totalReviews": 100 },
+  "contact": {
+    "phone": "+34 965 620 521",
+    "email": "caddymaster@alendagolf.com",
+    "website": "www.alendagolf.com"
+  },
+  "rating": {
+    "overall": 4.3,
+    "totalReviews": 1171
+  },
   "holes": [],
-  "signatureHoles": [{ "number": 16, "description": "Knepiga 16:e hålet kräver stor koncentration med vatten och sluttande green." }]
+  "signatureHoles": [
+    {
+      "number": 16,
+      "description": "Knepiga 16:e hålet kräver stor koncentration med vatten och sluttande green."
+    }
+  ],
+  "googlePlaceId": "ChIJJdfZXNPLYw0RIDbQ1G-vAg8"
 }
