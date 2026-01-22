@@ -88,6 +88,22 @@ export default function Footer() {
                         </li>
                         <li>
                             <Link
+                                href="/visningsresa"
+                                className="hover:text-white transition-colors block"
+                            >
+                                Visningsresa
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                href="/golf"
+                                className="hover:text-white transition-colors block"
+                            >
+                                Golfguiden
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
                                 href="/guide/kopa-salja-spanien-2025"
                                 className="hover:text-white transition-colors block"
                             >

@@ -19,12 +19,46 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
     title: {
-        default: 'Spanienfastigheter.se - Ditt hem i solen',
+        default: 'Köp bostad i Spanien | Fastigheter Costa Blanca & Costa del Sol | Spanienfastigheter.se',
         template: '%s | Spanienfastigheter.se',
     },
     description:
-        'Hitta ditt drömboende i Spanien. Svensktalande mäklare på Costa Blanca & Costa del Sol.',
+        'Utforska 2,450+ bostäder till salu på Costa Blanca, Costa del Sol, Costa Cálida och Costa de Almería. Villor, lägenheter och radhus med svensktalande support. Boka visningsresa idag.',
     metadataBase: new URL('https://spanienfastigheter.se'),
+    alternates: {
+        canonical: '/',
+    },
+    openGraph: {
+        title: 'Köp bostad i Spanien | Spanienfastigheter.se',
+        description: 'Utforska 2,450+ fastigheter till salu i Spanien med svensk support genom hela köpet.',
+        url: 'https://www.spanienfastigheter.se/',
+        siteName: 'Spanienfastigheter.se',
+        type: 'website',
+        locale: 'sv_SE',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Köp bostad i Spanien | Spanienfastigheter.se',
+        description: 'Utforska 2,450+ fastigheter till salu i Spanien med svensk support.',
+    },
+    other: {
+        'script:ld+json': JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'RealEstateAgent',
+            name: 'Spanienfastigheter.se',
+            description: 'Svensk fastighetsmäklare specialiserad på bostäder i Spanien – Costa Blanca, Costa del Sol, Costa Cálida och Costa de Almería',
+            url: 'https://www.spanienfastigheter.se',
+            email: 'info@spanienfastigheter.se',
+            areaServed: [
+                { '@type': 'Place', name: 'Costa Blanca, Spanien' },
+                { '@type': 'Place', name: 'Costa del Sol, Spanien' },
+                { '@type': 'Place', name: 'Costa Cálida, Spanien' },
+                { '@type': 'Place', name: 'Costa de Almería, Spanien' },
+            ],
+            knowsLanguage: ['sv', 'es', 'en'],
+            priceRange: '€50,000 - €5,000,000',
+        }),
+    },
 };
 
 export default function RootLayout({

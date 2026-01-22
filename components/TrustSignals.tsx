@@ -3,16 +3,16 @@ import { Check } from 'lucide-react';
 export default function TrustSignals() {
   const signals = [
     {
-      title: 'Juridisk Garanti',
-      text: 'Vi kontrollerar alla licenser och lagfarter innan vi publicerar.',
+      title: 'Juridisk garanti',
+      text: 'Vi kontrollerar alla licenser, lagfarter och skulder innan köp.',
     },
     {
-      title: 'Svenska Kontrakt',
-      text: 'All dokumentation översätts och gås igenom på svenska.',
+      title: 'Kontrakt på svenska',
+      text: 'All dokumentation översätts och gås igenom på ditt språk.',
     },
     {
-      title: 'Livslång Service',
-      text: 'Vi hjälper till med el, vatten och renovering även efter tillträdet.',
+      title: 'Support efter köpet',
+      text: 'Vi hjälper till med el, vatten, internet och renovering även efter tillträdet.',
     },
   ];
 
@@ -29,8 +29,8 @@ export default function TrustSignals() {
               Vår filosofi
             </span>
             <h2 className="text-4xl md:text-5xl font-serif text-white mb-8 leading-tight">
-              Trygghet genom <br />
-              <span className="italic text-sand/90">hela affären.</span>
+              Trygg bostadsaffär <br />
+              <span className="italic text-sand/90">i Spanien.</span>
             </h2>
 
             <p className="text-white/70 font-light text-lg mb-10 max-w-md leading-relaxed">

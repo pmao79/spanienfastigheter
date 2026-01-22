@@ -96,16 +96,15 @@ export default function Hero() {
       <div className="relative z-10 w-full max-w-7xl px-6 flex flex-col items-center">
         {/* Headline */}
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-white mb-6 leading-[1.05] text-center drop-shadow-lg tracking-tight">
-          Hitta hemmet där <br />
+          Köp bostad i Spanien <br />
           <span className="italic font-light text-alabaster/90">
-            hjärtat landar
+            Costa Blanca & Costa del Sol
           </span>
         </h1>
 
         <p className="text-lg md:text-xl text-white/90 mb-12 max-w-2xl mx-auto font-light leading-relaxed text-center antialiased opacity-90">
-          Vi guidar dig genom Costa Blancas och Costa del Sols mest
-          eftertraktade områden. Från första visning till första doppet i
-          poolen.
+          Utforska 2,450+ fastigheter till salu i Spaniens mest eftertraktade områden.
+          Villor, lägenheter och radhus – med svensk support genom hela köpet.
         </p>
 
         {/* --- SEARCH INTERFACE --- */}
@@ -114,10 +113,13 @@ export default function Hero() {
           className="w-full max-w-5xl mx-auto bg-white rounded-md shadow-2xl transition-all duration-300 relative"
         >
           {/* Tabs */}
-          <div className="flex border-b border-gray-100">
+          <div className="flex border-b border-gray-100" role="tablist">
             <button
               onClick={() => setActiveTab('buy')}
               className={`flex-1 py-4 md:py-5 text-xs md:text-sm uppercase tracking-[0.15em] font-semibold transition-colors flex items-center justify-center gap-2 ${activeTab === 'buy' ? 'bg-white text-navy' : 'bg-gray-50 text-gray-400 hover:bg-gray-100'}`}
+              role="tab"
+              aria-selected={activeTab === 'buy'}
+              aria-label="Visa alla bostäder till salu"
             >
               <Home size={16} className="mb-0.5" />
               Alla Bostäder
@@ -125,6 +127,9 @@ export default function Hero() {
             <button
               onClick={() => setActiveTab('new')}
               className={`flex-1 py-4 md:py-5 text-xs md:text-sm uppercase tracking-[0.15em] font-semibold transition-colors flex items-center justify-center gap-2 ${activeTab === 'new' ? 'bg-white text-navy' : 'bg-gray-50 text-gray-400 hover:bg-gray-100'}`}
+              role="tab"
+              aria-selected={activeTab === 'new'}
+              aria-label="Visa endast nyproducerade bostäder"
             >
               <Building2 size={16} className="mb-0.5" />
               Nyproduktion
@@ -308,21 +313,21 @@ export default function Hero() {
                 Snabba val:
               </span>
 
-              <label className="flex items-center gap-2 cursor-pointer group flex-shrink-0">
+              <label className="flex items-center gap-2 cursor-pointer group flex-shrink-0" title="Sök bostäder med havsutsikt i Spanien">
                 <div className="w-4 h-4 rounded-sm border border-gray-300 bg-white flex items-center justify-center group-hover:border-navy transition-colors" />
                 <span className="text-xs text-charcoal font-medium group-hover:text-navy flex items-center gap-1.5 transition-colors">
                   <Waves size={14} className="text-sand" /> Havsutsikt
                 </span>
               </label>
 
-              <label className="flex items-center gap-2 cursor-pointer group flex-shrink-0">
+              <label className="flex items-center gap-2 cursor-pointer group flex-shrink-0" title="Sök bostäder med pool i Spanien">
                 <div className="w-4 h-4 rounded-sm border border-gray-300 bg-white flex items-center justify-center group-hover:border-navy transition-colors" />
                 <span className="text-xs text-charcoal font-medium group-hover:text-navy flex items-center gap-1.5 transition-colors">
                   <Palmtree size={14} className="text-sand" /> Pool
                 </span>
               </label>
 
-              <label className="flex items-center gap-2 cursor-pointer group flex-shrink-0">
+              <label className="flex items-center gap-2 cursor-pointer group flex-shrink-0" title="Sök bostäder med turistlicens för uthyrning">
                 <div className="w-4 h-4 rounded-sm border border-gray-300 bg-white flex items-center justify-center group-hover:border-navy transition-colors" />
                 <span className="text-xs text-charcoal font-medium group-hover:text-navy flex items-center gap-1.5 transition-colors">
                   <Sun size={14} className="text-sand" /> Turistlicens
