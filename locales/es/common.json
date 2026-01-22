@@ -1,13 +1,15 @@
 {
     "nav": {
         "forSale": "En Venta",
+        "viewingTrip": "Viaje de Visita",
         "guide": "Guía",
         "areas": "Zonas",
         "sell": "Vender",
         "contact": "Contacto",
         "favorites": "Favoritos",
         "savedSearches": "Búsquedas guardadas",
-        "login": "Iniciar sesión"
+        "login": "Iniciar sesión",
+        "golf": "Golf"
     },
     "hero": {
         "title": "Encuentra tu hogar soñado en España",

@@ -24,6 +24,7 @@ export default function Header() {
 
     const navItems = [
         { key: 'forSale', href: '/fastigheter' },
+        { key: 'viewingTrip', href: '/visningsresa' },
         { key: 'guide', href: '/guide/kopa-salja-spanien-2025' },
         { key: 'areas', href: '/omraden' },
         { key: 'golf', href: '/golf' },

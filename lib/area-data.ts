@@ -1,8 +1,11 @@
 import { AreaDetail } from '@/types/property';
 import { COSTA_BLANCA_AREAS } from './area-data-costa-blanca';
 import { COSTA_BLANCA_AREAS_2 } from './area-data-costa-blanca-2';
+import { COSTA_BLANCA_AREAS_3 } from './area-data-costa-blanca-3';
 import { COSTA_DEL_SOL_AREAS } from './area-data-costa-del-sol';
 import { COSTA_DEL_SOL_AREAS_2 } from './area-data-costa-del-sol-2';
+import { COSTA_CALIDA_AREAS } from './area-data-costa-calida';
+import { COSTA_ALMERIA_AREAS } from './area-data-costa-almeria';
 
 import { TORREVIEJA_ENHANCED_DATA } from './area-data/torrevieja';
 import { BENIDORM_ENHANCED_DATA } from './area-data/benidorm';
@@ -41,11 +44,30 @@ import { CASARES_ENHANCED_DATA } from './area-data/casares';
 import { SOTOGRANDE_ENHANCED_DATA } from './area-data/sotogrande';
 import { NUEVA_ANDALUCIA_ENHANCED_DATA } from './area-data/nueva-andalucia';
 import { VELEZ_MALAGA_ENHANCED_DATA } from './area-data/velez-malaga';
+import { VILLAMARTIN_ENHANCED_DATA } from './area-data/villamartin';
+import { PLAYA_FLAMENCA_ENHANCED_DATA } from './area-data/playa-flamenca';
+import { CAMPOAMOR_ENHANCED_DATA } from './area-data/dehesa-de-campoamor';
+import { GRAN_ALACANT_ENHANCED_DATA } from './area-data/gran-alacant';
+import { PILAR_ENHANCED_DATA } from './area-data/pilar-de-la-horadada';
+import { PUNTA_PRIMA_ENHANCED_DATA } from './area-data/punta-prima';
+import { LA_MANGA_ENHANCED_DATA } from './area-data/la-manga';
+import { MAZARRON_ENHANCED_DATA } from './area-data/mazarron';
+import { LOS_ALCAZARES_ENHANCED_DATA } from './area-data/los-alcazares';
+import { MOJACAR_ENHANCED_DATA } from './area-data/mojacar';
+import { VERA_ENHANCED_DATA } from './area-data/vera';
+import { ALMERIA_ENHANCED_DATA } from './area-data/almeria';
+
+
+
+
+
+
 
 // Combined area data
 export const ALL_COSTA_BLANCA_AREAS: AreaDetail[] = [
     ...COSTA_BLANCA_AREAS,
-    ...COSTA_BLANCA_AREAS_2
+    ...COSTA_BLANCA_AREAS_2,
+    ...COSTA_BLANCA_AREAS_3
 ];
 
 export const ALL_COSTA_DEL_SOL_AREAS: AreaDetail[] = [
@@ -53,9 +75,15 @@ export const ALL_COSTA_DEL_SOL_AREAS: AreaDetail[] = [
     ...COSTA_DEL_SOL_AREAS_2
 ];
 
+export const ALL_COSTA_CALIDA_AREAS: AreaDetail[] = COSTA_CALIDA_AREAS;
+
+export const ALL_COSTA_ALMERIA_AREAS: AreaDetail[] = COSTA_ALMERIA_AREAS;
+
 export const ALL_AREAS: AreaDetail[] = [
     ...ALL_COSTA_BLANCA_AREAS,
-    ...ALL_COSTA_DEL_SOL_AREAS
+    ...ALL_COSTA_DEL_SOL_AREAS,
+    ...ALL_COSTA_CALIDA_AREAS,
+    ...ALL_COSTA_ALMERIA_AREAS
 ];
 
 // Get area by slug
@@ -174,13 +202,55 @@ export function getAreaDetailBySlug(slug: string): AreaDetail | undefined {
     if (slug === 'velez-malaga') {
         return { ...area, ...VELEZ_MALAGA_ENHANCED_DATA };
     }
+    if (slug === 'villamartin') {
+        return { ...area, ...VILLAMARTIN_ENHANCED_DATA };
+    }
+    if (slug === 'playa-flamenca') {
+        return { ...area, ...PLAYA_FLAMENCA_ENHANCED_DATA };
+    }
+    if (slug === 'dehesa-de-campoamor') {
+        return { ...area, ...CAMPOAMOR_ENHANCED_DATA };
+    }
+    if (slug === 'gran-alacant') {
+        return { ...area, ...GRAN_ALACANT_ENHANCED_DATA };
+    }
+    if (slug === 'pilar-de-la-horadada') {
+        return { ...area, ...PILAR_ENHANCED_DATA };
+    }
+    if (slug === 'punta-prima') {
+        return { ...area, ...PUNTA_PRIMA_ENHANCED_DATA };
+    }
+    if (slug === 'la-manga') {
+        return { ...area, ...LA_MANGA_ENHANCED_DATA };
+    }
+    if (slug === 'mazarron') {
+        return { ...area, ...MAZARRON_ENHANCED_DATA };
+    }
+    if (slug === 'los-alcazares') {
+        return { ...area, ...LOS_ALCAZARES_ENHANCED_DATA };
+    }
+    if (slug === 'mojacar') {
+        return { ...area, ...MOJACAR_ENHANCED_DATA };
+    }
+    if (slug === 'vera') {
+        return { ...area, ...VERA_ENHANCED_DATA };
+    }
+    if (slug === 'almeria') {
+        return { ...area, ...ALMERIA_ENHANCED_DATA };
+    }
 
     return area;
 }
 
 // Get areas by region
-export function getAreaDetailsByRegion(region: 'costa-blanca' | 'costa-del-sol'): AreaDetail[] {
-    return region === 'costa-blanca' ? ALL_COSTA_BLANCA_AREAS : ALL_COSTA_DEL_SOL_AREAS;
+export function getAreaDetailsByRegion(region: 'costa-blanca' | 'costa-del-sol' | 'costa-calida' | 'costa-almeria'): AreaDetail[] {
+    switch (region) {
+        case 'costa-blanca': return ALL_COSTA_BLANCA_AREAS;
+        case 'costa-del-sol': return ALL_COSTA_DEL_SOL_AREAS;
+        case 'costa-calida': return ALL_COSTA_CALIDA_AREAS;
+        case 'costa-almeria': return ALL_COSTA_ALMERIA_AREAS;
+        default: return [];
+    }
 }
 
 // Get related areas for an area
@@ -230,6 +300,8 @@ export function getAreaStats() {
         totalAreas: ALL_AREAS.length,
         costaBlancaCount: ALL_COSTA_BLANCA_AREAS.length,
         costaDelSolCount: ALL_COSTA_DEL_SOL_AREAS.length,
+        costaCalidaCount: ALL_COSTA_CALIDA_AREAS.length,
+        costaAlmeriaCount: ALL_COSTA_ALMERIA_AREAS.length,
         totalProperties: ALL_AREAS.reduce((sum, a) => sum + a.propertyCount, 0),
         avgPrice: Math.round(
             ALL_AREAS.reduce((sum, a) => sum + a.avgPrice, 0) / ALL_AREAS.length

@@ -4,9 +4,9 @@ import { useState, useMemo } from 'react';
 import { ArrowRight, Search } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ALL_COSTA_BLANCA_AREAS, ALL_COSTA_DEL_SOL_AREAS, getAreaStats } from '@/lib/area-data';
+import { ALL_COSTA_BLANCA_AREAS, ALL_COSTA_DEL_SOL_AREAS, ALL_COSTA_CALIDA_AREAS, ALL_COSTA_ALMERIA_AREAS, getAreaStats } from '@/lib/area-data';
 
-type RegionTab = 'all' | 'costa-blanca' | 'costa-del-sol';
+type RegionTab = 'all' | 'costa-blanca' | 'costa-del-sol' | 'costa-calida' | 'costa-almeria';
 
 export default function AreasPage() {
     const [activeTab, setActiveTab] = useState<RegionTab>('all');
@@ -16,7 +16,7 @@ export default function AreasPage() {
 
     // Combine and sort all areas by property count (popularity)
     const allAreasSorted = useMemo(() => {
-        return [...ALL_COSTA_BLANCA_AREAS, ...ALL_COSTA_DEL_SOL_AREAS]
+        return [...ALL_COSTA_BLANCA_AREAS, ...ALL_COSTA_DEL_SOL_AREAS, ...ALL_COSTA_CALIDA_AREAS, ...ALL_COSTA_ALMERIA_AREAS]
             .sort((a, b) => b.propertyCount - a.propertyCount);
     }, []);
 
@@ -27,11 +27,23 @@ export default function AreasPage() {
 
     // Filter areas based on tab and search
     const filteredAreas = useMemo(() => {
-        let areas = activeTab === 'costa-blanca'
-            ? [...ALL_COSTA_BLANCA_AREAS].sort((a, b) => b.propertyCount - a.propertyCount)
-            : activeTab === 'costa-del-sol'
-                ? [...ALL_COSTA_DEL_SOL_AREAS].sort((a, b) => b.propertyCount - a.propertyCount)
-                : allAreasSorted;
+        let areas: typeof allAreasSorted;
+        switch (activeTab) {
+            case 'costa-blanca':
+                areas = [...ALL_COSTA_BLANCA_AREAS].sort((a, b) => b.propertyCount - a.propertyCount);
+                break;
+            case 'costa-del-sol':
+                areas = [...ALL_COSTA_DEL_SOL_AREAS].sort((a, b) => b.propertyCount - a.propertyCount);
+                break;
+            case 'costa-calida':
+                areas = [...ALL_COSTA_CALIDA_AREAS].sort((a, b) => b.propertyCount - a.propertyCount);
+                break;
+            case 'costa-almeria':
+                areas = [...ALL_COSTA_ALMERIA_AREAS].sort((a, b) => b.propertyCount - a.propertyCount);
+                break;
+            default:
+                areas = allAreasSorted;
+        }
 
         if (searchQuery) {
             const query = searchQuery.toLowerCase();
@@ -45,9 +57,11 @@ export default function AreasPage() {
     }, [activeTab, searchQuery, allAreasSorted]);
 
     const tabs: { key: RegionTab; label: string; count: number }[] = [
-        { key: 'all', label: 'Alla områden', count: stats.totalAreas },
+        { key: 'all', label: 'Alla', count: stats.totalAreas },
         { key: 'costa-blanca', label: 'Costa Blanca', count: stats.costaBlancaCount },
         { key: 'costa-del-sol', label: 'Costa del Sol', count: stats.costaDelSolCount },
+        { key: 'costa-calida', label: 'Costa Cálida', count: stats.costaCalidaCount },
+        { key: 'costa-almeria', label: 'Costa de Almería', count: stats.costaAlmeriaCount },
     ];
 
     return (
@@ -61,8 +75,8 @@ export default function AreasPage() {
                         </h1>
 
                         <p className="text-lg text-white/70 font-light leading-relaxed max-w-2xl mx-auto mb-8">
-                            Från Costa Blancas kritvita stränder till Costa del Sols glamorösa livsstil –
-                            hitta din perfekta plats i solen.
+                            Från Costa Blancas kritvita stränder till Costa del Sols glamorösa livsstil,
+                            Costa Cálidas unika laguner och Costa de Almerías orörda natur.
                         </p>
 
                         {/* Search Bar */}
@@ -101,7 +115,7 @@ export default function AreasPage() {
                 <div className="container mx-auto px-4">
                     <div className="flex items-center justify-between mb-8">
                         <h2 className="text-2xl md:text-3xl font-serif text-navy">
-                            {activeTab === 'all' ? 'Alla' : activeTab === 'costa-blanca' ? 'Costa Blanca' : 'Costa del Sol'}{' '}
+                            {tabs.find(t => t.key === activeTab)?.label || 'Alla'}{' '}
                             <span className="text-sand italic">områden</span>
                             {searchQuery && <span className="text-lg font-sans text-gray-500 ml-2">({filteredAreas.length} resultat)</span>}
                         </h2>
@@ -128,11 +142,18 @@ export default function AreasPage() {
                                         )}
                                         {/* Region Badge */}
                                         <div className="absolute top-3 right-3">
-                                            <span className={`px-2.5 py-1.5 text-[10px] uppercase tracking-widest font-bold rounded-sm backdrop-blur-md shadow-sm ${area.region === 'costa-blanca'
-                                                ? 'bg-white/20 text-white border border-white/30'
-                                                : 'bg-amber-100/40 text-amber-950 border border-amber-200/50'
-                                                }`}>
-                                                {area.region === 'costa-blanca' ? 'Costa Blanca' : 'Costa del Sol'}
+                                            <span className={`px-2.5 py-1.5 text-[10px] uppercase tracking-widest font-bold rounded-sm backdrop-blur-md shadow-sm ${{
+                                                'costa-blanca': 'bg-white/20 text-white border border-white/30',
+                                                'costa-del-sol': 'bg-amber-100/40 text-amber-950 border border-amber-200/50',
+                                                'costa-calida': 'bg-cyan-100/40 text-cyan-950 border border-cyan-200/50',
+                                                'costa-almeria': 'bg-orange-100/40 text-orange-950 border border-orange-200/50'
+                                            }[area.region] || 'bg-white/20 text-white border border-white/30'}`}>
+                                                {{
+                                                    'costa-blanca': 'Costa Blanca',
+                                                    'costa-del-sol': 'Costa del Sol',
+                                                    'costa-calida': 'Costa Cálida',
+                                                    'costa-almeria': 'Costa de Almería'
+                                                }[area.region] || area.region}
                                             </span>
                                         </div>
                                         {/* Popular Badge */}
