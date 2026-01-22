@@ -143,25 +143,25 @@ export default function GolfPricingTable({ course }: GolfPricingTableProps) {
                     <div className="bg-greige/50 p-3 rounded-sm flex flex-col">
                         <span className="text-xs text-gray-500 uppercase">Buggy</span>
                         <span className="font-serif text-lg text-navy">
-                            {course.pricing.extras.buggy > 0 ? `€${course.pricing.extras.buggy}` : '—'}
+                            {(course.pricing.extras.buggy ?? 0) > 0 ? `€${course.pricing.extras.buggy}` : '—'}
                         </span>
                     </div>
                     <div className="bg-greige/50 p-3 rounded-sm flex flex-col">
                         <span className="text-xs text-gray-500 uppercase">Klubbor</span>
                         <span className="font-serif text-lg text-navy">
-                            {course.pricing.extras.clubRental > 0 ? `€${course.pricing.extras.clubRental}` : '—'}
+                            {(course.pricing.extras.clubRental ?? 0) > 0 ? `€${course.pricing.extras.clubRental}` : '—'}
                         </span>
                     </div>
                     <div className="bg-greige/50 p-3 rounded-sm flex flex-col">
                         <span className="text-xs text-gray-500 uppercase">Vagn</span>
                         <span className="font-serif text-lg text-navy">
-                            {course.pricing.extras.trolley > 0 ? `€${course.pricing.extras.trolley}` : '—'}
+                            {(course.pricing.extras.trolley ?? 0) > 0 ? `€${course.pricing.extras.trolley}` : '—'}
                         </span>
                     </div>
                     <div className="bg-greige/50 p-3 rounded-sm flex flex-col">
                         <span className="text-xs text-gray-500 uppercase">Rangebollar</span>
                         <span className="font-serif text-lg text-navy">
-                            {course.pricing.extras.rangeBalls > 0 ? `€${course.pricing.extras.rangeBalls}` : '—'}
+                            {(course.pricing.extras.rangeBalls ?? 0) > 0 ? `€${course.pricing.extras.rangeBalls}` : '—'}
                         </span>
                     </div>
                 </div>

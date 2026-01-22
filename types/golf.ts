@@ -11,7 +11,7 @@ export interface GolfCourse {
     longDescription: string;
 
     // Plats
-    region: 'costa-blanca' | 'costa-del-sol';
+    region: 'costa-blanca' | 'costa-del-sol' | 'costa-calida' | 'costa-almeria';
     subRegion: string;
     province: string;
     municipality?: string;
@@ -69,6 +69,7 @@ export interface GolfCourse {
     // Priser (KRITISKT - håll uppdaterat)
     pricing: {
         currency: 'EUR';
+        priceSource?: string;
         lastUpdated: string;  // ISO date
 
         greenFee: {
@@ -77,6 +78,10 @@ export interface GolfCourse {
                 weekend: { min: number; max: number };
             };
             highSeason: {
+                weekday: { min: number; max: number };
+                weekend: { min: number; max: number };
+            };
+            midSeason?: {
                 weekday: { min: number; max: number };
                 weekend: { min: number; max: number };
             };
@@ -89,18 +94,21 @@ export interface GolfCourse {
                 price: number;
                 startsAt: string;
             };
+            currentPeriod?: any;
         };
 
+
         extras: {
-            buggy: number;
-            buggy9Holes?: number;
-            clubRental: number;
-            trolley: number;
-            electricTrolley?: number;
-            rangeBalls: number;
+            buggy: number | null;
+            buggy9Holes?: number | null;
+            clubRental: number | null;
+            trolley: number | null;
+            electricTrolley?: number | null;
+            rangeBalls: number | null;
             rangeBallsIncluded: boolean;
-            locker?: number;
-            towel?: number;
+            locker?: number | null;
+            towel?: number | null;
+            [key: string]: number | boolean | string | null | undefined;
         };
 
         packages?: Array<{
@@ -427,7 +435,7 @@ export interface GolfRegion {
 export type GolfDifficulty = 'beginner' | 'easy' | 'low' | 'medium' | 'medium-high' | 'high' | 'hard' | 'challenging' | 'expert';
 
 export interface GolfFilter {
-    region?: 'costa-blanca' | 'costa-del-sol';
+    region?: 'costa-blanca' | 'costa-del-sol' | 'costa-calida' | 'costa-almeria';
     subRegion?: string;
     priceMin?: number;
     priceMax?: number;

@@ -1,0 +1,233 @@
+{
+  "slug": "cartagena",
+  "name": "Cartagena",
+  "region": "costa-calida",
+  "province": "Murcia",
+  "propertyCount": 450,
+  "priceRange": {
+    "min": 120000,
+    "max": 1500000
+  },
+  "avgPrice": 280000,
+  "image": "/images/areas/cartagena-hero-v2.png",
+  "description": "Cartagena is a historic Mediterranean port city with 220,000 residents that combines ancient Roman heritage with contemporary urban life, making it in...",
+  "headline": "Cartagena – Historic Port with Modern Lifestyle",
+  "metaDescription": "Cartagena is a historic Mediterranean port city with 220,000 residents that combines ancient Roman heritage with contemporary urban life, making it increasingly",
+  "keywords": [
+    "Cartagena spain real estate",
+    "buy property cartagena",
+    "costa calida property",
+    "cartagena roman theatre"
+  ],
+  "coordinates": {
+    "lat": 37.6,
+    "lng": -0.9833
+  },
+  "content": {
+    "intro": "Cartagena is a historic Mediterranean port city with 220,000 residents that combines ancient Roman heritage with contemporary urban life, making it increasingly attractive to Scandinavian buyers seeking cultural depth alongside coastal living. The city is undergoing gentrification similar to Málaga's transformation a decade ago, offering both renovated historic properties and new builds in expanding periphery areas.[3]",
+    "lifestyle": "Life in Cartagena blends vibrant urban culture with relaxed Mediterranean rhythms. The city features a bustling harbour, sophisticated nightlife in the historic Barrio del Carmen, outdoor terraces, and world-class museums including the Fine Arts Museum.[5] The atmosphere is characterized by a harmonious blend of tradition and modernity, with rich cultural festivals and excellent gastronomy.[1] The city's strategic location 200 kilometres from the African coast creates a cosmopolitan feel, while three museums showcase Roman and Arab heritage found both on land and in the Mediterranean.[4] For Scandinavian expatriates, the established expat community and growing digital nomad population provide social networks, while long-term rental demand from students and remote workers supports property investment.[2]",
+    "climate": "Cartagena enjoys over 320 days of sunshine annually, characteristic of the Costa Cálida region.[5] Winters are mild and frost-free, providing escape from Scandinavian cold, while summers are warm but moderated by Mediterranean sea breezes. The region's climate classification makes it one of Europe's sunniest locations, ideal for year-round outdoor living.",
+    "attractions": "The city's primary draw is its Roman heritage, including a perfectly preserved Roman theatre built for 6,000 spectators where Romans first landed on the Iberian Peninsula in 209 BC.[5] The historic port remains one of Spain's most important trading points and home to the Spanish Navy, with regular cruise ship visits.[4] Cultural attractions include three museums displaying Roman and Arab finds, array of theatres, and the vibrant harbour district.[1][4] Beyond the city, the Mar Menor lagoon offers shallow waters ideal for water sports, while nearby Sierra Espuña provides trekking through 25,000 hectares, and Cabo de Palos offers Europe's top 10 diving with 30-metre visibility.[5]",
+    "transport": "Cartagena benefits from improving regional infrastructure. Murcia's regional airport (RMU) provides easy access from the UK and across Europe, with an €450 million expansion underway.[2][5] AVE high-speed rail extension to the region is planned, enhancing connectivity.[5] The city's strategic coastal location means even inland properties offer quick journeys to beaches and urban amenities. Specific distances to airports are not detailed in available sources, but the airport expansion and rail improvements indicate strengthening transport links for 2025-2026.",
+    "propertyMarket": "Cartagena represents one of Costa Cálida's strongest investment opportunities. The city is undergoing gentrification with buying opportunities in both renovated apartments in the historic centre and new builds in expanding periphery areas.[3] Coastal properties in prime locations range from €1,900-2,300 per square metre, while quality inland properties remain below €1,000 per square metre.[5] The broader Costa Cálida market shows 23.8% annual price growth in hot markets, yet remains 30-35% below historical peaks, with prices expected to rise 4-6% annually through 2026.[5] Foreign buyers represent 20-22.8% of purchases, with long-term rental demand particularly strong in Cartagena thanks to growing student and digital nomad populations.[2][5] Rental yields range from 5-7% gross with 62% average occupancy, outperforming most EU markets.[5] Critical inventory shortages (3-month supply) support continued appreciation.[5]",
+    "buyingTips": "Engage an English-speaking lawyer and trusted estate agent familiar with Cartagena's historic centre regulations, as period properties require specialized knowledge.[2] For historic centre apartments, verify renovation quality and compliance with heritage preservation requirements. Consider new-build periphery properties for modern amenities and lower maintenance. If investing for rental income, properties with sea views or marina access command higher yields.[2] Pay a reservation fee and sign preliminary contract after offer acceptance, then complete purchase with 10% deposit, final deed signing at notary, and purchase taxes/legal fees.[2] Use a currency specialist for fund transfers to optimize exchange rates from Swedish kronor.[2] Book a viewing trip to assess community vibe and verify neighbourhood character, particularly important in gentrifying areas where specific streets vary significantly in development stage and appeal.[2]"
+  },
+  "highlights": [
+    {
+      "icon": "history",
+      "title": "Roman Theatre",
+      "description": "Perfectly preserved Roman theatre seating 6,000, from 209 BC landing site, blending ancient history with urban life."
+    },
+    {
+      "icon": "beach",
+      "title": "Blue Flag Beaches",
+      "description": "Premier beaches like Calblanque, Portús, and Cala Cortina offering crystal-clear waters and family-friendly shores."
+    },
+    {
+      "icon": "sun",
+      "title": "Mediterranean Climate",
+      "description": "Over 315 sunny days per year in Costa Cálida, ideal for Scandinavian expats escaping northern winters."
+    },
+    {
+      "icon": "food",
+      "title": "Local Gastronomy",
+      "description": "Fresh seafood and Mediterranean cuisine in vibrant centers like El Centro, with markets in traditional neighborhoods."
+    },
+    {
+      "icon": "nature",
+      "title": "Mar Menor Proximity",
+      "description": "Europe's largest saltwater lagoon nearby, with shallow family beaches like Los Nietos."
+    }
+  ],
+  "quickFacts": {
+    "population": {
+      "value": 220400,
+      "year": 2025,
+      "source": "City Population (Instituto Nacional de Estadística evaluation)"
+    },
+    "foreignPercentage": {
+      "value": 11.6,
+      "calculation": "24,265 foreign residents / 219,235 total (2024 register)",
+      "source": "City Population data shows EU: 2,786, Europe (Rest): 3,404, Africa: 12,996, America: 5,167, Asia and Oceania: 851"
+    },
+    "swedesEstimate": {
+      "value": null,
+      "note": "No data available in search results; Swedish population not separately identified"
+    },
+    "airportDistance": {
+      "km": null,
+      "minutes": null,
+      "airport": "Data not provided in search results"
+    },
+    "directFlights": {
+      "airlines": null,
+      "frequencyPerWeek": null,
+      "note": "Data not provided in search results"
+    },
+    "pricePerM2": {
+      "value": null,
+      "source": "Not provided in search results",
+      "year": null
+    },
+    "sunshineHours": {
+      "value": null,
+      "note": "Data not provided in search results"
+    },
+    "averageTemp": {
+      "annual": null,
+      "january": null,
+      "july": null,
+      "note": "Only precipitation data available: 280mm annually in Cartagena; temperatures described as 'high with relatively little seasonal variation'"
+    }
+  },
+  "districts": [
+    {
+      "name": "El Centro",
+      "character": "Vibrant city center rich in history with shops, restaurants, and cultural attractions",
+      "pricePerM2": 1900,
+      "suitableFor": [
+        "History enthusiasts",
+        "Urban dwellers",
+        "Scandinavian expats seeking culture"
+      ],
+      "pros": [
+        "Proximity to Roman theatre and naval history",
+        "Numerous amenities and nightlife",
+        "Authentic Spanish city life"
+      ],
+      "cons": [
+        "Busy and crowded",
+        "Limited parking",
+        "Higher noise levels"
+      ]
+    },
+    {
+      "name": "Ensanche",
+      "character": "Modern residential and commercial area with wide streets",
+      "pricePerM2": 1700,
+      "suitableFor": [
+        "Families",
+        "Professionals",
+        "Convenience seekers"
+      ],
+      "pros": [
+        "Accessibility to amenities",
+        "Mix of housing and services",
+        "Good transport links"
+      ],
+      "cons": [
+        "Less historical charm",
+        "Urban density",
+        "Traffic during peak hours"
+      ]
+    },
+    {
+      "name": "La Concepción",
+      "character": "Quiet residential area with beautiful views near city center",
+      "pricePerM2": 1600,
+      "suitableFor": [
+        "Retirees",
+        "Families",
+        "Swedish buyers wanting peace"
+      ],
+      "pros": [
+        "Scenic views",
+        "Proximity to center",
+        "Residential tranquility"
+      ],
+      "cons": [
+        "Fewer local shops",
+        "Steeper terrain in parts",
+        "Limited nightlife"
+      ]
+    },
+    {
+      "name": "Los Dolores",
+      "character": "Residential neighborhood blending local life with convenience",
+      "pricePerM2": 1500,
+      "suitableFor": [
+        "Families",
+        "Local integration",
+        "Budget-conscious expats"
+      ],
+      "pros": [
+        "Schools, parks, and shopping",
+        "Strong community feel",
+        "Affordable housing"
+      ],
+      "cons": [
+        "Away from beaches",
+        "Less tourist appeal",
+        "Industrial proximity in areas"
+      ]
+    },
+    {
+      "name": "Perín",
+      "character": "Coastal southern district with beaches and small villages",
+      "pricePerM2": 2100,
+      "suitableFor": [
+        "Beach lovers",
+        "Nature seekers",
+        "Water sports enthusiasts"
+      ],
+      "pros": [
+        "Access to Playa de La Azohía and Portús",
+        "Mediterranean Sea proximity",
+        "Secluded tranquility"
+      ],
+      "cons": [
+        "Small population centers",
+        "Limited amenities",
+        "Seasonal tourism fluctuations"
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "What is the population of Cartagena?",
+      "answer": "Cartagena has 220,000 residents, making it the largest city in Costa Cálida."
+    },
+    {
+      "question": "How many districts does Cartagena have?",
+      "answer": "The municipality has 24 districts, including El Centro, Ensanche, and coastal areas like Perín."
+    },
+    {
+      "question": "What are average property prices in Cartagena?",
+      "answer": "Prices range from €1,500-€2,100 per m² in key areas, lower than premium spots like Torre-Pacheco at €2,300/m²."
+    },
+    {
+      "question": "Is Cartagena suitable for Swedish buyers?",
+      "answer": "Yes, with sunny climate, beaches, history, and residential options blending convenience and community for expats."
+    },
+    {
+      "question": "What beaches are near Cartagena?",
+      "answer": "Notable ones include Playa de La Azohía, Portús, Calblanque, and Cala Cortina, many with Blue Flag status."
+    }
+  ],
+  "galleryImages": [
+    "/images/areas/cartagena-roman-theatre.png",
+    "/images/areas/cartagena-calle-mayor.png",
+    "/images/areas/cartagena-cala-cortina.png",
+    "/images/areas/cartagena-hero-v2.png"
+  ]
+}

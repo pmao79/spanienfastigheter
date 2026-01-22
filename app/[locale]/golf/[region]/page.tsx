@@ -7,7 +7,7 @@ import GolfBreadcrumbs from '@/components/golf/GolfBreadcrumbs';
 import { Metadata } from 'next';
 
 // Define valid regions
-const VALID_REGIONS = ['costa-blanca', 'costa-del-sol'];
+const VALID_REGIONS = ['costa-blanca', 'costa-del-sol', 'costa-calida', 'costa-almeria'];
 
 interface RegionPageProps {
     params: Promise<{
@@ -16,12 +16,23 @@ interface RegionPageProps {
     }>;
 }
 
+// Helper to get region display name
+function getRegionDisplayName(region: string): string {
+    switch (region) {
+        case 'costa-blanca': return 'Costa Blanca';
+        case 'costa-del-sol': return 'Costa del Sol';
+        case 'costa-calida': return 'Costa Cálida';
+        case 'costa-almeria': return 'Costa de Almería';
+        default: return region;
+    }
+}
+
 // Metadata generation (basic version, ideally uses translations)
 export async function generateMetadata({ params }: RegionPageProps): Promise<Metadata> {
     const { region } = await params;
     if (!VALID_REGIONS.includes(region)) return {};
 
-    const regionName = region === 'costa-blanca' ? 'Costa Blanca' : 'Costa del Sol';
+    const regionName = getRegionDisplayName(region);
 
     return {
         title: `Golfbanor i ${regionName} | Golfguiden Spanien`,
@@ -36,18 +47,32 @@ export default async function GolfRegionPage({ params }: RegionPageProps) {
         notFound();
     }
 
-    const typedRegion = region as 'costa-blanca' | 'costa-del-sol';
-    const regionName = region === 'costa-blanca' ? 'Costa Blanca' : 'Costa del Sol';
+    const typedRegion = region as 'costa-blanca' | 'costa-del-sol' | 'costa-calida' | 'costa-almeria';
+    const regionName = getRegionDisplayName(region);
     const courses = GOLF_COURSES.filter(c => c.region === typedRegion);
 
     // Region specific content
-    const heroImage = region === 'costa-blanca'
-        ? '/images/golf/las-colinas-hero.png'
-        : '/images/golf/valderrama-hero.png';
+    let heroImage = '/images/golf/las-colinas-hero.png'; // Default
+    let description = '';
 
-    const description = region === 'costa-blanca'
-        ? 'Costa Blanca är känt för sina prisvärda banor och fantastiska klimat året runt. Här hittar du mästerskapsbanor som Las Colinas blandat med klassiska semesterbanor.'
-        : 'Costa del Sol, även känd som Costa del Golf, är Europas främsta golfdestination med över 70 banor. Här finns legendariska klubbar som Valderrama och Sotogrande.';
+    switch (region) {
+        case 'costa-blanca':
+            heroImage = '/images/golf/las-colinas-hero.png';
+            description = 'Costa Blanca är känt för sina prisvärda banor och fantastiska klimat året runt. Här hittar du mästerskapsbanor som Las Colinas blandat med klassiska semesterbanor.';
+            break;
+        case 'costa-del-sol':
+            heroImage = '/images/golf/valderrama-hero.png';
+            description = 'Costa del Sol, även känd som Costa del Golf, är Europas främsta golfdestination med över 70 banor. Här finns legendariska klubbar som Valderrama och Sotogrande.';
+            break;
+        case 'costa-calida':
+            heroImage = '/images/areas/la-manga.png';
+            description = 'Costa Cálida och Murcia-regionen erbjuder fantastisk golf, inklusive det kända La Manga Club. Här spelar du i ett ökenlandskap med över 300 soldagar om året.';
+            break;
+        case 'costa-almeria':
+            heroImage = '/images/areas/mojacar.png';
+            description = 'Costa de Almería erbjuder unika golfupplevelser i ett torrt och solsäkert klimat, med banor som Desert Springs som påminner om Arizona.';
+            break;
+    }
 
     return (
         <div className="min-h-screen bg-alabaster">

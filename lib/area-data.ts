@@ -2,10 +2,15 @@ import { AreaDetail } from '@/types/property';
 import { COSTA_BLANCA_AREAS } from './area-data-costa-blanca';
 import { COSTA_BLANCA_AREAS_2 } from './area-data-costa-blanca-2';
 import { COSTA_BLANCA_AREAS_3 } from './area-data-costa-blanca-3';
+import { COSTA_BLANCA_AREAS_4 } from './area-data-costa-blanca-4';
+import { COSTA_BLANCA_AREAS_5 } from './area-data-costa-blanca-5';
 import { COSTA_DEL_SOL_AREAS } from './area-data-costa-del-sol';
 import { COSTA_DEL_SOL_AREAS_2 } from './area-data-costa-del-sol-2';
+import { COSTA_DEL_SOL_AREAS_3 } from './area-data-costa-del-sol-3';
 import { COSTA_CALIDA_AREAS } from './area-data-costa-calida';
+import { COSTA_CALIDA_AREAS_2 } from './area-data-costa-calida-2';
 import { COSTA_ALMERIA_AREAS } from './area-data-costa-almeria';
+import { COSTA_ALMERIA_AREAS_2 } from './area-data-costa-almeria-2';
 
 import { TORREVIEJA_ENHANCED_DATA } from './area-data/torrevieja';
 import { BENIDORM_ENHANCED_DATA } from './area-data/benidorm';
@@ -67,17 +72,26 @@ import { ALMERIA_ENHANCED_DATA } from './area-data/almeria';
 export const ALL_COSTA_BLANCA_AREAS: AreaDetail[] = [
     ...COSTA_BLANCA_AREAS,
     ...COSTA_BLANCA_AREAS_2,
-    ...COSTA_BLANCA_AREAS_3
+    ...COSTA_BLANCA_AREAS_3,
+    ...COSTA_BLANCA_AREAS_4,
+    ...COSTA_BLANCA_AREAS_5
 ];
 
 export const ALL_COSTA_DEL_SOL_AREAS: AreaDetail[] = [
     ...COSTA_DEL_SOL_AREAS,
-    ...COSTA_DEL_SOL_AREAS_2
+    ...COSTA_DEL_SOL_AREAS_2,
+    ...COSTA_DEL_SOL_AREAS_3
 ];
 
-export const ALL_COSTA_CALIDA_AREAS: AreaDetail[] = COSTA_CALIDA_AREAS;
+export const ALL_COSTA_CALIDA_AREAS: AreaDetail[] = [
+    ...COSTA_CALIDA_AREAS,
+    ...COSTA_CALIDA_AREAS_2
+];
 
-export const ALL_COSTA_ALMERIA_AREAS: AreaDetail[] = COSTA_ALMERIA_AREAS;
+export const ALL_COSTA_ALMERIA_AREAS: AreaDetail[] = [
+    ...COSTA_ALMERIA_AREAS,
+    ...COSTA_ALMERIA_AREAS_2
+];
 
 export const ALL_AREAS: AreaDetail[] = [
     ...ALL_COSTA_BLANCA_AREAS,

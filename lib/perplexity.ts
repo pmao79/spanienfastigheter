@@ -1,6 +1,7 @@
 import { AreaResearch } from '@/types/property';
 
-const PERPLEXITY_API_KEY = process.env.PERPLEXITY_API_KEY;
+
+// Removed top-level const
 const API_URL = 'https://api.perplexity.ai/chat/completions';
 
 interface PerplexityMessage {
@@ -24,6 +25,12 @@ export async function queryPerplexity(
     query: string,
     systemPrompt?: string
 ): Promise<{ content: string; citations: string[] }> {
+    const apiKey = process.env.PERPLEXITY_API_KEY;
+
+    if (!apiKey) {
+        throw new Error('PERPLEXITY_API_KEY is not set');
+    }
+
     const messages: PerplexityMessage[] = [
         {
             role: 'system',
@@ -42,7 +49,7 @@ export async function queryPerplexity(
     const response = await fetch(API_URL, {
         method: 'POST',
         headers: {
-            'Authorization': `Bearer ${PERPLEXITY_API_KEY}`,
+            'Authorization': `Bearer ${apiKey}`,
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({

@@ -17,7 +17,7 @@ export function generateAreasFromProperties(properties: Property[]): Area[] {
         string,
         {
             name: string;
-            region: 'costa-blanca' | 'costa-del-sol';
+            region: 'costa-blanca' | 'costa-del-sol' | 'costa-calida' | 'costa-almeria';
             province: string;
             properties: Property[];
         }
@@ -69,10 +69,14 @@ export function generateAreasFromProperties(properties: Property[]): Area[] {
 export function getAreasByRegion(areas: Area[]): {
     'costa-blanca': Area[];
     'costa-del-sol': Area[];
+    'costa-calida': Area[];
+    'costa-almeria': Area[];
 } {
     return {
         'costa-blanca': areas.filter((a) => a.region === 'costa-blanca'),
         'costa-del-sol': areas.filter((a) => a.region === 'costa-del-sol'),
+        'costa-calida': areas.filter((a) => a.region === 'costa-calida'),
+        'costa-almeria': areas.filter((a) => a.region === 'costa-almeria'),
     };
 }
 
@@ -97,7 +101,7 @@ export function getPropertiesByArea(
 // Filter properties by region
 export function getPropertiesByRegion(
     properties: Property[],
-    region: 'costa-blanca' | 'costa-del-sol'
+    region: 'costa-blanca' | 'costa-del-sol' | 'costa-calida' | 'costa-almeria'
 ): Property[] {
     return properties.filter((p) => p.region === region);
 }

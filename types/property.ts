@@ -58,7 +58,7 @@ export interface Property {
         lat: number;
         lng: number;
     };
-    region: 'costa-blanca' | 'costa-del-sol';
+    region: 'costa-blanca' | 'costa-del-sol' | 'costa-calida' | 'costa-almeria';
 
     // Specifications
     beds: number;
@@ -91,20 +91,21 @@ export interface Property {
 // Province to region mapping
 export const PROVINCE_TO_REGION: Record<
     string,
-    'costa-blanca' | 'costa-del-sol'
+    'costa-blanca' | 'costa-del-sol' | 'costa-calida' | 'costa-almeria'
 > = {
     Alicante: 'costa-blanca',
-    Murcia: 'costa-blanca',
+    Murcia: 'costa-calida',
     Málaga: 'costa-del-sol',
     Granada: 'costa-del-sol',
     Cádiz: 'costa-del-sol',
+    Almería: 'costa-almeria',
 };
 
 // Area type for generated areas
 export interface Area {
     slug: string;
     name: string;
-    region: 'costa-blanca' | 'costa-del-sol';
+    region: 'costa-blanca' | 'costa-del-sol' | 'costa-calida' | 'costa-almeria';
     province: string;
     propertyCount: number;
     priceRange: { min: number; max: number };

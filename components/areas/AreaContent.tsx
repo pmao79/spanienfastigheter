@@ -130,12 +130,12 @@ export default function AreaContent({
                         <QuickFacts
                             areaName={area.name}
                             facts={[
-                                { label: 'Befolkning', value: area.quickFacts.population?.value.toLocaleString('sv-SE') || '', subtext: area.quickFacts.population?.year.toString(), source: area.quickFacts.population?.source },
+                                { label: 'Befolkning', value: area.quickFacts.population?.value ? area.quickFacts.population.value.toLocaleString('sv-SE') : '', subtext: area.quickFacts.population?.year?.toString(), source: area.quickFacts.population?.source },
                                 { label: 'Utländsk andel', value: area.quickFacts.foreignPercentage?.value ? `${area.quickFacts.foreignPercentage.value}%` : '', source: area.quickFacts.foreignPercentage?.source },
-                                { label: 'Svenska invånare', value: area.quickFacts.swedesEstimate?.value.toLocaleString('sv-SE') || '', subtext: area.quickFacts.swedesEstimate?.note },
+                                { label: 'Svenska invånare', value: area.quickFacts.swedesEstimate?.value ? area.quickFacts.swedesEstimate.value.toLocaleString('sv-SE') : '', subtext: area.quickFacts.swedesEstimate?.note },
                                 { label: 'Avstånd till flygplats', value: area.quickFacts.airportDistance ? `${area.quickFacts.airportDistance.minutes} min` : '', subtext: area.quickFacts.airportDistance?.airport },
                                 { label: 'Pris/m²', value: area.quickFacts.pricePerM2?.value ? `${area.quickFacts.pricePerM2.value.toLocaleString('sv-SE')} €` : '', source: area.quickFacts.pricePerM2?.source },
-                                { label: 'Soltimmar/år', value: area.quickFacts.sunshineHours?.value.toString() || '' },
+                                { label: 'Soltimmar/år', value: area.quickFacts.sunshineHours?.value ? area.quickFacts.sunshineHours.value.toString() : '' },
                                 { label: 'Medeltemperatur', value: area.quickFacts.averageTemp?.annual ? `${area.quickFacts.averageTemp.annual}°C` : '', subtext: 'Årsmedeltemperatur' }
                             ].filter(f => f.value !== '')}
                         />
@@ -336,7 +336,6 @@ export default function AreaContent({
             {area.faq && area.faq.length > 0 && (
                 <section className="py-16 md:py-24 bg-white border-t border-gray-100">
                     <div className="container mx-auto px-4 max-w-4xl">
-                        <h2 className="text-3xl font-serif text-navy text-center mb-12">Vanliga frågor om {area.name}</h2>
                         <AreaFAQ items={area.faq} areaName={area.name} />
                     </div>
                 </section>
