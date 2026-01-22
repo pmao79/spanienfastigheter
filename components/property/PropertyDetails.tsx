@@ -35,6 +35,7 @@ import ImageLightbox from './ImageLightbox';
 import FavoriteButton from '@/components/ui/FavoriteButton';
 import PropertyMap from '@/components/map/PropertyMap';
 import SearchServiceModal from '@/components/modals/SearchServiceModal';
+import CostCalculator from '@/app/[locale]/guide/kopa-salja-spanien-2025/CostCalculator';
 
 interface PropertyDetailsProps {
     property: Property;
@@ -547,6 +548,14 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
                             {/* PDF Download - Dynamic Generation */}
                             {/* We use a client-side only wrapper for PDFDownloadLink to avoid hydration mismatch/SSR issues */}
                             <ClientOnlyPDFDownload property={property} />
+
+                            {/* Cost Calculator */}
+                            <div className="mt-6">
+                                <CostCalculator
+                                    initialPrice={property.price}
+                                    fixedRegion={property.region === 'costa-blanca' ? 'valencia' : 'andalusia'}
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -88,10 +88,10 @@ export default function Footer() {
                         </li>
                         <li>
                             <Link
-                                href="/kopguide"
+                                href="/guide/kopa-salja-spanien-2025"
                                 className="hover:text-white transition-colors block"
                             >
-                                Köpguide
+                                Guide: Köpa & Sälja
                             </Link>
                         </li>
                         <li>

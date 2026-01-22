@@ -493,7 +493,7 @@ export default function AreaContent({
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <AnimatedCTA href="/kontakt" text="Kontakta oss" variant="secondary" />
-                        <AnimatedCTA href={`/fastigheter?area=${area.slug}`} text="Se fastigheter" variant="outline" />
+                        <AnimatedCTA href={`/fastigheter?area=${area.slug}`} text="Se fastigheter" variant="outline-white" />
                     </div>
                 </div>
             </section>
