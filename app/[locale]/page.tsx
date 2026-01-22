@@ -24,7 +24,7 @@ export default async function HomePage() {
                     <div className="flex flex-col lg:flex-row gap-16">
                         {/* Filter Sidebar - Desktop */}
                         <aside className="hidden lg:block w-80 flex-shrink-0">
-                            <FilterWithModal />
+                            <FilterWithModal propertyCount={totalCount} />
                         </aside>
 
                         {/* Main Content */}

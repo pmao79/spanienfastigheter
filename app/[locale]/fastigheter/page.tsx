@@ -4,7 +4,6 @@ import PropertyListing from '@/components/property/PropertyListing';
 import FilterWithModal from '@/components/search/FilterWithModal';
 import { fetchProperties } from '@/lib/xml-parser';
 import { filterProperties, parseSearchParams } from '@/lib/filters';
-import { MOCK_PROPERTIES } from '@/lib/mock-data';
 
 interface Props {
     searchParams: Promise<Record<string, string | string[] | undefined>>;
@@ -18,16 +17,11 @@ export const metadata = {
 
 async function PropertyGrid({
     searchParams,
+    properties,
 }: {
     searchParams: Record<string, string | string[] | undefined>;
+    properties: Awaited<ReturnType<typeof fetchProperties>>;
 }) {
-    // Fetch real properties from XML, fallback to mock data
-    let properties = await fetchProperties();
-
-    if (properties.length === 0) {
-        properties = MOCK_PROPERTIES;
-    }
-
     // Apply filters
     const filters = parseSearchParams(searchParams);
     const filteredProperties = filterProperties(properties, filters);
@@ -42,6 +36,10 @@ async function PropertyGrid({
 
 export default async function PropertiesPage({ searchParams }: Props) {
     const resolvedSearchParams = await searchParams;
+
+    // Fetch real properties from XML API at page level
+    const properties = await fetchProperties();
+    const totalCount = properties.length;
 
     return (
         <main className="min-h-screen bg-alabaster">
@@ -68,7 +66,7 @@ export default async function PropertiesPage({ searchParams }: Props) {
                     <div className="flex flex-col lg:flex-row gap-16">
                         {/* Filter Sidebar */}
                         <aside className="hidden lg:block w-80 flex-shrink-0">
-                            <FilterWithModal />
+                            <FilterWithModal propertyCount={totalCount} />
                         </aside>
 
                         {/* Property Grid */}
@@ -85,7 +83,7 @@ export default async function PropertiesPage({ searchParams }: Props) {
                                     </div>
                                 }
                             >
-                                <PropertyGrid searchParams={resolvedSearchParams} />
+                                <PropertyGrid searchParams={resolvedSearchParams} properties={properties} />
                             </Suspense>
                         </div>
                     </div>

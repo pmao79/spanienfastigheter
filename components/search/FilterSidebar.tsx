@@ -4,9 +4,10 @@ import { Search } from 'lucide-react';
 
 interface FilterSidebarProps {
     onOpenSearchService?: () => void;
+    propertyCount?: number;
 }
 
-export default function FilterSidebar({ onOpenSearchService }: FilterSidebarProps) {
+export default function FilterSidebar({ onOpenSearchService, propertyCount }: FilterSidebarProps) {
     return (
         <div className="bg-white p-8 border border-gray-100 sticky top-32 shadow-soft">
             <div className="flex justify-between items-center mb-8 border-b border-greige pb-4">
@@ -149,7 +150,7 @@ export default function FilterSidebar({ onOpenSearchService }: FilterSidebarProp
                 </div>
 
                 <button className="w-full bg-navy text-white py-4 uppercase tracking-[0.15em] text-xs font-semibold hover:bg-charcoal transition-colors shadow-lg shadow-navy/20">
-                    Visa 142 bostäder
+                    Visa {propertyCount !== undefined ? propertyCount : '–'} bostäder
                 </button>
 
                 {/* Concierge Helper Card */}
