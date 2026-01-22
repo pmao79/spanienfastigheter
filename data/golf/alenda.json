@@ -36,12 +36,24 @@
   "pricing": {
     "greenFee": {
       "highSeason": {
-        "18holes": 102,
-        "9holes": 53
+        "weekday": {
+          "min": 102,
+          "max": 102
+        },
+        "weekend": {
+          "min": 102,
+          "max": 102
+        }
       },
       "lowSeason": {
-        "18holes": 95,
-        "9holes": 49
+        "weekday": {
+          "min": 95,
+          "max": 95
+        },
+        "weekend": {
+          "min": 95,
+          "max": 95
+        }
       },
       "currentPeriod": {
         "date": "2026-01-26 to 2026-05-31",

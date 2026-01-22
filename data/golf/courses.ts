@@ -39,12 +39,24 @@ export const GOLF_COURSES: GolfCourse[] = [
     "pricing": {
       "greenFee": {
         "highSeason": {
-          "18holes": 102,
-          "9holes": 53
+          "weekday": {
+            "min": 102,
+            "max": 102
+          },
+          "weekend": {
+            "min": 102,
+            "max": 102
+          }
         },
         "lowSeason": {
-          "18holes": 95,
-          "9holes": 49
+          "weekday": {
+            "min": 95,
+            "max": 95
+          },
+          "weekend": {
+            "min": 95,
+            "max": 95
+          }
         },
         "currentPeriod": {
           "date": "2026-01-26 to 2026-05-31",
@@ -202,7 +214,7 @@ export const GOLF_COURSES: GolfCourse[] = [
           "to": "30-09"
         }
       },
-      "lastUpdated": "2026-01-22T01:01:39.506Z",
+      "lastUpdated": "2026-01-22T01:38:24.963Z",
       "extras": {
         "buggy": 40,
         "clubRental": 30,
@@ -313,13 +325,13 @@ export const GOLF_COURSES: GolfCourse[] = [
           }
         },
         "lowSeason": {
-          "18holes": {
-            "weekday": 77,
-            "weekend": 77
+          "weekday": {
+            "min": 77,
+            "max": 77
           },
-          "9holes": {
-            "weekday": 45,
-            "weekend": 45
+          "weekend": {
+            "min": 77,
+            "max": 77
           }
         }
       },
@@ -738,7 +750,7 @@ export const GOLF_COURSES: GolfCourse[] = [
           "to": "30-09"
         }
       },
-      "lastUpdated": "2026-01-22T01:01:39.507Z",
+      "lastUpdated": "2026-01-22T01:38:24.965Z",
       "extras": {
         "buggy": 40,
         "clubRental": 30,
@@ -1669,7 +1681,7 @@ export const GOLF_COURSES: GolfCourse[] = [
           "to": "30-09"
         }
       },
-      "lastUpdated": "2026-01-22T01:01:39.508Z",
+      "lastUpdated": "2026-01-22T01:38:24.966Z",
       "extras": {
         "buggy": 40,
         "clubRental": 30,
@@ -2082,7 +2094,7 @@ export const GOLF_COURSES: GolfCourse[] = [
           "to": "30-09"
         }
       },
-      "lastUpdated": "2026-01-22T01:01:39.509Z",
+      "lastUpdated": "2026-01-22T01:38:24.966Z",
       "extras": {
         "buggy": 40,
         "clubRental": 30,
@@ -2230,7 +2242,7 @@ export const GOLF_COURSES: GolfCourse[] = [
           "to": "30-09"
         }
       },
-      "lastUpdated": "2026-01-22T01:01:39.509Z",
+      "lastUpdated": "2026-01-22T01:38:24.967Z",
       "extras": {
         "buggy": 40,
         "clubRental": 30,

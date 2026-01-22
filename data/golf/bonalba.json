@@ -46,13 +46,13 @@
         }
       },
       "lowSeason": {
-        "18holes": {
-          "weekday": 77,
-          "weekend": 77
+        "weekday": {
+          "min": 77,
+          "max": 77
         },
-        "9holes": {
-          "weekday": 45,
-          "weekend": 45
+        "weekend": {
+          "min": 77,
+          "max": 77
         }
       }
     },
