@@ -159,9 +159,9 @@ export interface AreaDetail extends Area {
         foreignPercentage?: { value: number; source: string };
         swedesEstimate?: { value: number; note: string };
         airportDistance?: { km: number; minutes: number; airport: string };
-        directFlights?: { airlines: string[]; frequencyPerWeek: number };
+        directFlights?: { airlines: string[]; frequencyPerWeek: number; note?: string };
         pricePerM2?: { value: number; source: string; year: number };
-        sunshineHours?: { value: number };
+        sunshineHours?: { value: number; note?: string };
         averageTemp?: { annual: number; january: number; july: number };
     };
 

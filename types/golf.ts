@@ -94,7 +94,13 @@ export interface GolfCourse {
                 price: number;
                 startsAt: string;
             };
-            currentPeriod?: any;
+            currentPeriod?: {
+                date?: string;
+                "18holes"?: number;
+                "9holes"?: number;
+                twilight?: string | number;
+                [key: string]: any;
+            };
         };
 
 

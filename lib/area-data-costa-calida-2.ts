@@ -184,8 +184,8 @@ export const COSTA_CALIDA_AREAS_2: AreaDetail[] = [
             }
         ],
         faq: [
-            { query: "Är Cartagena tryggt?", answer: "Ja, mycket tryggt och välbevakat." },
-            { query: "Avstånd till strand?", answer: "5-20 minuter beroende på val av strand." }
+            { question: "Är Cartagena tryggt?", answer: "Ja, mycket tryggt och välbevakat." },
+            { question: "Avstånd till strand?", answer: "5-20 minuter beroende på val av strand." }
         ],
         whySwedes: [
             'Den unika mixen av storstadspuls och avslappnat strandliv.',
