@@ -45,6 +45,7 @@ import ContactAgentModal from '@/components/modals/ContactAgentModal';
 import dynamic from 'next/dynamic';
 import PropertyProspectus from './PropertyProspectus';
 import { usePropertyDistances } from '@/hooks/usePropertyDistances';
+import BitcoinPrice from './BitcoinPrice';
 interface PropertyDetailsProps {
     property: Property;
 }
@@ -339,10 +340,13 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
                             </p>
 
                             <div className="flex items-end gap-4">
-                                <span className="text-3xl md:text-4xl font-serif text-navy">
-                                    {property.price.toLocaleString('sv-SE')} €
-                                </span>
-                                <span className="text-sm text-gray-400 mb-2">
+                                <div>
+                                    <span className="text-3xl md:text-4xl font-serif text-navy block leading-none">
+                                        {property.price.toLocaleString('sv-SE')} €
+                                    </span>
+                                    <BitcoinPrice priceEur={property.price} size="md" className="mt-2" />
+                                </div>
+                                <span className="text-sm text-gray-400 mb-2 pb-1">
                                     ca {Math.round(property.price * 11.2).toLocaleString('sv-SE')}{' '}
                                     SEK
                                 </span>
