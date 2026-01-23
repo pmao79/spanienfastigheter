@@ -37,7 +37,7 @@ export const COSTA_ALMERIA_AREAS_2: AreaDetail[] = [
             swedesEstimate: { value: 400, note: 'Populärt vinterboende' },
             airportDistance: { km: 55, minutes: 40, airport: 'Almería (LEI)' },
             pricePerM2: { value: 1950, source: 'Idealista 2025', year: 2025 },
-            sunshineHours: { value: 3400, note: 'Rekord i Europa' },
+            sunshineHours: { value: 3400 },
             averageTemp: { annual: 20, january: 14, july: 27 }
         },
         districts: [

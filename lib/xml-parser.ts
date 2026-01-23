@@ -292,23 +292,51 @@ export async function fetchProperties(): Promise<Property[]> {
     const feedUrl = process.env.XML_FEED_URL;
 
     if (!feedUrl) {
-        console.warn('XML_FEED_URL not set, using empty properties array');
+        const errorMsg = '❌ XML_FEED_URL environment variable is not set! Add it in Vercel Settings → Environment Variables';
+        console.error(errorMsg);
+        console.error('Expected variable: XML_FEED_URL=https://www.redsp.net/trial/trial-feed-kyero.xml');
+
+        // In production, throw error to make problem visible
+        if (process.env.NODE_ENV === 'production') {
+            throw new Error(errorMsg);
+        }
         return [];
     }
 
     try {
+        console.log(`🔄 Fetching properties from: ${feedUrl}`);
+
         const response = await fetch(feedUrl, {
             next: { revalidate: 3600 }, // Cache for 1 hour
+            headers: {
+                'User-Agent': 'Spanienfastigheter/1.0',
+            },
         });
 
         if (!response.ok) {
-            throw new Error(`Failed to fetch XML: ${response.status}`);
+            const errorMsg = `❌ Failed to fetch XML feed: ${response.status} ${response.statusText}`;
+            console.error(errorMsg);
+            console.error('Feed URL:', feedUrl);
+            throw new Error(errorMsg);
         }
 
         const xmlString = await response.text();
-        return parseKyeroXml(xmlString);
+        console.log(`✅ XML fetched successfully (${xmlString.length} characters)`);
+
+        const properties = parseKyeroXml(xmlString);
+        console.log(`✅ Parsed ${properties.length} properties from XML feed`);
+
+        return properties;
     } catch (error) {
-        console.error('Error fetching properties:', error);
+        console.error('❌ Error fetching properties:', error);
+        console.error('Feed URL:', feedUrl);
+        console.error('Error details:', error instanceof Error ? error.message : String(error));
+
+        // In production, throw the error to make it visible in Vercel logs
+        if (process.env.NODE_ENV === 'production') {
+            throw error;
+        }
+
         return [];
     }
 }
