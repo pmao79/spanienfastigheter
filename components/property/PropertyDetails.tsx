@@ -52,6 +52,7 @@ import dynamic from 'next/dynamic';
 import PropertyProspectus from './PropertyProspectus';
 import { usePropertyDistances } from '@/hooks/usePropertyDistances';
 import BitcoinPrice from './BitcoinPrice';
+import { translatePropertyType } from '@/lib/property-utils';
 interface PropertyDetailsProps {
     property: Property;
 }
@@ -309,32 +310,37 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
                     <div className="flex-1">
                         {/* Title & Price Header */}
                         <div className="border-b border-gray-200 pb-8 mb-8">
-                            <div className="flex flex-wrap gap-2 mb-4">
-                                {property.isNewBuild && (
-                                    <span className="px-3 py-1 bg-navy/5 text-navy text-[10px] uppercase tracking-widest font-bold rounded-sm">
-                                        Nyproduktion
+                            <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-4">
+                                <div className="flex flex-wrap items-center gap-2">
+                                    {property.isNewBuild && (
+                                        <span className="px-3 py-1 bg-navy/5 text-navy text-[10px] uppercase tracking-widest font-semibold rounded-sm">
+                                            Nyproduktion
+                                        </span>
+                                    )}
+                                    <span className="px-3 py-1 bg-sand/10 text-charcoal text-[10px] uppercase tracking-widest font-semibold rounded-sm flex items-center gap-1">
+                                        <MapPin size={10} />
+                                        {property.region === 'costa-del-sol'
+                                            ? 'Costa del Sol'
+                                            : 'Costa Blanca'}
                                     </span>
-                                )}
-                                <span className="px-3 py-1 bg-sand/20 text-charcoal text-[10px] uppercase tracking-widest font-bold rounded-sm flex items-center gap-1">
-                                    <MapPin size={10} />
-                                    {property.region === 'costa-del-sol'
-                                        ? 'Costa del Sol'
-                                        : 'Costa Blanca'}
-                                </span>
+                                    <span className="px-3 py-1 bg-navy/5 text-navy text-[10px] uppercase tracking-widest font-semibold rounded-sm">
+                                        Ref: {property.ref}
+                                    </span>
+                                    <span className="px-3 py-1 bg-navy/5 text-navy text-[10px] uppercase tracking-widest font-semibold rounded-sm">
+                                        {translatePropertyType(property.type)}
+                                    </span>
+                                    {property.energyRating && (
+                                        <span className="px-3 py-1 bg-navy/5 text-navy text-[10px] uppercase tracking-widest font-semibold rounded-sm flex items-center gap-1">
+                                            <Zap size={10} />
+                                            Energiklass: {property.energyRating}
+                                        </span>
+                                    )}
+                                </div>
                                 <FavoriteButton
                                     propertyId={property.id}
                                     variant="outline"
                                     size="sm"
                                 />
-                                <span className="px-3 py-1 bg-gray-50 text-gray-400 text-[10px] uppercase tracking-widest font-bold rounded-sm border border-gray-100">
-                                    Ref: {property.ref}
-                                </span>
-                                {property.energyRating && (
-                                    <span className="px-3 py-1 bg-green-50 text-green-600 text-[10px] uppercase tracking-widest font-bold rounded-sm border border-green-100 flex items-center gap-1">
-                                        <Zap size={10} />
-                                        Energiklass: {property.energyRating}
-                                    </span>
-                                )}
                             </div>
 
                             <h1 className="text-4xl md:text-5xl font-serif text-navy mb-4 leading-tight">
@@ -907,6 +913,6 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
                     </button>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }

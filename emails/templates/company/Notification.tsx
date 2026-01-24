@@ -5,7 +5,7 @@ import EmailFooter from '../../components/EmailFooter';
 import InfoBox from '../../components/InfoBox';
 
 interface CompanyNotificationProps {
-    type: 'VIP' | 'BOOKING' | 'VIEWING' | 'CONTACT';
+    type: 'VIP' | 'BOOKING' | 'VIEWING' | 'CONTACT' | 'NEWSLETTER';
     customerName: string;
     customerEmail: string;
     customerPhone: string;
@@ -28,6 +28,7 @@ export const CompanyNotification = ({
             case 'BOOKING': return `📞 Rådgivning - ${customerName}`;
             case 'VIEWING': return `👁️ Visning - ${customerName}`;
             case 'CONTACT': return `💬 Kontakt - ${customerName}`;
+            case 'NEWSLETTER': return `📧 Nyhetsbrev - ${customerEmail}`;
             default: return `Ny förfrågan - ${customerName}`;
         }
     };

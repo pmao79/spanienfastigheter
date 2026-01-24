@@ -1,7 +1,33 @@
+'use client';
+
 import Link from 'next/link';
-import { Instagram, Facebook, Linkedin, ArrowRight } from 'lucide-react';
+import { Instagram, Facebook, Linkedin, ArrowRight, Check, Loader2 } from 'lucide-react';
+import { useState } from 'react';
+import { subscribeToNewsletter } from '@/actions/email/subscribe-newsletter';
 
 export default function Footer() {
+    const [email, setEmail] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
+    const [isSubmitted, setIsSubmitted] = useState(false);
+
+    const handleSubscribe = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!email) return;
+
+        setIsLoading(true);
+        try {
+            const result = await subscribeToNewsletter(email);
+            if (result.success) {
+                setIsSubmitted(true);
+                setEmail('');
+            }
+        } catch (error) {
+            console.error(error);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
     return (
         <footer className="bg-navy text-white pt-24 pb-12 border-t border-white/5">
             <div className="max-w-[1400px] mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-12 gap-12 mb-20">
@@ -130,16 +156,32 @@ export default function Footer() {
                         Få tillgång till &quot;Off-market&quot; objekt och marknadsanalyser
                         innan de når publika marknaden.
                     </p>
-                    <div className="flex border-b border-white/20 pb-2 relative group">
-                        <input
-                            type="email"
-                            placeholder="Din e-postadress"
-                            className="bg-transparent outline-none text-white placeholder-white/20 w-full text-sm py-2 font-light"
-                        />
-                        <button className="text-white/40 group-hover:text-sand transition-colors absolute right-0 top-2">
-                            <ArrowRight size={18} />
-                        </button>
-                    </div>
+                    {isSubmitted ? (
+                        <div className="flex items-center gap-3 text-sand bg-white/5 p-3 rounded-sm border border-sand/30">
+                            <div className="w-8 h-8 rounded-full bg-sand/20 flex items-center justify-center flex-shrink-0">
+                                <Check size={16} />
+                            </div>
+                            <span className="text-sm font-light">Tack! Du prenumererar nu.</span>
+                        </div>
+                    ) : (
+                        <form onSubmit={handleSubscribe} className="flex border-b border-white/20 pb-2 relative group focus-within:border-sand transition-colors">
+                            <input
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                placeholder="Din e-postadress"
+                                required
+                                className="bg-transparent outline-none text-white placeholder-white/20 w-full text-sm py-2 font-light"
+                            />
+                            <button
+                                type="submit"
+                                disabled={isLoading}
+                                className="text-white/40 group-hover:text-sand transition-colors absolute right-0 top-2 disabled:opacity-50"
+                            >
+                                {isLoading ? <Loader2 className="animate-spin" size={18} /> : <ArrowRight size={18} />}
+                            </button>
+                        </form>
+                    )}
                 </div>
             </div>
 

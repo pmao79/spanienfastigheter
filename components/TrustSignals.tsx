@@ -1,6 +1,40 @@
-import { Check } from 'lucide-react';
+'use client';
+
+import { Check, Loader2 } from 'lucide-react';
+import { useState } from 'react';
+import { sendBookingConfirmation } from '@/actions/email/send-booking';
 
 export default function TrustSignals() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      firstName: formData.get('firstName') as string,
+      lastName: formData.get('lastName') as string,
+      email: formData.get('email') as string,
+      phone: formData.get('phone') as string,
+    };
+
+    try {
+      const result = await sendBookingConfirmation(data);
+      if (result.success) {
+        setIsSubmitted(true);
+      } else {
+        alert('Något gick fel. Försök igen.');
+      }
+    } catch (error) {
+      console.error(error);
+      alert('Något gick fel.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const signals = [
     {
       title: 'Juridisk garanti',
@@ -72,64 +106,85 @@ export default function TrustSignals() {
                 </p>
               </div>
 
-              <form className="space-y-5">
-                <div className="grid grid-cols-2 gap-5">
-                  <div className="space-y-1.5 group">
-                    <label className="text-[10px] uppercase tracking-widest text-sage font-bold group-focus-within:text-navy transition-colors">
-                      Förnamn
-                    </label>
-                    <input
-                      type="text"
-                      className="w-full bg-greige/30 border border-transparent focus:bg-white focus:border-navy focus:ring-4 focus:ring-gray-100 transition-all duration-300 rounded-sm px-4 py-3.5 text-sm outline-none placeholder-gray-400 text-charcoal"
-                      placeholder="Anna"
-                    />
+              {isSubmitted ? (
+                <div className="bg-green-50 p-8 rounded-sm text-center">
+                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 text-green-600">
+                    <Check size={32} />
                   </div>
-                  <div className="space-y-1.5 group">
-                    <label className="text-[10px] uppercase tracking-widest text-sage font-bold group-focus-within:text-navy transition-colors">
-                      Efternamn
-                    </label>
-                    <input
-                      type="text"
-                      className="w-full bg-greige/30 border border-transparent focus:bg-white focus:border-navy focus:ring-4 focus:ring-gray-100 transition-all duration-300 rounded-sm px-4 py-3.5 text-sm outline-none placeholder-gray-400 text-charcoal"
-                      placeholder="Andersson"
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-1.5 group">
-                  <label className="text-[10px] uppercase tracking-widest text-sage font-bold group-focus-within:text-navy transition-colors">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    className="w-full bg-greige/30 border border-transparent focus:bg-white focus:border-navy focus:ring-4 focus:ring-gray-100 transition-all duration-300 rounded-sm px-4 py-3.5 text-sm outline-none placeholder-gray-400 text-charcoal"
-                    placeholder="anna@exempel.se"
-                  />
-                </div>
-
-                <div className="space-y-1.5 group">
-                  <label className="text-[10px] uppercase tracking-widest text-sage font-bold group-focus-within:text-navy transition-colors">
-                    Telefon
-                  </label>
-                  <input
-                    type="tel"
-                    className="w-full bg-greige/30 border border-transparent focus:bg-white focus:border-navy focus:ring-4 focus:ring-gray-100 transition-all duration-300 rounded-sm px-4 py-3.5 text-sm outline-none placeholder-gray-400 text-charcoal"
-                    placeholder="+46..."
-                  />
-                </div>
-
-                <div className="pt-4">
-                  <button
-                    type="submit"
-                    className="w-full bg-navy text-white py-4 uppercase tracking-[0.2em] text-xs font-bold hover:bg-charcoal transition-all duration-300 flex items-center justify-center gap-3 shadow-lg shadow-navy/20 hover:shadow-xl hover:-translate-y-0.5"
-                  >
-                    Bli kontaktad
-                  </button>
-                  <p className="text-center text-[10px] text-gray-400 mt-4">
-                    Genom att skicka godkänner du vår integritetspolicy.
+                  <h3 className="text-xl font-serif text-navy mb-2">Tack för din förfrågan!</h3>
+                  <p className="text-gray-500">
+                    Vi har mottagit dina uppgifter och återkommer till dig inom 24 timmar.
                   </p>
                 </div>
-              </form>
+              ) : (
+                <form className="space-y-5" onSubmit={handleSubmit}>
+                  <div className="grid grid-cols-2 gap-5">
+                    <div className="space-y-1.5 group">
+                      <label className="text-[10px] uppercase tracking-widest text-sage font-bold group-focus-within:text-navy transition-colors">
+                        Förnamn
+                      </label>
+                      <input
+                        type="text"
+                        name="firstName"
+                        required
+                        className="w-full bg-greige/30 border border-transparent focus:bg-white focus:border-navy focus:ring-4 focus:ring-gray-100 transition-all duration-300 rounded-sm px-4 py-3.5 text-sm outline-none placeholder-gray-400 text-charcoal"
+                        placeholder="Anna"
+                      />
+                    </div>
+                    <div className="space-y-1.5 group">
+                      <label className="text-[10px] uppercase tracking-widest text-sage font-bold group-focus-within:text-navy transition-colors">
+                        Efternamn
+                      </label>
+                      <input
+                        type="text"
+                        name="lastName"
+                        required
+                        className="w-full bg-greige/30 border border-transparent focus:bg-white focus:border-navy focus:ring-4 focus:ring-gray-100 transition-all duration-300 rounded-sm px-4 py-3.5 text-sm outline-none placeholder-gray-400 text-charcoal"
+                        placeholder="Andersson"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-1.5 group">
+                    <label className="text-[10px] uppercase tracking-widest text-sage font-bold group-focus-within:text-navy transition-colors">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      required
+                      className="w-full bg-greige/30 border border-transparent focus:bg-white focus:border-navy focus:ring-4 focus:ring-gray-100 transition-all duration-300 rounded-sm px-4 py-3.5 text-sm outline-none placeholder-gray-400 text-charcoal"
+                      placeholder="anna@exempel.se"
+                    />
+                  </div>
+
+                  <div className="space-y-1.5 group">
+                    <label className="text-[10px] uppercase tracking-widest text-sage font-bold group-focus-within:text-navy transition-colors">
+                      Telefon
+                    </label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      required
+                      className="w-full bg-greige/30 border border-transparent focus:bg-white focus:border-navy focus:ring-4 focus:ring-gray-100 transition-all duration-300 rounded-sm px-4 py-3.5 text-sm outline-none placeholder-gray-400 text-charcoal"
+                      placeholder="+46..."
+                    />
+                  </div>
+
+                  <div className="pt-4">
+                    <button
+                      type="submit"
+                      disabled={isLoading}
+                      className="w-full bg-navy text-white py-4 uppercase tracking-[0.2em] text-xs font-bold hover:bg-charcoal transition-all duration-300 flex items-center justify-center gap-3 shadow-lg shadow-navy/20 hover:shadow-xl hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed"
+                    >
+                      {isLoading ? <Loader2 className="animate-spin" size={16} /> : 'Bli kontaktad'}
+                    </button>
+                    <p className="text-center text-[10px] text-gray-400 mt-4">
+                      Genom att skicka godkänner du vår integritetspolicy.
+                    </p>
+                  </div>
+                </form>
+              )}
             </div>
           </div>
         </div>

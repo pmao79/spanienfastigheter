@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Bed, Bath, Expand, MapPin, Sun, Car, Zap, Waves } from 'lucide-react';
+import { Bed, Bath, Expand, MapPin, Sun, Car, Zap, Waves, Home } from 'lucide-react';
 import { Property } from '@/types/property';
 import FavoriteButton from '@/components/ui/FavoriteButton';
 import BitcoinPrice from './BitcoinPrice';
+import { translatePropertyType } from '@/lib/property-utils';
 
 interface PropertyCardProps {
     property: Property;
@@ -75,15 +76,9 @@ export default function PropertyCard({ property }: PropertyCardProps) {
                     </div>
                 )}
 
-                {/* Badges */}
+                {/* Badges - REMOVED from top left as per request */}
                 <div className="absolute top-4 left-4 flex flex-col gap-2 items-start z-10">
-                    {property.isNewBuild && (
-                        <span
-                            className={`px-3 py-1.5 text-[10px] font-semibold uppercase tracking-widest shadow-sm ${getBadgeStyle('Nyproduktion')}`}
-                        >
-                            Nyproduktion
-                        </span>
-                    )}
+                    {/* Empty or kept for future badges if needed, but NYPRODUKTION is moved */}
                 </div>
 
                 {/* Favorite Button */}
@@ -105,12 +100,17 @@ export default function PropertyCard({ property }: PropertyCardProps) {
             {/* Content Section */}
             <div className="p-5 flex flex-col flex-grow">
                 <div className="mb-auto">
-                    <div className="flex justify-between items-start mb-2">
-                        <p className="text-[10px] text-sage uppercase tracking-[0.15em] font-bold">
-                            {property.region === 'costa-del-sol'
-                                ? 'Costa del Sol'
-                                : 'Costa Blanca'}
-                        </p>
+                    <div className="flex justify-between items-start mb-3">
+                        <div className="flex flex-wrap gap-2">
+                            {property.isNewBuild && (
+                                <span className="bg-navy/5 text-navy px-2 py-1 text-[9px] uppercase tracking-widest font-semibold rounded-sm">
+                                    Nyproduktion
+                                </span>
+                            )}
+                            <span className="bg-navy/5 text-navy px-2 py-1 text-[9px] uppercase tracking-widest font-semibold rounded-sm">
+                                {translatePropertyType(property.type)}
+                            </span>
+                        </div>
                     </div>
                     <h3 className="text-lg font-serif text-navy font-medium leading-snug group-hover:text-sand transition-colors duration-300 line-clamp-2" title={`${property.type} i ${property.town}`}>
                         {property.type} i {property.town}
