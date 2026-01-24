@@ -1,6 +1,8 @@
 'use client';
 
+import { useState } from 'react';
 import { X, Check, ArrowRight, Star } from 'lucide-react';
+import { sendVIPWelcome } from '@/actions/email/send-vip';
 
 interface SearchServiceModalProps {
     isOpen: boolean;
@@ -11,7 +13,74 @@ export default function SearchServiceModal({
     isOpen,
     onClose,
 }: SearchServiceModalProps) {
+    const [isLoading, setIsLoading] = useState(false);
+    const [isSubmitted, setIsSubmitted] = useState(false);
+
+    // Form State
+    const [selectedAreas, setSelectedAreas] = useState<string[]>([]);
+    const [propertyType, setPropertyType] = useState('Villa');
+    const [budget, setBudget] = useState('€ 150 000 - 250 000');
+    const [name, setName] = useState('');
+    const [phone, setPhone] = useState('');
+    const [email, setEmail] = useState('');
+
+    const toggleArea = (area: string) => {
+        if (selectedAreas.includes(area)) {
+            setSelectedAreas(selectedAreas.filter(a => a !== area));
+        } else {
+            setSelectedAreas([...selectedAreas, area]);
+        }
+    };
+
+    const handleSubmit = async () => {
+        setIsLoading(true);
+        try {
+            const result = await sendVIPWelcome({
+                name,
+                email,
+                phone,
+                areas: selectedAreas.join(', ') || 'Ej angivet',
+                type: propertyType,
+                budget
+            });
+
+            if (result.success) {
+                setIsSubmitted(true);
+            } else {
+                alert('Något gick fel. Försök igen.');
+            }
+        } catch (error) {
+            console.error(error);
+            alert('Något gick fel. Försök igen.');
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
     if (!isOpen) return null;
+
+    if (isSubmitted) {
+        return (
+            <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
+                <div className="absolute inset-0 bg-navy/60 backdrop-blur-sm transition-opacity" onClick={onClose}></div>
+                <div className="bg-white w-full max-w-md p-8 rounded-sm shadow-2xl relative z-10 flex flex-col items-center text-center animate-fade-in-up">
+                    <button onClick={onClose} className="absolute top-4 right-4 p-2 hover:bg-gray-100 rounded-full">
+                        <X size={20} />
+                    </button>
+                    <div className="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mb-6 text-green-600">
+                        <Check size={40} />
+                    </div>
+                    <h3 className="text-2xl font-serif text-navy mb-2">Välkommen som VIP!</h3>
+                    <p className="text-gray-500 mb-8 max-w-xs">
+                        Vi har mottagit dina önskemål och börjar leta direkt. En bekräftelse har skickats till {email}.
+                    </p>
+                    <button onClick={onClose} className="bg-navy text-white px-8 py-3 uppercase tracking-widest text-xs font-bold rounded-sm">
+                        Stäng fönstret
+                    </button>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
@@ -32,7 +101,7 @@ export default function SearchServiceModal({
                 </button>
 
                 {/* Left Side: Brand & Value Prop */}
-                <div className="w-full md:w-2/5 bg-navy text-white relative flex flex-col justify-between p-8 md:p-12 overflow-hidden">
+                <div className="w-full md:w-2/5 md:flex hidden bg-navy text-white relative flex-col justify-between p-8 md:p-12 overflow-hidden">
                     {/* Background Image overlay */}
                     <div className="absolute inset-0 opacity-40">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -105,7 +174,7 @@ export default function SearchServiceModal({
                         Vi matchar dina önskemål manuellt mot hela marknaden.
                     </p>
 
-                    <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
+                    <form className="space-y-8" onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
                         {/* Section 1: Preferences */}
                         <div className="space-y-6">
                             <div>
@@ -119,10 +188,14 @@ export default function SearchServiceModal({
                                         'Palma',
                                         'Alicante',
                                         'Torrevieja',
-                                        'Vet ej än',
                                     ].map((region) => (
-                                        <label key={region} className="cursor-pointer">
-                                            <input type="checkbox" className="hidden peer" />
+                                        <label key={region} className="cursor-pointer select-none">
+                                            <input
+                                                type="checkbox"
+                                                className="hidden peer"
+                                                checked={selectedAreas.includes(region)}
+                                                onChange={() => toggleArea(region)}
+                                            />
                                             <span className="px-4 py-2 border border-gray-200 text-sm text-charcoal rounded-sm hover:border-navy peer-checked:bg-navy peer-checked:text-white peer-checked:border-navy transition-all block">
                                                 {region}
                                             </span>
@@ -136,7 +209,11 @@ export default function SearchServiceModal({
                                     <label className="text-[10px] uppercase tracking-widest text-sage font-bold block mb-3">
                                         Typ av bostad
                                     </label>
-                                    <select className="w-full bg-greige/30 border-b border-gray-200 px-3 py-2.5 text-sm focus:outline-none focus:border-navy transition-colors text-charcoal">
+                                    <select
+                                        value={propertyType}
+                                        onChange={(e) => setPropertyType(e.target.value)}
+                                        className="w-full bg-greige/30 border-b border-gray-200 px-3 py-2.5 text-sm focus:outline-none focus:border-navy transition-colors text-charcoal"
+                                    >
                                         <option>Villa</option>
                                         <option>Lägenhet</option>
                                         <option>Radhus</option>
@@ -147,7 +224,11 @@ export default function SearchServiceModal({
                                     <label className="text-[10px] uppercase tracking-widest text-sage font-bold block mb-3">
                                         Budget (ca)
                                     </label>
-                                    <select className="w-full bg-greige/30 border-b border-gray-200 px-3 py-2.5 text-sm focus:outline-none focus:border-navy transition-colors text-charcoal">
+                                    <select
+                                        value={budget}
+                                        onChange={(e) => setBudget(e.target.value)}
+                                        className="w-full bg-greige/30 border-b border-gray-200 px-3 py-2.5 text-sm focus:outline-none focus:border-navy transition-colors text-charcoal"
+                                    >
                                         <option>€ 150 000 - 250 000</option>
                                         <option>€ 250 000 - 500 000</option>
                                         <option>€ 500 000 - 1M</option>
@@ -169,6 +250,9 @@ export default function SearchServiceModal({
                                     </label>
                                     <input
                                         type="text"
+                                        required
+                                        value={name}
+                                        onChange={(e) => setName(e.target.value)}
                                         className="w-full bg-greige/30 border border-transparent focus:bg-white focus:border-navy px-4 py-3 text-sm rounded-sm outline-none transition-all"
                                         placeholder="För- och efternamn"
                                     />
@@ -179,6 +263,9 @@ export default function SearchServiceModal({
                                     </label>
                                     <input
                                         type="tel"
+                                        required
+                                        value={phone}
+                                        onChange={(e) => setPhone(e.target.value)}
                                         className="w-full bg-greige/30 border border-transparent focus:bg-white focus:border-navy px-4 py-3 text-sm rounded-sm outline-none transition-all"
                                         placeholder="+46..."
                                     />
@@ -190,18 +277,25 @@ export default function SearchServiceModal({
                                 </label>
                                 <input
                                     type="email"
+                                    required
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
                                     className="w-full bg-greige/30 border border-transparent focus:bg-white focus:border-navy px-4 py-3 text-sm rounded-sm outline-none transition-all"
                                     placeholder="din@email.se"
                                 />
                             </div>
                         </div>
 
-                        <button className="w-full bg-navy text-white py-4 uppercase tracking-[0.2em] text-xs font-bold hover:bg-charcoal transition-all shadow-lg shadow-navy/20 flex items-center justify-center gap-2 group">
-                            Starta bevakning
-                            <ArrowRight
+                        <button
+                            type="submit"
+                            disabled={isLoading}
+                            className="w-full bg-navy text-white py-4 uppercase tracking-[0.2em] text-xs font-bold hover:bg-charcoal transition-all shadow-lg shadow-navy/20 flex items-center justify-center gap-2 group disabled:opacity-70 disabled:cursor-not-allowed"
+                        >
+                            {isLoading ? 'Skickar...' : 'Starta bevakning'}
+                            {!isLoading && <ArrowRight
                                 size={16}
                                 className="text-sand group-hover:translate-x-1 transition-transform"
-                            />
+                            />}
                         </button>
                         <p className="text-center text-[10px] text-gray-400">
                             Gratis tjänst. Du kan avsluta när du vill.

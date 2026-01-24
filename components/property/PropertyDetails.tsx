@@ -33,6 +33,12 @@ import {
     School,
     ShoppingBag,
     Scan,
+    ArrowUpDown,
+    Shield,
+    Box,
+    Umbrella,
+    Thermometer,
+    Droplets,
 } from 'lucide-react';
 import { Property } from '@/types/property';
 import ImageLightbox from './ImageLightbox';
@@ -353,67 +359,229 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
                             </div>
                         </div>
 
-                        {/* Key Specs Bar */}
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-                            <div className="p-4 bg-white border border-gray-100 rounded-sm hover:shadow-soft transition-shadow">
-                                <div className="flex items-center gap-3 mb-1">
-                                    <Bed size={20} className="text-sand" />
-                                    <span className="text-xs uppercase tracking-widest text-gray-400 font-bold">
+                        {/* Updated Key Specs Grid - Compact & Expanded */}
+                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mb-12">
+                            {/* 1. Bedrooms */}
+                            <div className="p-3 bg-white border border-gray-100 rounded-sm hover:shadow-soft transition-shadow">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <Bed size={18} className="text-sand" />
+                                    <span className="text-[10px] uppercase tracking-widest text-gray-400 font-bold">
                                         Sovrum
                                     </span>
                                 </div>
-                                <span className="text-xl font-serif text-navy">
+                                <span className="text-lg font-serif text-navy">
                                     {property.beds} st
                                 </span>
                             </div>
-                            <div className="p-4 bg-white border border-gray-100 rounded-sm hover:shadow-soft transition-shadow">
-                                <div className="flex items-center gap-3 mb-1">
-                                    <Bath size={20} className="text-sand" />
-                                    <span className="text-xs uppercase tracking-widest text-gray-400 font-bold">
+
+                            {/* 2. Bathrooms */}
+                            <div className="p-3 bg-white border border-gray-100 rounded-sm hover:shadow-soft transition-shadow">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <Bath size={18} className="text-sand" />
+                                    <span className="text-[10px] uppercase tracking-widest text-gray-400 font-bold">
                                         Badrum
                                     </span>
                                 </div>
-                                <span className="text-xl font-serif text-navy">
+                                <span className="text-lg font-serif text-navy">
                                     {property.baths} st
                                 </span>
                             </div>
-                            <div className="p-4 bg-white border border-gray-100 rounded-sm hover:shadow-soft transition-shadow">
-                                <div className="flex items-center gap-3 mb-1">
-                                    <Expand size={20} className="text-sand" />
-                                    <span className="text-xs uppercase tracking-widest text-gray-400 font-bold">
+
+                            {/* 3. Build Area */}
+                            <div className="p-3 bg-white border border-gray-100 rounded-sm hover:shadow-soft transition-shadow">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <Expand size={18} className="text-sand" />
+                                    <span className="text-[10px] uppercase tracking-widest text-gray-400 font-bold">
                                         Boyta
                                     </span>
                                 </div>
-                                <span className="text-xl font-serif text-navy">
+                                <span className="text-lg font-serif text-navy">
                                     {property.builtArea} m²
                                 </span>
                             </div>
-                            {property.terraceArea && (
-                                <div className="p-4 bg-white border border-gray-100 rounded-sm hover:shadow-soft transition-shadow">
-                                    <div className="flex items-center gap-3 mb-1">
-                                        <Sun size={20} className="text-sand" />
-                                        <span className="text-xs uppercase tracking-widest text-gray-400 font-bold">
+
+                            {/* 4. Terrace */}
+                            {(property.terraceArea || property.features.terrace) && (
+                                <div className="p-3 bg-white border border-gray-100 rounded-sm hover:shadow-soft transition-shadow">
+                                    <div className="flex items-center gap-2 mb-1">
+                                        <Sun size={18} className="text-sand" />
+                                        <span className="text-[10px] uppercase tracking-widest text-gray-400 font-bold">
                                             Terrass
                                         </span>
                                     </div>
-                                    <span className="text-xl font-serif text-navy">
-                                        {property.terraceArea} m²
+                                    <span className="text-lg font-serif text-navy">
+                                        {property.terraceArea ? `${property.terraceArea} m²` : 'Ja'}
                                     </span>
                                 </div>
                             )}
-                            {property.plotArea && (
-                                <div className="p-4 bg-white border border-gray-100 rounded-sm hover:shadow-soft transition-shadow">
-                                    <div className="flex items-center gap-3 mb-1">
-                                        <Scan size={20} className="text-sand" />
-                                        <span className="text-xs uppercase tracking-widest text-gray-400 font-bold">
+
+                            {/* 5. Plot */}
+                            {(property.plotArea && property.plotArea > 0) ? (
+                                <div className="p-3 bg-white border border-gray-100 rounded-sm hover:shadow-soft transition-shadow">
+                                    <div className="flex items-center gap-2 mb-1">
+                                        <Scan size={18} className="text-sand" />
+                                        <span className="text-[10px] uppercase tracking-widest text-gray-400 font-bold">
                                             Tomt
                                         </span>
                                     </div>
-                                    <span className="text-xl font-serif text-navy">
+                                    <span className="text-lg font-serif text-navy">
                                         {property.plotArea} m²
                                     </span>
                                 </div>
+                            ) : null}
+
+                            {/* 6. Pool */}
+                            {property.features.pool !== 'none' && (
+                                <div className="p-3 bg-white border border-gray-100 rounded-sm hover:shadow-soft transition-shadow">
+                                    <div className="flex items-center gap-2 mb-1">
+                                        <Waves size={18} className="text-sand" />
+                                        <span className="text-[10px] uppercase tracking-widest text-gray-400 font-bold">
+                                            Pool
+                                        </span>
+                                    </div>
+                                    <span className="text-lg font-serif text-navy">
+                                        {property.features.pool === 'private' ? 'Privat' : 'Gemensam'}
+                                    </span>
+                                </div>
                             )}
+
+                            {/* 7. Elevator */}
+                            {property.features.elevator && (
+                                <div className="p-3 bg-white border border-gray-100 rounded-sm hover:shadow-soft transition-shadow">
+                                    <div className="flex items-center gap-2 mb-1">
+                                        <ArrowUpDown size={18} className="text-sand" />
+                                        <span className="text-[10px] uppercase tracking-widest text-gray-400 font-bold">
+                                            Hiss
+                                        </span>
+                                    </div>
+                                    <span className="text-lg font-serif text-navy">
+                                        Ja
+                                    </span>
+                                </div>
+                            )}
+
+                            {/* 8. Parking */}
+                            {property.features.parking && (
+                                <div className="p-3 bg-white border border-gray-100 rounded-sm hover:shadow-soft transition-shadow">
+                                    <div className="flex items-center gap-2 mb-1">
+                                        <Car size={18} className="text-sand" />
+                                        <span className="text-[10px] uppercase tracking-widest text-gray-400 font-bold">
+                                            Parkering
+                                        </span>
+                                    </div>
+                                    <span className="text-lg font-serif text-navy">
+                                        {property.features.parkingSpaces ? `${property.features.parkingSpaces} pl` : 'Ja'}
+                                    </span>
+                                </div>
+                            )}
+
+                            {/* 9. AC */}
+                            {property.features.airConditioning && (
+                                <div className="p-3 bg-white border border-gray-100 rounded-sm hover:shadow-soft transition-shadow">
+                                    <div className="flex items-center gap-2 mb-1">
+                                        <Wind size={18} className="text-sand" />
+                                        <span className="text-[10px] uppercase tracking-widest text-gray-400 font-bold">
+                                            AC
+                                        </span>
+                                    </div>
+                                    <span className="text-lg font-serif text-navy">
+                                        Ja
+                                    </span>
+                                </div>
+                            )}
+
+                            {/* 10. Heating */}
+                            {property.features.heating && (
+                                <div className="p-3 bg-white border border-gray-100 rounded-sm hover:shadow-soft transition-shadow">
+                                    <div className="flex items-center gap-2 mb-1">
+                                        <Thermometer size={18} className="text-sand" />
+                                        <span className="text-[10px] uppercase tracking-widest text-gray-400 font-bold">
+                                            Värme
+                                        </span>
+                                    </div>
+                                    <span className="text-lg font-serif text-navy">
+                                        Ja
+                                    </span>
+                                </div>
+                            )}
+
+                            {/* 11. Garden */}
+                            {property.features.garden && (
+                                <div className="p-3 bg-white border border-gray-100 rounded-sm hover:shadow-soft transition-shadow">
+                                    <div className="flex items-center gap-2 mb-1">
+                                        <Trees size={18} className="text-sand" />
+                                        <span className="text-[10px] uppercase tracking-widest text-gray-400 font-bold">
+                                            Trädgård
+                                        </span>
+                                    </div>
+                                    <span className="text-lg font-serif text-navy">
+                                        Ja
+                                    </span>
+                                </div>
+                            )}
+
+                            {/* 12. Storage */}
+                            {property.features.storage && (
+                                <div className="p-3 bg-white border border-gray-100 rounded-sm hover:shadow-soft transition-shadow">
+                                    <div className="flex items-center gap-2 mb-1">
+                                        <Box size={18} className="text-sand" />
+                                        <span className="text-[10px] uppercase tracking-widest text-gray-400 font-bold">
+                                            Förråd
+                                        </span>
+                                    </div>
+                                    <span className="text-lg font-serif text-navy">
+                                        Ja
+                                    </span>
+                                </div>
+                            )}
+
+                            {/* 13. Gated */}
+                            {property.features.gated && (
+                                <div className="p-3 bg-white border border-gray-100 rounded-sm hover:shadow-soft transition-shadow">
+                                    <div className="flex items-center gap-2 mb-1">
+                                        <Shield size={18} className="text-sand" />
+                                        <span className="text-[10px] uppercase tracking-widest text-gray-400 font-bold">
+                                            Gated
+                                        </span>
+                                    </div>
+                                    <span className="text-lg font-serif text-navy">
+                                        Ja
+                                    </span>
+                                </div>
+                            )}
+
+                            {/* 14. Beach Distance */}
+                            {property.distances.beach && (
+                                <div className="p-3 bg-white border border-gray-100 rounded-sm hover:shadow-soft transition-shadow">
+                                    <div className="flex items-center gap-2 mb-1">
+                                        <Umbrella size={18} className="text-sand" />
+                                        <span className="text-[10px] uppercase tracking-widest text-gray-400 font-bold">
+                                            Strand
+                                        </span>
+                                    </div>
+                                    <span className="text-lg font-serif text-navy">
+                                        {property.distances.beach > 1000
+                                            ? `${(property.distances.beach / 1000).toFixed(1)} km`
+                                            : `${property.distances.beach} m`}
+                                    </span>
+                                </div>
+                            )}
+
+                            {/* 15. Near Golf */}
+                            {property.distances.golf && (
+                                <div className="p-3 bg-white border border-gray-100 rounded-sm hover:shadow-soft transition-shadow">
+                                    <div className="flex items-center gap-2 mb-1">
+                                        <Trees size={18} className="text-sand" />
+                                        <span className="text-[10px] uppercase tracking-widest text-gray-400 font-bold">
+                                            Golf
+                                        </span>
+                                    </div>
+                                    <span className="text-lg font-serif text-navy">
+                                        Nära
+                                    </span>
+                                </div>
+                            )}
+
                         </div>
 
                         {/* Description */}

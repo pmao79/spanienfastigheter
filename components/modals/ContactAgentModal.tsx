@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { X, User, Mail, Phone, Send, MessageSquare } from 'lucide-react';
 import { Property } from '@/types/property';
+import { sendContactConfirmation } from '@/actions/email/send-contact';
 import Image from 'next/image';
 
 interface ContactAgentModalProps {
@@ -28,24 +29,17 @@ export default function ContactAgentModal({ isOpen, onClose, property }: Contact
 
         // Determine if contact is email or phone
         const isEmail = contact.includes('@');
-        const payload = {
-            name,
-            email: isEmail ? contact : '',
-            phone: !isEmail ? contact : '',
-            message,
-            propertyId: property.id,
-            propertyRef: property.ref,
-            propertyTitle: property.type + ' i ' + property.town
-        };
 
         try {
-            const response = await fetch('/api/contact', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload),
+            const result = await sendContactConfirmation({
+                name,
+                email: isEmail ? contact : '',
+                phone: !isEmail ? contact : '',
+                message,
+                objectTitle: `${property.type} i ${property.town} (${property.ref})`
             });
 
-            if (response.ok) {
+            if (result.success) {
                 setIsSubmitted(true);
             } else {
                 alert('Något gick fel. Försök igen.');

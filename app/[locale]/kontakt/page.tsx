@@ -1,9 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { useTranslations } from 'next-intl';
 import { MapPin, Phone, Mail, Send, CheckCircle, Clock, MessageSquare } from 'lucide-react';
 import Image from 'next/image';
+import { sendContactConfirmation } from '@/actions/email/send-contact';
 
 export default function ContactPage() {
     const [isSubmitted, setIsSubmitted] = useState(false);
@@ -13,11 +13,34 @@ export default function ContactPage() {
         e.preventDefault();
         setIsLoading(true);
 
-        // Simulate form submission
-        await new Promise(resolve => setTimeout(resolve, 1500));
+        const formData = new FormData(e.currentTarget);
+        const name = `${formData.get('firstName')} ${formData.get('lastName')}`;
+        const email = formData.get('email') as string;
+        const phone = formData.get('phone') as string;
+        const subject = formData.get('subject') as string;
+        const message = formData.get('message') as string;
 
-        setIsLoading(false);
-        setIsSubmitted(true);
+        try {
+            const result = await sendContactConfirmation({
+                name,
+                email,
+                phone,
+                message,
+                objectTitle: subject // Use objectTitle to pass the Subject/Ärende
+            });
+
+            if (result.success) {
+                setIsSubmitted(true);
+            } else {
+                alert('Något gick fel. Försök igen.');
+            }
+
+        } catch (error) {
+            console.error(error);
+            alert('Något gick fel. Försök igen.');
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     return (
@@ -85,6 +108,7 @@ export default function ContactPage() {
                                                 </label>
                                                 <input
                                                     type="text"
+                                                    name="firstName"
                                                     required
                                                     className="w-full px-4 py-3 border border-gray-200 rounded-sm focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors"
                                                     placeholder="Ditt förnamn"
@@ -96,6 +120,7 @@ export default function ContactPage() {
                                                 </label>
                                                 <input
                                                     type="text"
+                                                    name="lastName"
                                                     required
                                                     className="w-full px-4 py-3 border border-gray-200 rounded-sm focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors"
                                                     placeholder="Ditt efternamn"
@@ -109,6 +134,7 @@ export default function ContactPage() {
                                             </label>
                                             <input
                                                 type="email"
+                                                name="email"
                                                 required
                                                 className="w-full px-4 py-3 border border-gray-200 rounded-sm focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors"
                                                 placeholder="din@email.com"
@@ -121,6 +147,7 @@ export default function ContactPage() {
                                             </label>
                                             <input
                                                 type="tel"
+                                                name="phone"
                                                 className="w-full px-4 py-3 border border-gray-200 rounded-sm focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors"
                                                 placeholder="+46 70 123 45 67"
                                             />
@@ -130,7 +157,7 @@ export default function ContactPage() {
                                             <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2">
                                                 Ärende
                                             </label>
-                                            <select className="w-full px-4 py-3 border border-gray-200 rounded-sm focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors bg-white">
+                                            <select name="subject" className="w-full px-4 py-3 border border-gray-200 rounded-sm focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors bg-white">
                                                 <option>Fråga om fastighet</option>
                                                 <option>Boka visning</option>
                                                 <option>Sälja min fastighet</option>
@@ -144,6 +171,7 @@ export default function ContactPage() {
                                             </label>
                                             <textarea
                                                 required
+                                                name="message"
                                                 rows={5}
                                                 className="w-full px-4 py-3 border border-gray-200 rounded-sm focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors resize-none"
                                                 placeholder="Beskriv vad du söker eller har frågor om..."

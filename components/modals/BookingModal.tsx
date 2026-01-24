@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { X, Calendar, Clock, Check, ChevronLeft, ChevronRight, User, Mail, Phone, MapPin } from 'lucide-react';
 import { Property } from '@/types/property';
+import { sendViewingRequest } from '@/actions/email/send-viewing';
 
 interface BookingModalProps {
     isOpen: boolean;
@@ -326,24 +327,27 @@ export default function BookingModal({ isOpen, onClose, property }: BookingModal
                                     // Submit
                                     setIsLoading(true);
                                     try {
-                                        const response = await fetch('/api/booking', {
-                                            method: 'POST',
-                                            headers: { 'Content-Type': 'application/json' },
-                                            body: JSON.stringify({
-                                                viewingType,
-                                                date: selectedDate,
-                                                time: selectedTime,
-                                                name,
-                                                email,
-                                                phone,
-                                                message,
-                                                propertyId: property.id,
-                                                propertyRef: property.ref,
-                                                propertyTitle: property.type + ' i ' + property.town
-                                            }),
+                                        const result = await sendViewingRequest({
+                                            name,
+                                            email,
+                                            phone,
+                                            propertyId: property.id,
+                                            propertyRef: property.ref,
+                                            propertyTitle: property.type + ' i ' + property.town,
+                                            propertyLocation: property.town,
+                                            propertyPrice: property.price,
+                                            propertyImage: property.images?.[0] || '', // Fallback image handling
+                                            propertySlug: property.slug,
+                                            propertyType: property.type,
+                                            propertyBeds: property.beds,
+                                            propertyBaths: property.baths,
+                                            propertyArea: property.builtArea,
+                                            viewingType,
+                                            viewingDate: selectedDate?.toLocaleDateString('sv-SE'),
+                                            viewingTime: selectedTime || '',
                                         });
 
-                                        if (response.ok) {
+                                        if (result.success) {
                                             setStep(3);
                                         } else {
                                             alert('Något gick fel. Försök igen.');
