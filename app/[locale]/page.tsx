@@ -2,18 +2,13 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import Hero from '@/components/Hero';
 import TrustSignals from '@/components/TrustSignals';
-import PropertyCard from '@/components/property/PropertyCard';
 import FilterWithModal from '@/components/search/FilterWithModal';
 import ExploreSection from '@/components/home/ExploreSection';
 import VisningsresaTeaser from '@/components/home/VisningsresaTeaser';
 import RegionCards from '@/components/home/RegionCards';
-import { fetchProperties } from '@/lib/xml-parser';
+import FeaturedProperties from '@/components/home/FeaturedProperties';
 
 export default async function HomePage() {
-    // Fetch real properties from XML API
-    const allProperties = await fetchProperties();
-    const properties = allProperties.slice(0, 4); // Show first 4 properties
-    const totalCount = allProperties.length;
     return (
         <>
             <Hero />
@@ -24,48 +19,11 @@ export default async function HomePage() {
                     <div className="flex flex-col lg:flex-row gap-16">
                         {/* Filter Sidebar - Desktop */}
                         <aside className="hidden lg:block w-80 flex-shrink-0">
-                            <FilterWithModal propertyCount={totalCount} />
+                            <FilterWithModal />
                         </aside>
 
-                        {/* Main Content */}
-                        <div className="flex-1">
-                            <div className="flex justify-between items-end mb-12">
-                                <div>
-                                    <h2 className="text-3xl md:text-4xl font-serif text-navy mb-3">
-                                        Utvalda bostäder till salu i Spanien
-                                    </h2>
-                                    <p className="text-gray-500 font-light text-sm">
-                                        Visar {properties.length} av {totalCount.toLocaleString('sv-SE')} objekt på Costa Blanca, Costa del Sol och fler regioner
-                                    </p>
-                                </div>
-                                <div className="hidden md:flex gap-8 border-b border-gray-200 pb-2">
-                                    <button className="text-[10px] font-bold uppercase tracking-[0.2em] text-navy border-b-2 border-navy pb-2 -mb-2.5">
-                                        Senast inkommet
-                                    </button>
-                                    <button className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 hover:text-navy transition-colors">
-                                        Exklusivt
-                                    </button>
-                                    <button className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 hover:text-navy transition-colors">
-                                        Prissänkt
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
-                                {properties.map((property) => (
-                                    <PropertyCard key={property.id} property={property} />
-                                ))}
-                            </div>
-
-                            <div className="mt-20 text-center">
-                                <Link
-                                    href="/fastigheter"
-                                    className="bg-transparent border border-navy text-navy px-12 py-5 uppercase tracking-[0.2em] text-xs font-semibold hover:bg-navy hover:text-white transition-all duration-300 inline-block"
-                                >
-                                    Visa alla bostäder till salu i Spanien
-                                </Link>
-                            </div>
-                        </div>
+                        {/* Main Content: Featured Properties (Client Component) */}
+                        <FeaturedProperties />
                     </div>
                 </div>
             </section>
@@ -119,5 +77,3 @@ export default async function HomePage() {
         </>
     );
 }
-
-

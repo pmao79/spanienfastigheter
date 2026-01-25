@@ -13,6 +13,7 @@
     "@react-email/components": "^1.0.6",
     "@react-google-maps/api": "^2.20.8",
     "@react-pdf/renderer": "^4.3.2",
+    "convex": "^1.31.6",
     "fast-xml-parser": "^4.5.0",
     "jspdf": "^4.0.0",
     "lucide-react": "^0.468.0",
