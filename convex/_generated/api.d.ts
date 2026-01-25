@@ -8,11 +8,16 @@
  * @module
  */
 
+import type * as activity from "../activity.js";
 import type * as admin from "../admin.js";
+import type * as adminProperties from "../adminProperties.js";
 import type * as crons from "../crons.js";
+import type * as dashboard from "../dashboard.js";
+import type * as leads from "../leads.js";
 import type * as properties from "../properties.js";
 import type * as regions from "../regions.js";
 import type * as sync from "../sync.js";
+import type * as users from "../users.js";
 
 import type {
   ApiFromModules,
@@ -21,11 +26,16 @@ import type {
 } from "convex/server";
 
 declare const fullApi: ApiFromModules<{
+  activity: typeof activity;
   admin: typeof admin;
+  adminProperties: typeof adminProperties;
   crons: typeof crons;
+  dashboard: typeof dashboard;
+  leads: typeof leads;
   properties: typeof properties;
   regions: typeof regions;
   sync: typeof sync;
+  users: typeof users;
 }>;
 
 /**

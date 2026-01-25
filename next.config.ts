@@ -14,6 +14,10 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'images.unsplash.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'img.clerk.com',
+      },
     ],
   },
   transpilePackages: ['@react-pdf/renderer', 'react-map-gl', 'mapbox-gl'],

@@ -7,15 +7,33 @@ import Link from "next/link";
 import { Property, PropertyType, PROVINCE_TO_REGION } from "@/types/property";
 
 export default function FeaturedProperties() {
+    // 1. Fetch Featured
     const featuredDocs = useQuery(api.properties.getFeatured);
 
-    // Filter Sidebar used property 'totalCount' logic, handled in page text.
-    // The main page shows "Visar X av Y objekt".
-    // Since getFeatured only returns top 10, 'totalCount' isn't really appropriate here unless we fetch stats.
-    // But for the "Featured" section, we just show what we have.
+    // 2. Fetch Latest (as fallback)
+    // Note: search returns a paginated object { page: [], ... }
+    const latestResults = useQuery(api.properties.search, {
+        sort: "newest",
+        pagination: { numItems: 6, cursor: null }
+    });
+
+    // Determine which data to use
+    // If featuredDocs is loaded and has items, use it.
+    // If featuredDocs is loaded and EMPTY, use latestResults.page
+
+    const showFeatured = featuredDocs && featuredDocs.length > 0;
+    const docsToUse = showFeatured ? featuredDocs : (latestResults?.page || []);
+
+    // Limits
+    // Featured fetch already limits to 10 in backend query
+    // Latest fetch limits to 6 via pagination
+    // Display only 4-6 as requested. Let's show 4 to match original design slice.
+    // User asked for "always 4-6".
+    // Original code sliced to 4.
+    const displayDocs = docsToUse.slice(0, 4);
 
     // Map properties
-    const properties: Property[] = (featuredDocs || []).map(doc => ({
+    const properties: Property[] = displayDocs.map(doc => ({
         id: doc._id,
         ref: doc.ref,
         slug: doc.ref,
@@ -54,14 +72,28 @@ export default function FeaturedProperties() {
         images: doc.images,
         dateUpdated: new Date(doc.updatedAt).toISOString(),
         dateListed: new Date(doc.createdAt).toISOString(),
-    })).slice(0, 4); // Limit to 4 as per design
+    }));
 
-    if (featuredDocs === undefined) {
+    // Loading State
+    // If we are waiting for featured check OR (if fallback needed) waiting for latest
+    // If featuredDocs is undefined -> Loading
+    // If featuredDocs is empty AND latestResults is undefined -> Loading
+    const isLoading = featuredDocs === undefined || (featuredDocs.length === 0 && latestResults === undefined);
+
+    if (isLoading) {
         return (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
-                {[...Array(4)].map((_, i) => (
-                    <div key={i} className="bg-white animate-pulse rounded-sm h-96" />
-                ))}
+            <div className="flex-1">
+                <div className="flex justify-between items-end mb-12">
+                    <div>
+                        <div className="h-10 bg-gray-200 rounded w-96 mb-3 animate-pulse"></div>
+                        <div className="h-4 bg-gray-200 rounded w-64 animate-pulse"></div>
+                    </div>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
+                    {[...Array(4)].map((_, i) => (
+                        <div key={i} className="bg-white animate-pulse rounded-sm h-96" />
+                    ))}
+                </div>
             </div>
         );
     }
@@ -74,7 +106,10 @@ export default function FeaturedProperties() {
                         Utvalda bostäder till salu i Spanien
                     </h2>
                     <p className="text-gray-500 font-light text-sm">
-                        Senaste objekten från Costa Blanca och Costa del Sol
+                        {showFeatured
+                            ? "Utvalda objekt från Costa Blanca och Costa del Sol"
+                            : "Senaste objekten från Costa Blanca och Costa del Sol"
+                        }
                     </p>
                 </div>
                 <div className="hidden md:flex gap-8 border-b border-gray-200 pb-2">
@@ -85,11 +120,17 @@ export default function FeaturedProperties() {
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
-                {properties.map((property) => (
-                    <PropertyCard key={property.id} property={property} />
-                ))}
-            </div>
+            {properties.length === 0 ? (
+                <div className="py-12 text-center bg-gray-50 rounded">
+                    <p className="text-gray-500">Inga bostäder att visa just nu.</p>
+                </div>
+            ) : (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
+                    {properties.map((property) => (
+                        <PropertyCard key={property.id} property={property} />
+                    ))}
+                </div>
+            )}
 
             <div className="mt-20 text-center">
                 <Link

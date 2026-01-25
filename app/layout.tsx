@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Playfair_Display, DM_Sans } from 'next/font/google';
 import './globals.css';
 import ConvexClientProvider from './ConvexClientProvider';
+import { ClerkProvider } from '@clerk/nextjs';
 
 const playfair = Playfair_Display({
     subsets: ['latin'],
@@ -68,14 +69,16 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html suppressHydrationWarning>
-            <body
-                className={`${playfair.variable} ${dmSans.variable} font-sans antialiased`}
-            >
-                <ConvexClientProvider>
-                    {children}
-                </ConvexClientProvider>
-            </body>
-        </html>
+        <ClerkProvider>
+            <html suppressHydrationWarning>
+                <body
+                    className={`${playfair.variable} ${dmSans.variable} font-sans antialiased`}
+                >
+                    <ConvexClientProvider>
+                        {children}
+                    </ConvexClientProvider>
+                </body>
+            </html>
+        </ClerkProvider>
     );
 }

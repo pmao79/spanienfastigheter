@@ -62,4 +62,85 @@ export default defineSchema({
         .index("by_type", ["type"])
         .index("by_price", ["price"])
         .index("by_featured", ["isFeatured", "featuredOrder"]), // Compound index for efficient featured fetching
+
+    users: defineTable({
+        email: v.string(),
+        name: v.string(),
+        phone: v.optional(v.string()),
+        avatar: v.optional(v.string()),
+        role: v.union(
+            v.literal("owner"),
+            v.literal("equity_partner"),
+            v.literal("admin"),
+            v.literal("sales_partner"),
+            v.literal("agent"),
+            v.literal("referral"),
+            v.literal("customer")
+        ),
+        isActive: v.boolean(),
+        clerkId: v.optional(v.string()),
+        createdAt: v.string(),
+        updatedAt: v.string(),
+    })
+        .index("by_email", ["email"])
+        .index("by_role", ["role"])
+        .index("by_clerkId", ["clerkId"]),
+
+    leads: defineTable({
+        firstName: v.string(),
+        lastName: v.string(),
+        email: v.string(),
+        phone: v.optional(v.string()),
+        country: v.optional(v.string()),
+
+        status: v.union(
+            v.literal("new"),
+            v.literal("contacted"),
+            v.literal("qualified"),
+            v.literal("viewing_scheduled"),
+            v.literal("viewing_done"),
+            v.literal("negotiating"),
+            v.literal("won"),
+            v.literal("lost")
+        ),
+
+        temperature: v.union(
+            v.literal("cold"),
+            v.literal("warm"),
+            v.literal("hot")
+        ),
+
+        source: v.string(),
+        sourceDetail: v.optional(v.string()),
+        assignedToId: v.optional(v.id("users")),
+
+        preferences: v.optional(v.object({
+            minBudget: v.optional(v.number()),
+            maxBudget: v.optional(v.number()),
+            regions: v.optional(v.array(v.string())),
+            propertyTypes: v.optional(v.array(v.string())),
+            minBeds: v.optional(v.number()),
+            notes: v.optional(v.string()),
+        })),
+
+        notes: v.optional(v.string()),
+        createdAt: v.string(),
+        updatedAt: v.string(),
+        lastContactedAt: v.optional(v.string()),
+    })
+        .index("by_email", ["email"])
+        .index("by_status", ["status"])
+        .index("by_assignedTo", ["assignedToId"])
+        .index("by_temperature", ["temperature"]),
+
+    activityLog: defineTable({
+        userId: v.optional(v.id("users")),
+        action: v.string(),
+        entityType: v.string(),
+        entityId: v.string(),
+        description: v.string(),
+        createdAt: v.string(),
+    })
+        .index("by_createdAt", ["createdAt"])
+        .index("by_entityType", ["entityType"]),
 });
