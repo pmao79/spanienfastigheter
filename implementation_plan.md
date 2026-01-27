@@ -79,3 +79,38 @@ Implement a comprehensive deal management system to track the 6-stage buying pro
     - Access portal as a "customer" (simulate/impersonate).
     - Verify they see their specific deal progress.
     - Verify they can see "public" documents but not internal ones.
+
+## Phase 6b: Enhanced Object Distribution
+
+### Goal Description
+Upgrade the mailing system to a premium 3-step experience with rich lead context, professional email design, and PDF brochure generation.
+
+### Backend Changes
+
+#### [MODIFY] [convex/schema.ts](file:///c%3A/Users/marcu/spanienfastigheter/spanienfastigheter/convex/schema.ts)
+- `propertyMailings`: Add `includePdf`, `pdfGeneratedAt`, `clickedPropertyIds`.
+
+#### [MODIFY] [convex/propertyMailings.ts](file:///c%3A/Users/marcu/spanienfastigheter/spanienfastigheter/convex/propertyMailings.ts)
+- `getLeadContext`: Fetch lead details, last communication, and mailing history.
+
+#### [MODIFY] [convex/mailingActions.ts](file:///c%3A/Users/marcu/spanienfastigheter/spanienfastigheter/convex/mailingActions.ts)
+- Update `sendMailing` to:
+    - Use new professional HTML template.
+    - Fetch and attach PDF if requested.
+
+### Frontend Changes
+
+#### [MODIFY] [app/(admin)/admin/mailings/new/page.tsx](file:///c%3A/Users/marcu/spanienfastigheter/spanienfastigheter/app/(admin)/admin/mailings/new/page.tsx)
+- Refactor to 3 steps: Receiver -> Customize -> Review.
+- **Step 1**: Add "Context Panel" and "Sent" indicators.
+- **Step 2**: smart default message.
+- **Step 3**: Add "Attach PDF" toggle.
+
+#### [NEW] [app/(pdf)/pdf/mailing/[id]/page.tsx](file:///c%3A/Users/marcu/spanienfastigheter/spanienfastigheter/app/(pdf)/pdf/mailing/[id]/page.tsx)
+- Public A4 layout for PDF generation.
+
+#### [NEW] [app/api/pdf/mailing/[id]/route.ts](file:///c%3A/Users/marcu/spanienfastigheter/spanienfastigheter/app/api/pdf/mailing/[id]/route.ts)
+- API route to call Browserless and return PDF buffer.
+
+#### [NEW] [app/api/track/click/route.ts](file:///c%3A/Users/marcu/spanienfastigheter/spanienfastigheter/app/api/track/click/route.ts)
+- Click tracking endpoint.

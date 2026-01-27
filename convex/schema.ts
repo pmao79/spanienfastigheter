@@ -581,6 +581,11 @@ export default defineSchema({
         resendMessageId: v.optional(v.string()),
         error: v.optional(v.string()),
 
+        // Phase 6b: Enhanced Features
+        includePdf: v.optional(v.boolean()),
+        pdfGeneratedAt: v.optional(v.string()),
+        clickedPropertyIds: v.optional(v.array(v.id("properties"))),
+
         createdAt: v.string(),
         updatedAt: v.string(),
     })

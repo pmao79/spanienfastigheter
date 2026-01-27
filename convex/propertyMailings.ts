@@ -3,6 +3,38 @@ import { mutation, query } from "./_generated/server";
 
 // === QUERIES ===
 
+export const getLeadContext = query({
+    args: { leadId: v.id("leads") },
+    handler: async (ctx, { leadId }) => {
+        // 1. Hämta senaste kommunikation
+        const latestComm = await ctx.db
+            .query("communications")
+            .withIndex("by_leadId", q => q.eq("leadId", leadId))
+            .order("desc")
+            .first();
+
+        // 2. Hämta tidigare mailings
+        const mailings = await ctx.db
+            .query("propertyMailings")
+            .withIndex("by_leadId", q => q.eq("leadId", leadId))
+            .order("desc")
+            .take(5);
+
+        // 3. Hämta lead med preferences
+        const lead = await ctx.db.get(leadId);
+
+        // 4. Samla alla tidigare skickade propertyIds
+        const sentPropertyIds = mailings.flatMap(m => m.propertyIds);
+
+        return {
+            latestCommunication: latestComm,
+            previousMailings: mailings,
+            preferences: lead?.preferences,
+            sentPropertyIds: [...new Set(sentPropertyIds)]
+        };
+    },
+});
+
 export const getAll = query({
     args: {
         status: v.optional(v.string())

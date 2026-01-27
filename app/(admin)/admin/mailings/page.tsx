@@ -115,7 +115,14 @@ export default function MailingsPage() {
                                         <span className="text-slate-400">-</span>
                                     )}
                                 </div>
-                                <div className="text-right">
+                                <div className="text-right flex items-center justify-end gap-3">
+                                    <Link
+                                        href={`/admin/mailings/new?clone=${mailing._id}`}
+                                        className="text-sm font-medium text-slate-500 hover:text-[#1a365d]"
+                                        title="Skicka igen / Kopiera"
+                                    >
+                                        Repetera
+                                    </Link>
                                     <Link
                                         href={`/admin/mailings/${mailing._id}`}
                                         className="text-sm font-medium text-[#1a365d] hover:underline"
