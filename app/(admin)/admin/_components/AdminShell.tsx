@@ -21,7 +21,9 @@ import {
     Eye,
     Briefcase,
     TrendingUp,
-    DollarSign
+    DollarSign,
+    Send,
+    Home
 } from "lucide-react";
 import { canAccess } from "@/lib/permissions";
 
@@ -118,6 +120,8 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
         { href: "/admin/viewings", label: "Visningar", icon: Eye },
         { href: "/admin/properties", label: "Objekt", icon: Building2 },
         { href: "/admin/leads", label: "Leads", icon: Contact },
+        { href: "/admin/mailings", label: "Objektutskick", icon: Send },
+        { href: "/admin/after-sales", label: "After-Sales", icon: Home },
         { href: "/admin/reports", label: "Rapporter", icon: TrendingUp },    // New
         { href: "/admin/commissions", label: "Provisioner", icon: DollarSign, roles: ["admin", "owner", "equity_partner"] }, // New
         { href: "/admin/my-commissions", label: "Min Provision", icon: DollarSign, roles: ["agent", "sales_partner"] },     // New

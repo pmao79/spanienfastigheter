@@ -141,3 +141,50 @@ export const reactivate = mutation({
         });
     },
 });
+
+export const createUser = mutation({
+    args: {
+        email: v.string(),
+        name: v.string(),
+        role: v.union(
+            v.literal("owner"),
+            v.literal("equity_partner"),
+            v.literal("admin"),
+            v.literal("sales_partner"),
+            v.literal("agent"),
+            v.literal("referral"),
+            v.literal("customer")
+        )
+    },
+    handler: async (ctx, args) => {
+        const identity = await ctx.auth.getUserIdentity();
+        if (!identity) throw new Error("Unauthorized");
+
+        const user = await ctx.db
+            .query("users")
+            .withIndex("by_clerkId", (q) => q.eq("clerkId", identity.subject))
+            .unique();
+
+        if (!user || (user.role !== "admin" && user.role !== "owner")) {
+            throw new Error(`Permission denied. User role: ${user?.role || 'unknown'}`);
+        }
+
+        const existing = await ctx.db
+            .query("users")
+            .withIndex("by_email", (q) => q.eq("email", args.email))
+            .unique();
+
+        if (existing) {
+            throw new Error("User with this email already exists.");
+        }
+
+        return await ctx.db.insert("users", {
+            email: args.email,
+            name: args.name,
+            role: args.role,
+            isActive: true,
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString(),
+        });
+    },
+});

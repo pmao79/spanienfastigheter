@@ -369,3 +369,11 @@ export const list = query({
             .take(100);
     },
 });
+export const getAllAdmin = query({
+    args: {},
+    handler: async (ctx) => {
+        return await ctx.db.query("properties")
+            .order("desc")
+            .take(100);
+    },
+});

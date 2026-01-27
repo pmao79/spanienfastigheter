@@ -75,5 +75,22 @@ Current Focus: **Phase 3: Visningar & Kalender**.
     - [x] Update Sidebar Navigation <!-- id: p5_nav -->
     - [x] Update Main Dashboard Widgets <!-- id: p5_dashboard -->
 
-### Phase 6 (Future)
-- [ ] After-Sales Tasks
+### Phase 6: Object Distribution & After-Sales (Active)
+- [ ] **Schema & Backend** <!-- id: p6_backend -->
+    - [ ] Update `convex/schema.ts` (Mailings, Templates, AfterSales) <!-- id: p6_schema -->
+    - [ ] Create `convex/propertyMailings.ts` (CRUD, Resend logic) <!-- id: p6_mail_api -->
+- [x] **Schema & Backend** <!-- id: p6_backend -->
+    - [x] Update `convex/schema.ts` (Mailings, Templates, AfterSales) <!-- id: p6_schema -->
+    - [x] Create `convex/propertyMailings.ts` (CRUD, Resend logic) <!-- id: p6_mail_api -->
+    - [x] Create `convex/mailingTemplates.ts` (Template CRUD) <!-- id: p6_temp_api -->
+    - [x] Create `convex/afterSales.ts` (Services, Follow-ups) <!-- id: p6_after_api -->
+- [x] **Feature: Property Mailings** <!-- id: p6_mailings -->
+    - [x] UI: Dashboard & Wizard
+    - [x] Resend Integration (Backend Action Ready)
+- [x] **Feature: After-Sales** <!-- id: p6_aftersales -->
+    - [x] UI: Dashboard & Service Mgmt
+    - [x] Follow-up System
+- [x] **Integration** <!-- id: p6_integration -->
+    - [x] Sidebar Navigation
+    - [x] Update Customer Portal
+    - [x] Add Dashboard Widgets

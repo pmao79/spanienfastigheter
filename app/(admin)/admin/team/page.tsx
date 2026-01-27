@@ -121,21 +121,113 @@ export default function TeamPage() {
                 </div>
             </div>
 
-            {/* Invite Modal Placeholder */}
+            {/* Invite Modal */}
             {isInviteModalOpen && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
                     <div className="w-full max-w-md rounded-xl bg-white p-6 shadow-xl">
-                        <h2 className="mb-4 text-xl font-bold text-slate-900">Bjud in användare</h2>
-                        <p className="mb-6 text-sm text-slate-500">
-                            Funktionen för att skicka Clerk-inbjudningar är inte implementerad än.
-                            Du kan skapa användare manuellt genom att be dem logga in.
-                        </p>
-                        <div className="flex justify-end">
-                            <button onClick={() => setIsInviteModalOpen(false)} className="rounded-lg bg-slate-100 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-200">Stäng</button>
+                        <div className="mb-4 flex items-center justify-between">
+                            <h2 className="text-xl font-bold text-slate-900">Skapa ny användare</h2>
+                            <button onClick={() => setIsInviteModalOpen(false)} className="rounded-full p-2 text-slate-400 hover:bg-slate-50">
+                                <UserX className="h-5 w-5" />
+                            </button>
                         </div>
+
+                        <InviteForm onClose={() => setIsInviteModalOpen(false)} />
                     </div>
                 </div>
             )}
         </div>
+    );
+}
+
+function InviteForm({ onClose }: { onClose: () => void }) {
+    const createUser = useMutation(api.users.createUser);
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        role: "agent"
+    });
+    const [status, setStatus] = useState<"idle" | "submitting" | "error">("idle");
+    const [errorMsg, setErrorMsg] = useState("");
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setStatus("submitting");
+        setErrorMsg("");
+
+        try {
+            await createUser({
+                name: formData.name,
+                email: formData.email,
+                role: formData.role as any
+            });
+            onClose();
+            alert("Användare skapad! De kan nu logga in med denna email för att få tillgång.");
+        } catch (error: any) {
+            console.error("Failed to create user:", error);
+            setStatus("error");
+            setErrorMsg(error.message || "Ett okänt fel uppstod.");
+        }
+    };
+
+    return (
+        <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+                <label className="mb-1 block text-sm font-medium text-slate-700">Namn</label>
+                <input
+                    type="text"
+                    required
+                    value={formData.name}
+                    onChange={e => setFormData({ ...formData, name: e.target.value })}
+                    className="w-full rounded-lg border-slate-200 focus:border-[#1a365d] focus:ring-[#1a365d]"
+                    placeholder="Förnamn Efternamn"
+                />
+            </div>
+            <div>
+                <label className="mb-1 block text-sm font-medium text-slate-700">Email</label>
+                <input
+                    type="email"
+                    required
+                    value={formData.email}
+                    onChange={e => setFormData({ ...formData, email: e.target.value })}
+                    className="w-full rounded-lg border-slate-200 focus:border-[#1a365d] focus:ring-[#1a365d]"
+                    placeholder="namn@foretag.se"
+                />
+            </div>
+            <div>
+                <label className="mb-1 block text-sm font-medium text-slate-700">Roll</label>
+                <select
+                    value={formData.role}
+                    onChange={e => setFormData({ ...formData, role: e.target.value })}
+                    className="w-full rounded-lg border-slate-200 focus:border-[#1a365d] focus:ring-[#1a365d]"
+                >
+                    <option value="agent">Agent</option>
+                    <option value="sales_partner">Sales Partner</option>
+                    <option value="admin">Admin</option>
+                    <option value="owner">Owner</option>
+                </select>
+            </div>
+
+            {status === "error" && (
+                <p className="text-sm text-red-600">{errorMsg}</p>
+            )}
+
+            <div className="flex justify-end gap-3 pt-2">
+                <button
+                    type="button"
+                    onClick={onClose}
+                    className="rounded-lg px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"
+                >
+                    Avbryt
+                </button>
+                <button
+                    type="submit"
+                    disabled={status === "submitting"}
+                    className="rounded-lg bg-[#1a365d] px-4 py-2 text-sm font-medium text-white hover:bg-[#1a365d]/90 disabled:opacity-50"
+                >
+                    {status === "submitting" ? "Skapar..." : "Skapa Användare"}
+                </button>
+            </div>
+        </form>
     );
 }

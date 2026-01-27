@@ -538,4 +538,173 @@ export default defineSchema({
         .index("by_userId", ["userId"])
         .index("by_dealId", ["dealId"])
         .index("by_status", ["status"]),
+
+    propertyMailings: defineTable({
+        // Kopplingar
+        leadId: v.id("leads"),
+        createdById: v.id("users"),
+
+        // Objekt (1-5 st)
+        propertyIds: v.array(v.id("properties")),
+
+        // Email-innehåll
+        templateId: v.optional(v.id("mailingTemplates")),
+        subject: v.string(),
+        personalMessage: v.string(),
+
+        // Mottagare
+        recipientEmail: v.string(),
+        recipientName: v.string(),
+
+        // Status
+        status: v.union(
+            v.literal("draft"),
+            v.literal("scheduled"),
+            v.literal("sent"),
+            v.literal("delivered"),
+            v.literal("opened"),
+            v.literal("clicked"),
+            v.literal("bounced"),
+            v.literal("failed")
+        ),
+
+        // Schemaläggning
+        scheduledAt: v.optional(v.string()),
+        sentAt: v.optional(v.string()),
+
+        // Tracking
+        openedAt: v.optional(v.string()),
+        openCount: v.optional(v.number()),
+        clickedAt: v.optional(v.string()),
+        clickedProperties: v.optional(v.array(v.id("properties"))),
+
+        // Resend integration
+        resendMessageId: v.optional(v.string()),
+
+        createdAt: v.string(),
+        updatedAt: v.string(),
+    })
+        .index("by_leadId", ["leadId"])
+        .index("by_status", ["status"])
+        .index("by_createdBy", ["createdById"])
+        .index("by_scheduledAt", ["scheduledAt"]),
+
+    mailingTemplates: defineTable({
+        name: v.string(),
+        description: v.optional(v.string()),
+
+        // Design
+        layout: v.union(
+            v.literal("elegant"),     // Stor bild, premium känsla
+            v.literal("modern"),      // Stilren, grid
+            v.literal("compact"),     // Kompakt lista
+            v.literal("single")       // Ett objekt i fokus
+        ),
+
+        // Innehåll
+        headerText: v.optional(v.string()),
+        footerText: v.optional(v.string()),
+        ctaButtonText: v.string(), // "Se objekt", "Boka visning", etc.
+
+        // Styling
+        primaryColor: v.optional(v.string()),
+
+        isActive: v.boolean(),
+        isDefault: v.optional(v.boolean()),
+
+        createdAt: v.string(),
+        updatedAt: v.string(),
+    })
+        .index("by_layout", ["layout"])
+        .index("by_isActive", ["isActive"]),
+
+    afterSalesServices: defineTable({
+        name: v.string(),
+        description: v.string(),
+        category: v.union(
+            v.literal("utilities"),      // El, vatten, internet
+            v.literal("maintenance"),    // Pool, trädgård
+            v.literal("rental"),         // Uthyrning
+            v.literal("legal"),          // Juridik, skatt
+            v.literal("renovation"),     // Renovering
+            v.literal("insurance"),      // Försäkring
+            v.literal("other")
+        ),
+
+        // Partner/leverantör
+        partnerName: v.optional(v.string()),
+        partnerContact: v.optional(v.string()),
+        partnerWebsite: v.optional(v.string()),
+
+        // Provision/intäkt
+        revenueType: v.union(
+            v.literal("referral_fee"),    // Engångsavgift
+            v.literal("percentage"),       // Procent av värde
+            v.literal("monthly"),          // Löpande provision
+            v.literal("none")
+        ),
+        revenueAmount: v.optional(v.number()),
+        revenuePercent: v.optional(v.number()),
+
+        isActive: v.boolean(),
+        sortOrder: v.optional(v.number()),
+
+        createdAt: v.string(),
+        updatedAt: v.optional(v.string()), // Added for consistency
+    })
+        .index("by_category", ["category"])
+        .index("by_isActive", ["isActive"]),
+
+    afterSalesLeads: defineTable({
+        dealId: v.id("deals"),
+        serviceId: v.id("afterSalesServices"),
+
+        status: v.union(
+            v.literal("suggested"),     // Föreslagen till kund
+            v.literal("interested"),    // Kund intresserad
+            v.literal("contacted"),     // Kontaktat partner
+            v.literal("completed"),     // Genomförd
+            v.literal("declined")       // Kund tackade nej
+        ),
+
+        // Intäkt
+        revenueEarned: v.optional(v.number()),
+
+        notes: v.optional(v.string()),
+        createdAt: v.string(),
+        updatedAt: v.string(),
+    })
+        .index("by_dealId", ["dealId"])
+        .index("by_serviceId", ["serviceId"])
+        .index("by_status", ["status"]),
+
+    customerFollowUps: defineTable({
+        dealId: v.id("deals"),
+
+        type: v.union(
+            v.literal("1_week"),
+            v.literal("1_month"),
+            v.literal("6_months"),
+            v.literal("1_year"),
+            v.literal("custom")
+        ),
+
+        scheduledAt: v.string(),
+        completedAt: v.optional(v.string()),
+        completedById: v.optional(v.id("users")),
+
+        // Resultat
+        customerSatisfaction: v.optional(v.number()), // 1-5
+        notes: v.optional(v.string()),
+
+        // Nästa åtgärd
+        nextAction: v.optional(v.string()),
+        nextFollowUpAt: v.optional(v.string()),
+
+        createdAt: v.string(),
+        updatedAt: v.optional(v.string()),
+    })
+        .index("by_dealId", ["dealId"])
+        .index("by_scheduledAt", ["scheduledAt"])
+        .index("by_type", ["type"]),
 });

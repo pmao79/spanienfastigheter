@@ -3,8 +3,9 @@
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { useUser } from "@clerk/nextjs";
-import { CheckCircle2, MapPin, Home, User, Phone, Mail } from "lucide-react";
+import { CheckCircle2, MapPin, Home, User, Phone, Mail, FileText, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const STAGES = [
     { id: "reservation", label: "Reservation" },
@@ -17,6 +18,8 @@ const STAGES = [
 export default function PortalDashboard() {
     const { user } = useUser();
     const deal = useQuery(api.deals.getMyDeal);
+    const email = user?.primaryEmailAddress?.emailAddress;
+    const mailings = useQuery(api.propertyMailings.getByRecipientEmail, email ? { email } : "skip");
 
     if (deal === undefined) {
         return <div className="p-8 text-center text-slate-500">Laddar din bostadsresa...</div>;
@@ -24,15 +27,53 @@ export default function PortalDashboard() {
 
     if (deal === null) {
         return (
-            <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-xl shadow-sm text-center border border-slate-100">
-                <Home className="h-12 w-12 text-slate-300 mx-auto mb-4" />
-                <h2 className="text-xl font-bold text-slate-900 mb-2">Välkommen!</h2>
-                <p className="text-slate-600">
-                    Vi hittar ingen aktiv affär kopplad till din e-post ({user?.primaryEmailAddress?.emailAddress}).
-                </p>
-                <p className="text-sm text-slate-500 mt-4">
-                    Kontakta din mäklare om du tror att detta är fel.
-                </p>
+            <div className="space-y-8">
+                {/* Fallback for no active deal */}
+                <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-xl shadow-sm text-center border border-slate-100">
+                    <Home className="h-12 w-12 text-slate-300 mx-auto mb-4" />
+                    <h2 className="text-xl font-bold text-slate-900 mb-2">Välkommen!</h2>
+                    <p className="text-slate-600">
+                        Vi hittar ingen aktiv affär kopplad till din e-post ({user?.primaryEmailAddress?.emailAddress}).
+                    </p>
+                    <p className="text-sm text-slate-500 mt-4">
+                        Kontakta din mäklare om du tror att detta är fel.
+                    </p>
+                </div>
+
+                {/* Show Suggestions regardless of deal status */}
+                {mailings && mailings.length > 0 && (
+                    <div className="max-w-4xl mx-auto">
+                        <h2 className="text-xl font-bold text-slate-900 mb-4">Förslag till dig</h2>
+                        <div className="grid gap-6">
+                            {mailings.map(mailing => (
+                                <div key={mailing._id} className="bg-white rounded-xl border p-6 shadow-sm">
+                                    <h3 className="font-bold text-lg text-[#1a365d] mb-2">{mailing.subject}</h3>
+                                    <p className="text-slate-600 mb-4 whitespace-pre-line">{mailing.personalMessage}</p>
+
+                                    {mailing.propertyIds && mailing.propertyIds.length > 0 && (
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-4">
+                                            {/* We only have IDs here. In a real app we'd fetch property details or store minimal info in mailing. 
+                                                For now we link to public page.
+                                            */}
+                                            {mailing.propertyIds.map((pid: string) => (
+                                                <Link key={pid} href={`/objekt/${pid}`} className="group block border rounded-lg overflow-hidden hover:border-[#1a365d]">
+                                                    <div className="h-32 bg-slate-100 flex items-center justify-center text-slate-400">
+                                                        <span className="text-xs">Visa objekt</span>
+                                                    </div>
+                                                    <div className="p-3">
+                                                        <div className="flex items-center text-[#1a365d] text-sm font-medium gap-1 group-hover:underline">
+                                                            Se detaljer <ArrowUpRight className="h-3 w-3" />
+                                                        </div>
+                                                    </div>
+                                                </Link>
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
             </div>
         );
     }
@@ -94,8 +135,9 @@ export default function PortalDashboard() {
                         Vad händer nu? ({STAGES[currentStageIndex]?.label || deal.stage})
                     </h3>
                     <p className="text-sm text-slate-600">
-                        {/* Dynamic copy depending on stage could go here */}
-                        Vi arbetar med att ta din affär framåt. Ser checklistan för aktuella steg.
+                        {deal.stage === 'completion'
+                            ? "Grattis! Affären är avslutad. Nu börjar After-Sales fasen där vi hjälper dig med prenumerationer och annat."
+                            : "Vi arbetar med att ta din affär framåt. Ser checklistan för aktuella steg."}
                     </p>
                 </div>
             </div>
@@ -196,6 +238,22 @@ export default function PortalDashboard() {
                     </div>
                 </div>
             </div>
+
+            {/* After Sales / Suggestions (Show mailings here too if active deal exists) */}
+            {mailings && mailings.length > 0 && (
+                <div className="mt-8">
+                    <h2 className="text-lg font-bold text-slate-900 mb-4">Dina personliga förslag</h2>
+                    <div className="grid gap-4">
+                        {mailings.map(mailing => (
+                            <div key={mailing._id} className="bg-white rounded-lg border p-4 shadow-sm hover:shadow-md transition-shadow">
+                                <span className="text-xs text-slate-500">{new Date(mailing.createdAt).toLocaleDateString()}</span>
+                                <h3 className="font-bold text-[#1a365d]">{mailing.subject}</h3>
+                                <p className="text-sm text-slate-600 mt-1 line-clamp-2">{mailing.personalMessage}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

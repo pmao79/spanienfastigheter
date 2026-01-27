@@ -5,24 +5,8 @@ export const getStats = query({
     handler: async (ctx) => {
 
         // Properties stats
-        // Note: This is efficient only for small datasets or if appropriate indexes are used.
-        // For large datasets, we might need to denormalize counts.
         const activePropertiesCount = (await ctx.db
             .query("properties")
-            // We'd ideally need an index on status if we tracked it explicitly as 'status' field.
-            // Schema has isHidden, but prompt said "status='active'". 
-            // Based on prompt, properties doesn't have a status field in the schema provided in Del 1,
-            // but Del 5 mentions "Status (active, reserved, sold, paused)".
-            // Wait, the schema I added in Del 1 only has isFeatured, isHidden.
-            // Let's assume !isHidden is active for now, or check if specific status field was requested in schema update?
-            // Checking schema update instruction: it was "users" and "leads". 
-            // Properties table was existing.
-            // Del 5 says "Tabell med alla objekt... Status (badge)".
-            // Del 5 Filter says "Status (active, reserved, sold, paused)".
-            // I should probably add a status field to properties if it doesn't exist?
-            // But schema provided in Del 1 didn't explicitly ask to modify properties table except implied existance.
-            // Let's stick to what we have: isHidden? 
-            // Actually, let's count all non-hidden properties as active for this MVP step.
             .filter(q => q.eq(q.field("isHidden"), false))
             .collect()).length;
 
@@ -83,6 +67,29 @@ export const getStats = query({
             };
         }));
 
+        // === PHASE 6 ADDITIONS ===
+
+        // Upcoming Follow-ups (After-Sales)
+        const upcomingFollowUpsRaw = await ctx.db
+            .query("customerFollowUps")
+            .filter(q => q.eq(q.field("completedAt"), undefined)) // Filter completed
+            .collect(); // In-memory filter/sort for now as 'scheduledAt' sort with filter might need index
+
+        // Sort and take 5
+        const upcomingFollowUps = upcomingFollowUpsRaw
+            .sort((a, b) => a.scheduledAt.localeCompare(b.scheduledAt))
+            .slice(0, 5);
+
+        // Recent Mailings
+        const recentMailingsRaw = await ctx.db.query("propertyMailings").order("desc").take(5);
+        const recentMailings = await Promise.all(recentMailingsRaw.map(async (m) => {
+            const lead = await ctx.db.get(m.leadId);
+            return {
+                ...m,
+                leadName: lead ? `${lead.firstName} ${lead.lastName}` : "Unknown"
+            };
+        }));
+
         return {
             activePropertiesCount,
             newLeadsCount,
@@ -90,7 +97,9 @@ export const getStats = query({
             recentActivity,
             upcomingViewings: enrichedViewings,
             pendingReportsCount,
-            activeDeals
+            activeDeals,
+            upcomingFollowUps,
+            recentMailings
         };
     },
 });

@@ -12,10 +12,14 @@ import {
     ArrowRight,
     Activity,
     Clock,
-    TrendingUp
+    TrendingUp,
+    Mail,
+    Phone
 } from "lucide-react";
 import Link from "next/link";
 import { AreaChart, Area, XAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import { formatDistanceToNow } from "date-fns";
+import { sv } from "date-fns/locale";
 
 export default function DashboardPage() {
     const stats = useQuery(api.dashboard.getStats);
@@ -94,8 +98,6 @@ export default function DashboardPage() {
                 })}
             </div>
 
-
-
             {/* Sales Chart Mobile/Desktop */}
             {
                 salesStats && (
@@ -129,7 +131,7 @@ export default function DashboardPage() {
             }
 
             <div className="grid gap-8 lg:grid-cols-3">
-                {/* Main Content Area: Leads Chart & My Tasks */}
+                {/* Main Content Area */}
                 <div className="space-y-8 lg:col-span-2">
                     {/* Leads Chart */}
                     <div className="rounded-xl bg-white p-6 shadow-sm">
@@ -201,37 +203,9 @@ export default function DashboardPage() {
                             )}
                         </div>
                     </div>
-
-                    {/* My Tasks Widget */}
-                    <div className="rounded-xl bg-white p-6 shadow-sm">
-                        <div className="mb-4 flex items-center justify-between">
-                            <h2 className="text-lg font-bold text-slate-900">Mina uppgifter</h2>
-                            <Link href="/admin/tasks" className="text-sm font-medium text-[#1a365d] hover:underline">
-                                Hantera
-                            </Link>
-                        </div>
-                        <div className="space-y-3">
-                            {myTasks?.slice(0, 5).map((task) => (
-                                <div key={task._id} className="flex items-center justify-between rounded-lg border border-slate-100 p-3 hover:bg-slate-50">
-                                    <div className="flex items-center gap-3">
-                                        <div className={`h-2 w-2 rounded-full ${task.priority === 'urgent' ? 'bg-red-500' :
-                                            task.priority === 'high' ? 'bg-orange-400' : 'bg-blue-400'
-                                            }`} />
-                                        <span className="text-sm font-medium text-slate-700">{task.title}</span>
-                                    </div>
-                                    <span className="text-xs text-slate-500">
-                                        {task.dueAt ? new Date(task.dueAt).toLocaleDateString() : ''}
-                                    </span>
-                                </div>
-                            ))}
-                            {(!myTasks || myTasks.length === 0) && (
-                                <p className="text-sm text-slate-400 py-4 text-center">Inga aktiva uppgifter</p>
-                            )}
-                        </div>
-                    </div>
                 </div>
 
-                {/* Recent Activity & Actions */}
+                {/* Right Column: Activity, Viewings, Tasks, Mailings, Follow-ups */}
                 <div className="space-y-8">
                     {/* Quick Actions */}
                     <div className="grid grid-cols-2 gap-4">
@@ -241,13 +215,40 @@ export default function DashboardPage() {
                             </div>
                             <span className="text-sm font-medium text-slate-700">Ny Lead</span>
                         </Link>
-                        <button className="flex flex-col items-center justify-center gap-2 rounded-xl bg-white p-4 shadow-sm transition-colors hover:bg-slate-50">
-                            <div className="rounded-full bg-orange-50 p-3 text-orange-600">
-                                <RefreshCcw className="h-6 w-6" />
+                        <Link href="/admin/mailings/new" className="flex flex-col items-center justify-center gap-2 rounded-xl bg-white p-4 shadow-sm transition-colors hover:bg-slate-50">
+                            <div className="rounded-full bg-indigo-50 p-3 text-indigo-600">
+                                <Mail className="h-6 w-6" />
                             </div>
-                            <span className="text-sm font-medium text-slate-700">Synka Objekt</span>
-                        </button>
+                            <span className="text-sm font-medium text-slate-700">Nytt Utskick</span>
+                        </Link>
                     </div>
+
+                    {/* Upcoming Follow-ups (After-Sales) */}
+                    {stats.upcomingFollowUps && stats.upcomingFollowUps.length > 0 && (
+                        <div className="rounded-xl bg-white p-6 shadow-sm border border-yellow-100">
+                            <div className="mb-4 flex items-center justify-between">
+                                <h2 className="text-lg font-bold text-slate-900">Uppföljningar</h2>
+                                <Link href="/admin/after-sales" className="text-sm font-medium text-[#1a365d] hover:underline">
+                                    Hantera
+                                </Link>
+                            </div>
+                            <div className="space-y-3">
+                                {stats.upcomingFollowUps.map((task: any) => (
+                                    <div key={task._id} className="flex items-start gap-3 rounded-lg border border-slate-100 p-3 hover:bg-slate-50">
+                                        <div className="flex h-8 w-8 flex-col items-center justify-center rounded-full bg-yellow-50 text-yellow-600">
+                                            <Phone className="h-4 w-4" />
+                                        </div>
+                                        <div className="flex-1">
+                                            <p className="font-medium text-sm text-slate-900 capitalize">{task.type.replace('_', ' ')}</p>
+                                            <p className="text-xs text-slate-500">
+                                                Planerad: {new Date(task.scheduledAt).toLocaleDateString()}
+                                            </p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
 
                     {/* Upcoming Viewings Widget */}
                     <div className="rounded-xl bg-white p-6 shadow-sm">
@@ -284,32 +285,38 @@ export default function DashboardPage() {
                         </div>
                     </div>
 
-                    {/* Recent Activity */}
+                    {/* Recent Mailings Widget */}
                     <div className="rounded-xl bg-white p-6 shadow-sm">
-                        <h2 className="mb-4 text-lg font-bold text-slate-900">Senaste aktivitet</h2>
-                        <div className="space-y-6">
-                            {stats.recentActivity.map((activity: any, idx: number) => (
-                                <div key={idx} className="relative pl-6">
-                                    <div className="absolute left-0 top-1.5 h-2 w-2 rounded-full bg-slate-300"></div>
-                                    {idx !== stats.recentActivity.length - 1 && (
-                                        <div className="absolute left-[3.5px] top-4 h-full w-[1px] bg-slate-200"></div>
-                                    )}
-                                    <div className="text-sm">
-                                        <p className="font-medium text-slate-900">{activity.description}</p>
-                                        <p className="text-xs text-slate-500">
-                                            {new Date(activity.createdAt).toLocaleDateString()}
-                                        </p>
+                        <div className="mb-4 flex items-center justify-between">
+                            <h2 className="text-lg font-bold text-slate-900">Senaste utskick</h2>
+                            <Link href="/admin/mailings" className="text-sm font-medium text-[#1a365d] hover:underline">
+                                Visa alla
+                            </Link>
+                        </div>
+                        <div className="space-y-3">
+                            {stats.recentMailings?.map((mailing: any) => (
+                                <Link key={mailing._id} href={`/admin/mailings/${mailing._id}`} className="block rounded-lg border border-slate-100 p-3 hover:bg-slate-50">
+                                    <div className="flex justify-between items-start mb-1">
+                                        <p className="font-medium text-sm text-slate-900">{mailing.recipientName}</p>
+                                        <span className={`text-[10px] px-1.5 py-0.5 rounded-full capitalize ${mailing.status === 'sent' ? 'bg-green-100 text-green-700' :
+                                                mailing.status === 'draft' ? 'bg-slate-100 text-slate-600' :
+                                                    'bg-blue-50 text-blue-600'
+                                            }`}>
+                                            {mailing.status}
+                                        </span>
                                     </div>
-                                </div>
+                                    <p className="text-xs text-slate-500 truncate">{mailing.subject}</p>
+                                    <p className="text-[10px] text-slate-400 mt-2">
+                                        {mailing.createdAt ? formatDistanceToNow(new Date(mailing.createdAt), { locale: sv, addSuffix: true }) : ''}
+                                    </p>
+                                </Link>
                             ))}
-                            {stats.recentActivity.length === 0 && (
-                                <p className="text-sm text-slate-400">Ingen aktivitet registrerad</p>
+                            {(!stats.recentMailings || stats.recentMailings.length === 0) && (
+                                <p className="text-sm text-slate-400">Inga utskick än</p>
                             )}
                         </div>
-                        <button className="mt-4 flex w-full items-center justify-center gap-2 rounded-lg border py-2 text-sm font-medium text-slate-600 hover:bg-slate-50">
-                            Visa historik <ArrowRight className="h-4 w-4" />
-                        </button>
                     </div>
+
                 </div>
             </div>
         </div >
