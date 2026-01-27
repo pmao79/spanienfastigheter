@@ -87,6 +87,11 @@ export default defineSchema({
         ),
         isActive: v.boolean(),
         clerkId: v.optional(v.string()),
+
+        // Commissions
+        commissionProfileId: v.optional(v.id("commissionProfiles")),
+        yearlyDealsCount: v.optional(v.number()),
+
         createdAt: v.string(),
         updatedAt: v.optional(v.any()),
     })
@@ -477,4 +482,60 @@ export default defineSchema({
         .index("by_dealId", ["dealId"])
         .index("by_leadId", ["leadId"])
         .index("by_type", ["type"]),
+
+    commissionProfiles: defineTable({
+        name: v.string(),
+        description: v.optional(v.string()),
+
+        type: v.union(
+            v.literal("fixed_percent"),    // Fast procent
+            v.literal("tiered"),           // Trappsteg
+            v.literal("per_deal")          // Individuellt per affär
+        ),
+
+        // För fixed_percent
+        fixedPercent: v.optional(v.number()),
+
+        // För tiered (trappsteg)
+        tiers: v.optional(v.array(v.object({
+            minDeals: v.number(),
+            maxDeals: v.optional(v.number()),
+            percent: v.number(),
+            bonus: v.optional(v.number()),
+        }))),
+
+        isActive: v.boolean(),
+        createdAt: v.string(),
+        updatedAt: v.string(),
+    })
+        .index("by_type", ["type"])
+        .index("by_isActive", ["isActive"]),
+
+    commissionPayouts: defineTable({
+        userId: v.id("users"),
+        dealId: v.id("deals"),
+
+        amount: v.number(),
+        currency: v.string(),
+        percent: v.number(),
+
+        status: v.union(
+            v.literal("pending"),      // Väntar på deal completion
+            v.literal("approved"),     // Godkänd för utbetalning
+            v.literal("paid"),         // Utbetald
+            v.literal("cancelled")     // Avbruten
+        ),
+
+        approvedById: v.optional(v.id("users")),
+        approvedAt: v.optional(v.string()),
+        paidAt: v.optional(v.string()),
+        paymentReference: v.optional(v.string()),
+
+        notes: v.optional(v.string()),
+        createdAt: v.string(),
+        updatedAt: v.string(),
+    })
+        .index("by_userId", ["userId"])
+        .index("by_dealId", ["dealId"])
+        .index("by_status", ["status"]),
 });

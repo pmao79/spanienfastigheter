@@ -49,13 +49,31 @@ Current Focus: **Phase 3: Visningar & Kalender**.
     - [x] Create `app/(admin)/admin/deals/[id]/page.tsx` <!-- id: deals_page -->
     - [x] Implement Checklist UI <!-- id: ui_checklist -->
     - [x] Implement Document Management UI <!-- id: ui_docs -->
-- [ ] **Customer Portal** <!-- id: p4_portal -->
-    - [ ] Create Portal Layout & Middleware <!-- id: portal_setup -->
-    - [ ] Create `app/(portal)/portal/page.tsx` (Process view) <!-- id: portal_home -->
-    - [ ] Create `app/(portal)/portal/documents/page.tsx` <!-- id: portal_docs -->
+- [x] **Customer Portal** <!-- id: p4_portal -->
+    - [x] Create Portal Layout & Middleware <!-- id: portal_setup -->
+    - [x] Create `app/(portal)/portal/page.tsx` (Process view) <!-- id: portal_home -->
+    - [x] Create `app/(portal)/portal/documents/page.tsx` <!-- id: portal_docs -->
 - [ ] **Integration & Polish** <!-- id: p4_polish -->
     - [ ] Update Sidebar Navigation <!-- id: nav_deals -->
     - [ ] Dashboard Widgets (Active Deals) <!-- id: dash_deals -->
 
-### Phase 5 & 6 (Future)
-- [ ] Reports, Commission, After-Sales
+### Phase 5: Reports & Commissions (Active)
+- [x] **Schema & Backend** <!-- id: p5_backend -->
+    - [x] Update `convex/schema.ts` (Profiles, Payouts) <!-- id: p5_schema -->
+    - [x] Create `convex/reports.ts` (Analytics queries) <!-- id: p5_reports_api -->
+    - [x] Create `convex/commissions.ts` (Calc logic) <!-- id: p5_comm_api -->
+- [x] **Frontend: Reports** <!-- id: p5_reports_ui -->
+    - [x] Install Recharts & Export libs <!-- id: p5_install -->
+    - [x] Create Reports Dashboard (`/admin/reports`) <!-- id: p5_reports_page -->
+    - [x] Add Charts & Graphs <!-- id: p5_charts -->
+    - [x] Implement Excel/PDF Export <!-- id: p5_export -->
+- [x] **Frontend: Commissions** <!-- id: p5_comm_ui -->
+    - [x] Create Commission Profiles Settings <!-- id: p5_profiles -->
+    - [x] Create Admin Commission Management <!-- id: p5_comm_admin -->
+    - [x] Create Agent "My Commissions" View <!-- id: p5_comm_agent -->
+- [x] **Integration** <!-- id: p5_integration -->
+    - [x] Update Sidebar Navigation <!-- id: p5_nav -->
+    - [x] Update Main Dashboard Widgets <!-- id: p5_dashboard -->
+
+### Phase 6 (Future)
+- [ ] After-Sales Tasks

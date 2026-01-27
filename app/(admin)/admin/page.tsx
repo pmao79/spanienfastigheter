@@ -11,13 +11,16 @@ import {
     RefreshCcw,
     ArrowRight,
     Activity,
-    Clock
+    Clock,
+    TrendingUp
 } from "lucide-react";
 import Link from "next/link";
+import { AreaChart, Area, XAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
 export default function DashboardPage() {
     const stats = useQuery(api.dashboard.getStats);
     const myTasks = useQuery(api.tasks.getMyTasks);
+    const salesStats = useQuery(api.reports.getSalesOverview);
 
     if (!stats) {
         return (
@@ -91,6 +94,40 @@ export default function DashboardPage() {
                 })}
             </div>
 
+
+
+            {/* Sales Chart Mobile/Desktop */}
+            {
+                salesStats && (
+                    <div className="rounded-xl bg-white p-6 shadow-sm">
+                        <div className="mb-4 flex items-center justify-between">
+                            <div>
+                                <h2 className="text-lg font-bold text-slate-900">Försäljningsöversikt</h2>
+                                <p className="text-sm text-slate-500">Intäkter: €{salesStats.totalRevenue.toLocaleString()}</p>
+                            </div>
+                            <Link href="/admin/reports" className="flex items-center gap-1 text-sm font-medium text-[#1a365d] hover:underline">
+                                Se rapport <TrendingUp className="h-4 w-4" />
+                            </Link>
+                        </div>
+                        <div className="h-64 w-full">
+                            <ResponsiveContainer width="100%" height="100%">
+                                <AreaChart data={salesStats.byMonth}>
+                                    <defs>
+                                        <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
+                                            <stop offset="5%" stopColor="#1a365d" stopOpacity={0.3} />
+                                            <stop offset="95%" stopColor="#1a365d" stopOpacity={0} />
+                                        </linearGradient>
+                                    </defs>
+                                    <XAxis dataKey="month" hide />
+                                    <Tooltip />
+                                    <Area type="monotone" dataKey="revenue" stroke="#1a365d" fillOpacity={1} fill="url(#colorRevenue)" />
+                                </AreaChart>
+                            </ResponsiveContainer>
+                        </div>
+                    </div>
+                )
+            }
+
             <div className="grid gap-8 lg:grid-cols-3">
                 {/* Main Content Area: Leads Chart & My Tasks */}
                 <div className="space-y-8 lg:col-span-2">
@@ -128,6 +165,39 @@ export default function DashboardPage() {
                                 <div className="flex h-40 items-center justify-center text-slate-400">
                                     Inga leads att visa
                                 </div>
+                            )}
+                        </div>
+                    </div>
+
+                    {/* Active Deals Widget */}
+                    <div className="rounded-xl bg-white p-6 shadow-sm">
+                        <div className="mb-4 flex items-center justify-between">
+                            <h2 className="text-lg font-bold text-slate-900">Aktiva Affärer</h2>
+                            <Link href="/admin/deals" className="text-sm font-medium text-[#1a365d] hover:underline">
+                                Visa alla
+                            </Link>
+                        </div>
+                        <div className="space-y-3">
+                            {stats.activeDeals?.map((deal: any) => (
+                                <Link key={deal._id} href={`/admin/deals/${deal._id}`} className="flex items-center justify-between rounded-lg border border-slate-100 p-3 hover:bg-slate-50 transition-colors">
+                                    <div className="flex items-center gap-3">
+                                        <div className="h-8 w-8 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 font-bold text-xs ring-1 ring-blue-100">
+                                            {deal.property?.ref || "REF"}
+                                        </div>
+                                        <div>
+                                            <p className="text-sm font-medium text-slate-900 line-clamp-1">
+                                                {deal.property?.town || "Okänd ort"} - {deal.stage.replace('_', ' ')}
+                                            </p>
+                                            <p className="text-xs text-slate-500">
+                                                {deal.agreedPrice?.toLocaleString()} EUR
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <ArrowRight className="h-4 w-4 text-slate-300" />
+                                </Link>
+                            ))}
+                            {(!stats.activeDeals || stats.activeDeals.length === 0) && (
+                                <p className="text-sm text-slate-400 py-4 text-center">Inga aktiva affärer</p>
                             )}
                         </div>
                     </div>
@@ -242,6 +312,6 @@ export default function DashboardPage() {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }

@@ -11,6 +11,7 @@
 import type * as activity from "../activity.js";
 import type * as admin from "../admin.js";
 import type * as adminProperties from "../adminProperties.js";
+import type * as commissions from "../commissions.js";
 import type * as communications from "../communications.js";
 import type * as crons from "../crons.js";
 import type * as dashboard from "../dashboard.js";
@@ -23,6 +24,7 @@ import type * as lib_dealChecklists from "../lib/dealChecklists.js";
 import type * as migrations from "../migrations.js";
 import type * as properties from "../properties.js";
 import type * as regions from "../regions.js";
+import type * as reports from "../reports.js";
 import type * as sync from "../sync.js";
 import type * as tasks from "../tasks.js";
 import type * as users from "../users.js";
@@ -39,6 +41,7 @@ declare const fullApi: ApiFromModules<{
   activity: typeof activity;
   admin: typeof admin;
   adminProperties: typeof adminProperties;
+  commissions: typeof commissions;
   communications: typeof communications;
   crons: typeof crons;
   dashboard: typeof dashboard;
@@ -51,6 +54,7 @@ declare const fullApi: ApiFromModules<{
   migrations: typeof migrations;
   properties: typeof properties;
   regions: typeof regions;
+  reports: typeof reports;
   sync: typeof sync;
   tasks: typeof tasks;
   users: typeof users;

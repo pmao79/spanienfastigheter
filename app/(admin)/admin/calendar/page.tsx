@@ -55,6 +55,7 @@ export default function CalendarPage() {
         end: new Date(new Date(v.scheduledAt).getTime() + (v.estimatedDuration || 60) * 60000).toISOString(),
         backgroundColor: getStatusColor(v.status),
         borderColor: getStatusBorderColor(v.status),
+        textColor: '#1e293b', // slate-800 for contrast
         extendedProps: {
             lead: v.lead,
             assignedTo: v.assignedTo,
@@ -146,12 +147,12 @@ function getStatusColor(status: string) {
     // Completed: Grå
     // Cancelled: Röd
     switch (status) {
-        case 'scheduled': return '#eff6ff'; // blue-50
-        case 'confirmed': return '#f0fdf4'; // green-50
-        case 'in_progress': return '#fefce8'; // yellow-50
-        case 'completed': return '#f3f4f6'; // gray-100
-        case 'cancelled': return '#fef2f2'; // red-50
-        default: return '#eff6ff';
+        case 'scheduled': return '#bfdbfe'; // blue-200
+        case 'confirmed': return '#bbf7d0'; // green-200
+        case 'in_progress': return '#fde68a'; // yellow-200
+        case 'completed': return '#e5e7eb'; // gray-200
+        case 'cancelled': return '#fecaca'; // red-200
+        default: return '#bfdbfe';
     }
 }
 

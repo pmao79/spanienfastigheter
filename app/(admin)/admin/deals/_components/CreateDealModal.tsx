@@ -13,9 +13,9 @@ interface CreateDealModalProps {
 
 export default function CreateDealModal({ isOpen, onClose }: CreateDealModalProps) {
     const createDeal = useMutation(api.deals.create);
-    const leads = useQuery(api.leads.getAll) || [];
-    const properties = useQuery(api.properties.list) || [];
-    const users = useQuery(api.users.getAll) || [];
+    const leads = useQuery(api.leads.getAll, {}) || [];
+    const properties = useQuery(api.properties.list, {}) || [];
+    const users = useQuery(api.users.getAll, {}) || [];
 
     const [formData, setFormData] = useState({
         leadId: "",

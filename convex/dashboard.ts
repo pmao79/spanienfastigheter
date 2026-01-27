@@ -63,19 +63,25 @@ export const getStats = query({
         }));
 
         // Pending Reports
-        // Count viewings that are completed but have no report
-        // This is complex without a direct index or relation check. 
-        // For MVP, let's just count 'completed' viewings.
-        // Or better: status 'confirmed' that are in the past? 
-        // Let's use 'completed' status viewings for now.
-        // Actually, let's just return a count of "completed" viewings as a proxy for "Needs Report" if we assume manual automation moves them to completed ONLY when reported?
-        // No, usually "completed" means the event passed. 
-        // Let's just fetch recent completed viewings.
         const pendingReportsCount = (await ctx.db.query("viewings")
-            .withIndex("by_status", q => q.eq("status", "completed")) // Assuming we define "completed" as "done but needs report"? 
-            // Or maybe "in_progress" moved to "completed" after report?
-            // Let's stick to "upcoming" for now to check Calendar works.
+            .withIndex("by_status", q => q.eq("status", "completed"))
             .collect()).length;
+
+        // Active Deals (Last 5, excluding closed)
+        const allDeals = await ctx.db.query("deals").order("desc").collect();
+        const activeDealsRaw = allDeals
+            .filter(d => d.stage !== "closed_won" && d.stage !== "closed_lost")
+            .slice(0, 5);
+
+        const activeDeals = await Promise.all(activeDealsRaw.map(async (deal) => {
+            const property = deal.propertyId ? await ctx.db.get(deal.propertyId) : null;
+            const assignedTo = deal.assignedToId ? await ctx.db.get(deal.assignedToId) : null;
+            return {
+                ...deal,
+                property,
+                assignedTo
+            };
+        }));
 
         return {
             activePropertiesCount,
@@ -83,7 +89,8 @@ export const getStats = query({
             leadsPerStatus,
             recentActivity,
             upcomingViewings: enrichedViewings,
-            pendingReportsCount
+            pendingReportsCount,
+            activeDeals
         };
     },
 });

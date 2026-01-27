@@ -19,7 +19,9 @@ import {
     Contact,
     Calendar,
     Eye,
-    Briefcase
+    Briefcase,
+    TrendingUp,
+    DollarSign
 } from "lucide-react";
 import { canAccess } from "@/lib/permissions";
 
@@ -111,12 +113,15 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
 
     const links = [
         { href: "/admin", label: "Dashboard", icon: LayoutDashboard },
-        { href: "/admin/deals", label: "Deals", icon: Briefcase },   // New
-        { href: "/admin/calendar", label: "Kalender", icon: Calendar }, // New
-        { href: "/admin/viewings", label: "Visningar", icon: Eye },     // New
+        { href: "/admin/deals", label: "Affärer", icon: Briefcase },
+        { href: "/admin/calendar", label: "Kalender", icon: Calendar },
+        { href: "/admin/viewings", label: "Visningar", icon: Eye },
         { href: "/admin/properties", label: "Objekt", icon: Building2 },
         { href: "/admin/leads", label: "Leads", icon: Contact },
-        { href: "/admin/team", label: "Team", icon: Users },
+        { href: "/admin/reports", label: "Rapporter", icon: TrendingUp },    // New
+        { href: "/admin/commissions", label: "Provisioner", icon: DollarSign, roles: ["admin", "owner", "equity_partner"] }, // New
+        { href: "/admin/my-commissions", label: "Min Provision", icon: DollarSign, roles: ["agent", "sales_partner"] },     // New
+        { href: "/admin/team", label: "Team", icon: Users, roles: ["admin", "owner"] },
         { href: "/admin/settings", label: "Inställningar", icon: Settings },
     ];
 
@@ -147,7 +152,9 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
                 </div>
 
                 <nav className="mt-6 px-3">
-                    {links.map((link) => {
+                    {links.map((link: any) => {
+                        if (link.roles && !link.roles.includes(convexUser.role)) return null;
+
                         const Icon = link.icon;
                         const isActive = pathname === link.href;
                         return (
