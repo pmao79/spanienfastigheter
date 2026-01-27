@@ -2,19 +2,12 @@ import { v } from "convex/values";
 import { mutation, query } from "./_generated/server";
 
 export const getAll = query({
-    args: {
-        status: v.optional(v.string()),
-        assignedToId: v.optional(v.id("users")),
-    },
+    args: { status: v.optional(v.string()) },
     handler: async (ctx, args) => {
         let q = ctx.db.query("leads");
-
         if (args.status) {
-            q = q.withIndex("by_status", (q) => q.eq("status", args.status as any));
-        } else if (args.assignedToId) {
-            q = q.withIndex("by_assignedTo", (q) => q.eq("assignedToId", args.assignedToId));
+            q = q.withIndex("by_status", (q) => q.eq("status", args.status as string));
         }
-
         return await q.order("desc").collect();
     },
 });
@@ -33,16 +26,30 @@ export const create = mutation({
         email: v.string(),
         phone: v.optional(v.string()),
         source: v.string(),
-        temperature: v.union(v.literal("cold"), v.literal("warm"), v.literal("hot")),
+        temperature: v.union(
+            v.literal("cold"),
+            v.literal("warm"),
+            v.literal("hot")
+        ),
         notes: v.optional(v.string()),
     },
     handler: async (ctx, args) => {
-        return await ctx.db.insert("leads", {
+        const leadId = await ctx.db.insert("leads", {
             ...args,
             status: "new",
             createdAt: new Date().toISOString(),
-            updatedAt: new Date().toISOString(),
+            lastActivityAt: new Date().toISOString(),
         });
+
+        // Log creation
+        await ctx.db.insert("activityLog", {
+            type: "lead_create",
+            description: `Lead created: ${args.firstName} ${args.lastName}`,
+            createdAt: new Date().toISOString(),
+            meta: { leadId }
+        });
+
+        return leadId;
     },
 });
 
@@ -54,13 +61,20 @@ export const update = mutation({
         email: v.optional(v.string()),
         phone: v.optional(v.string()),
         notes: v.optional(v.string()),
-        temperature: v.optional(v.union(v.literal("cold"), v.literal("warm"), v.literal("hot"))),
+        temperature: v.optional(v.union(
+            v.literal("cold"),
+            v.literal("warm"),
+            v.literal("hot")
+        )),
+        // New fields
+        nextFollowUpAt: v.optional(v.string()),
+        lostReason: v.optional(v.string()),
     },
     handler: async (ctx, args) => {
         const { id, ...updates } = args;
         await ctx.db.patch(id, {
             ...updates,
-            updatedAt: new Date().toISOString(),
+            lastActivityAt: new Date().toISOString()
         });
     },
 });
@@ -68,47 +82,34 @@ export const update = mutation({
 export const updateStatus = mutation({
     args: {
         id: v.id("leads"),
-        status: v.union(
-            v.literal("new"),
-            v.literal("contacted"),
-            v.literal("qualified"),
-            v.literal("viewing_scheduled"),
-            v.literal("viewing_done"),
-            v.literal("negotiating"),
-            v.literal("won"),
-            v.literal("lost")
-        ),
+        status: v.string() // "new", "contacted", etc.
     },
     handler: async (ctx, args) => {
         await ctx.db.patch(args.id, {
             status: args.status,
-            updatedAt: new Date().toISOString(),
+            lastActivityAt: new Date().toISOString()
+        });
+
+        // Log activity
+        await ctx.db.insert("activityLog", {
+            type: "lead_status_change",
+            description: `Lead status changed to ${args.status}`,
+            createdAt: new Date().toISOString(),
+            meta: { leadId: args.id, newStatus: args.status }
         });
     },
 });
 
-export const assign = mutation({
-    args: {
-        id: v.id("leads"),
-        userId: v.id("users"),
-    },
-    handler: async (ctx, args) => {
-        await ctx.db.patch(args.id, {
-            assignedToId: args.userId,
-            updatedAt: new Date().toISOString(),
-        });
-    },
-});
-
-export const getStats = query({
+// For Kanban View
+export const getPipeline = query({
     args: {},
     handler: async (ctx) => {
-        const leads = await ctx.db.query("leads").collect();
-        const stats = leads.reduce((acc, lead) => {
-            acc[lead.status] = (acc[lead.status] || 0) + 1;
-            return acc;
-        }, {} as Record<string, number>);
-
-        return stats;
+        // We want all active leads, arguably.
+        // For now, fetch all and frontend can group.
+        // Optimization: We could use specific indexes if we had millions,
+        // but for now finding all leads is fine.
+        // We typically exclude "lost" or "won" from active pipeline view maybe?
+        // Let's just return all and let frontend filter/columnize.
+        return await ctx.db.query("leads").collect();
     }
 });

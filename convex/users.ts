@@ -48,19 +48,35 @@ export const create = mutation({
             .unique();
 
         if (existing) {
-            // If user exists but no clerkId, update it? Or just return existing?
-            // For now, let's just return existing ID if it matches? 
-            // Or throw error?
-            // The prompt says "skapa användare automatiskt vid första inloggning".
-            if (args.clerkId && !existing.clerkId) {
-                await ctx.db.patch(existing._id, { clerkId: args.clerkId, avatar: args.avatar });
+            // Update clerkId if it's missing or different, and ensuring avatar is up to date
+            const updates: any = {};
+            if (args.clerkId && existing.clerkId !== args.clerkId) {
+                updates.clerkId = args.clerkId;
+            }
+            if (args.avatar && existing.avatar !== args.avatar) {
+                updates.avatar = args.avatar;
+            }
+            if (args.name && existing.name !== args.name) {
+                updates.name = args.name;
+            }
+
+            if (Object.keys(updates).length > 0) {
+                await ctx.db.patch(existing._id, {
+                    ...updates,
+                    updatedAt: new Date().toISOString()
+                });
             }
             return existing._id;
         }
 
-        // Default isActive to true
+        // Default role logic: First user is admin, others are customers (unless specified)
+        // Check if any users exist
+        const anyUser = await ctx.db.query("users").first();
+        const role = args.role || (anyUser ? "customer" : "admin"); // Default to customer if users exist, else admin
+
         return await ctx.db.insert("users", {
             ...args,
+            role: role as any,
             isActive: true,
             createdAt: new Date().toISOString(),
             updatedAt: new Date().toISOString(),

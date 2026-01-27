@@ -1,135 +1,244 @@
-'use client';
+"use client";
 
-import { useQuery } from 'convex/react';
-import { api } from '@/convex/_generated/api';
+import { useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
 import {
+    Building,
     Users,
-    Home,
-    Megaphone,
-    CheckCircle,
+    Calendar,
+    Briefcase,
+    Plus,
+    RefreshCcw,
     ArrowRight,
-    Activity
-} from 'lucide-react';
-import Link from 'next/link';
+    Activity,
+    Clock
+} from "lucide-react";
+import Link from "next/link";
 
-export default function AdminDashboard() {
+export default function DashboardPage() {
     const stats = useQuery(api.dashboard.getStats);
+    const myTasks = useQuery(api.tasks.getMyTasks);
 
     if (!stats) {
-        return <div className="p-8 text-center text-slate-500">Laddar dashboard...</div>;
+        return (
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 animate-pulse">
+                {[...Array(4)].map((_, i) => (
+                    <div key={i} className="h-32 rounded-lg bg-slate-200"></div>
+                ))}
+            </div>
+        );
     }
 
-    const cards = [
+    const kpis = [
         {
-            label: 'Aktiva Objekt',
+            label: "Aktiva objekt",
             value: stats.activePropertiesCount,
-            icon: Home,
-            color: 'bg-blue-500',
-            href: '/admin/properties'
+            icon: Building,
+            color: "bg-blue-500",
+            trend: "+2 denna vecka" // Placeholder
         },
         {
-            label: 'Nya Leads (7 dagar)',
+            label: "Nya leads (7 dagar)",
             value: stats.newLeadsCount,
-            icon: Megaphone,
-            color: 'bg-yellow-500',
-            href: '/admin/leads'
-        },
-        {
-            label: 'Pågående Visningar',
-            value: stats.leadsPerStatus['viewing_scheduled'] || 0,
             icon: Users,
-            color: 'bg-indigo-500',
-            href: '/admin/leads'
+            color: "bg-green-500",
+            trend: "+12%" // Placeholder
         },
         {
-            label: 'Stängda Affärer',
-            value: stats.leadsPerStatus['won'] || 0,
-            icon: CheckCircle,
-            color: 'bg-green-500',
-            href: '/admin/leads'
+            label: "Avslutade Visningar",
+            value: stats.pendingReportsCount || 0,
+            icon: Calendar,
+            color: "bg-orange-500",
+            trend: "Väntar på rapport"
+        },
+        {
+            label: "Stängda affärer",
+            value: 0, // Placeholder
+            icon: Briefcase,
+            color: "bg-purple-500",
+            trend: "Mål: 5/mån"
         }
     ];
 
     return (
-        <div className="space-y-6">
-            <h1 className="text-2xl font-bold text-slate-800">Dashboard</h1>
-
-            {/* KPI Cards */}
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                {cards.map((card) => (
-                    <Link
-                        key={card.label}
-                        href={card.href}
-                        className="group relative overflow-hidden rounded-xl bg-white p-6 shadow-sm transition-all hover:shadow-md"
-                    >
-                        <div className="flex items-center justify-between">
-                            <div>
-                                <p className="text-sm font-medium text-slate-500">{card.label}</p>
-                                <p className="mt-2 text-3xl font-bold text-slate-900">{card.value}</p>
-                            </div>
-                            <div className={`rounded-lg p-3 ${card.color} bg-opacity-10 text-white`}>
-                                <card.icon className={`${card.color.replace('bg-', 'text-')}`} size={24} />
-                            </div>
-                        </div>
-                    </Link>
-                ))}
+        <div className="space-y-8">
+            <div>
+                <h1 className="text-2xl font-bold text-slate-900">Dashboard</h1>
+                <p className="text-slate-500">Översikt över fastigheter och leads</p>
             </div>
 
-            <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-                {/* Recent Activity */}
-                <div className="rounded-xl bg-white p-6 shadow-sm lg:col-span-2">
-                    <div className="mb-4 flex items-center justify-between">
-                        <h2 className="text-lg font-semibold text-slate-800">Senaste Aktivitet</h2>
-                        <button className="text-sm font-medium text-blue-600 hover:text-blue-700">Visa alla</button>
-                    </div>
-                    <div className="space-y-4">
-                        {stats.recentActivity.length === 0 ? (
-                            <p className="text-slate-500">Ingen aktivitet ännu.</p>
-                        ) : (
-                            stats.recentActivity.map((activity: any, idx: number) => (
-                                <div key={idx} className="flex items-start gap-4 border-b border-slate-50 pb-4 last:border-0 last:pb-0">
-                                    <div className="mt-1 rounded-full bg-slate-100 p-2 text-slate-600">
-                                        <Activity size={16} />
-                                    </div>
-                                    <div>
-                                        <p className="text-sm font-medium text-slate-800">{activity.description}</p>
-                                        <p className="text-xs text-slate-500">
-                                            {new Date(activity.createdAt).toLocaleString('sv-SE')}
-                                        </p>
-                                    </div>
+            {/* KPI Cards */}
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+                {kpis.map((kpi, idx) => {
+                    const Icon = kpi.icon;
+                    return (
+                        <div key={idx} className="relative overflow-hidden rounded-xl bg-white p-6 shadow-sm transition-all hover:shadow-md">
+                            <div className="flex items-center justify-between">
+                                <div>
+                                    <p className="text-sm font-medium text-slate-500">{kpi.label}</p>
+                                    <p className="mt-2 text-3xl font-bold text-slate-900">{kpi.value}</p>
                                 </div>
-                            ))
-                        )}
+                                <div className={`rounded-xl p-3 ${kpi.color} bg-opacity-10`}>
+                                    <Icon className={`h-6 w-6 ${kpi.color.replace('bg-', 'text-')}`} />
+                                </div>
+                            </div>
+                            <div className="mt-4 flex items-center text-xs text-slate-500">
+                                <span className="font-medium text-green-600">{kpi.trend}</span>
+                                <span className="ml-2">senaste månaden</span>
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
+
+            <div className="grid gap-8 lg:grid-cols-3">
+                {/* Main Content Area: Leads Chart & My Tasks */}
+                <div className="space-y-8 lg:col-span-2">
+                    {/* Leads Chart */}
+                    <div className="rounded-xl bg-white p-6 shadow-sm">
+                        <div className="mb-6 flex items-center justify-between">
+                            <h2 className="text-lg font-bold text-slate-900">Leads per status</h2>
+                            <Link href="/admin/leads" className="text-sm font-medium text-[#1a365d] hover:underline">
+                                Visa alla
+                            </Link>
+                        </div>
+
+                        <div className="space-y-4">
+                            {Object.entries(stats.leadsPerStatus || {}).map(([status, count]) => {
+                                const max = Math.max(...Object.values(stats.leadsPerStatus));
+                                const percentage = (count / (max || 1)) * 100;
+
+                                return (
+                                    <div key={status} className="space-y-1">
+                                        <div className="flex justify-between text-sm">
+                                            <span className="capitalize font-medium text-slate-700">{status.replace('_', ' ')}</span>
+                                            <span className="text-slate-500">{count}</span>
+                                        </div>
+                                        <div className="h-2 w-full overflow-hidden rounded-full bg-slate-100">
+                                            <div
+                                                className="h-full rounded-full bg-[#1a365d] transition-all duration-500"
+                                                style={{ width: `${percentage}%` }}
+                                            ></div>
+                                        </div>
+                                    </div>
+                                )
+                            })}
+
+                            {Object.keys(stats.leadsPerStatus || {}).length === 0 && (
+                                <div className="flex h-40 items-center justify-center text-slate-400">
+                                    Inga leads att visa
+                                </div>
+                            )}
+                        </div>
+                    </div>
+
+                    {/* My Tasks Widget */}
+                    <div className="rounded-xl bg-white p-6 shadow-sm">
+                        <div className="mb-4 flex items-center justify-between">
+                            <h2 className="text-lg font-bold text-slate-900">Mina uppgifter</h2>
+                            <Link href="/admin/tasks" className="text-sm font-medium text-[#1a365d] hover:underline">
+                                Hantera
+                            </Link>
+                        </div>
+                        <div className="space-y-3">
+                            {myTasks?.slice(0, 5).map((task) => (
+                                <div key={task._id} className="flex items-center justify-between rounded-lg border border-slate-100 p-3 hover:bg-slate-50">
+                                    <div className="flex items-center gap-3">
+                                        <div className={`h-2 w-2 rounded-full ${task.priority === 'urgent' ? 'bg-red-500' :
+                                            task.priority === 'high' ? 'bg-orange-400' : 'bg-blue-400'
+                                            }`} />
+                                        <span className="text-sm font-medium text-slate-700">{task.title}</span>
+                                    </div>
+                                    <span className="text-xs text-slate-500">
+                                        {task.dueAt ? new Date(task.dueAt).toLocaleDateString() : ''}
+                                    </span>
+                                </div>
+                            ))}
+                            {(!myTasks || myTasks.length === 0) && (
+                                <p className="text-sm text-slate-400 py-4 text-center">Inga aktiva uppgifter</p>
+                            )}
+                        </div>
                     </div>
                 </div>
 
-                {/* Quick Actions & Leads Breakdown */}
-                <div className="space-y-6">
-                    {/* Actions */}
+                {/* Recent Activity & Actions */}
+                <div className="space-y-8">
+                    {/* Quick Actions */}
+                    <div className="grid grid-cols-2 gap-4">
+                        <Link href="/admin/leads?create=true" className="flex flex-col items-center justify-center gap-2 rounded-xl bg-white p-4 shadow-sm transition-colors hover:bg-slate-50">
+                            <div className="rounded-full bg-blue-50 p-3 text-blue-600">
+                                <Plus className="h-6 w-6" />
+                            </div>
+                            <span className="text-sm font-medium text-slate-700">Ny Lead</span>
+                        </Link>
+                        <button className="flex flex-col items-center justify-center gap-2 rounded-xl bg-white p-4 shadow-sm transition-colors hover:bg-slate-50">
+                            <div className="rounded-full bg-orange-50 p-3 text-orange-600">
+                                <RefreshCcw className="h-6 w-6" />
+                            </div>
+                            <span className="text-sm font-medium text-slate-700">Synka Objekt</span>
+                        </button>
+                    </div>
+
+                    {/* Upcoming Viewings Widget */}
                     <div className="rounded-xl bg-white p-6 shadow-sm">
-                        <h2 className="mb-4 text-lg font-semibold text-slate-800">Snabbåtgärder</h2>
-                        <div className="space-y-3">
-                            <button className="flex w-full items-center justify-between rounded-lg border border-slate-200 p-3 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50">
-                                Implementeras Senare
-                                <ArrowRight size={16} />
-                            </button>
+                        <div className="mb-4 flex items-center justify-between">
+                            <h2 className="text-lg font-bold text-slate-900">Kommande visningar</h2>
+                            <Link href="/admin/calendar" className="text-sm font-medium text-[#1a365d] hover:underline">
+                                Kalender
+                            </Link>
+                        </div>
+                        <div className="space-y-4">
+                            {stats.upcomingViewings?.map((viewing: any) => (
+                                <div key={viewing._id} className="flex items-start gap-3 rounded-lg border border-slate-100 p-3">
+                                    <div className="flex h-10 w-10 flex-col items-center justify-center rounded bg-blue-50 text-blue-700">
+                                        <span className="text-xs font-bold">{new Date(viewing.scheduledAt).getDate()}</span>
+                                        <span className="text-[10px] uppercase">{new Date(viewing.scheduledAt).toLocaleString('default', { month: 'short' })}</span>
+                                    </div>
+                                    <div className="flex-1">
+                                        <p className="font-medium text-slate-900">{viewing.leadName}</p>
+                                        <div className="flex items-center gap-2 text-xs text-slate-500">
+                                            <Clock className="h-3 w-3" />
+                                            {new Date(viewing.scheduledAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                                        </div>
+                                    </div>
+                                    <span className={`rounded px-1.5 py-0.5 text-[10px] uppercase font-bold
+                                        ${viewing.status === 'confirmed' ? 'bg-green-100 text-green-700' : 'bg-slate-100 text-slate-600'}
+                                    `}>
+                                        {viewing.status === 'confirmed' ? 'OK' : 'Bokad'}
+                                    </span>
+                                </div>
+                            ))}
+                            {(!stats.upcomingViewings || stats.upcomingViewings.length === 0) && (
+                                <p className="text-sm text-slate-400">Inga kommande visningar</p>
+                            )}
                         </div>
                     </div>
 
-                    {/* Leads Status */}
+                    {/* Recent Activity */}
                     <div className="rounded-xl bg-white p-6 shadow-sm">
-                        <h2 className="mb-4 text-lg font-semibold text-slate-800">Leads Status</h2>
-                        <div className="space-y-3">
-                            {Object.entries(stats.leadsPerStatus).map(([status, count]) => (
-                                <div key={status} className="flex items-center justify-between text-sm">
-                                    <span className="capitalize text-slate-600">{status.replace('_', ' ')}</span>
-                                    <span className="font-semibold text-slate-900">{String(count)}</span>
+                        <h2 className="mb-4 text-lg font-bold text-slate-900">Senaste aktivitet</h2>
+                        <div className="space-y-6">
+                            {stats.recentActivity.map((activity: any, idx: number) => (
+                                <div key={idx} className="relative pl-6">
+                                    <div className="absolute left-0 top-1.5 h-2 w-2 rounded-full bg-slate-300"></div>
+                                    {idx !== stats.recentActivity.length - 1 && (
+                                        <div className="absolute left-[3.5px] top-4 h-full w-[1px] bg-slate-200"></div>
+                                    )}
+                                    <div className="text-sm">
+                                        <p className="font-medium text-slate-900">{activity.description}</p>
+                                        <p className="text-xs text-slate-500">
+                                            {new Date(activity.createdAt).toLocaleDateString()}
+                                        </p>
+                                    </div>
                                 </div>
                             ))}
-                            {Object.keys(stats.leadsPerStatus).length === 0 && (
-                                <p className="text-sm text-slate-500">Inga leads ännu.</p>
+                            {stats.recentActivity.length === 0 && (
+                                <p className="text-sm text-slate-400">Ingen aktivitet registrerad</p>
                             )}
                         </div>
+                        <button className="mt-4 flex w-full items-center justify-center gap-2 rounded-lg border py-2 text-sm font-medium text-slate-600 hover:bg-slate-50">
+                            Visa historik <ArrowRight className="h-4 w-4" />
+                        </button>
                     </div>
                 </div>
             </div>

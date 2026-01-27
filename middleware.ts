@@ -6,8 +6,10 @@ const intlMiddleware = createMiddleware(routing);
 
 const isAdminRoute = createRouteMatcher(['/admin(.*)']);
 
+const isPortalRoute = createRouteMatcher(['/portal(.*)']);
+
 export default clerkMiddleware(async (auth, req) => {
-    if (isAdminRoute(req)) {
+    if (isAdminRoute(req) || isPortalRoute(req)) {
         await auth.protect();
         return;
     }

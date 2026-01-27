@@ -108,17 +108,17 @@ export const search = query({
         pagination: paginationOptsValidator,
     },
     handler: async (ctx, args) => {
-        let q = ctx.db.query("properties");
+        let q: any = ctx.db.query("properties");
 
         // 1. Select Index based on primary filter for efficiency
         if (args.region) {
-            q = q.withIndex("by_region", (q) => q.eq("region", args.region));
+            q = q.withIndex("by_region", (q: any) => q.eq("region", args.region));
         } else if (args.province) {
-            q = q.withIndex("by_province", (q) => q.eq("province", args.province));
+            q = q.withIndex("by_province", (q: any) => q.eq("province", args.province));
         } else if (args.town) {
-            q = q.withIndex("by_town", (q) => q.eq("town", args.town));
+            q = q.withIndex("by_town", (q: any) => q.eq("town", args.town));
         } else if (args.type) {
-            q = q.withIndex("by_type", (q) => q.eq("type", args.type));
+            q = q.withIndex("by_type", (q: any) => q.eq("type", args.type));
         } else if (args.sort === "price-asc" || args.sort === "price-desc") {
             q = q.withIndex("by_price");
             // Note: if you use by_price index, you can't equality filter on other things easily in Convex 
@@ -131,15 +131,15 @@ export const search = query({
         // but .filter() is safe to apply on top.
 
         // Filter hidden properties
-        let finalQuery = q.filter((q) => q.eq(q.field("isHidden"), false));
+        let finalQuery = q.filter((q: any) => q.eq(q.field("isHidden"), false));
 
         if (args.region && !args.region) { /* already handled by index if primary */ }
         // We add conditions that weren't the primary index match or are additional
 
-        if (args.region) finalQuery = finalQuery.filter(q => q.eq(q.field("region"), args.region));
-        if (args.province) finalQuery = finalQuery.filter(q => q.eq(q.field("province"), args.province));
-        if (args.town) finalQuery = finalQuery.filter(q => q.eq(q.field("town"), args.town));
-        if (args.type) finalQuery = finalQuery.filter(q => q.eq(q.field("type"), args.type));
+        if (args.region) finalQuery = finalQuery.filter((q: any) => q.eq(q.field("region"), args.region));
+        if (args.province) finalQuery = finalQuery.filter((q: any) => q.eq(q.field("province"), args.province));
+        if (args.town) finalQuery = finalQuery.filter((q: any) => q.eq(q.field("town"), args.town));
+        if (args.type) finalQuery = finalQuery.filter((q: any) => q.eq(q.field("type"), args.type));
 
         if (args.minPrice) finalQuery = finalQuery.filter(q => q.gte(q.field("price"), args.minPrice!));
         if (args.maxPrice) finalQuery = finalQuery.filter(q => q.lte(q.field("price"), args.maxPrice!));
@@ -195,19 +195,19 @@ export const search = query({
             finalQuery = q.filter((q) => q.eq(q.field("isHidden"), false));
             // Apply all filters... (same as above)
             // Repeat filter logic...
-            if (args.region) finalQuery = finalQuery.filter(q => q.eq(q.field("region"), args.region));
-            if (args.province) finalQuery = finalQuery.filter(q => q.eq(q.field("province"), args.province));
-            if (args.town) finalQuery = finalQuery.filter(q => q.eq(q.field("town"), args.town));
-            if (args.type) finalQuery = finalQuery.filter(q => q.eq(q.field("type"), args.type));
-            if (args.minPrice) finalQuery = finalQuery.filter(q => q.gte(q.field("price"), args.minPrice!));
-            if (args.maxPrice) finalQuery = finalQuery.filter(q => q.lte(q.field("price"), args.maxPrice!));
-            if (args.minBeds) finalQuery = finalQuery.filter(q => q.gte(q.field("beds"), args.minBeds!));
-            if (args.maxBeds) finalQuery = finalQuery.filter(q => q.lte(q.field("beds"), args.maxBeds!));
-            if (args.hasPool) finalQuery = finalQuery.filter(q => q.eq(q.field("pool"), true));
-            if (args.nearGolf) finalQuery = finalQuery.filter(q => q.eq(q.field("nearGolf"), true));
-            if (args.newBuild) finalQuery = finalQuery.filter(q => q.eq(q.field("newBuild"), true));
+            if (args.region) finalQuery = finalQuery.filter((q: any) => q.eq(q.field("region"), args.region));
+            if (args.province) finalQuery = finalQuery.filter((q: any) => q.eq(q.field("province"), args.province));
+            if (args.town) finalQuery = finalQuery.filter((q: any) => q.eq(q.field("town"), args.town));
+            if (args.type) finalQuery = finalQuery.filter((q: any) => q.eq(q.field("type"), args.type));
+            if (args.minPrice) finalQuery = finalQuery.filter((q: any) => q.gte(q.field("price"), args.minPrice!));
+            if (args.maxPrice) finalQuery = finalQuery.filter((q: any) => q.lte(q.field("price"), args.maxPrice!));
+            if (args.minBeds) finalQuery = finalQuery.filter((q: any) => q.gte(q.field("beds"), args.minBeds!));
+            if (args.maxBeds) finalQuery = finalQuery.filter((q: any) => q.lte(q.field("beds"), args.maxBeds!));
+            if (args.hasPool) finalQuery = finalQuery.filter((q: any) => q.eq(q.field("pool"), true));
+            if (args.nearGolf) finalQuery = finalQuery.filter((q: any) => q.eq(q.field("nearGolf"), true));
+            if (args.newBuild) finalQuery = finalQuery.filter((q: any) => q.eq(q.field("newBuild"), true));
             if (args.maxBeachDistance) {
-                finalQuery = finalQuery.filter(q =>
+                finalQuery = finalQuery.filter((q: any) =>
                     q.and(q.neq(q.field("beachDistance"), undefined), q.lte(q.field("beachDistance"), args.maxBeachDistance!))
                 );
             }
@@ -218,21 +218,21 @@ export const search = query({
             // If we want explicit newest, we should use _creationTime desc
             q = ctx.db.query("properties").order("desc"); // Default is creation time
 
-            finalQuery = q.filter((q) => q.eq(q.field("isHidden"), false));
+            finalQuery = q.filter((q: any) => q.eq(q.field("isHidden"), false));
             // Apply filters...
-            if (args.region) finalQuery = finalQuery.filter(q => q.eq(q.field("region"), args.region));
-            if (args.province) finalQuery = finalQuery.filter(q => q.eq(q.field("province"), args.province));
-            if (args.town) finalQuery = finalQuery.filter(q => q.eq(q.field("town"), args.town));
-            if (args.type) finalQuery = finalQuery.filter(q => q.eq(q.field("type"), args.type));
-            if (args.minPrice) finalQuery = finalQuery.filter(q => q.gte(q.field("price"), args.minPrice!));
-            if (args.maxPrice) finalQuery = finalQuery.filter(q => q.lte(q.field("price"), args.maxPrice!));
-            if (args.minBeds) finalQuery = finalQuery.filter(q => q.gte(q.field("beds"), args.minBeds!));
-            if (args.maxBeds) finalQuery = finalQuery.filter(q => q.lte(q.field("beds"), args.maxBeds!));
-            if (args.hasPool) finalQuery = finalQuery.filter(q => q.eq(q.field("pool"), true));
-            if (args.nearGolf) finalQuery = finalQuery.filter(q => q.eq(q.field("nearGolf"), true));
-            if (args.newBuild) finalQuery = finalQuery.filter(q => q.eq(q.field("newBuild"), true));
+            if (args.region) finalQuery = finalQuery.filter((q: any) => q.eq(q.field("region"), args.region));
+            if (args.province) finalQuery = finalQuery.filter((q: any) => q.eq(q.field("province"), args.province));
+            if (args.town) finalQuery = finalQuery.filter((q: any) => q.eq(q.field("town"), args.town));
+            if (args.type) finalQuery = finalQuery.filter((q: any) => q.eq(q.field("type"), args.type));
+            if (args.minPrice) finalQuery = finalQuery.filter((q: any) => q.gte(q.field("price"), args.minPrice!));
+            if (args.maxPrice) finalQuery = finalQuery.filter((q: any) => q.lte(q.field("price"), args.maxPrice!));
+            if (args.minBeds) finalQuery = finalQuery.filter((q: any) => q.gte(q.field("beds"), args.minBeds!));
+            if (args.maxBeds) finalQuery = finalQuery.filter((q: any) => q.lte(q.field("beds"), args.maxBeds!));
+            if (args.hasPool) finalQuery = finalQuery.filter((q: any) => q.eq(q.field("pool"), true));
+            if (args.nearGolf) finalQuery = finalQuery.filter((q: any) => q.eq(q.field("nearGolf"), true));
+            if (args.newBuild) finalQuery = finalQuery.filter((q: any) => q.eq(q.field("newBuild"), true));
             if (args.maxBeachDistance) {
-                finalQuery = finalQuery.filter(q =>
+                finalQuery = finalQuery.filter((q: any) =>
                     q.and(q.neq(q.field("beachDistance"), undefined), q.lte(q.field("beachDistance"), args.maxBeachDistance!))
                 );
             }
@@ -245,10 +245,10 @@ export const search = query({
 
             // Duplicating filter logic is messy. Let's make a clear choice:
             // Prioritize Region/Town/Prov index if available and no sort.
-            if (args.region) q = ctx.db.query("properties").withIndex("by_region", q => q.eq("region", args.region!));
-            else if (args.province) q = ctx.db.query("properties").withIndex("by_province", q => q.eq("province", args.province!));
-            else if (args.town) q = ctx.db.query("properties").withIndex("by_town", q => q.eq("town", args.town!));
-            else if (args.type) q = ctx.db.query("properties").withIndex("by_type", q => q.eq("type", args.type!));
+            if (args.region) q = ctx.db.query("properties").withIndex("by_region", (q: any) => q.eq("region", args.region!));
+            else if (args.province) q = ctx.db.query("properties").withIndex("by_province", (q: any) => q.eq("province", args.province!));
+            else if (args.town) q = ctx.db.query("properties").withIndex("by_town", (q: any) => q.eq("town", args.town!));
+            else if (args.type) q = ctx.db.query("properties").withIndex("by_type", (q: any) => q.eq("type", args.type!));
             else q = ctx.db.query("properties"); // Full scan default
 
             finalQuery = q.filter((q) => q.eq(q.field("isHidden"), false));
@@ -357,5 +357,15 @@ export const getFilterOptions = query({
             types: Array.from(types).sort(),
             // can add min/max price dynamically here
         };
+    },
+});
+
+export const list = query({
+    args: {},
+    handler: async (ctx) => {
+        // Lightweight list for dropdowns
+        return await ctx.db.query("properties")
+            .filter(q => q.eq(q.field("isHidden"), false))
+            .take(100);
     },
 });

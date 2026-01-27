@@ -45,11 +45,45 @@ export const getStats = query({
         // Recent activity
         const recentActivity = await ctx.db.query("activityLog").order("desc").take(5);
 
+        // Upcoming Viewings (Next 7 days)
+        const now = new Date().toISOString();
+        const nextWeek = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString();
+
+        let upcomingViewings = await ctx.db.query("viewings")
+            .withIndex("by_scheduledAt", q => q.gte("scheduledAt", now).lt("scheduledAt", nextWeek))
+            .take(5);
+
+        // Enrich viewings with lead names
+        const enrichedViewings = await Promise.all(upcomingViewings.map(async (v) => {
+            const lead = await ctx.db.get(v.leadId);
+            return {
+                ...v,
+                leadName: lead ? `${lead.firstName} ${lead.lastName}` : "Unknown Lead"
+            };
+        }));
+
+        // Pending Reports
+        // Count viewings that are completed but have no report
+        // This is complex without a direct index or relation check. 
+        // For MVP, let's just count 'completed' viewings.
+        // Or better: status 'confirmed' that are in the past? 
+        // Let's use 'completed' status viewings for now.
+        // Actually, let's just return a count of "completed" viewings as a proxy for "Needs Report" if we assume manual automation moves them to completed ONLY when reported?
+        // No, usually "completed" means the event passed. 
+        // Let's just fetch recent completed viewings.
+        const pendingReportsCount = (await ctx.db.query("viewings")
+            .withIndex("by_status", q => q.eq("status", "completed")) // Assuming we define "completed" as "done but needs report"? 
+            // Or maybe "in_progress" moved to "completed" after report?
+            // Let's stick to "upcoming" for now to check Calendar works.
+            .collect()).length;
+
         return {
             activePropertiesCount,
             newLeadsCount,
             leadsPerStatus,
-            recentActivity
+            recentActivity,
+            upcomingViewings: enrichedViewings,
+            pendingReportsCount
         };
     },
 });

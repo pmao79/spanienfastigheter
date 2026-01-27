@@ -19,7 +19,26 @@ export const ROLE_HIERARCHY: Record<UserRole, number> = {
 
 export function canAccess(userRole: string | undefined | null, requiredRole: UserRole): boolean {
     if (!userRole) return false;
-    // Type assertion since string comes from DB
-    const role = userRole as UserRole;
-    return (ROLE_HIERARCHY[role] || 0) >= ROLE_HIERARCHY[requiredRole];
+
+    // Strict check if role exists in hierarchy
+    const userLevel = ROLE_HIERARCHY[userRole as UserRole];
+    const requiredLevel = ROLE_HIERARCHY[requiredRole];
+
+    if (userLevel === undefined) return false;
+
+    return userLevel >= requiredLevel;
+}
+
+// Helper to get readable label for role
+export function getRoleLabel(role: string): string {
+    switch (role) {
+        case "owner": return "Owner";
+        case "equity_partner": return "Equity Partner";
+        case "admin": return "Admin";
+        case "sales_partner": return "Sales Partner";
+        case "agent": return "Agent";
+        case "referral": return "Referral";
+        case "customer": return "Customer";
+        default: return role;
+    }
 }

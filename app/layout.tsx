@@ -73,6 +73,7 @@ export default function RootLayout({
             <html suppressHydrationWarning>
                 <body
                     className={`${playfair.variable} ${dmSans.variable} font-sans antialiased`}
+                    suppressHydrationWarning
                 >
                     <ConvexClientProvider>
                         {children}

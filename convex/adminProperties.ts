@@ -7,22 +7,26 @@ export const getAll = query({
         search: v.optional(v.string()), // ref or town
         isHidden: v.optional(v.boolean()),
         isFeatured: v.optional(v.boolean()),
+        status: v.optional(v.string()),
         paginationOpts: paginationOptsValidator,
     },
     handler: async (ctx, args) => {
-        let q = ctx.db.query("properties");
+        // Start fresh with a clean query selection logic
+        let q;
 
-        // Basic filtering
-        if (args.isFeatured !== undefined) {
-            q = q.withIndex("by_featured", (q) => q.eq("isFeatured", args.isFeatured!).eq("featuredOrder", 0 /* or any? Compound index limitations */));
-            // The compound index is [isFeatured, featuredOrder].
-            // To query just by isFeatured, we can use q.eq("isFeatured", ...) and then other range.
-            // But actually, for admin table, we mostly want simple pagination + search.
-            // Let's rely on basic filtering if complex indexes aren't perfect for this mix.
-            // Re-initializing q to generic if above approach is too specific.
+        // 1. Select Index based on primary filter
+        if (args.status) {
+            q = ctx.db.query("properties").withIndex("by_status", q => q.eq("status", args.status as any));
+        } else if (args.isFeatured !== undefined) {
+            // If we strictly want featured, we could use the index, but we often want to sort/filter more.
+            // Let's just use full scan for mixed filters if no status is selected, 
+            // to allow all other filters to apply freely.
+            q = ctx.db.query("properties");
+        } else {
             q = ctx.db.query("properties");
         }
 
+        // 2. Apply Filters
         if (args.isHidden !== undefined) {
             q = q.filter((q) => q.eq(q.field("isHidden"), args.isHidden));
         }
@@ -31,20 +35,19 @@ export const getAll = query({
             q = q.filter((q) => q.eq(q.field("isFeatured"), args.isFeatured));
         }
 
+        // If we didn't use status index (e.g. status was not passed), we don't need to filter by it
+        // UNLESS we want to support it as a filter even if not indexed (redundant if using index, but safe)
+        // However, if we used withIndex("by_status"), we presumably ALREADY filtered by status.
+        // It's safe to NOT double filter if we trust withIndex.
+        // But if args.status was passed, q IS indexed.
+
+        // Search Filter
         if (args.search) {
-            const searchLower = args.search.toLowerCase();
-            // Inefficient scan for search, strict equality for ref is better if possible.
-            // Using search for Ref mainly.
+            // const searchLower = args.search.toLowerCase(); // not using for exact match
             q = q.filter((q) =>
                 q.or(
                     q.eq(q.field("ref"), args.search),
-                    // No 'contains' in standard filter without search index. 
-                    // Can we do a simple equality check?
-                    // Or scan.
-                    // Let's assume exact Ref match or Town match for MVP to avoid full scan overload if possible.
-                    // But for admin with few thousand items, scan might be 'okay' but not scalable.
-                    // Let's just do Ref match for now.
-                    q.eq(q.field("ref"), args.search)
+                    q.eq(q.field("externalId"), args.search)
                 )
             );
         }
@@ -88,6 +91,13 @@ export const update = mutation({
         internalNotes: v.optional(v.string()),
         isFeatured: v.optional(v.boolean()),
         isHidden: v.optional(v.boolean()),
+        status: v.optional(v.union(
+            v.literal("active"),
+            v.literal("reserved"),
+            v.literal("sold"),
+            v.literal("paused"),
+            v.literal("hidden")
+        )),
     },
     handler: async (ctx, args) => {
         const { id, ...updates } = args;
