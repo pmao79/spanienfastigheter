@@ -171,6 +171,7 @@ export const updateStatus = mutation({
         resendMessageId: v.optional(v.string()),
         openedAt: v.optional(v.string()),
         clickedAt: v.optional(v.string()),
+        error: v.optional(v.string()),
     },
     handler: async (ctx, args) => {
         const { id, ...updates } = args;

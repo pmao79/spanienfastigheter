@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useQuery, useMutation } from "convex/react";
+import { useQuery, useMutation, useAction } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { Check, ChevronRight, User, Building2, LayoutTemplate, Send, Calendar, Search, X } from "lucide-react";
 import Link from "next/link";
@@ -32,7 +32,7 @@ export default function NewMailingPage() {
 
     // Mutations
     const createMailing = useMutation(api.propertyMailings.create);
-    const sendMailingAction = useMutation(api.mailingActions.sendMailing); // Using action via mutation wrapper? 
+    const sendMailingAction = useAction(api.mailingActions.sendMailing);
     // Wait, actions are called via `useAction` usually, or just `useMutation` if wrapped? 
     // Convex `useAction` is proper for actions.
     // But I defined `sendMailing` as an action. 
@@ -58,32 +58,32 @@ export default function NewMailingPage() {
         if (!selectedLeadId) return;
 
         try {
-            // 1. Create Mailing
+            // 1. Create Mailing (Initial status: draft if sending, or whatever user chose)
+            // If sending now, we create as draft first, then let the action update to 'sent' on success
+            // or 'failed'.
+            const initialStatus = action === 'schedule' ? 'scheduled' : 'draft';
+
             const mailingId = await createMailing({
                 leadId: selectedLeadId as any,
                 propertyIds: selectedProperties as any[],
                 subject: customSubject,
                 personalMessage: customMessage,
                 templateId: selectedTemplateId === 'default' ? undefined : (selectedTemplateId as any),
-                status: action === 'send' ? 'sent' : action === 'schedule' ? 'scheduled' : 'draft',
+                status: initialStatus,
                 scheduledAt: action === 'schedule' ? scheduleDate : undefined,
             });
 
             // 2. If Send Now
             if (action === 'send') {
-                // We need to call the action. But we can't call action from client directly if it's node action?
-                // Yes we can using useAction.
-                // But better to just mark it 'scheduled' or have a separate mutation that invokes the action?
-                // Or simple: Call the action here.
-                // I need `useAction` hook.
-                // For now, I'll redirect to list. "Sending in background" is harder without a proper queue or client-side action call.
-                // I will assume the dashboard has a "Send" button or I call it here.
-                // Let's rely on dashboard/manual send for now or basic 'draft' creation.
-                // Actually, user wants "Send".
-                // I'll just save as draft for now to be safe, or 'scheduled' if date.
-                // Real implementation should trigger send.
-
-                // If I want to trigger send, I should use `useAction(api.mailingActions.sendMailing)`.
+                try {
+                    await sendMailingAction({ mailingId });
+                    // We don't manually set status to 'sent' here, the action does it.
+                } catch (sendError) {
+                    console.error("Failed to send email:", sendError);
+                    alert("Mailet skapades men kunde inte skickas. Kontrollera API-nycklar och loggar.");
+                    // We still redirect to list, where it will show as 'failed' (updated by action catch block ideally)
+                    // or 'draft' if action completely crashed before updating.
+                }
             }
 
             router.push("/admin/mailings");

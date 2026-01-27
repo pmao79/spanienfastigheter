@@ -60,6 +60,56 @@ export default function LeadsPage() {
         });
     };
 
+
+    // Import/Export Logic
+    const handleExport = () => {
+        if (!leads) return;
+        const csvContent = "data:text/csv;charset=utf-8,"
+            + "First Name,Last Name,Email,Phone,Status,Source,Temperature,Created At\n"
+            + leads.map(l => `${l.firstName},${l.lastName},${l.email},${l.phone || ''},${l.status},${l.source},${l.temperature},${new Date(l.createdAt).toLocaleDateString()}`).join("\n");
+        const encodedUri = encodeURI(csvContent);
+        const link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "leads_export.csv");
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+
+    const handleImport = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = async (evt) => {
+            const text = evt.target?.result as string;
+            if (!text) return;
+            // Simple CSV parser: Assumes First Name, Last Name, Email are first 3 columns
+            const rows = text.split("\n").slice(1); // Skip header
+            let importedCount = 0;
+            for (const row of rows) {
+                const cols = row.split(",");
+                if (cols.length < 3) continue;
+                const [firstName, lastName, email, phone] = cols;
+                if (!firstName || !email) continue;
+
+                // Simple validation/sanitization
+                // In production: Use a proper CSV library
+                await createLead({
+                    firstName: firstName.trim(),
+                    lastName: lastName.trim(),
+                    email: email.trim(),
+                    phone: phone?.trim(),
+                    source: "import",
+                    temperature: "cold",
+                    notes: "Imported from CSV"
+                });
+                importedCount++;
+            }
+            alert(`Importerade ${importedCount} leads.`);
+        };
+        reader.readAsText(file);
+    };
+
     const statusColors: Record<string, string> = {
         new: "bg-blue-50 text-blue-700",
         contacted: "bg-yellow-50 text-yellow-700",
@@ -75,10 +125,20 @@ export default function LeadsPage() {
         <div className="space-y-6">
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-2xl font-bold text-slate-900">Leads</h1>
-                    <p className="text-slate-500">Hantera dina leads och affärer</p>
+                    <h1 className="text-2xl font-bold text-slate-900">Leads & Kunder</h1>
+                    <p className="text-slate-500">Hantera dina leads, kunder och affärer</p>
                 </div>
-                <div className="flex gap-3">
+                <div className="flex gap-2">
+                    <button
+                        onClick={handleExport}
+                        className="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+                    >
+                        Exportera CSV
+                    </button>
+                    <label className="cursor-pointer rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 flex items-center">
+                        Importera CSV
+                        <input type="file" accept=".csv" onChange={handleImport} className="hidden" />
+                    </label>
                     <Link
                         href="/admin/leads/pipeline"
                         className="flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"

@@ -125,7 +125,6 @@ export default defineSchema({
             notes: v.optional(v.string()),
         })),
 
-
         createdAt: v.string(),
         updatedAt: v.optional(v.any()),
         lastContactedAt: v.optional(v.string()),
@@ -580,6 +579,7 @@ export default defineSchema({
 
         // Resend integration
         resendMessageId: v.optional(v.string()),
+        error: v.optional(v.string()),
 
         createdAt: v.string(),
         updatedAt: v.string(),

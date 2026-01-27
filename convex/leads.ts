@@ -61,6 +61,7 @@ export const update = mutation({
         email: v.optional(v.string()),
         phone: v.optional(v.string()),
         notes: v.optional(v.string()),
+        source: v.optional(v.string()),
         temperature: v.optional(v.union(
             v.literal("cold"),
             v.literal("warm"),
