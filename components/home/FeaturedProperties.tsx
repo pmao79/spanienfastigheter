@@ -4,6 +4,7 @@ import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import PropertyCard from "@/components/property/PropertyCard";
 import Link from "next/link";
+import { Doc } from "@/convex/_generated/dataModel";
 import { Property, PropertyType, PROVINCE_TO_REGION } from "@/types/property";
 
 export default function FeaturedProperties() {
@@ -33,7 +34,7 @@ export default function FeaturedProperties() {
     const displayDocs = docsToUse.slice(0, 4);
 
     // Map properties
-    const properties: Property[] = displayDocs.map(doc => ({
+    const properties: Property[] = displayDocs.map((doc: Doc<"properties">) => ({
         id: doc._id,
         ref: doc.ref,
         slug: doc.ref,
