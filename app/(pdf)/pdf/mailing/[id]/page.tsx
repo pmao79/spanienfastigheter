@@ -74,7 +74,7 @@ export default function MailingPdfPage() {
                             {property.images?.[0] && (
                                 <img
                                     src={property.images[0]}
-                                    alt={property.title}
+                                    alt={`${property.type} - ${property.town}`}
                                     className="w-full h-full object-cover"
                                 />
                             )}
