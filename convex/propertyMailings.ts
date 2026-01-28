@@ -244,3 +244,21 @@ export const getRecent = query({
         }));
     },
 });
+
+// Hämta mailings för en specifik mottagare via email
+export const getByRecipientEmail = query({
+    args: {
+        email: v.string(),
+    },
+    handler: async (ctx, args) => {
+        // Hitta alla mailings där recipientEmail matchar
+        // Använder filter eftersom vi saknar index på recipientEmail än så länge
+        const mailings = await ctx.db
+            .query("propertyMailings")
+            .filter((q) => q.eq(q.field("recipientEmail"), args.email))
+            .order("desc")
+            .collect();
+
+        return mailings;
+    },
+});
