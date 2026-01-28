@@ -25,16 +25,16 @@ export default function TeamPage() {
 
     // Quick inline role change
     const handleRoleChange = async (userId: any, newRole: string) => {
-        await setRole({ id: userId, role: newRole as any });
+        await setRole({ userId: userId, role: newRole as any });
     };
 
     const handleToggleActive = async (user: any) => {
         if (user.isActive) {
             if (confirm("Är du säker på att du vill inaktivera denna användare?")) {
-                await deactivate({ id: user._id });
+                await deactivate({ userId: user._id });
             }
         } else {
-            await reactivate({ id: user._id });
+            await reactivate({ userId: user._id });
         }
     };
 
@@ -141,7 +141,7 @@ export default function TeamPage() {
 }
 
 function InviteForm({ onClose }: { onClose: () => void }) {
-    const createUser = useMutation(api.users.createUser);
+    const createUser = useMutation(api.users.create);
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -159,7 +159,8 @@ function InviteForm({ onClose }: { onClose: () => void }) {
             await createUser({
                 name: formData.name,
                 email: formData.email,
-                role: formData.role as any
+                role: formData.role,
+                clerkId: "pending_invite_" + Date.now(), // Placeholder until signup as any
             });
             onClose();
             alert("Användare skapad! De kan nu logga in med denna email för att få tillgång.");
