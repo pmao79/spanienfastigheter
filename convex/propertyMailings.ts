@@ -40,16 +40,22 @@ export const getAll = query({
         status: v.optional(v.string())
     },
     handler: async (ctx, args) => {
-        let q = ctx.db.query("propertyMailings");
+        let mailings;
 
         if (args.status) {
-            // Safe cast because we know the schema, but better to validate if strict
-            return await q.withIndex("by_status", (q) => q.eq("status", args.status as any)).order("desc").collect();
+            mailings = await ctx.db
+                .query("propertyMailings")
+                .withIndex("by_status", (q) => q.eq("status", args.status as any))
+                .order("desc")
+                .collect();
+        } else {
+            mailings = await ctx.db
+                .query("propertyMailings")
+                .order("desc")
+                .collect();
         }
 
-        const mailings = await q.order("desc").collect();
-
-        // Join interactions - Basic manual join
+        // Always join details
         const mailingsWithDetails = await Promise.all(mailings.map(async (m) => {
             const lead = await ctx.db.get(m.leadId);
             const user = await ctx.db.get(m.createdById);
@@ -57,7 +63,7 @@ export const getAll = query({
             return {
                 ...m,
                 leadName: lead ? `${lead.firstName} ${lead.lastName}` : "Unknown Lead",
-                createdByName: user?.name || "Unknown User"
+                createdByUser: user // Return full user object
             };
         }));
 

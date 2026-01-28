@@ -94,7 +94,7 @@ export default function MailingsPage() {
                                     </div>
                                 </div>
                                 <div className="text-sm">
-                                    {mailing?.createdByName}
+                                    {mailing?.createdByUser?.name}
                                 </div>
                                 <div>
                                     <StatusBadge status={mailing.status} />
