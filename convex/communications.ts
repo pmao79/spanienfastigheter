@@ -6,7 +6,7 @@ export const getByLead = query({
     handler: async (ctx, args) => {
         const comms = await ctx.db
             .query("communications")
-            .withIndex("by_leadId", (q) => q.eq("leadId", args.leadId))
+            .withIndex("by_leadId", (q: any) => q.eq("leadId", args.leadId))
             .order("desc") // Most recent first
             .collect();
 
@@ -16,6 +16,31 @@ export const getByLead = query({
         return comms;
     },
 });
+
+// Internal helper to avoid non-callable error when calling mutation from another mutation
+async function createCommunicationInternal(ctx: any, args: any) {
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) throw new Error("Unauthorized");
+
+    // Find the user in our DB to link userId
+    const user = await ctx.db
+        .query("users")
+        .withIndex("by_clerkId", (q: any) => q.eq("clerkId", identity.subject))
+        .first();
+
+    const commId = await ctx.db.insert("communications", {
+        ...args,
+        userId: user?._id,
+        createdAt: new Date().toISOString(),
+    });
+
+    // Also update last activity on lead
+    await ctx.db.patch(args.leadId, {
+        lastActivityAt: new Date().toISOString(),
+    });
+
+    return commId;
+}
 
 export const create = mutation({
     args: {
@@ -43,27 +68,7 @@ export const create = mutation({
         )),
     },
     handler: async (ctx, args) => {
-        const identity = await ctx.auth.getUserIdentity();
-        if (!identity) throw new Error("Unauthorized");
-
-        // Find the user in our DB to link userId
-        const user = await ctx.db
-            .query("users")
-            .withIndex("by_clerkId", (q) => q.eq("clerkId", identity.subject))
-            .first();
-
-        const commId = await ctx.db.insert("communications", {
-            ...args,
-            userId: user?._id,
-            createdAt: new Date().toISOString(),
-        });
-
-        // Also update last activity on lead
-        await ctx.db.patch(args.leadId, {
-            lastActivityAt: new Date().toISOString(),
-        });
-
-        return commId;
+        return await createCommunicationInternal(ctx, args);
     },
 });
 
@@ -76,7 +81,7 @@ export const logCall = mutation({
     },
     handler: async (ctx, args) => {
         const type = args.direction === "inbound" ? "call_incoming" : "call_outgoing";
-        return await create(ctx, {
+        return await createCommunicationInternal(ctx, {
             leadId: args.leadId,
             type,
             content: args.summary + (args.outcome ? `\n\nOutcome: ${args.outcome}` : ""),
@@ -90,7 +95,7 @@ export const logNote = mutation({
         content: v.string(),
     },
     handler: async (ctx, args) => {
-        return await create(ctx, {
+        return await createCommunicationInternal(ctx, {
             leadId: args.leadId,
             type: "note",
             content: args.content,

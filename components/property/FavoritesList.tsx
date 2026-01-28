@@ -52,7 +52,7 @@ export default function FavoritesList({ initialProperties }: FavoritesListProps)
         window.addEventListener('favorites-updated', handleStorageChange);
 
         return () => window.removeEventListener('favorites-updated', handleStorageChange);
-    }, []);
+    }, [allProperties]);
 
     const clearFavorites = () => {
         localStorage.removeItem('spanienfastigheter-favorites');

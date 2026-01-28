@@ -10,11 +10,10 @@ export default function MailingPdfPage() {
     const params = useParams();
     const mailingId = params?.id as Id<"propertyMailings">;
 
-    // Safety check just in case
+    const mailing = useQuery(api.propertyMailings.getById, mailingId ? { id: mailingId } : "skip");
+
+    // Early return AFTER hooks
     if (!mailingId) return <div className="p-10">Ogiltigt ID</div>;
-
-    const mailing = useQuery(api.propertyMailings.getById, { id: mailingId });
-
     if (!mailing) return <div className="p-10">Laddar PDF...</div>;
 
     const properties = mailing.properties || [];

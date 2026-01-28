@@ -283,7 +283,7 @@ export default function AreaContent({
                                 <div className="mt-6 pt-6 border-t border-gray-100">
                                     <h4 className="font-bold text-navy text-sm uppercase tracking-wide mb-2">Tänk på detta</h4>
                                     <p className="text-gray-500 text-sm italic">
-                                        "{area.notSuitableFor}"
+                                        &quot;{Array.isArray(area.notSuitableFor) ? area.notSuitableFor.join(', ') : area.notSuitableFor}&quot;
                                     </p>
                                 </div>
                             )}

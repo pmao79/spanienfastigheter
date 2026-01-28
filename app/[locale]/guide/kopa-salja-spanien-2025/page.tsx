@@ -165,7 +165,7 @@ const ComparisonTable = () => (
                             <td className="p-4 md:p-6 font-bold text-navy">Hyresavkastning (Yield)</td>
                             <td className="p-4 md:p-6 text-charcoal">3,5 – 5,0 %</td>
                             <td className="p-4 md:p-6 text-charcoal">4,5 – 6,5 %</td>
-                            <td className="p-4 md:p-6 text-charcoal bg-alabaster">Costa Blanca är överlägset för kassaflöde ("Buy-to-Let").</td>
+                            <td className="p-4 md:p-6 text-charcoal bg-alabaster">Costa Blanca är överlägset för kassaflöde (&quot;Buy-to-Let&quot;).</td>
                         </tr>
                         <tr className="hover:bg-alabaster transition-colors">
                             <td className="p-4 md:p-6 font-bold text-navy">Köparprofil</td>

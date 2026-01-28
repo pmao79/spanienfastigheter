@@ -141,15 +141,15 @@ export const search = query({
         if (args.town) finalQuery = finalQuery.filter((q: any) => q.eq(q.field("town"), args.town));
         if (args.type) finalQuery = finalQuery.filter((q: any) => q.eq(q.field("type"), args.type));
 
-        if (args.minPrice) finalQuery = finalQuery.filter(q => q.gte(q.field("price"), args.minPrice!));
-        if (args.maxPrice) finalQuery = finalQuery.filter(q => q.lte(q.field("price"), args.maxPrice!));
+        if (args.minPrice) finalQuery = finalQuery.filter((q: any) => q.gte(q.field("price"), args.minPrice!));
+        if (args.maxPrice) finalQuery = finalQuery.filter((q: any) => q.lte(q.field("price"), args.maxPrice!));
 
-        if (args.minBeds) finalQuery = finalQuery.filter(q => q.gte(q.field("beds"), args.minBeds!));
-        if (args.maxBeds) finalQuery = finalQuery.filter(q => q.lte(q.field("beds"), args.maxBeds!));
+        if (args.minBeds) finalQuery = finalQuery.filter((q: any) => q.gte(q.field("beds"), args.minBeds!));
+        if (args.maxBeds) finalQuery = finalQuery.filter((q: any) => q.lte(q.field("beds"), args.maxBeds!));
 
-        if (args.hasPool) finalQuery = finalQuery.filter(q => q.eq(q.field("pool"), true));
-        if (args.nearGolf) finalQuery = finalQuery.filter(q => q.eq(q.field("nearGolf"), true));
-        if (args.newBuild) finalQuery = finalQuery.filter(q => q.eq(q.field("newBuild"), true));
+        if (args.hasPool) finalQuery = finalQuery.filter((q: any) => q.eq(q.field("pool"), true));
+        if (args.nearGolf) finalQuery = finalQuery.filter((q: any) => q.eq(q.field("nearGolf"), true));
+        if (args.newBuild) finalQuery = finalQuery.filter((q: any) => q.eq(q.field("newBuild"), true));
 
         if (args.maxBeachDistance) {
             // Handle properties with undefined beachDistance gracefully? 
@@ -157,7 +157,7 @@ export const search = query({
             // We only want those where beachDistance is defined AND <= max
             // But logic: if beachDistance is missing, it's not "close".
             // Use logic: has(beachDistance) && beachDistance <= max
-            finalQuery = finalQuery.filter(q =>
+            finalQuery = finalQuery.filter((q: any) =>
                 q.and(
                     q.neq(q.field("beachDistance"), undefined),
                     q.lte(q.field("beachDistance"), args.maxBeachDistance!)
@@ -192,7 +192,7 @@ export const search = query({
             else q = q.order("asc");
 
             // Now apply all filters
-            finalQuery = q.filter((q) => q.eq(q.field("isHidden"), false));
+            finalQuery = q.filter((q: any) => q.eq(q.field("isHidden"), false));
             // Apply all filters... (same as above)
             // Repeat filter logic...
             if (args.region) finalQuery = finalQuery.filter((q: any) => q.eq(q.field("region"), args.region));
@@ -251,23 +251,23 @@ export const search = query({
             else if (args.type) q = ctx.db.query("properties").withIndex("by_type", (q: any) => q.eq("type", args.type!));
             else q = ctx.db.query("properties"); // Full scan default
 
-            finalQuery = q.filter((q) => q.eq(q.field("isHidden"), false));
+            finalQuery = q.filter((q: any) => q.eq(q.field("isHidden"), false));
 
             // Apply remaining filters (check if already applied by index to avoid redundancy, or just apply all safely)
             // Applying eq filter on indexed field is cheap/safe.
-            if (args.region) finalQuery = finalQuery.filter(q => q.eq(q.field("region"), args.region));
-            if (args.province) finalQuery = finalQuery.filter(q => q.eq(q.field("province"), args.province));
-            if (args.town) finalQuery = finalQuery.filter(q => q.eq(q.field("town"), args.town));
-            if (args.type) finalQuery = finalQuery.filter(q => q.eq(q.field("type"), args.type));
-            if (args.minPrice) finalQuery = finalQuery.filter(q => q.gte(q.field("price"), args.minPrice!));
-            if (args.maxPrice) finalQuery = finalQuery.filter(q => q.lte(q.field("price"), args.maxPrice!));
-            if (args.minBeds) finalQuery = finalQuery.filter(q => q.gte(q.field("beds"), args.minBeds!));
-            if (args.maxBeds) finalQuery = finalQuery.filter(q => q.lte(q.field("beds"), args.maxBeds!));
-            if (args.hasPool) finalQuery = finalQuery.filter(q => q.eq(q.field("pool"), true));
-            if (args.nearGolf) finalQuery = finalQuery.filter(q => q.eq(q.field("nearGolf"), true));
-            if (args.newBuild) finalQuery = finalQuery.filter(q => q.eq(q.field("newBuild"), true));
+            if (args.region) finalQuery = finalQuery.filter((q: any) => q.eq(q.field("region"), args.region));
+            if (args.province) finalQuery = finalQuery.filter((q: any) => q.eq(q.field("province"), args.province));
+            if (args.town) finalQuery = finalQuery.filter((q: any) => q.eq(q.field("town"), args.town));
+            if (args.type) finalQuery = finalQuery.filter((q: any) => q.eq(q.field("type"), args.type));
+            if (args.minPrice) finalQuery = finalQuery.filter((q: any) => q.gte(q.field("price"), args.minPrice!));
+            if (args.maxPrice) finalQuery = finalQuery.filter((q: any) => q.lte(q.field("price"), args.maxPrice!));
+            if (args.minBeds) finalQuery = finalQuery.filter((q: any) => q.gte(q.field("beds"), args.minBeds!));
+            if (args.maxBeds) finalQuery = finalQuery.filter((q: any) => q.lte(q.field("beds"), args.maxBeds!));
+            if (args.hasPool) finalQuery = finalQuery.filter((q: any) => q.eq(q.field("pool"), true));
+            if (args.nearGolf) finalQuery = finalQuery.filter((q: any) => q.eq(q.field("nearGolf"), true));
+            if (args.newBuild) finalQuery = finalQuery.filter((q: any) => q.eq(q.field("newBuild"), true));
             if (args.maxBeachDistance) {
-                finalQuery = finalQuery.filter(q =>
+                finalQuery = finalQuery.filter((q: any) =>
                     q.and(q.neq(q.field("beachDistance"), undefined), q.lte(q.field("beachDistance"), args.maxBeachDistance!))
                 );
             }

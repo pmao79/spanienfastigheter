@@ -14,7 +14,7 @@ crons.interval(
     { hours: 1 }, // Interval API is simpler than cron string if we just want "every hour"
     // But user asked for specific time range.
     // We should use .cron() for specific time ranges.
-    internal.sync.syncProperties
+    (internal as any).sync.syncProperties
 );
 
 // Actually, overriding with correct cron string for "Hourly from 06:00 to 22:00 CET"
@@ -22,7 +22,7 @@ crons.interval(
 crons.cron(
     "sync-properties-business-hours",
     "0 5-21 * * *",
-    internal.sync.syncProperties
+    (internal as any).sync.syncProperties
 );
 
 export default crons;

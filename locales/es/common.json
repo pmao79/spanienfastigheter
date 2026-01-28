@@ -125,5 +125,50 @@
         "viewAll": "Ver todo",
         "loading": "Cargando...",
         "error": "Se produjo un error"
+    },
+    "golf": {
+        "title": "Guía de Golf",
+        "subtitle": "Guía completa de Costa Blanca y Costa del Sol",
+        "courses": "campos de golf",
+        "course": "campo de golf",
+        "greenFee": "Green fee",
+        "holes": "hoyos",
+        "par": "Par",
+        "length": "Longitud",
+        "difficulty": "Dificultad",
+        "facilities": "Instalaciones",
+        "pricing": "Precios",
+        "reviews": "Reseñas",
+        "bookTeeTime": "Reservar tee time",
+        "compare": "Comparar",
+        "map": "Mapa",
+        "nearbyProperties": "Propiedades cercanas",
+        "viewAll": "Ver todo",
+        "difficulty_levels": {
+            "beginner": "Para principiantes",
+            "easy": "Fácil",
+            "medium": "Medio",
+            "challenging": "Desafiante",
+            "expert": "Experto"
+        },
+        "seasons": {
+            "low": "Temporada baja",
+            "high": "Temporada alta",
+            "twilight": "Twilight"
+        },
+        "facilities_labels": {
+            "drivingRange": "Campo de prácticas",
+            "puttingGreen": "Putting green",
+            "proshop": "Pro shop",
+            "restaurant": "Restaurante",
+            "golfSchool": "Escuela de golf",
+            "buggyRental": "Alquiler de buggy",
+            "clubRental": "Alquiler de palos"
+        },
+        "cta": {
+            "viewProperties": "Ver propiedades de golf",
+            "contactUs": "Contáctenos",
+            "bookViewing": "Reservar visita"
+        }
     }
 }

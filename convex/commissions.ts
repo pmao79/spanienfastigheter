@@ -131,7 +131,7 @@ export const getPayouts = query({
                 .collect();
         } else if (args.userId) {
             payouts = await ctx.db.query("commissionPayouts")
-                .withIndex("by_userId", q => q.eq("userId", args.userId))
+                .withIndex("by_userId", q => q.eq("userId", args.userId!))
                 .collect();
         } else {
             payouts = await ctx.db.query("commissionPayouts").collect();
@@ -143,10 +143,10 @@ export const getPayouts = query({
         }
 
         // Enrich with Deal and User info
-        return await Promise.all(payouts.map(async (p) => {
-            const user = await ctx.db.get(p.userId);
-            const deal = await ctx.db.get(p.dealId);
-            const property = deal?.propertyId ? await ctx.db.get(deal.propertyId) : null;
+        return await Promise.all(payouts.map(async (p: any) => {
+            const user = await ctx.db.get(p.userId) as any;
+            const deal = await ctx.db.get(p.dealId) as any;
+            const property = deal?.propertyId ? await ctx.db.get(deal.propertyId) as any : null;
 
             return {
                 ...p,
@@ -176,8 +176,8 @@ export const getMyPayouts = query({
             .withIndex("by_userId", q => q.eq("userId", user._id))
             .collect();
 
-        return await Promise.all(payouts.map(async (p) => {
-            const deal = await ctx.db.get(p.dealId);
+        return await Promise.all(payouts.map(async (p: any) => {
+            const deal = await ctx.db.get(p.dealId) as any;
             return {
                 ...p,
                 dealRef: deal?.propertyId,

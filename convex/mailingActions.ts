@@ -1,7 +1,7 @@
 "use node";
 
 import { action } from "./_generated/server";
-import { internal } from "./_generated/api";
+import { internal, api } from "./_generated/api";
 import { v } from "convex/values";
 import { Resend } from "resend";
 import { PropertyMailingEmail } from "./emails/PropertyMailingEmail";
@@ -9,7 +9,7 @@ import { PropertyMailingEmail } from "./emails/PropertyMailingEmail";
 export const sendMailing = action({
     args: { mailingId: v.id("propertyMailings") },
     handler: async (ctx, { mailingId }) => {
-        const mailing = await ctx.runQuery(internal.propertyMailings.getById, { id: mailingId });
+        const mailing = await ctx.runQuery(api.propertyMailings.getById, { id: mailingId });
         if (!mailing || !mailing.createdByUser) throw new Error("Mailing or Sender not found");
 
         const resendApiKey = process.env.RESEND_API_KEY;
@@ -127,7 +127,7 @@ export const sendMailing = action({
 
             console.log("[SendMailing] Success! ID:", data.data?.id);
 
-            await ctx.runMutation(internal.propertyMailings.updateStatus, {
+            await ctx.runMutation(api.propertyMailings.updateStatus, {
                 id: mailingId,
                 status: 'sent',
                 sentAt: new Date().toISOString(),
@@ -138,7 +138,7 @@ export const sendMailing = action({
             return { success: true, id: data.data?.id };
         } catch (error: any) {
             console.error("[SendMailing] Resend API Error:", error);
-            await ctx.runMutation(internal.propertyMailings.updateStatus, {
+            await ctx.runMutation(api.propertyMailings.updateStatus, {
                 id: mailingId,
                 status: 'failed',
                 error: error.message || "Unknown error"

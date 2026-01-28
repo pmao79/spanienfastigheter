@@ -34,7 +34,7 @@ export const triggerSync = mutation({
     args: {},
     handler: async (ctx) => {
         // Schedule the sync action to run immediately
-        await ctx.scheduler.runAfter(0, internal.sync.syncProperties, {});
+        await ctx.scheduler.runAfter(0, (internal as any).sync.syncProperties, {});
         return "Sync scheduled";
     },
 });

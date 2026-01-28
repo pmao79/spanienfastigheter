@@ -1,0 +1,29 @@
+convex/communications.ts(79,22): error TS2349: This expression is not callable.
+  Type 'RegisteredMutation<"public", { subject?: string | undefined; templateId?: Id<"emailTemplates"> | undefined; emailStatus?: "sent" | "delivered" | "opened" | "clicked" | "bounced" | undefined; type: "email_sent" | ... 7 more ... | "note"; content: string; leadId: Id<...>; }, Promise<...>>' has no call signatures.
+convex/communications.ts(93,22): error TS2349: This expression is not callable.
+  Type 'RegisteredMutation<"public", { subject?: string | undefined; templateId?: Id<"emailTemplates"> | undefined; emailStatus?: "sent" | "delivered" | "opened" | "clicked" | "bounced" | undefined; type: "email_sent" | ... 7 more ... | "note"; content: string; leadId: Id<...>; }, Promise<...>>' has no call signatures.
+convex/crons.ts(17,14): error TS2339: Property 'sync' does not exist on type '{ properties: { batchUpsert: FunctionReference<"mutation", "internal", { properties: { plot?: number | undefined; locationDetail?: string | undefined; region?: string | undefined; latitude?: number | undefined; ... 33 more ...; updatedAt: number; }[]; }, { ...; }, string | undefined>; }; users: { ...; }; }'.
+convex/crons.ts(25,14): error TS2339: Property 'sync' does not exist on type '{ properties: { batchUpsert: FunctionReference<"mutation", "internal", { properties: { plot?: number | undefined; locationDetail?: string | undefined; region?: string | undefined; latitude?: number | undefined; ... 33 more ...; updatedAt: number; }[]; }, { ...; }, string | undefined>; }; users: { ...; }; }'.
+convex/leads.ts(9,13): error TS2739: Type 'Query<{ document: { _id: Id<"leads">; _creationTime: number; preferences?: { notes?: string | undefined; minBudget?: number | undefined; maxBudget?: number | undefined; regions?: string[] | undefined; propertyTypes?: string[] | undefined; minBeds?: number | undefined; } | undefined; ... 13 more ...; temperature: "co...' is missing the following properties from type 'QueryInitializer<{ document: { _id: Id<"leads">; _creationTime: number; preferences?: { notes?: string | undefined; minBudget?: number | undefined; maxBudget?: number | undefined; regions?: string[] | undefined; propertyTypes?: string[] | undefined; minBeds?: number | undefined; } | undefined; ... 13 more ...; tempe...': fullTableScan, withIndex, withSearchIndex
+convex/properties.ts(144,59): error TS7006: Parameter 'q' implicitly has an 'any' type.
+convex/properties.ts(145,59): error TS7006: Parameter 'q' implicitly has an 'any' type.
+convex/properties.ts(147,58): error TS7006: Parameter 'q' implicitly has an 'any' type.
+convex/properties.ts(148,58): error TS7006: Parameter 'q' implicitly has an 'any' type.
+convex/properties.ts(150,58): error TS7006: Parameter 'q' implicitly has an 'any' type.
+convex/properties.ts(151,59): error TS7006: Parameter 'q' implicitly has an 'any' type.
+convex/properties.ts(152,59): error TS7006: Parameter 'q' implicitly has an 'any' type.
+convex/properties.ts(160,44): error TS7006: Parameter 'q' implicitly has an 'any' type.
+convex/properties.ts(195,36): error TS7006: Parameter 'q' implicitly has an 'any' type.
+convex/properties.ts(254,36): error TS7006: Parameter 'q' implicitly has an 'any' type.
+convex/properties.ts(258,61): error TS7006: Parameter 'q' implicitly has an 'any' type.
+convex/properties.ts(259,63): error TS7006: Parameter 'q' implicitly has an 'any' type.
+convex/properties.ts(260,59): error TS7006: Parameter 'q' implicitly has an 'any' type.
+convex/properties.ts(261,59): error TS7006: Parameter 'q' implicitly has an 'any' type.
+convex/properties.ts(262,63): error TS7006: Parameter 'q' implicitly has an 'any' type.
+convex/properties.ts(263,63): error TS7006: Parameter 'q' implicitly has an 'any' type.
+convex/properties.ts(264,62): error TS7006: Parameter 'q' implicitly has an 'any' type.
+convex/properties.ts(265,62): error TS7006: Parameter 'q' implicitly has an 'any' type.
+convex/properties.ts(266,62): error TS7006: Parameter 'q' implicitly has an 'any' type.
+convex/properties.ts(267,63): error TS7006: Parameter 'q' implicitly has an 'any' type.
+convex/properties.ts(268,63): error TS7006: Parameter 'q' implicitly has an 'any' type.
+convex/properties.ts(270,48): error TS7006: Parameter 'q' implicitly has an 'any' type.

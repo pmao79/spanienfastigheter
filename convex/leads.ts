@@ -4,10 +4,10 @@ import { mutation, query } from "./_generated/server";
 export const getAll = query({
     args: { status: v.optional(v.string()) },
     handler: async (ctx, args) => {
-        let q = ctx.db.query("leads");
-        if (args.status) {
-            q = q.withIndex("by_status", (q) => q.eq("status", args.status as string));
-        }
+        const q = args.status
+            ? ctx.db.query("leads").withIndex("by_status", (q: any) => q.eq("status", args.status as string))
+            : ctx.db.query("leads");
+
         return await q.order("desc").collect();
     },
 });

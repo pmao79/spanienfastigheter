@@ -276,7 +276,7 @@ const PropertyProspectus: React.FC<PropertyProspectusProps> = ({ property }) => 
                             <Text style={styles.agentName}>Marcus Ohlander</Text>
                             <Text style={styles.agentTitle}>Mäklare</Text>
                             <Text style={{ fontSize: 10, color: '#334155', fontStyle: 'italic', marginBottom: 5 }}>
-                                "{agentQuote}"
+                                &quot;{agentQuote}&quot;
                             </Text>
                             <Text style={styles.agentContact}>+46 0708 62 52 53</Text>
                             <Text style={styles.agentContact}>marcus@spanienfastigheter.se</Text>

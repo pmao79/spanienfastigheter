@@ -103,7 +103,7 @@ export default function CommissionsPage() {
             {/* List */}
             <div className="rounded-xl bg-white shadow-sm overflow-hidden border border-slate-200">
                 {payouts.length === 0 ? (
-                    <div className="p-8 text-center text-slate-500">Inga provisioner hittades med status "{statusFilter}".</div>
+                    <div className="p-8 text-center text-slate-500">Inga provisioner hittades med status &quot;{statusFilter}&quot;.</div>
                 ) : (
                     <ul className="divide-y divide-slate-200">
                         {payouts.map((p: any) => (
@@ -130,7 +130,7 @@ export default function CommissionsPage() {
                                             <p className="text-sm text-slate-600">
                                                 Affär: {p.dealRef || "N/A"} • Datum: {p.dealDate ? new Date(p.dealDate).toLocaleDateString() : "-"}
                                             </p>
-                                            {p.notes && <p className="mt-1 text-sm text-slate-500 italic">"{p.notes}"</p>}
+                                            {p.notes && <p className="mt-1 text-sm text-slate-500 italic">&quot;{p.notes}&quot;</p>}
                                         </div>
                                     </div>
 

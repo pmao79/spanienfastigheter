@@ -9,14 +9,14 @@ export const getLeadContext = query({
         // 1. Hämta senaste kommunikation
         const latestComm = await ctx.db
             .query("communications")
-            .withIndex("by_leadId", q => q.eq("leadId", leadId))
+            .withIndex("by_leadId", (q: any) => q.eq("leadId", leadId))
             .order("desc")
             .first();
 
         // 2. Hämta tidigare mailings
         const mailings = await ctx.db
             .query("propertyMailings")
-            .withIndex("by_leadId", q => q.eq("leadId", leadId))
+            .withIndex("by_leadId", (q: any) => q.eq("leadId", leadId))
             .order("desc")
             .take(5);
 
@@ -56,9 +56,9 @@ export const getAll = query({
         }
 
         // Always join details
-        const mailingsWithDetails = await Promise.all(mailings.map(async (m) => {
-            const lead = await ctx.db.get(m.leadId);
-            const user = await ctx.db.get(m.createdById);
+        const mailingsWithDetails = await Promise.all(mailings.map(async (m: any) => {
+            const lead = await ctx.db.get(m.leadId) as any;
+            const user = await ctx.db.get(m.createdById) as any;
 
             return {
                 ...m,
@@ -99,7 +99,7 @@ export const getByLead = query({
     handler: async (ctx, args) => {
         return await ctx.db
             .query("propertyMailings")
-            .withIndex("by_leadId", (q) => q.eq("leadId", args.leadId))
+            .withIndex("by_leadId", (q: any) => q.eq("leadId", args.leadId))
             .order("desc")
             .collect();
     },
@@ -235,8 +235,8 @@ export const getRecent = query({
     handler: async (ctx) => {
         const mailings = await ctx.db.query("propertyMailings").order("desc").take(5);
 
-        return await Promise.all(mailings.map(async (m) => {
-            const lead = await ctx.db.get(m.leadId);
+        return await Promise.all(mailings.map(async (m: any) => {
+            const lead = await ctx.db.get(m.leadId) as any;
             return {
                 ...m,
                 leadName: lead ? `${lead.firstName} ${lead.lastName}` : "Unknown"
@@ -255,7 +255,7 @@ export const getByRecipientEmail = query({
         // Använder filter eftersom vi saknar index på recipientEmail än så länge
         const mailings = await ctx.db
             .query("propertyMailings")
-            .filter((q) => q.eq(q.field("recipientEmail"), args.email))
+            .filter((q: any) => q.eq(q.field("recipientEmail"), args.email))
             .order("desc")
             .collect();
 

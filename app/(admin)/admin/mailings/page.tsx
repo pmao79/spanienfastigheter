@@ -79,13 +79,13 @@ export default function MailingsPage() {
                             <p className="text-slate-500">Skapa ditt första objektutskick för att komma igång.</p>
                         </div>
                     ) : (
-                        mailings.map((mailing) => (
+                        mailings.map((mailing: any) => (
                             <div key={mailing._id} className="grid grid-cols-7 items-center px-6 py-4 hover:bg-slate-50">
                                 <div className="col-span-2">
                                     <h3 className="font-medium text-[#1a365d]">{mailing.recipientName}</h3>
                                     <p className="truncate text-sm text-slate-500">{mailing.subject}</p>
                                     <div className="mt-1 flex gap-1">
-                                        {mailing.propertyIds.map((id) => (
+                                        {mailing.propertyIds.map((id: any) => (
                                             <div key={id} className="h-1.5 w-1.5 rounded-full bg-slate-300" />
                                         ))}
                                         <span className="text-[10px] text-slate-400">

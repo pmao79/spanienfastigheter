@@ -36,7 +36,7 @@ export const syncProperties = action({
         const parser = new XMLParser({
             ignoreAttributes: false,
             attributeNamePrefix: "@_",
-            isArray: (name) => {
+            isArray: (name: string) => {
                 return ["property", "image", "feature", "type"].indexOf(name) !== -1;
             }
         });

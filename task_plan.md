@@ -48,6 +48,8 @@ Current Focus: **Phase 3: Visningar & Kalender**.
 - [x] **Admin: Deal Detail** <!-- id: p4_detail -->
     - [x] Create `app/(admin)/admin/deals/[id]/page.tsx` <!-- id: deals_page -->
     - [x] Implement Checklist UI <!-- id: ui_checklist -->
+    - [x] Lint: `npm run lint`. Fixa alla varningar och fel.
+    - [x] Build: `npm run build`. Bekräfta att projektet bygger korrekt.
     - [x] Implement Document Management UI <!-- id: ui_docs -->
 - [x] **Customer Portal** <!-- id: p4_portal -->
     - [x] Create Portal Layout & Middleware <!-- id: portal_setup -->

@@ -4,6 +4,7 @@ import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { useSearchParams } from "next/navigation";
 import PropertyListing from "@/components/property/PropertyListing";
+import { Doc } from "@/convex/_generated/dataModel";
 import FilterWithModal from "@/components/search/FilterWithModal";
 import { useMemo } from "react";
 import { Property, PropertyType, PROVINCE_TO_REGION } from "@/types/property";
@@ -37,7 +38,7 @@ export default function ConvexPropertySearch() {
     const convexProperties = results ? results.page : [];
 
     // Map Convex docs to Frontend Property type
-    const mappedProperties: Property[] = convexProperties.map(doc => ({
+    const mappedProperties: Property[] = convexProperties.map((doc: Doc<"properties">) => ({
         id: doc._id,
         ref: doc.ref,
         slug: doc.ref,

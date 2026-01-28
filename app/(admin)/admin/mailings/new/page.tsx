@@ -61,7 +61,7 @@ export default function NewMailingPage() {
             setCustomMessage(cloneMailing.personalMessage);
             if (cloneMailing.includePdf) setIncludePdf(true);
         }
-    }, [cloneMailing]);
+    }, [cloneMailing, selectedLeadId]);
 
     // Auto-fill message when lead changes (ONLY if not cloning)
     useEffect(() => {
@@ -286,7 +286,7 @@ export default function NewMailingPage() {
                                 {leadContext?.latestCommunication && (
                                     <div className="mt-2 p-3 bg-blue-50 rounded text-xs text-blue-800 border border-blue-100">
                                         <strong>💡 Senaste kontakt ({new Date(leadContext.latestCommunication.createdAt).toLocaleDateString()}):</strong>
-                                        <p className="italic mt-1">"{leadContext.latestCommunication.content}"</p>
+                                        <p className="italic mt-1">&quot;{leadContext.latestCommunication.content}&quot;</p>
                                     </div>
                                 )}
                             </div>

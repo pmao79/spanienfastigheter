@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import Hero from '@/components/Hero';
@@ -19,7 +20,9 @@ export default async function HomePage() {
                     <div className="flex flex-col lg:flex-row gap-16">
                         {/* Filter Sidebar - Desktop */}
                         <aside className="hidden lg:block w-80 flex-shrink-0">
-                            <FilterWithModal />
+                            <Suspense fallback={<div className="h-96 bg-gray-100 animate-pulse rounded-sm" />}>
+                                <FilterWithModal />
+                            </Suspense>
                         </aside>
 
                         {/* Main Content: Featured Properties (Client Component) */}

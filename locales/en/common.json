@@ -125,5 +125,50 @@
         "viewAll": "View all",
         "loading": "Loading...",
         "error": "An error occurred"
+    },
+    "golf": {
+        "title": "Golf Guide",
+        "subtitle": "Complete guide to Costa Blanca & Costa del Sol",
+        "courses": "golf courses",
+        "course": "golf course",
+        "greenFee": "Green fee",
+        "holes": "holes",
+        "par": "Par",
+        "length": "Length",
+        "difficulty": "Difficulty",
+        "facilities": "Facilities",
+        "pricing": "Pricing",
+        "reviews": "Reviews",
+        "bookTeeTime": "Book tee time",
+        "compare": "Compare",
+        "map": "Map",
+        "nearbyProperties": "Nearby properties",
+        "viewAll": "View all",
+        "difficulty_levels": {
+            "beginner": "Beginner friendly",
+            "easy": "Easy",
+            "medium": "Medium",
+            "challenging": "Challenging",
+            "expert": "Expert"
+        },
+        "seasons": {
+            "low": "Low season",
+            "high": "High season",
+            "twilight": "Twilight"
+        },
+        "facilities_labels": {
+            "drivingRange": "Driving range",
+            "puttingGreen": "Putting green",
+            "proshop": "Pro shop",
+            "restaurant": "Restaurant",
+            "golfSchool": "Golf school",
+            "buggyRental": "Buggy rental",
+            "clubRental": "Club rental"
+        },
+        "cta": {
+            "viewProperties": "See golf properties",
+            "contactUs": "Contact us",
+            "bookViewing": "Book viewing"
+        }
     }
 }
