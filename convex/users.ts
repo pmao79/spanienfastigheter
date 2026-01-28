@@ -124,3 +124,34 @@ export const updateProfile = mutation({
         return await ctx.db.get(user._id);
     },
 });
+
+// Sätt roll för en användare
+export const setRole = mutation({
+    args: {
+        userId: v.id("users"),
+        role: v.union(v.literal("admin"), v.literal("agent"), v.literal("customer")),
+    },
+    handler: async (ctx, args) => {
+        await ctx.db.patch(args.userId, { role: args.role });
+    },
+});
+
+// Inaktivera en användare
+export const deactivate = mutation({
+    args: {
+        userId: v.id("users"),
+    },
+    handler: async (ctx, args) => {
+        await ctx.db.patch(args.userId, { isActive: false });
+    },
+});
+
+// Återaktivera en användare
+export const reactivate = mutation({
+    args: {
+        userId: v.id("users"),
+    },
+    handler: async (ctx, args) => {
+        await ctx.db.patch(args.userId, { isActive: true });
+    },
+});
