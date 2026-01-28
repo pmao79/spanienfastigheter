@@ -2,9 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
-    const mailingId = params.id;
+    const { id: mailingId } = await params;
     const BROWSERLESS_API_KEY = process.env.BROWSERLESS_API_KEY;
     const APP_URL = process.env.NEXT_PUBLIC_CONVEX_URL?.replace('.convex.cloud', '.vercel.app') || 'http://localhost:3000';
     // Note: Localhost won't work for Browserless cloud. Needs public URL.
