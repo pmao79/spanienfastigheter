@@ -231,7 +231,7 @@ export default function NewMailingPage() {
                                                     </div>
                                                     <div className="p-3 flex items-center flex-1">
                                                         <div>
-                                                            <p className="font-medium text-sm line-clamp-1">{prop.title}</p>
+                                                            <p className="font-medium text-sm line-clamp-1">{prop.type} i {prop.town}</p>
                                                             <p className="text-xs text-slate-500 mb-1">{prop.town} • {prop.price?.toLocaleString()} €</p>
 
                                                             {isSent && (
@@ -318,7 +318,7 @@ export default function NewMailingPage() {
                                                     </div>
                                                     <div className="p-3">
                                                         <p className="font-bold text-sm text-[#1a365d]">{p.town}</p>
-                                                        <p className="text-xs text-slate-500">{p.price?.toLocaleString()} € • {p.rooms ?? 3} sov</p>
+                                                        <p className="text-xs text-slate-500">{p.price?.toLocaleString()} € • {p.beds ?? 3} sov</p>
                                                     </div>
                                                 </div>
                                             ))}
