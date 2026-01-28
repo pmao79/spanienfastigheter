@@ -88,7 +88,14 @@ export default defineSchema({
         isActive: v.boolean(),
         clerkId: v.optional(v.string()),
 
-        // Commissions
+        // Profil (Phase 7)
+        displayName: v.optional(v.string()), // "Marcus Ohlander"
+        title: v.optional(v.string()),       // "Senior Mäklare"
+        // phone is already defined above
+        emailPublic: v.optional(v.string()), // För signaturer
+        avatarUrl: v.optional(v.string()),   // Foto-URL
+        initials: v.optional(v.string()),    // "MO"
+        bio: v.optional(v.string()),         // För "vårt team"
         commissionProfileId: v.optional(v.id("commissionProfiles")),
         yearlyDealsCount: v.optional(v.number()),
 

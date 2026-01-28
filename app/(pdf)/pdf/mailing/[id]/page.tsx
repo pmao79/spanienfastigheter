@@ -3,10 +3,16 @@
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
+import { useParams } from "next/navigation";
 import Image from "next/image";
 
-export default function MailingPdfPage({ params }: { params: { id: string } }) {
-    const mailingId = params.id as Id<"propertyMailings">;
+export default function MailingPdfPage() {
+    const params = useParams();
+    const mailingId = params?.id as Id<"propertyMailings">;
+
+    // Safety check just in case
+    if (!mailingId) return <div className="p-10">Ogiltigt ID</div>;
+
     const mailing = useQuery(api.propertyMailings.getById, { id: mailingId });
 
     if (!mailing) return <div className="p-10">Laddar PDF...</div>;

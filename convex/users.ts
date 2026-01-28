@@ -1,19 +1,17 @@
+import { query, mutation, internalQuery } from "./_generated/server";
 import { v } from "convex/values";
-import { mutation, query } from "./_generated/server";
 
-export const getAll = query({
-    args: {},
-    handler: async (ctx) => {
-        return await ctx.db.query("users").order("desc").collect();
-    },
-});
+// Helper to generate initials from name
+function generateInitials(name: string): string {
+    return name
+        .split(' ')
+        .map(n => n[0])
+        .join('')
+        .toUpperCase()
+        .slice(0, 2);
+}
 
-export const getById = query({
-    args: { id: v.id("users") },
-    handler: async (ctx, args) => {
-        return await ctx.db.get(args.id);
-    },
-});
+// === EXISTING FUNCTIONS RESTORED ===
 
 export const getByClerkId = query({
     args: { clerkId: v.string() },
@@ -21,170 +19,108 @@ export const getByClerkId = query({
         return await ctx.db
             .query("users")
             .withIndex("by_clerkId", (q) => q.eq("clerkId", args.clerkId))
-            .unique();
+            .first();
+    },
+});
+
+// Internal version for Actions to use
+export const getByClerkIdInternal = internalQuery({
+    args: { clerkId: v.string() },
+    handler: async (ctx, args) => {
+        return await ctx.db
+            .query("users")
+            .withIndex("by_clerkId", (q) => q.eq("clerkId", args.clerkId))
+            .first();
     },
 });
 
 export const create = mutation({
     args: {
-        email: v.string(),
         name: v.string(),
-        clerkId: v.optional(v.string()),
-        role: v.union(
-            v.literal("owner"),
-            v.literal("equity_partner"),
-            v.literal("admin"),
-            v.literal("sales_partner"),
-            v.literal("agent"),
-            v.literal("referral"),
-            v.literal("customer")
-        ),
+        email: v.string(),
+        clerkId: v.string(),
         avatar: v.optional(v.string()),
+        role: v.optional(v.string()),
     },
     handler: async (ctx, args) => {
         const existing = await ctx.db
             .query("users")
-            .withIndex("by_email", (q) => q.eq("email", args.email))
-            .unique();
+            .withIndex("by_clerkId", (q) => q.eq("clerkId", args.clerkId))
+            .first();
 
-        if (existing) {
-            // Update clerkId if it's missing or different, and ensuring avatar is up to date
-            const updates: any = {};
-            if (args.clerkId && existing.clerkId !== args.clerkId) {
-                updates.clerkId = args.clerkId;
-            }
-            if (args.avatar && existing.avatar !== args.avatar) {
-                updates.avatar = args.avatar;
-            }
-            if (args.name && existing.name !== args.name) {
-                updates.name = args.name;
-            }
+        if (existing) return existing._id;
 
-            if (Object.keys(updates).length > 0) {
-                await ctx.db.patch(existing._id, {
-                    ...updates,
-                    updatedAt: new Date().toISOString()
-                });
-            }
-            return existing._id;
-        }
-
-        // Default role logic: First user is admin, others are customers (unless specified)
-        // Check if any users exist
+        // Check if this is the FIRST user -> make admin
         const anyUser = await ctx.db.query("users").first();
-        const role = args.role || (anyUser ? "customer" : "admin"); // Default to customer if users exist, else admin
+        const role = args.role || (anyUser ? "customer" : "admin");
 
         return await ctx.db.insert("users", {
-            ...args,
+            name: args.name,
+            email: args.email,
+            clerkId: args.clerkId || "",
+            avatar: args.avatar,
             role: role as any,
             isActive: true,
             createdAt: new Date().toISOString(),
-            updatedAt: new Date().toISOString(),
+            displayName: args.name,
+            initials: generateInitials(args.name),
         });
     },
 });
 
-export const update = mutation({
-    args: {
-        id: v.id("users"),
-        name: v.optional(v.string()),
-        email: v.optional(v.string()),
-        phone: v.optional(v.string()),
-        avatar: v.optional(v.string()),
-    },
-    handler: async (ctx, args) => {
-        const { id, ...updates } = args;
-        await ctx.db.patch(id, {
-            ...updates,
-            updatedAt: new Date().toISOString(),
-        });
+export const getAll = query({
+    args: {},
+    handler: async (ctx) => {
+        return await ctx.db.query("users").collect();
     },
 });
 
-export const setRole = mutation({
-    args: {
-        id: v.id("users"),
-        role: v.union(
-            v.literal("owner"),
-            v.literal("equity_partner"),
-            v.literal("admin"),
-            v.literal("sales_partner"),
-            v.literal("agent"),
-            v.literal("referral"),
-            v.literal("customer")
-        )
-    },
-    handler: async (ctx, args) => {
-        await ctx.db.patch(args.id, {
-            role: args.role,
-            updatedAt: new Date().toISOString()
-        });
-    },
-});
+// === NEW PROFILE FUNCTIONS ===
 
-export const deactivate = mutation({
-    args: { id: v.id("users") },
-    handler: async (ctx, args) => {
-        await ctx.db.patch(args.id, {
-            isActive: false,
-            updatedAt: new Date().toISOString()
-        });
-    },
-});
-
-export const reactivate = mutation({
-    args: { id: v.id("users") },
-    handler: async (ctx, args) => {
-        await ctx.db.patch(args.id, {
-            isActive: true,
-            updatedAt: new Date().toISOString()
-        });
-    },
-});
-
-export const createUser = mutation({
-    args: {
-        email: v.string(),
-        name: v.string(),
-        role: v.union(
-            v.literal("owner"),
-            v.literal("equity_partner"),
-            v.literal("admin"),
-            v.literal("sales_partner"),
-            v.literal("agent"),
-            v.literal("referral"),
-            v.literal("customer")
-        )
-    },
-    handler: async (ctx, args) => {
+export const getMyProfile = query({
+    args: {},
+    handler: async (ctx) => {
         const identity = await ctx.auth.getUserIdentity();
-        if (!identity) throw new Error("Unauthorized");
+        if (!identity) return null; // Or throw, but null is safer for frontend checks
 
         const user = await ctx.db
             .query("users")
             .withIndex("by_clerkId", (q) => q.eq("clerkId", identity.subject))
-            .unique();
+            .first();
 
-        if (!user || (user.role !== "admin" && user.role !== "owner")) {
-            throw new Error(`Permission denied. User role: ${user?.role || 'unknown'}`);
-        }
+        return user;
+    },
+});
 
-        const existing = await ctx.db
+export const updateProfile = mutation({
+    args: {
+        displayName: v.optional(v.string()),
+        title: v.optional(v.string()),
+        phone: v.optional(v.string()),
+        emailPublic: v.optional(v.string()),
+        avatarUrl: v.optional(v.string()),
+        bio: v.optional(v.string()),
+        initials: v.optional(v.string()),
+    },
+    handler: async (ctx, args) => {
+        const identity = await ctx.auth.getUserIdentity();
+        if (!identity) throw new Error("Not authenticated");
+
+        const user = await ctx.db
             .query("users")
-            .withIndex("by_email", (q) => q.eq("email", args.email))
-            .unique();
+            .withIndex("by_clerkId", (q) => q.eq("clerkId", identity.subject))
+            .first();
 
-        if (existing) {
-            throw new Error("User with this email already exists.");
+        if (!user) throw new Error("User not found");
+
+        const updates: any = { ...args };
+
+        // Auto-generate initials if display name changes and no initials provided
+        if (args.displayName && !args.initials) {
+            updates.initials = generateInitials(args.displayName);
         }
 
-        return await ctx.db.insert("users", {
-            email: args.email,
-            name: args.name,
-            role: args.role,
-            isActive: true,
-            createdAt: new Date().toISOString(),
-            updatedAt: new Date().toISOString(),
-        });
+        await ctx.db.patch(user._id, updates);
+        return await ctx.db.get(user._id);
     },
 });

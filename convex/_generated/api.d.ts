@@ -20,6 +20,7 @@ import type * as dealChecklists from "../dealChecklists.js";
 import type * as deals from "../deals.js";
 import type * as documents from "../documents.js";
 import type * as emailTemplates from "../emailTemplates.js";
+import type * as emails_PropertyMailingEmail from "../emails/PropertyMailingEmail.js";
 import type * as leads from "../leads.js";
 import type * as lib_dealChecklists from "../lib/dealChecklists.js";
 import type * as mailingActions from "../mailingActions.js";
@@ -54,6 +55,7 @@ declare const fullApi: ApiFromModules<{
   deals: typeof deals;
   documents: typeof documents;
   emailTemplates: typeof emailTemplates;
+  "emails/PropertyMailingEmail": typeof emails_PropertyMailingEmail;
   leads: typeof leads;
   "lib/dealChecklists": typeof lib_dealChecklists;
   mailingActions: typeof mailingActions;

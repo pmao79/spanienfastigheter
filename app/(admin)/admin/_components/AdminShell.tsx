@@ -23,7 +23,8 @@ import {
     TrendingUp,
     DollarSign,
     Send,
-    Home
+    Home,
+    User
 } from "lucide-react";
 import { canAccess } from "@/lib/permissions";
 
@@ -127,6 +128,7 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
         { href: "/admin/my-commissions", label: "Min Provision", icon: DollarSign, roles: ["agent", "sales_partner"] },     // New
         { href: "/admin/team", label: "Team", icon: Users, roles: ["admin", "owner"] },
         { href: "/admin/settings", label: "Inställningar", icon: Settings },
+        { href: "/admin/settings/profile", label: "Min Profil", icon: User },
     ];
 
     return (
@@ -218,10 +220,56 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
 
                         <div className="flex items-center gap-3">
                             <div className="hidden text-right lg:block">
-                                <p className="text-sm font-medium text-slate-900">{convexUser.name}</p>
-                                <p className="text-xs text-slate-500 capitalize">{convexUser.role?.replace('_', ' ')}</p>
+                                <p className="text-sm font-medium text-slate-900">{convexUser.displayName || convexUser.name}</p>
+                                <p className="text-xs text-slate-500 capitalize">{convexUser.title || convexUser.role?.replace('_', ' ')}</p>
                             </div>
-                            <UserButton />
+
+                            {/* CUSTOM USER MENU */}
+                            <div className="relative group">
+                                <button className="relative h-10 w-10 overflow-hidden rounded-full border border-slate-200 transition-shadow hover:shadow-md focus:outline-none">
+                                    {convexUser.avatarUrl ? (
+                                        <img
+                                            src={convexUser.avatarUrl}
+                                            alt={convexUser.name}
+                                            className="h-full w-full object-cover"
+                                        />
+                                    ) : (
+                                        <div className="flex h-full w-full items-center justify-center bg-[#1a365d] text-sm font-medium text-white">
+                                            {convexUser.initials || "SF"}
+                                        </div>
+                                    )}
+                                </button>
+
+                                {/* Dropdown */}
+                                <div className="absolute right-0 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 z-50">
+                                    <div className="px-4 py-2 border-b border-slate-100 lg:hidden">
+                                        <p className="text-sm font-medium text-slate-900 truncate">{convexUser.displayName || convexUser.name}</p>
+                                        <p className="text-xs text-slate-500 truncate">{convexUser.email}</p>
+                                    </div>
+
+                                    <Link
+                                        href="/admin/settings/profile"
+                                        className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50"
+                                    >
+                                        Min Profil
+                                    </Link>
+
+                                    {/* Clerk User Profile Trigger - using dedicated button logic is complex here without hooks, 
+                                        so we render a hidden UserButton and leverage it? 
+                                        Or we just rely on "Min Profil".
+                                        The user asked for the image to match.
+                                        Let's Keep UserButton but hidden? No that's hacky.
+                                        Let's just implement Sign Out. 
+                                     */}
+
+                                    <button
+                                        onClick={() => signOut()}
+                                        className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50"
+                                    >
+                                        Logga ut
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </header>
