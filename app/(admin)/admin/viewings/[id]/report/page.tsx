@@ -66,7 +66,7 @@ export default function ViewingReportPage() {
             // Format payload
             const reportPayload = {
                 viewingId,
-                propertyFeedback: properties.map(p => ({
+                propertyFeedback: properties.filter((p): p is NonNullable<typeof p> => p !== null).map(p => ({
                     propertyId: p._id,
                     ...propertyFeedback[p._id],
                     interestLevel: propertyFeedback[p._id]?.interestLevel || 3, // Default neutral
@@ -141,9 +141,9 @@ export default function ViewingReportPage() {
                                 )}
                             </div>
                             <div className="p-4">
-                                <h2 className="text-lg font-bold text-slate-900">{currentProperty.title}</h2>
-                                <p className="text-sm text-slate-500">{currentProperty.location}</p>
-                                <p className="font-mono text-sm text-[#1a365d]">{currentProperty.reference}</p>
+                                <h2 className="text-lg font-bold text-slate-900">{currentProperty.type} i {currentProperty.town}</h2>
+                                <p className="text-sm text-slate-500">{currentProperty.locationDetail || currentProperty.town}</p>
+                                <p className="font-mono text-sm text-[#1a365d]">{currentProperty.ref}</p>
                             </div>
                         </div>
 
