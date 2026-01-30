@@ -15,19 +15,43 @@ export default function ConvexPropertySearch() {
     const filters = useMemo(() => {
         const p = Object.fromEntries(searchParams.entries());
         return {
+            // Multi-select arrays
+            regions: p.regions ? p.regions.split(',').filter(Boolean) : undefined,
+            towns: p.towns ? p.towns.split(',').filter(Boolean) : undefined,
+            types: p.types ? p.types.split(',').filter(Boolean) : undefined,
+
+            // Legacy single-value (for backward compatibility)
             region: p.region || undefined,
             town: p.town || undefined,
             type: p.type || undefined,
+
+            // Numeric filters
             minPrice: p.minPrice ? Number(p.minPrice) : undefined,
             maxPrice: p.maxPrice ? Number(p.maxPrice) : undefined,
             minBeds: p.bedrooms ? Number(p.bedrooms) : undefined,
+
+            // Boolean features (main quick filters)
             hasPool: p.pool === 'true' ? true : undefined,
-            nearGolf: p.nearGolf === 'true' ? true : undefined, // Check functionality on backend
+            hasParking: p.parking === 'true' ? true : undefined,
+            nearGolf: p.nearGolf === 'true' ? true : undefined,
             newBuild: p.newBuild === 'true' ? true : undefined,
-            ref: p.ref || undefined,
+
+            // Advanced boolean features ("+ Fler" section)
+            maxBeachDistance: p.nearBeach === 'true' ? 1000 : undefined, // 1km = "nära havet"
+            privatePool: p.privatePool === 'true' ? true : undefined,
+            hasElevator: p.elevator === 'true' ? true : undefined,
+            hasAC: p.ac === 'true' ? true : undefined,
+            isGated: p.gated === 'true' ? true : undefined,
+            hasGarden: p.garden === 'true' ? true : undefined,
+            hasTerrace: p.terrace === 'true' ? true : undefined,
+            hasStorage: p.storage === 'true' ? true : undefined,
+            hasHeating: p.heating === 'true' ? true : undefined,
+
+            // Sort
             sort: p.sort as "price-asc" | "price-desc" | "newest" | undefined,
         };
     }, [searchParams]);
+
 
     // Handle pagination (initial page for now)
     const results = useQuery(api.properties.search, {

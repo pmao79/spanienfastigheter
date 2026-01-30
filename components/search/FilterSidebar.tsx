@@ -1,94 +1,245 @@
 'use client';
 
-import { Search } from 'lucide-react';
+import { Search, X, Check, ChevronDown, ChevronUp, Plus } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState, useEffect, useRef } from 'react';
 
 interface FilterSidebarProps {
     onOpenSearchService?: () => void;
     propertyCount?: number;
 }
 
+// Dual Range Slider Component (simplified for sidebar)
+function DualRangeSlider({
+    min,
+    max,
+    step,
+    values,
+    onChange,
+}: {
+    min: number;
+    max: number;
+    step: number;
+    values: [number, number];
+    onChange: (values: [number, number]) => void;
+}) {
+    const [localValues, setLocalValues] = useState(values);
+
+    useEffect(() => {
+        setLocalValues(values);
+    }, [values]);
+
+    const handleMinChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const newMin = Math.min(Number(e.target.value), localValues[1] - step);
+        setLocalValues([newMin, localValues[1]]);
+    };
+
+    const handleMaxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const newMax = Math.max(Number(e.target.value), localValues[0] + step);
+        setLocalValues([localValues[0], newMax]);
+    };
+
+    const handleMouseUp = () => {
+        onChange(localValues);
+    };
+
+    const minPercent = ((localValues[0] - min) / (max - min)) * 100;
+    const maxPercent = ((localValues[1] - min) / (max - min)) * 100;
+
+    const formatPrice = (price: number) => {
+        if (price >= 1000000) {
+            return `€${(price / 1000000).toFixed(1)}M`;
+        }
+        return `€${(price / 1000).toFixed(0)}k`;
+    };
+
+    return (
+        <div className="w-full py-2">
+            {/* Price labels */}
+            <div className="flex justify-between mb-2 text-sm">
+                <span className="font-medium text-navy">{formatPrice(localValues[0])}</span>
+                <span className="font-medium text-navy">{formatPrice(localValues[1])}</span>
+            </div>
+
+            {/* Slider track */}
+            <div className="relative h-2 w-full">
+                {/* Background track */}
+                <div className="absolute inset-0 bg-gray-200 rounded-full" />
+
+                {/* Active track */}
+                <div
+                    className="absolute h-full bg-navy rounded-full"
+                    style={{
+                        left: `${minPercent}%`,
+                        width: `${maxPercent - minPercent}%`,
+                    }}
+                />
+
+                {/* Min thumb */}
+                <input
+                    type="range"
+                    min={min}
+                    max={max}
+                    step={step}
+                    value={localValues[0]}
+                    onChange={handleMinChange}
+                    onMouseUp={handleMouseUp}
+                    onTouchEnd={handleMouseUp}
+                    className="absolute w-full h-2 appearance-none bg-transparent pointer-events-none 
+            [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:appearance-none 
+            [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full 
+            [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-navy 
+            [&::-webkit-slider-thumb]:shadow-md [&::-webkit-slider-thumb]:cursor-pointer
+            [&::-moz-range-thumb]:pointer-events-auto [&::-moz-range-thumb]:appearance-none 
+            [&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:rounded-full 
+            [&::-moz-range-thumb]:bg-white [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-navy 
+            [&::-moz-range-thumb]:shadow-md [&::-moz-range-thumb]:cursor-pointer"
+                />
+
+                {/* Max thumb */}
+                <input
+                    type="range"
+                    min={min}
+                    max={max}
+                    step={step}
+                    value={localValues[1]}
+                    onChange={handleMaxChange}
+                    onMouseUp={handleMouseUp}
+                    onTouchEnd={handleMouseUp}
+                    className="absolute w-full h-2 appearance-none bg-transparent pointer-events-none 
+            [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:appearance-none 
+            [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full 
+            [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-navy 
+            [&::-webkit-slider-thumb]:shadow-md [&::-webkit-slider-thumb]:cursor-pointer
+            [&::-moz-range-thumb]:pointer-events-auto [&::-moz-range-thumb]:appearance-none 
+            [&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:rounded-full 
+            [&::-moz-range-thumb]:bg-white [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-navy 
+            [&::-moz-range-thumb]:shadow-md [&::-moz-range-thumb]:cursor-pointer"
+                />
+            </div>
+        </div>
+    );
+}
+
 export default function FilterSidebar({ onOpenSearchService, propertyCount }: FilterSidebarProps) {
     const router = useRouter();
     const searchParams = useSearchParams();
 
-    // Fetch dynamic Facets
-    const regions = useQuery(api.properties.getRegions);
+    // Parse current URL params
+    const currentRegions = searchParams.get('regions')?.split(',').filter(Boolean) || [];
+    const currentTowns = searchParams.get('towns')?.split(',').filter(Boolean) || [];
+    const currentTypes = searchParams.get('types')?.split(',').filter(Boolean) || [];
 
-    // Local State for Inputs (debounced updates)
-    const [minPrice, setMinPrice] = useState(searchParams.get('minPrice') || '');
-    const [maxPrice, setMaxPrice] = useState(searchParams.get('maxPrice') || '');
-    const [searchTerm, setSearchTerm] = useState(searchParams.get('ref') || ''); // Ref search
+    // Fetch dynamic filter options from Convex
+    const filterOptions = useQuery(api.properties.getFilterOptions, {
+        regions: currentRegions.length > 0 ? currentRegions : undefined
+    });
+
+    // Local State
+    const [priceRange, setPriceRange] = useState<[number, number]>([
+        Number(searchParams.get('minPrice')) || 50000,
+        Number(searchParams.get('maxPrice')) || 2000000
+    ]);
+    const [searchTerm, setSearchTerm] = useState(searchParams.get('ref') || '');
+    const [areaSearch, setAreaSearch] = useState('');
+    const [showAdvanced, setShowAdvanced] = useState(false);
+
+    // Sync URL state
+    useEffect(() => {
+        setPriceRange([
+            Number(searchParams.get('minPrice')) || 50000,
+            Number(searchParams.get('maxPrice')) || 2000000
+        ]);
+    }, [searchParams]);
 
     // Update URL Helper
-    const updateFilter = useCallback((key: string, value: string | null) => {
+    const updateFilters = useCallback((updates: Record<string, string | null>) => {
         const params = new URLSearchParams(searchParams.toString());
-        if (value) {
-            params.set(key, value);
-        } else {
-            params.delete(key);
-        }
-        // Reset pagination if needed? usually good practice
+
+        Object.entries(updates).forEach(([key, value]) => {
+            if (value) {
+                params.set(key, value);
+            } else {
+                params.delete(key);
+            }
+        });
+
         router.push(`?${params.toString()}`, { scroll: false });
     }, [router, searchParams]);
 
-    // Handlers
-    const handleRegionChange = (regionName: string, isChecked: boolean) => {
-        // Multi-select for regions? Or single? 
-        // Current FilterState implies single 'region'.
-        // Let's stick to single for now based on 'region' param, OR support multi if logic allows.
-        // My Convex query currently checks `eq("region", args.region)`. So Single Select for now.
-        if (isChecked) {
-            updateFilter('region', regionName);
-        } else {
-            if (searchParams.get('region') === regionName) {
-                updateFilter('region', null);
-            }
-        }
+    // Toggle handlers for multi-select
+    const toggleArrayParam = useCallback((paramName: string, value: string, currentValues: string[]) => {
+        const newValues = currentValues.includes(value)
+            ? currentValues.filter(v => v !== value)
+            : [...currentValues, value];
+
+        updateFilters({ [paramName]: newValues.length > 0 ? newValues.join(',') : null });
+    }, [updateFilters]);
+
+    // Price handler
+    const applyPriceFilter = (values: [number, number]) => {
+        setPriceRange(values);
+        updateFilters({
+            minPrice: values[0] > 50000 ? String(values[0]) : null,
+            maxPrice: values[1] < 2000000 ? String(values[1]) : null,
+        });
     };
 
-    const handlePriceChange = (type: 'min' | 'max', value: string) => {
-        if (type === 'min') setMinPrice(value);
-        else setMaxPrice(value);
-    };
-
-    const applyPriceFilter = () => {
-        updateFilter('minPrice', minPrice);
-        updateFilter('maxPrice', maxPrice);
-    };
-
+    // Bedroom handler
     const handleBedChange = (beds: number | string) => {
         const val = beds === '5+' ? '5' : String(beds);
         const current = searchParams.get('bedrooms');
-        if (current === val) updateFilter('bedrooms', null);
-        else updateFilter('bedrooms', val);
+        updateFilters({ bedrooms: current === val ? null : val });
     };
 
+    // Feature handler
     const handleFeatureChange = (key: string, isChecked: boolean) => {
-        updateFilter(key, isChecked ? 'true' : null);
+        updateFilters({ [key]: isChecked ? 'true' : null });
     };
 
+    // Ref search
     const handleSearch = (e: React.FormEvent) => {
         e.preventDefault();
-        updateFilter('ref', searchTerm); // Assuming 'ref' param works with 'search' query if we add it?
-        // My Convex search query logic matches EXACT index on filters.
-        // Text search 'ref' needs to be handled. `getByRef` exists.
-        // But main search can also filter by ref if I add it?
-        // Or if 'ref' is present, the page should switch to `getByRef`?
-        // Let's assume for now this filters by property REFs logic if added to search query.
-        // Actually, main search doesn't support fuzzy text search yet.
-        // Let's just set the param.
+        updateFilters({ ref: searchTerm || null });
     };
+
+    // Clear all
+    const clearAllFilters = () => {
+        router.push('/fastigheter', { scroll: false });
+    };
+
+    // Filtered areas
+    const filteredAreas = filterOptions?.areas?.filter(area =>
+        area.name.toLowerCase().includes(areaSearch.toLowerCase())
+    ) || [];
+
+    // Advanced filter config
+    const advancedFilters = [
+        { key: 'nearBeach', label: 'Nära havet (< 1 km)' },
+        { key: 'nearGolf', label: 'Nära golfbana' },
+        { key: 'privatePool', label: 'Privat pool' },
+        { key: 'elevator', label: 'Hiss' },
+        { key: 'ac', label: 'Luftkonditionering' },
+        { key: 'gated', label: 'Inhägnat område' },
+        { key: 'garden', label: 'Trädgård' },
+        { key: 'terrace', label: 'Terrass' },
+        { key: 'storage', label: 'Förråd' },
+        { key: 'heating', label: 'Uppvärmning' },
+    ];
+
+    // Count active advanced filters
+    const activeAdvancedCount = advancedFilters.filter(f =>
+        searchParams.get(f.key) === 'true'
+    ).length;
 
     return (
         <div className="bg-white p-8 border border-gray-100 sticky top-32 shadow-soft">
             <div className="flex justify-between items-center mb-8 border-b border-greige pb-4">
                 <h3 className="text-xl font-serif text-navy">Filtrera</h3>
                 <button
-                    onClick={() => router.push('/fastigheter')}
+                    onClick={clearAllFilters}
                     className="text-[10px] uppercase tracking-widest text-gray-400 hover:text-navy transition-colors"
                 >
                     Rensa allt
@@ -110,36 +261,30 @@ export default function FilterSidebar({ onOpenSearchService, propertyCount }: Fi
                     </button>
                 </form>
 
-                {/* Region */}
+                {/* Regions (Multi-select) */}
                 <div>
                     <label className="text-[10px] uppercase tracking-[0.2em] text-sage font-bold mb-4 block">
                         Region
                     </label>
                     <div className="space-y-3">
-                        {regions ? regions.map((r) => (
+                        {filterOptions?.regions ? filterOptions.regions.map((r) => (
                             <label
-                                key={r.region}
+                                key={r.name}
                                 className="flex items-center gap-3 cursor-pointer group"
                             >
                                 <div className="relative flex items-center">
                                     <input
                                         type="checkbox"
-                                        checked={searchParams.get('region') === r.region}
-                                        onChange={(e) => handleRegionChange(r.region, e.target.checked)}
+                                        checked={currentRegions.includes(r.name)}
+                                        onChange={() => toggleArrayParam('regions', r.name, currentRegions)}
                                         className="peer appearance-none w-4 h-4 border border-gray-300 rounded-sm checked:bg-navy checked:border-navy transition-colors"
                                     />
-                                    <svg
-                                        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 text-white opacity-0 peer-checked:opacity-100 pointer-events-none"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeWidth="4"
-                                    >
-                                        <polyline points="20 6 9 17 4 12"></polyline>
-                                    </svg>
+                                    {currentRegions.includes(r.name) && (
+                                        <Check size={12} className="absolute left-0.5 top-0.5 text-white pointer-events-none" />
+                                    )}
                                 </div>
                                 <span className="text-sm font-light text-charcoal group-hover:text-navy transition-colors flex justify-between w-full">
-                                    <span>{r.region}</span>
+                                    <span>{r.name}</span>
                                     <span className="text-xs text-gray-400">({r.count})</span>
                                 </span>
                             </label>
@@ -152,42 +297,133 @@ export default function FilterSidebar({ onOpenSearchService, propertyCount }: Fi
                     </div>
                 </div>
 
-                {/* Price Range */}
+                {/* Areas/Towns (Multi-select with search) */}
+                <div>
+                    <label className="text-[10px] uppercase tracking-[0.2em] text-sage font-bold mb-4 block">
+                        Område
+                    </label>
+
+                    {/* Search input */}
+                    <div className="relative mb-3">
+                        <Search size={14} className="absolute left-3 top-2.5 text-gray-400" />
+                        <input
+                            type="text"
+                            placeholder="Sök område..."
+                            value={areaSearch}
+                            onChange={(e) => setAreaSearch(e.target.value)}
+                            className="w-full pl-9 pr-8 py-2 bg-greige/50 text-sm rounded-sm focus:outline-none focus:ring-1 focus:ring-navy"
+                        />
+                        {areaSearch && (
+                            <button
+                                onClick={() => setAreaSearch('')}
+                                className="absolute right-3 top-2.5 text-gray-400 hover:text-navy"
+                            >
+                                <X size={14} />
+                            </button>
+                        )}
+                    </div>
+
+                    {/* Selected areas */}
+                    {currentTowns.length > 0 && (
+                        <div className="flex flex-wrap gap-1 mb-3">
+                            {currentTowns.map((town) => (
+                                <span
+                                    key={town}
+                                    className="inline-flex items-center gap-1 px-2 py-1 bg-navy text-white text-xs rounded-sm"
+                                >
+                                    {town}
+                                    <X
+                                        size={12}
+                                        className="cursor-pointer hover:text-sand"
+                                        onClick={() => toggleArrayParam('towns', town, currentTowns)}
+                                    />
+                                </span>
+                            ))}
+                        </div>
+                    )}
+
+                    {/* Area list */}
+                    <div className="max-h-48 overflow-y-auto space-y-2">
+                        {filterOptions?.areas ? (
+                            filteredAreas.length > 0 ? (
+                                filteredAreas.slice(0, 20).map((area) => (
+                                    <label
+                                        key={area.name}
+                                        className="flex items-center gap-3 cursor-pointer group"
+                                    >
+                                        <div className="relative flex items-center">
+                                            <input
+                                                type="checkbox"
+                                                checked={currentTowns.includes(area.name)}
+                                                onChange={() => toggleArrayParam('towns', area.name, currentTowns)}
+                                                className="peer appearance-none w-4 h-4 border border-gray-300 rounded-sm checked:bg-navy checked:border-navy transition-colors"
+                                            />
+                                            {currentTowns.includes(area.name) && (
+                                                <Check size={12} className="absolute left-0.5 top-0.5 text-white pointer-events-none" />
+                                            )}
+                                        </div>
+                                        <span className="text-sm font-light text-charcoal group-hover:text-navy transition-colors flex justify-between w-full">
+                                            <span>{area.name}</span>
+                                            <span className="text-xs text-gray-400">({area.count})</span>
+                                        </span>
+                                    </label>
+                                ))
+                            ) : (
+                                <div className="text-sm text-gray-400 text-center py-2">
+                                    Inga områden hittades
+                                </div>
+                            )
+                        ) : (
+                            <div className="animate-pulse space-y-2">
+                                <div className="h-4 bg-gray-100 rounded w-3/4"></div>
+                                <div className="h-4 bg-gray-100 rounded w-1/2"></div>
+                            </div>
+                        )}
+                    </div>
+                </div>
+
+                {/* Property Types (Multi-select) */}
+                <div>
+                    <label className="text-[10px] uppercase tracking-[0.2em] text-sage font-bold mb-4 block">
+                        Typ av bostad
+                    </label>
+                    <div className="space-y-3">
+                        {filterOptions?.types?.map((type) => (
+                            <label
+                                key={type}
+                                className="flex items-center gap-3 cursor-pointer group"
+                            >
+                                <div className="relative flex items-center">
+                                    <input
+                                        type="checkbox"
+                                        checked={currentTypes.includes(type)}
+                                        onChange={() => toggleArrayParam('types', type, currentTypes)}
+                                        className="peer appearance-none w-4 h-4 border border-gray-300 rounded-sm checked:bg-navy checked:border-navy transition-colors"
+                                    />
+                                    {currentTypes.includes(type) && (
+                                        <Check size={12} className="absolute left-0.5 top-0.5 text-white pointer-events-none" />
+                                    )}
+                                </div>
+                                <span className="text-sm font-light text-charcoal group-hover:text-navy transition-colors">
+                                    {type}
+                                </span>
+                            </label>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Price Range with Dual Slider */}
                 <div>
                     <label className="text-[10px] uppercase tracking-[0.2em] text-sage font-bold mb-4 block">
                         Pris (€)
                     </label>
-                    <div className="flex gap-4 items-center">
-                        <div className="relative w-full">
-                            <span className="absolute left-3 top-2.5 text-xs text-gray-400">
-                                €
-                            </span>
-                            <input
-                                type="number"
-                                placeholder="0"
-                                value={minPrice}
-                                onChange={(e) => handlePriceChange('min', e.target.value)}
-                                onBlur={applyPriceFilter}
-                                onKeyDown={(e) => e.key === 'Enter' && applyPriceFilter()}
-                                className="w-full pl-6 pr-2 py-2 bg-greige/50 text-sm focus:outline-none focus:ring-1 focus:ring-navy transition-shadow"
-                            />
-                        </div>
-                        <span className="text-gray-300 font-light">–</span>
-                        <div className="relative w-full">
-                            <span className="absolute left-3 top-2.5 text-xs text-gray-400">
-                                €
-                            </span>
-                            <input
-                                type="number"
-                                placeholder="Max"
-                                value={maxPrice}
-                                onChange={(e) => handlePriceChange('max', e.target.value)}
-                                onBlur={applyPriceFilter}
-                                onKeyDown={(e) => e.key === 'Enter' && applyPriceFilter()}
-                                className="w-full pl-6 pr-2 py-2 bg-greige/50 text-sm focus:outline-none focus:ring-1 focus:ring-navy transition-shadow"
-                            />
-                        </div>
-                    </div>
+                    <DualRangeSlider
+                        min={50000}
+                        max={2000000}
+                        step={25000}
+                        values={priceRange}
+                        onChange={applyPriceFilter}
+                    />
                 </div>
 
                 {/* Bedrooms */}
@@ -204,8 +440,8 @@ export default function FilterSidebar({ onOpenSearchService, propertyCount }: Fi
                                     key={num}
                                     onClick={() => handleBedChange(num)}
                                     className={`w-10 h-10 border text-sm font-medium transition-all ${isActive
-                                            ? 'bg-navy text-white border-navy'
-                                            : 'border-gray-200 text-gray-500 hover:border-navy hover:text-navy'
+                                        ? 'bg-navy text-white border-navy'
+                                        : 'border-gray-200 text-gray-500 hover:border-navy hover:text-navy'
                                         }`}
                                 >
                                     {num}
@@ -215,23 +451,60 @@ export default function FilterSidebar({ onOpenSearchService, propertyCount }: Fi
                     </div>
                 </div>
 
-                {/* Features */}
+                {/* Quick Features */}
                 <div>
                     <label className="text-[10px] uppercase tracking-[0.2em] text-sage font-bold mb-4 block">
                         Egenskaper
                     </label>
                     <div className="space-y-3">
                         {[
-                            { label: 'Havsutsikt', key: 'seaView' }, // TODO: Map to actual backend field? Not in schema.
                             { label: 'Pool', key: 'pool' },
                             { label: 'Nyproduktion', key: 'newBuild' },
-                            { label: 'Terrass', key: 'hasTerrace' }, // Schema: terraceSize > 0? No boolean in schema, but we can assume logic in client or backend? Backend query doesn't filter by 'hasTerrace'. 
-                            // WAIT: Task Schema had 'terraceSize'. Query 'properties.search' has no 'hasTerrace' or 'seaView' filter.
-                            // I should stick to filters I implemented: hasPool, nearGolf, newBuild.
-                            { label: 'Nära Golf', key: 'nearGolf' },
+                            { label: 'Parkering', key: 'parking' },
                         ].map((feature) => (
-                            // Only render if relevant
-                            (feature.key === 'seaView' || feature.key === 'hasTerrace') ? null :
+                            <label
+                                key={feature.key}
+                                className="flex items-center gap-3 cursor-pointer group"
+                            >
+                                <div className="relative flex items-center">
+                                    <input
+                                        type="checkbox"
+                                        checked={searchParams.get(feature.key) === 'true'}
+                                        onChange={(e) => handleFeatureChange(feature.key, e.target.checked)}
+                                        className="peer appearance-none w-4 h-4 border border-gray-300 rounded-sm checked:bg-navy checked:border-navy transition-colors"
+                                    />
+                                    {searchParams.get(feature.key) === 'true' && (
+                                        <Check size={12} className="absolute left-0.5 top-0.5 text-white pointer-events-none" />
+                                    )}
+                                </div>
+                                <span className="text-sm font-light text-charcoal group-hover:text-navy transition-colors">
+                                    {feature.label}
+                                </span>
+                            </label>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Advanced Features ("+ Fler") */}
+                <div>
+                    <button
+                        onClick={() => setShowAdvanced(!showAdvanced)}
+                        className={`flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-bold mb-4 transition-colors ${showAdvanced || activeAdvancedCount > 0 ? 'text-navy' : 'text-sage hover:text-navy'
+                            }`}
+                    >
+                        <Plus size={14} className={showAdvanced ? 'rotate-45 transition-transform' : 'transition-transform'} />
+                        Fler egenskaper
+                        {activeAdvancedCount > 0 && (
+                            <span className="bg-navy text-white text-[10px] px-1.5 py-0.5 rounded-full ml-1">
+                                {activeAdvancedCount}
+                            </span>
+                        )}
+                        {showAdvanced ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+                    </button>
+
+                    {showAdvanced && (
+                        <div className="space-y-3 animate-fade-in">
+                            {advancedFilters.map((feature) => (
                                 <label
                                     key={feature.key}
                                     className="flex items-center gap-3 cursor-pointer group"
@@ -243,22 +516,17 @@ export default function FilterSidebar({ onOpenSearchService, propertyCount }: Fi
                                             onChange={(e) => handleFeatureChange(feature.key, e.target.checked)}
                                             className="peer appearance-none w-4 h-4 border border-gray-300 rounded-sm checked:bg-navy checked:border-navy transition-colors"
                                         />
-                                        <svg
-                                            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 text-white opacity-0 peer-checked:opacity-100 pointer-events-none"
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            strokeWidth="4"
-                                        >
-                                            <polyline points="20 6 9 17 4 12"></polyline>
-                                        </svg>
+                                        {searchParams.get(feature.key) === 'true' && (
+                                            <Check size={12} className="absolute left-0.5 top-0.5 text-white pointer-events-none" />
+                                        )}
                                     </div>
                                     <span className="text-sm font-light text-charcoal group-hover:text-navy transition-colors">
                                         {feature.label}
                                     </span>
                                 </label>
-                        ))}
-                    </div>
+                            ))}
+                        </div>
+                    )}
                 </div>
 
                 <div className="w-full bg-navy text-white py-4 uppercase tracking-[0.15em] text-xs font-semibold text-center shadow-lg shadow-navy/20 cursor-default">
