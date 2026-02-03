@@ -165,7 +165,7 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
         property.descriptions.sv || property.descriptions.en || ''
     );
 
-    const { distances: googleDistances, isLoaded: googleLoaded, elevation } = usePropertyDistances(
+    const { distances: googleDistances, isLoaded: googleLoaded } = usePropertyDistances(
         property.coordinates?.lat || 0,
         property.coordinates?.lng || 0,
         locationDetail || town // Using locationDetail as address proxy
@@ -690,102 +690,89 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
                             <h3 className="text-xl font-serif text-navy mb-6">
                                 Avstånd & Område
                             </h3>
-                            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                <div className="flex flex-col items-center justify-center p-6 bg-white border border-gray-100 text-center gap-3 hover:border-sand hover:shadow-soft transition-all duration-300 group">
+                            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                                <div className="flex flex-col items-center justify-center p-3 md:p-4 bg-white border border-sand text-center gap-2 shadow-soft transition-all duration-300">
                                     <Waves
-                                        size={24}
-                                        className="text-gray-300 group-hover:text-sage transition-colors"
+                                        size={18}
+                                        className="text-sage"
                                         strokeWidth={1.5}
                                     />
-                                    <span className="text-[10px] uppercase tracking-widest text-gray-400 group-hover:text-navy">
+                                    <span className="text-[9px] uppercase tracking-widest text-navy/70">
                                         Strand
                                     </span>
-                                    <span className="font-serif text-navy text-lg">
+                                    <span className="font-serif text-navy text-base">
                                         {googleDistances.beach || (property.distances.beach
                                             ? `${property.distances.beach}m`
                                             : 'N/A')}
                                     </span>
                                 </div>
-                                <div className="flex flex-col items-center justify-center p-6 bg-white border border-gray-100 text-center gap-3 hover:border-sand hover:shadow-soft transition-all duration-300 group">
+                                <div className="flex flex-col items-center justify-center p-3 md:p-4 bg-white border border-sand text-center gap-2 shadow-soft transition-all duration-300">
                                     <Plane
-                                        size={24}
-                                        className="text-gray-300 group-hover:text-sage transition-colors"
+                                        size={18}
+                                        className="text-sage"
                                         strokeWidth={1.5}
                                     />
-                                    <span className="text-[10px] uppercase tracking-widest text-gray-400 group-hover:text-navy">
+                                    <span className="text-[9px] uppercase tracking-widest text-navy/70">
                                         Flygplats
                                     </span>
-                                    <span className="font-serif text-navy text-lg">
+                                    <span className="font-serif text-navy text-base">
                                         {googleDistances.airport || '45 min'}
                                     </span>
                                 </div>
-                                <div className="flex flex-col items-center justify-center p-6 bg-white border border-gray-100 text-center gap-3 hover:border-sand hover:shadow-soft transition-all duration-300 group">
+                                <div className="flex flex-col items-center justify-center p-3 md:p-4 bg-white border border-sand text-center gap-2 shadow-soft transition-all duration-300">
                                     <Trees
-                                        size={24}
-                                        className="text-gray-300 group-hover:text-sage transition-colors"
+                                        size={18}
+                                        className="text-sage"
                                         strokeWidth={1.5}
                                     />
-                                    <span className="text-[10px] uppercase tracking-widest text-gray-400 group-hover:text-navy">
+                                    <span className="text-[9px] uppercase tracking-widest text-navy/70">
                                         Golf
                                     </span>
-                                    <span className="font-serif text-navy text-lg">
+                                    <span className="font-serif text-navy text-base">
                                         {googleDistances.golf || (property.distances.golf ? 'Nära' : 'N/A')}
                                     </span>
                                 </div>
-                                <div className="flex flex-col items-center justify-center p-6 bg-white border border-gray-100 text-center gap-3 hover:border-sand hover:shadow-soft transition-all duration-300 group">
+                                <div className="flex flex-col items-center justify-center p-3 md:p-4 bg-white border border-sand text-center gap-2 shadow-soft transition-all duration-300">
                                     <Home
-                                        size={24}
-                                        className="text-gray-300 group-hover:text-sage transition-colors"
+                                        size={18}
+                                        className="text-sage"
                                         strokeWidth={1.5}
                                     />
-                                    <span className="text-[10px] uppercase tracking-widest text-gray-400 group-hover:text-navy">
+                                    <span className="text-[9px] uppercase tracking-widest text-navy/70">
                                         Centrum
                                     </span>
-                                    <span className="font-serif text-navy text-lg">
+                                    <span className="font-serif text-navy text-base">
                                         {googleDistances.shopping ? 'Nära' : '5 min'}
                                     </span>
                                 </div>
                                 {(property.distances.schools || googleDistances.shopping) && (
-                                    <div className="flex flex-col items-center justify-center p-6 bg-white border border-gray-100 text-center gap-3 hover:border-sand hover:shadow-soft transition-all duration-300 group">
+                                    <div className="flex flex-col items-center justify-center p-3 md:p-4 bg-white border border-sand text-center gap-2 shadow-soft transition-all duration-300">
                                         <School
-                                            size={24}
-                                            className="text-gray-300 group-hover:text-sage transition-colors"
+                                            size={18}
+                                            className="text-sage"
                                             strokeWidth={1.5}
                                         />
-                                        <span className="text-[10px] uppercase tracking-widest text-gray-400 group-hover:text-navy">
+                                        <span className="text-[9px] uppercase tracking-widest text-navy/70">
                                             Skolor
                                         </span>
-                                        <span className="font-serif text-navy text-lg">Nära</span>
+                                        <span className="font-serif text-navy text-base">Nära</span>
                                     </div>
                                 )}
                                 {(property.distances.commercialCenter || googleDistances.shopping) && (
-                                    <div className="flex flex-col items-center justify-center p-6 bg-white border border-gray-100 text-center gap-3 hover:border-sand hover:shadow-soft transition-all duration-300 group">
+                                    <div className="flex flex-col items-center justify-center p-3 md:p-4 bg-white border border-sand text-center gap-2 shadow-soft transition-all duration-300">
                                         <ShoppingBag
-                                            size={24}
-                                            className="text-gray-300 group-hover:text-sage transition-colors"
+                                            size={18}
+                                            className="text-sage"
                                             strokeWidth={1.5}
                                         />
-                                        <span className="text-[10px] uppercase tracking-widest text-gray-400 group-hover:text-navy">
+                                        <span className="text-[9px] uppercase tracking-widest text-navy/70">
                                             Shopping
                                         </span>
-                                        <span className="font-serif text-navy text-lg">
+                                        <span className="font-serif text-navy text-base">
                                             {googleDistances.shopping || 'Nära'}
                                         </span>
                                     </div>
                                 )}
-                                <div className="flex flex-col items-center justify-center p-6 bg-white border border-gray-100 text-center gap-3 hover:border-sand hover:shadow-soft transition-all duration-300 group">
-                                    <Expand
-                                        size={24}
-                                        className="text-gray-300 group-hover:text-sage transition-colors"
-                                        strokeWidth={1.5}
-                                    />
-                                    <span className="text-[10px] uppercase tracking-widest text-gray-400 group-hover:text-navy">
-                                        Höjd
-                                    </span>
-                                    <span className="font-serif text-navy text-lg">
-                                        {elevation || 'Hämtar...'}
-                                    </span>
-                                </div>
                             </div>
                         </div>
 
