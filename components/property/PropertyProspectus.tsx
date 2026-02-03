@@ -1,6 +1,7 @@
 import React from 'react';
 import { Page, Text, View, Document, StyleSheet, Image, Font } from '@react-pdf/renderer';
 import { Property } from '@/types/property';
+import { normalizePropertyDescription } from '@/lib/description-utils';
 
 // Register fonts (using standard fonts for now to ensure compatibility)
 // In a production environment, you would register custom fonts here.
@@ -181,9 +182,13 @@ const PropertyProspectus: React.FC<PropertyProspectusProps> = ({ property }) => 
         return new Intl.NumberFormat('sv-SE', { style: 'currency', currency: 'SEK' }).format(sek);
     };
 
+    const descriptionText = normalizePropertyDescription(
+        property.descriptions.sv || property.descriptions.en || ''
+    );
+
     // Use specific quote or fallback to description summary
     const agentQuote = (property as any).agentQuote ||
-        (property.descriptions.sv ? property.descriptions.sv.substring(0, 140).trim() + "..." : "Kontakta mig för visning.");
+        (descriptionText ? `${descriptionText.substring(0, 140).trim()}...` : "Kontakta mig för visning.");
 
     // Ensure we have an image
     const mainImage = property.images[0] || 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2070';
@@ -256,7 +261,7 @@ const PropertyProspectus: React.FC<PropertyProspectusProps> = ({ property }) => 
 
                     {/* Description */}
                     <Text style={styles.description}>
-                        {property.descriptions.sv || property.descriptions.en || "Ingen beskrivning tillgänglig."}
+                        {descriptionText || "Ingen beskrivning tillgänglig."}
                     </Text>
 
                     {/* Agent Card (Text only, no image to avoid CORS) */}

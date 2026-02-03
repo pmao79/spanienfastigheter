@@ -53,6 +53,7 @@ import PropertyProspectus from './PropertyProspectus';
 import { usePropertyDistances } from '@/hooks/usePropertyDistances';
 import BitcoinPrice from './BitcoinPrice';
 import { translatePropertyType } from '@/lib/property-utils';
+import { normalizePropertyDescription } from '@/lib/description-utils';
 interface PropertyDetailsProps {
     property: Property;
 }
@@ -70,6 +71,20 @@ const getFeatureIcon = (text: string, size: number = 20, className: string = '')
     if (t.includes('sol') || t.includes('terrass'))
         return <Sun {...props} />;
     return <Check {...props} />;
+};
+
+const resolveLocationValue = (value: unknown) => {
+    if (typeof value === 'string') {
+        return value.trim() === '[object Object]' ? '' : value;
+    }
+    if (value && typeof value === 'object') {
+        const record = value as Record<string, unknown>;
+        const candidates = [record.name, record.city, record.town, record.label, record.title];
+        for (const candidate of candidates) {
+            if (typeof candidate === 'string') return candidate;
+        }
+    }
+    return '';
 };
 
 const PDFDownloadLink = dynamic(
@@ -93,7 +108,10 @@ const PDFDownloadLink = dynamic(
 
 const ClientOnlyPDFDownload = ({ property }: { property: Property }) => {
     // Create a human-readable filename from property type and location
-    const sanitizedFileName = `${property.type} i ${property.town}`
+    const town = resolveLocationValue(property.town);
+    const locationDetail = resolveLocationValue(property.locationDetail);
+    const locationName = town || locationDetail || 'Okand_plats';
+    const sanitizedFileName = `${property.type} i ${locationName}`
         .replace(/[^a-zA-ZåäöÅÄÖ0-9\s]/g, '')
         .replace(/\s+/g, '_');
 
@@ -138,10 +156,19 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
     const [lightboxIndex, setLightboxIndex] = useState(0);
     const [isExpanded, setIsExpanded] = useState(false);
 
+    const town = resolveLocationValue(property.town);
+    const province = resolveLocationValue(property.province);
+    const locationDetail = resolveLocationValue(property.locationDetail);
+    const primaryLocation = town || locationDetail || province || 'Plats ej angiven';
+    const locationLine = [locationDetail || town, province].filter(Boolean).join(', ');
+    const descriptionText = normalizePropertyDescription(
+        property.descriptions.sv || property.descriptions.en || ''
+    );
+
     const { distances: googleDistances, isLoaded: googleLoaded, elevation } = usePropertyDistances(
         property.coordinates?.lat || 0,
         property.coordinates?.lng || 0,
-        property.locationDetail || property.town // Using locationDetail as address proxy
+        locationDetail || town // Using locationDetail as address proxy
     );
 
     const galleryImages =
@@ -344,11 +371,11 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
                             </div>
 
                             <h1 className="text-4xl md:text-5xl font-serif text-navy mb-4 leading-tight">
-                                {property.type} i {property.town}
+                                {property.type} i {primaryLocation}
                             </h1>
                             <p className="text-lg text-gray-500 font-light flex items-center gap-2 mb-6">
                                 <MapPin size={18} className="text-sand" />
-                                {property.locationDetail || property.town}, {property.province}
+                                {locationLine || 'Plats ej angiven'}
                             </p>
 
                             <div className="flex items-end gap-4">
@@ -598,11 +625,7 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
                                 className={`prose prose-lg text-gray-600 font-light leading-relaxed border-l-2 border-sand pl-6 transition-all duration-700 ease-in-out relative overflow-hidden ${isExpanded ? 'max-h-[2000px]' : 'max-h-[300px]'
                                     }`}
                             >
-                                {(
-                                    property.descriptions.sv ||
-                                    property.descriptions.en ||
-                                    'Ingen beskrivning tillgänglig.'
-                                )
+                                {(descriptionText || 'Ingen beskrivning tillgänglig.')
                                     .split('\n\n')
                                     .map((paragraph, idx) => (
                                         <p key={idx} className="mb-4 last:mb-0 text-gray-600">
@@ -850,8 +873,9 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
                                     <p className="text-gray-600 italic leading-relaxed text-sm relative z-10 pl-4 border-l-2 border-sand/30">
                                         {/* Dynamic Quote Logic: Use specific agent quote if exists, otherwise first 140 chars of description */}
                                         {(property as any).agentQuote ||
-                                            (property.descriptions.sv ? property.descriptions.sv.substring(0, 140).trim() + "..." :
-                                                "Kontakta mig för en personlig visning av detta unika objekt.")}
+                                            (descriptionText
+                                                ? `${descriptionText.substring(0, 140).trim()}...`
+                                                : "Kontakta mig för en personlig visning av detta unika objekt.")}
                                     </p>
                                 </div>
 

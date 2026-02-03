@@ -2,6 +2,7 @@
 import { action } from "./_generated/server";
 import { internal } from "./_generated/api";
 import { XMLParser } from "fast-xml-parser";
+import { normalizePropertyDescription } from "../lib/description-utils";
 import { getRegion } from "./regions";
 
 // Helper type for parsing properties
@@ -154,6 +155,7 @@ export const syncProperties = action({
                 if (p.desc.sv) description = getStr(p.desc.sv);
                 else if (p.desc.en) description = getStr(p.desc.en); // Fallback
             }
+            description = normalizePropertyDescription(description);
 
             // Geo
             const province = getStr(p.province);

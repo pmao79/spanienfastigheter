@@ -11,6 +11,20 @@ interface PropertyCardProps {
 }
 
 export default function PropertyCard({ property }: PropertyCardProps) {
+    const resolveLocationValue = (value: unknown) => {
+        if (typeof value === 'string') {
+            return value.trim() === '[object Object]' ? '' : value;
+        }
+        if (value && typeof value === 'object') {
+            const record = value as Record<string, unknown>;
+            const candidates = [record.name, record.city, record.town, record.label, record.title];
+            for (const candidate of candidates) {
+                if (typeof candidate === 'string') return candidate;
+            }
+        }
+        return '';
+    };
+
     const getBadgeStyle = (tag: string) => {
         if (tag === 'Exklusiv') return 'bg-navy text-white border border-navy';
         if (tag === 'Nyproduktion')
@@ -54,6 +68,12 @@ export default function PropertyCard({ property }: PropertyCardProps) {
         }
         return `${meters} m`;
     };
+
+    const town = resolveLocationValue(property.town);
+    const province = resolveLocationValue(property.province);
+    const locationDetail = resolveLocationValue(property.locationDetail);
+    const primaryLocation = town || locationDetail || province || 'Plats ej angiven';
+    const locationLine = [locationDetail || town, province].filter(Boolean).join(', ');
 
     return (
         <Link
@@ -112,11 +132,11 @@ export default function PropertyCard({ property }: PropertyCardProps) {
                             </span>
                         </div>
                     </div>
-                    <h3 className="text-lg font-serif text-navy font-medium leading-snug group-hover:text-sand transition-colors duration-300 line-clamp-2" title={`${property.type} i ${property.town}`}>
-                        {property.type} i {property.town}
+                    <h3 className="text-lg font-serif text-navy font-medium leading-snug group-hover:text-sand transition-colors duration-300 line-clamp-2" title={`${property.type} i ${primaryLocation}`}>
+                        {property.type} i {primaryLocation}
                     </h3>
                     <p className="text-sm text-gray-500 font-light mt-1 truncate">
-                        {property.locationDetail || property.town}, {property.province}
+                        {locationLine || 'Plats ej angiven'}
                     </p>
 
                     {/* Price - Closer to title */}
