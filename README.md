@@ -8,6 +8,8 @@ This contains everything you need to run your app locally.
 
 View your app in AI Studio: https://ai.studio/apps/drive/1eAIKZ1I8-lJa4-Suqe-29S7MxMwFTZ4Q
 
+Note: Redeploy trigger, no functional changes.
+
 ## Run Locally
 
 **Prerequisites:**  Node.js
