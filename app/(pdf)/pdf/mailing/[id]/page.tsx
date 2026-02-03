@@ -71,10 +71,13 @@ export default function MailingPdfPage() {
                         {/* Main Image */}
                         <div className="relative h-[300px] w-full rounded-xl overflow-hidden mb-4 bg-slate-100">
                             {property.images?.[0] && (
-                                <img
+                                <Image
                                     src={property.images[0]}
                                     alt={`${property.type} - ${property.town}`}
-                                    className="w-full h-full object-cover"
+                                    fill
+                                    sizes="100vw"
+                                    className="object-cover"
+                                    unoptimized
                                 />
                             )}
                             <div className="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-[#1a365d] uppercase shadow-sm">
@@ -93,8 +96,15 @@ export default function MailingPdfPage() {
                         {/* secondary images */}
                         <div className="grid grid-cols-3 gap-3 mb-6">
                             {property.images?.slice(1, 4).map((img, i) => (
-                                <div key={i} className="h-32 rounded-lg overflow-hidden bg-slate-100">
-                                    <img src={img} className="w-full h-full object-cover" alt="" />
+                                <div key={i} className="relative h-32 rounded-lg overflow-hidden bg-slate-100">
+                                    <Image
+                                        src={img}
+                                        alt={property.town || 'Fastighet'}
+                                        fill
+                                        sizes="33vw"
+                                        className="object-cover"
+                                        unoptimized
+                                    />
                                 </div>
                             ))}
                         </div>

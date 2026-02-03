@@ -5,6 +5,7 @@ import { useQuery, useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
     LayoutDashboard,
@@ -231,10 +232,13 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
                             <div className="relative group">
                                 <button className="relative h-10 w-10 overflow-hidden rounded-full border border-slate-200 transition-shadow hover:shadow-md focus:outline-none">
                                     {convexUser.avatarUrl ? (
-                                        <img
+                                        <Image
                                             src={convexUser.avatarUrl}
-                                            alt={convexUser.name}
-                                            className="h-full w-full object-cover"
+                                            alt={convexUser.name || "Profilbild"}
+                                            fill
+                                            sizes="40px"
+                                            className="object-cover"
+                                            unoptimized
                                         />
                                     ) : (
                                         <div className="flex h-full w-full items-center justify-center bg-[#1a365d] text-sm font-medium text-white">

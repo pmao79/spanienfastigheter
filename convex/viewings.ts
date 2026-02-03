@@ -1,4 +1,5 @@
 import { v } from "convex/values";
+import { Id } from "./_generated/dataModel";
 import { mutation, query } from "./_generated/server";
 
 // Queries
@@ -40,20 +41,24 @@ export const getAll = query({
 
             // Fetch first property with details for list view
             let property = null;
-            if (viewing.propertyIds && viewing.propertyIds.length > 0) {
-                const fullProperty = await ctx.db.get(viewing.propertyIds[0]);
+            const propertyId = (viewing.propertyIds && viewing.propertyIds.length > 0
+                ? viewing.propertyIds[0]
+                : undefined) as Id<"properties"> | undefined;
+
+            if (propertyId) {
+                const fullProperty = await ctx.db.get(propertyId);
                 if (fullProperty) {
                     property = {
                         _id: fullProperty._id,
-                        referenceNumber: fullProperty.referenceNumber,
-                        title: fullProperty.title,
+                        referenceNumber: fullProperty.ref,
+                        title: `${fullProperty.type} i ${fullProperty.town}`,
                         region: fullProperty.region,
                         price: fullProperty.price,
-                        bedrooms: fullProperty.bedrooms,
-                        bathrooms: fullProperty.bathrooms,
-                        hasPool: fullProperty.hasPool,
+                        bedrooms: fullProperty.beds,
+                        bathrooms: fullProperty.baths,
+                        hasPool: fullProperty.pool,
                         images: fullProperty.images || [],
-                        location: fullProperty.location,
+                        location: fullProperty.locationDetail || fullProperty.town,
                     };
                 }
             }

@@ -1,17 +1,20 @@
 'use client';
 
 import HeroSearch from '@/components/search/HeroSearch';
+import Image from 'next/image';
 
 export default function Hero() {
   return (
     <div className="relative min-h-screen md:h-[95vh] w-full flex flex-col justify-start md:justify-center items-center bg-navy overflow-hidden pt-32 md:pt-0">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           src="https://morganlawgroup.com/wp-content/uploads/2022/02/multi-gen-family-beach-1024x674.jpg"
           alt="Tre generationer av en familj blickar ut över havet i solnedgången"
-          className="w-full h-full object-cover opacity-90 scale-105 animate-slow-zoom"
+          fill
+          sizes="100vw"
+          className="object-cover opacity-90 scale-105 animate-slow-zoom"
+          unoptimized
         />
         <div className="absolute inset-0 bg-navy/30 mix-blend-multiply" />
         <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/20 to-navy/40" />

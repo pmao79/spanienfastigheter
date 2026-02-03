@@ -420,7 +420,7 @@ export default function PropertiesPage() {
                 const matchesSearch =
                     p.ref?.toLowerCase().includes(search) ||
                     p.town?.toLowerCase().includes(search) ||
-                    p.location?.toLowerCase().includes(search) ||
+                    p.locationDetail?.toLowerCase().includes(search) ||
                     p.region?.toLowerCase().includes(search);
                 if (!matchesSearch) return false;
             }

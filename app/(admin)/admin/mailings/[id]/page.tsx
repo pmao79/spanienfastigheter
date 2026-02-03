@@ -4,6 +4,7 @@ import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { useParams } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, User, Mail, Calendar, CheckCircle2, Clock, MousePointer2 } from "lucide-react";
 import { formatDistanceToNow } from "date-fns";
 import { sv } from "date-fns/locale";
@@ -67,7 +68,16 @@ export default function MailingDetailPage() {
                                     {mailing.properties.map((p: any) => (
                                         <div key={p._id} className="flex gap-4 border rounded-lg p-3 hover:bg-slate-50 transition-colors">
                                             {p.images?.[0] ? (
-                                                <img src={p.images[0]} alt={p.town} className="w-20 h-20 object-cover rounded-md" />
+                                                <div className="relative w-20 h-20 rounded-md overflow-hidden">
+                                                    <Image
+                                                        src={p.images[0]}
+                                                        alt={p.town || 'Fastighet'}
+                                                        fill
+                                                        sizes="80px"
+                                                        className="object-cover"
+                                                        unoptimized
+                                                    />
+                                                </div>
                                             ) : (
                                                 <div className="w-20 h-20 bg-slate-100 rounded-md flex items-center justify-center text-xs text-slate-400">No Img</div>
                                             )}

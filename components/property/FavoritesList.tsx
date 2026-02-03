@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Heart, ArrowRight, Search, Trash2 } from 'lucide-react';
 import PropertyCard from '@/components/property/PropertyCard';
 import { Property } from '@/types/property';
@@ -17,14 +17,18 @@ export default function FavoritesList({ initialProperties }: FavoritesListProps)
 
     // Combine fetched properties with mock properties to ensure we have a fallback
     // and cover cases where some properties might only exist in mock data during dev
-    const allProperties = [...initialProperties];
+    const allProperties = useMemo(() => {
+        const merged = [...initialProperties];
 
-    // Add mock properties if they don't exist in the fetched list (by ID)
-    MOCK_PROPERTIES.forEach(mockProp => {
-        if (!allProperties.some(p => p.id === mockProp.id)) {
-            allProperties.push(mockProp);
-        }
-    });
+        // Add mock properties if they don't exist in the fetched list (by ID)
+        MOCK_PROPERTIES.forEach(mockProp => {
+            if (!merged.some(p => p.id === mockProp.id)) {
+                merged.push(mockProp);
+            }
+        });
+
+        return merged;
+    }, [initialProperties]);
 
     useEffect(() => {
         const loadFavorites = () => {

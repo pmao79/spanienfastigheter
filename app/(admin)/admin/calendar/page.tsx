@@ -101,8 +101,8 @@ export default function CalendarPage() {
                 property: evt.property,
                 assignedTo: evt.assignedTo,
                 status: evt.status,
-                meetingPoint: evt.meetingPoint,
-                description: evt.description
+                meetingPoint: 'meetingPoint' in evt ? evt.meetingPoint : undefined,
+                description: 'description' in evt ? evt.description : undefined
             }
         };
     });

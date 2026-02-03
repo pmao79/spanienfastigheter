@@ -17,6 +17,7 @@ import {
 import CreateDealModal from "./_components/CreateDealModal";
 import Link from "next/link";
 import { useUser } from "@clerk/nextjs";
+import Image from "next/image";
 
 const STAGES = [
     { id: "reservation", label: "Reservation", color: "amber" },
@@ -209,7 +210,14 @@ function DealCard({ deal }: { deal: any }) {
                     {/* Thumbnail */}
                     <div className="w-12 h-12 rounded-lg bg-slate-100 overflow-hidden flex-shrink-0 relative">
                         {deal.property?.images && deal.property.images.length > 0 ? (
-                            <img src={deal.property.images[0]} alt="" className="w-full h-full object-cover" />
+                            <Image
+                                src={deal.property.images[0]}
+                                alt={deal.property?.ref ? `Fastighet ${deal.property.ref}` : 'Fastighet'}
+                                fill
+                                sizes="48px"
+                                className="object-cover"
+                                unoptimized
+                            />
                         ) : (
                             <div className="w-full h-full flex items-center justify-center text-slate-300">
                                 <Home className="w-5 h-5" />
@@ -271,7 +279,14 @@ function DealCard({ deal }: { deal: any }) {
             <div className="px-3 py-2 flex items-center justify-between bg-white rounded-b-lg">
                 <div className="flex items-center gap-2">
                     {deal.assignedTo?.avatarUrl ? (
-                        <img src={deal.assignedTo.avatarUrl} className="w-5 h-5 rounded-full object-cover ring-1 ring-slate-100" />
+                        <Image
+                            src={deal.assignedTo.avatarUrl}
+                            alt={deal.assignedTo?.name || 'Profilbild'}
+                            width={20}
+                            height={20}
+                            className="w-5 h-5 rounded-full object-cover ring-1 ring-slate-100"
+                            unoptimized
+                        />
                     ) : (
                         <div className="w-5 h-5 rounded-full bg-[#1a365d] text-white text-[9px] flex items-center justify-center font-bold ring-1 ring-slate-100">
                             {(deal.assignedTo?.name || "??").substring(0, 2).toUpperCase()}

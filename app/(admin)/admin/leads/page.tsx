@@ -75,6 +75,16 @@ const getLastContactLabel = (dateString?: string) => {
     return formatDistanceToNow(new Date(dateString), { addSuffix: true, locale: sv });
 };
 
+const LEAD_TABS = [
+    { id: 'all', label: 'Alla' },
+    { id: 'new', label: 'Nya', statuses: ['new', 'ny'] },
+    { id: 'contacted', label: 'Kontaktade', statuses: ['contacted', 'kontaktad'] },
+    { id: 'qualified', label: 'Kvalificerade', statuses: ['qualified', 'kvalificerad'] },
+    { id: 'viewing', label: 'Visning', statuses: ['viewing_scheduled', 'viewing scheduled', 'visning bokad'] },
+    { id: 'negotiation', label: 'Förhandling', statuses: ['negotiation', 'negotiating', 'förhandling'] },
+    { id: 'won', label: 'Vunna', statuses: ['won', 'vunnen'] },
+];
+
 // --- Sub-Components ---
 
 function LeadsKPIs({ leads }: { leads: Lead[] }) {
@@ -395,16 +405,6 @@ export default function LeadsPage() {
     const isMobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
 
     // Derived Data
-    const tabs = [
-        { id: 'all', label: 'Alla' },
-        { id: 'new', label: 'Nya', statuses: ['new', 'ny'] },
-        { id: 'contacted', label: 'Kontaktade', statuses: ['contacted', 'kontaktad'] },
-        { id: 'qualified', label: 'Kvalificerade', statuses: ['qualified', 'kvalificerad'] },
-        { id: 'viewing', label: 'Visning', statuses: ['viewing_scheduled', 'viewing scheduled', 'visning bokad'] },
-        { id: 'negotiation', label: 'Förhandling', statuses: ['negotiation', 'negotiating', 'förhandling'] },
-        { id: 'won', label: 'Vunna', statuses: ['won', 'vunnen'] },
-    ];
-
     const sources = useMemo(() => {
         if (!leadsData) return [];
         return [...new Set(leadsData.map(l => l.source).filter(Boolean))].sort();
@@ -415,7 +415,7 @@ export default function LeadsPage() {
         return leadsData.filter(lead => {
             // Tab filter
             if (activeTab !== 'all') {
-                const tab = tabs.find(t => t.id === activeTab);
+                const tab = LEAD_TABS.find(t => t.id === activeTab);
                 if (!tab?.statuses?.includes(lead.status?.toLowerCase())) return false;
             }
 
@@ -442,7 +442,7 @@ export default function LeadsPage() {
     const getTabCount = (tabId: string) => {
         if (!leadsData) return 0;
         if (tabId === 'all') return leadsData.length;
-        const tab = tabs.find(t => t.id === tabId);
+        const tab = LEAD_TABS.find(t => t.id === tabId);
         return leadsData.filter(l => tab?.statuses?.includes(l.status?.toLowerCase())).length;
     };
 
@@ -500,7 +500,7 @@ export default function LeadsPage() {
 
             {/* Tabs */}
             <div className="flex gap-1 mb-6 border-b border-slate-200 overflow-x-auto scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0">
-                {tabs.map(tab => (
+                {LEAD_TABS.map(tab => (
                     <button
                         key={tab.id}
                         onClick={() => setActiveTab(tab.id)}

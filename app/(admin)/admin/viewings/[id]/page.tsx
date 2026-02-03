@@ -5,6 +5,7 @@ import { api } from "@/convex/_generated/api";
 import { useParams } from "next/navigation";
 import { Id } from "@/convex/_generated/dataModel";
 import Link from "next/link";
+import Image from "next/image";
 import {
     ArrowLeft,
     Calendar,
@@ -146,9 +147,16 @@ export default function ViewingDetailPage() {
                         <ul className="divide-y divide-slate-100">
                             {viewing.properties?.map((property: any) => (
                                 <li key={property._id} className="flex gap-4 p-4 hover:bg-slate-50 transition-colors">
-                                    <div className="h-20 w-28 shrink-0 overflow-hidden rounded-lg bg-slate-200">
+                                    <div className="relative h-20 w-28 shrink-0 overflow-hidden rounded-lg bg-slate-200">
                                         {property.images?.[0] ? (
-                                            <img src={property.images[0]} alt="" className="h-full w-full object-cover" />
+                                            <Image
+                                                src={property.images[0]}
+                                                alt={property.title || 'Fastighet'}
+                                                fill
+                                                sizes="112px"
+                                                className="object-cover"
+                                                unoptimized
+                                            />
                                         ) : (
                                             <div className="flex h-full w-full items-center justify-center text-slate-400">
                                                 <Home className="h-8 w-8" />
@@ -218,7 +226,14 @@ export default function ViewingDetailPage() {
                         {viewing.assignedTo ? (
                             <div className="flex items-center gap-3">
                                 {viewing.assignedTo.avatar ? (
-                                    <img src={viewing.assignedTo.avatar} alt="" className="h-10 w-10 rounded-full object-cover" />
+                                    <Image
+                                        src={viewing.assignedTo.avatar}
+                                        alt={viewing.assignedTo.name || 'Profilbild'}
+                                        width={40}
+                                        height={40}
+                                        className="h-10 w-10 rounded-full object-cover"
+                                        unoptimized
+                                    />
                                 ) : (
                                     <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100">
                                         <User className="h-5 w-5 text-slate-400" />

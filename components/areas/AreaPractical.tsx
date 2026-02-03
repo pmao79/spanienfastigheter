@@ -1,6 +1,7 @@
 'use client';
 
 import { Plane, FileText, Activity, ShieldCheck, CheckCircle } from 'lucide-react';
+import Image from 'next/image';
 
 interface FlightInfo {
     from: string;
@@ -102,7 +103,14 @@ export default function AreaPractical({
                 {/* Swedish Services */}
                 <div className="mt-8 bg-white p-6 rounded-sm shadow-soft">
                     <h3 className="text-lg font-serif text-navy mb-4 flex items-center gap-2">
-                        <img src="https://flagcdn.com/w20/se.png" alt="Sverige" className="w-5 h-auto shadow-sm" />
+                        <Image
+                            src="https://flagcdn.com/w20/se.png"
+                            alt="Sverige"
+                            width={20}
+                            height={14}
+                            className="w-5 h-auto shadow-sm"
+                            unoptimized
+                        />
                         Svensk service på plats
                     </h3>
                     <div className="flex flex-wrap gap-3">

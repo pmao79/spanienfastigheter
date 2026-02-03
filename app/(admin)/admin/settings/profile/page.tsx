@@ -4,6 +4,7 @@ import { useQuery, useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { useState, useEffect } from "react";
 import { User, Phone, Mail, Globe, Hash, Save } from "lucide-react";
+import Image from "next/image";
 
 export default function ProfilePage() {
     const user = useQuery(api.users.getMyProfile);
@@ -70,9 +71,16 @@ export default function ProfilePage() {
 
                     {/* AVATAR */}
                     <div className="p-6 bg-white rounded-xl border border-slate-200 shadow-sm flex items-center gap-6">
-                        <div className="w-20 h-20 rounded-full bg-[#1a365d] text-white flex items-center justify-center text-2xl font-bold shrink-0 overflow-hidden">
+                        <div className="relative w-20 h-20 rounded-full bg-[#1a365d] text-white flex items-center justify-center text-2xl font-bold shrink-0 overflow-hidden">
                             {formData.avatarUrl ? (
-                                <img src={formData.avatarUrl} alt="Avatar" className="w-full h-full object-cover" />
+                                <Image
+                                    src={formData.avatarUrl}
+                                    alt="Avatar"
+                                    fill
+                                    sizes="80px"
+                                    className="object-cover"
+                                    unoptimized
+                                />
                             ) : (
                                 formData.initials || "SF"
                             )}
@@ -185,9 +193,16 @@ export default function ProfilePage() {
                         {/* SIGNATURE PREVIEW */}
                         <div className="bg-white p-8 rounded-lg shadow-sm border border-slate-100 max-w-md mx-auto">
                             <div className="flex items-center gap-4 mb-6">
-                                <div className="w-14 h-14 rounded-full bg-[#1a365d] text-white flex items-center justify-center font-bold text-xl shrink-0 overflow-hidden">
+                                <div className="relative w-14 h-14 rounded-full bg-[#1a365d] text-white flex items-center justify-center font-bold text-xl shrink-0 overflow-hidden">
                                     {formData.avatarUrl ? (
-                                        <img src={formData.avatarUrl} alt="Avatar" className="w-full h-full object-cover" />
+                                        <Image
+                                            src={formData.avatarUrl}
+                                            alt="Avatar"
+                                            fill
+                                            sizes="56px"
+                                            className="object-cover"
+                                            unoptimized
+                                        />
                                     ) : (
                                         formData.initials || "SF"
                                     )}

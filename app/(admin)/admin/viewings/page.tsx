@@ -3,6 +3,7 @@
 import { useState, useMemo } from "react";
 import { useQuery, useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
+import Image from "next/image";
 import {
     Search,
     Filter,
@@ -145,12 +146,15 @@ function ViewingCard({ viewing }: { viewing: any }) {
         <div className="bg-white rounded-xl border border-gray-200 p-4 sm:p-5 hover:shadow-md transition-shadow">
             <div className="flex flex-col sm:flex-row gap-4">
                 {/* Property Image */}
-                <div className="w-full sm:w-24 h-48 sm:h-24 rounded-lg bg-gray-100 overflow-hidden flex-shrink-0">
+                <div className="relative w-full sm:w-24 h-48 sm:h-24 rounded-lg bg-gray-100 overflow-hidden flex-shrink-0">
                     {viewing.property?.images?.[0] ? (
-                        <img
+                        <Image
                             src={viewing.property.images[0]}
-                            alt={viewing.property.title || 'Property'}
-                            className="w-full h-full object-cover"
+                            alt={viewing.property.title || 'Fastighet'}
+                            fill
+                            sizes="96px"
+                            className="object-cover"
+                            unoptimized
                         />
                     ) : (
                         <div className="w-full h-full flex items-center justify-center text-gray-400">
@@ -248,7 +252,7 @@ function ViewingCard({ viewing }: { viewing: any }) {
                     {viewing.notes && (
                         <div className="mt-3 pt-3 border-t border-gray-100">
                             <p className="text-sm text-gray-600 italic">
-                                "{viewing.notes}"
+                                &ldquo;{viewing.notes}&rdquo;
                             </p>
                         </div>
                     )}

@@ -203,10 +203,13 @@ export default function PortalDashboard() {
                         {deal.assignedTo ? (
                             <div className="flex items-start gap-4">
                                 {deal.assignedTo.avatar ? (
-                                    <img
+                                    <Image
                                         src={deal.assignedTo.avatar}
                                         alt={deal.assignedTo.name}
+                                        width={48}
+                                        height={48}
                                         className="h-12 w-12 rounded-full object-cover"
+                                        unoptimized
                                     />
                                 ) : (
                                     <div className="h-12 w-12 rounded-full bg-slate-100 flex items-center justify-center text-slate-400">

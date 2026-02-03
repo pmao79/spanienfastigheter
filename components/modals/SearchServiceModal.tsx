@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { X, Check, ArrowRight, Star } from 'lucide-react';
+import Image from 'next/image';
 import { sendVIPWelcome } from '@/actions/email/send-vip';
 
 interface SearchServiceModalProps {
@@ -104,11 +105,13 @@ export default function SearchServiceModal({
                 <div className="w-full md:w-2/5 md:flex hidden bg-navy text-white relative flex-col justify-between p-8 md:p-12 overflow-hidden">
                     {/* Background Image overlay */}
                     <div className="absolute inset-0 opacity-40">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
+                        <Image
                             src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2070&auto=format&fit=crop"
-                            className="w-full h-full object-cover"
                             alt="Luxury home"
+                            fill
+                            sizes="40vw"
+                            className="object-cover"
+                            unoptimized
                         />
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/80 to-navy/40"></div>

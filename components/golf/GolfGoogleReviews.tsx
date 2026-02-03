@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Star, ExternalLink, User } from 'lucide-react';
+import Image from 'next/image';
 
 interface Review {
     authorName: string;
@@ -135,10 +136,13 @@ export default function GolfGoogleReviews({ courseName, location, googlePlaceId 
                     rel="noopener noreferrer"
                     className="flex items-center gap-1 text-xs text-gray-500 hover:text-navy transition-colors"
                 >
-                    <img
+                    <Image
                         src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
                         alt="Google"
+                        width={92}
+                        height={30}
                         className="h-4 w-auto opacity-70"
+                        unoptimized
                     />
                 </a>
             </div>
@@ -178,10 +182,13 @@ export default function GolfGoogleReviews({ courseName, location, googlePlaceId 
                         <div key={index} className={index > 0 ? 'border-t border-greige pt-6' : ''}>
                             <div className="flex items-start gap-3 mb-3">
                                 {review.profilePhoto ? (
-                                    <img
+                                    <Image
                                         src={review.profilePhoto}
                                         alt={review.authorName}
+                                        width={40}
+                                        height={40}
                                         className="w-10 h-10 rounded-full object-cover"
+                                        unoptimized
                                     />
                                 ) : (
                                     <div className="w-10 h-10 rounded-full bg-greige flex items-center justify-center">

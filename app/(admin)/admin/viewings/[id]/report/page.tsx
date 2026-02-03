@@ -5,6 +5,7 @@ import { useQuery, useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { useParams, useRouter } from "next/navigation";
 import { Id } from "@/convex/_generated/dataModel";
+import Image from "next/image";
 import {
     ArrowLeft,
     ArrowRight,
@@ -134,10 +135,17 @@ export default function ViewingReportPage() {
                 {isPropertyStep && currentProperty && (
                     <div className="space-y-6">
                         <div className="overflow-hidden rounded-xl bg-white shadow-sm">
-                            <div className="h-32 bg-slate-200">
+                            <div className="relative h-32 bg-slate-200">
                                 {/* Ideally show property image here */}
                                 {currentProperty.images?.[0] && (
-                                    <img src={currentProperty.images[0]} alt="" className="h-full w-full object-cover" />
+                                    <Image
+                                        src={currentProperty.images[0]}
+                                        alt={currentProperty.type ? `${currentProperty.type} i ${currentProperty.town}` : 'Fastighet'}
+                                        fill
+                                        sizes="100vw"
+                                        className="object-cover"
+                                        unoptimized
+                                    />
                                 )}
                             </div>
                             <div className="p-4">
