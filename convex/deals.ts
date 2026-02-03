@@ -41,12 +41,21 @@ export const getAll = query({
             const completedItems = currentChecklist?.items.filter((i: any) => i.isCompleted).length || 0;
             const progress = totalItems > 0 ? Math.round((completedItems / totalItems) * 100) : 0;
 
+            // Find next step (first uncompleted item)
+            // If all completed in current stage, maybe show "Move to next stage"? 
+            // For now, just show first uncompleted.
+            const nextStepItem = currentChecklist?.items.find((i: any) => !i.isCompleted);
+            const nextStep = nextStepItem?.title;
+            const nextStepDeadline = nextStepItem?.dueDate;
+
             return {
                 ...deal,
                 lead,
                 property,
                 assignedTo,
-                progress
+                progress,
+                nextStep,
+                nextStepDeadline
             };
         }));
 

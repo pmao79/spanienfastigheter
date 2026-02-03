@@ -46,7 +46,27 @@ export const getStats = query({
             };
         }));
 
-        // Pending Reports
+        // Pending Reports (Viewings that are completed but typically need a report - checking implementation plan)
+        // Ideally we check if a report exists, but simplistic check is 'completed' status without a link to report?
+        // Or we just assume recently completed viewings need reports.
+        // Let's just fetch the viewings with status 'completed' and let the frontend decide or filtered by those without reports if we had that link.
+        // For now, let's just return the latest 5 completed viewings as "Pending Reports" candidates.
+        const pendingReportsRaw = await ctx.db.query("viewings")
+            .withIndex("by_status", q => q.eq("status", "completed"))
+            .take(5);
+
+        const pendingReports = await Promise.all(pendingReportsRaw.map(async (v) => {
+            const lead = await ctx.db.get(v.leadId);
+            // We want property info too
+            const property = v.propertyIds && v.propertyIds.length > 0 ? await ctx.db.get(v.propertyIds[0]) : null;
+            return {
+                ...v,
+                leadName: lead ? `${lead.firstName} ${lead.lastName}` : "Unknown Lead",
+                propertyRef: property ? property.ref : "N/A",
+                town: property ? property.town : "Unknown"
+            };
+        }));
+
         const pendingReportsCount = (await ctx.db.query("viewings")
             .withIndex("by_status", q => q.eq("status", "completed"))
             .collect()).length;
@@ -97,6 +117,7 @@ export const getStats = query({
             recentActivity,
             upcomingViewings: enrichedViewings,
             pendingReportsCount,
+            pendingReports,
             activeDeals,
             upcomingFollowUps,
             recentMailings

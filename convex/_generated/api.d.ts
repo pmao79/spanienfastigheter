@@ -12,6 +12,7 @@ import type * as activity from "../activity.js";
 import type * as admin from "../admin.js";
 import type * as adminProperties from "../adminProperties.js";
 import type * as afterSales from "../afterSales.js";
+import type * as calendar from "../calendar.js";
 import type * as commissions from "../commissions.js";
 import type * as communications from "../communications.js";
 import type * as crons from "../crons.js";
@@ -47,6 +48,7 @@ declare const fullApi: ApiFromModules<{
   admin: typeof admin;
   adminProperties: typeof adminProperties;
   afterSales: typeof afterSales;
+  calendar: typeof calendar;
   commissions: typeof commissions;
   communications: typeof communications;
   crons: typeof crons;

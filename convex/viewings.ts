@@ -37,12 +37,36 @@ export const getAll = query({
         const enrichedViewings = await Promise.all(viewings.map(async (viewing: any) => {
             const lead = await ctx.db.get(viewing.leadId);
             const assignedTo = await ctx.db.get(viewing.assignedToId);
-            // Property fetching might be heavy if many, maybe just fetch count or first? 
-            // For list view, usually just need basic info.
+
+            // Fetch first property with details for list view
+            let property = null;
+            if (viewing.propertyIds && viewing.propertyIds.length > 0) {
+                const fullProperty = await ctx.db.get(viewing.propertyIds[0]);
+                if (fullProperty) {
+                    property = {
+                        _id: fullProperty._id,
+                        referenceNumber: fullProperty.referenceNumber,
+                        title: fullProperty.title,
+                        region: fullProperty.region,
+                        price: fullProperty.price,
+                        bedrooms: fullProperty.bedrooms,
+                        bathrooms: fullProperty.bathrooms,
+                        hasPool: fullProperty.hasPool,
+                        images: fullProperty.images || [],
+                        location: fullProperty.location,
+                    };
+                }
+            }
+
+            // Check if report exists
+            const report = viewing.reportId ? await ctx.db.get(viewing.reportId) : null;
+
             return {
                 ...viewing,
                 lead,
-                assignedTo
+                assignedTo,
+                property,
+                hasReport: !!report,
             };
         }));
 
@@ -95,7 +119,30 @@ export const getByDateRange = query({
         return await Promise.all(viewings.map(async (v) => {
             const lead = await ctx.db.get(v.leadId);
             const assignedTo = await ctx.db.get(v.assignedToId);
-            return { ...v, lead, assignedTo };
+            // Fetch first property for calendar display
+            const property = v.propertyIds && v.propertyIds.length > 0
+                ? await ctx.db.get(v.propertyIds[0])
+                : null;
+
+            return {
+                ...v,
+                lead,
+                assignedTo,
+                property: property ? {
+                    title: property.town,
+                    fullTitle: property.town, // Schema doesn't have title, use town or construct "Type in Town"
+                    ref: property.ref,
+                    price: property.price,
+                    beds: property.beds,
+                    region: property.region || property.province, // Added region
+                    location: property.locationDetail || property.town, // Added location
+                    features: [
+                        property.beds ? `${property.beds} sov` : null,
+                        property.built ? `${property.built}m²` : null,
+                        property.pool ? 'Pool' : null // Added pool
+                    ].filter(Boolean).join(' • ')
+                } : null
+            };
         }));
     }
 });

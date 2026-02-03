@@ -147,11 +147,14 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
         lg:static lg:translate-x-0
         ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}
       `}>
-                <div className="flex h-16 items-center justify-between px-6 font-serif text-xl font-bold tracking-wider">
-                    <span>ADMIN</span>
+                <div className="flex h-16 items-center px-6 font-serif text-xl font-bold tracking-wider gap-3">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/10 text-white">
+                        <Home className="h-5 w-5" />
+                    </div>
+                    <span className="text-lg">Spanienfastigheter</span>
                     <button
                         onClick={() => setSidebarOpen(false)}
-                        className="lg:hidden"
+                        className="ml-auto lg:hidden"
                     >
                         <X className="h-6 w-6" />
                     </button>
