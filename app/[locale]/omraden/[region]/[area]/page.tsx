@@ -8,6 +8,8 @@ import AreaContent from '@/components/areas/AreaContent';
 const REGION_NAMES: Record<string, string> = {
     'costa-blanca': 'Costa Blanca',
     'costa-del-sol': 'Costa del Sol',
+    'costa-calida': 'Costa Cálida',
+    'costa-almeria': 'Costa de Almería',
 };
 
 // Generate static params for all areas

@@ -1,7 +1,7 @@
 'use client';
 
 import { Search, X, Check, ChevronDown, ChevronUp, Plus } from 'lucide-react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { useCallback, useState, useEffect, useRef } from 'react';
@@ -126,6 +126,14 @@ function DualRangeSlider({
 export default function FilterSidebar({ onOpenSearchService, propertyCount }: FilterSidebarProps) {
     const router = useRouter();
     const searchParams = useSearchParams();
+    const pathname = usePathname();
+
+    const basePath = (() => {
+        if (pathname.includes('/fastigheter')) return pathname;
+        const segments = pathname.split('/').filter(Boolean);
+        const locale = segments[0];
+        return locale ? `/${locale}/fastigheter` : '/fastigheter';
+    })();
 
     // Parse current URL params
     const currentRegions = searchParams.get('regions')?.split(',').filter(Boolean) || [];
@@ -166,8 +174,8 @@ export default function FilterSidebar({ onOpenSearchService, propertyCount }: Fi
             }
         });
 
-        router.push(`?${params.toString()}`, { scroll: false });
-    }, [router, searchParams]);
+        router.push(`${basePath}?${params.toString()}`, { scroll: false });
+    }, [router, searchParams, basePath]);
 
     // Toggle handlers for multi-select
     const toggleArrayParam = useCallback((paramName: string, value: string, currentValues: string[]) => {
@@ -207,7 +215,7 @@ export default function FilterSidebar({ onOpenSearchService, propertyCount }: Fi
 
     // Clear all
     const clearAllFilters = () => {
-        router.push('/fastigheter', { scroll: false });
+        router.push(basePath, { scroll: false });
     };
 
     // Filtered areas
@@ -529,9 +537,15 @@ export default function FilterSidebar({ onOpenSearchService, propertyCount }: Fi
                     )}
                 </div>
 
-                <div className="w-full bg-navy text-white py-4 uppercase tracking-[0.15em] text-xs font-semibold text-center shadow-lg shadow-navy/20 cursor-default">
-                    Visa {propertyCount ?? '...'} bostäder
-                </div>
+                <button
+                    type="button"
+                    onClick={() => router.push(`${basePath}?${searchParams.toString()}`, { scroll: false })}
+                    className="w-full bg-navy text-white py-4 uppercase tracking-[0.15em] text-xs font-semibold text-center shadow-lg shadow-navy/20 cursor-pointer"
+                >
+                    {propertyCount === undefined
+                        ? 'Visa bostäder'
+                        : `Visa ${propertyCount} bostäder`}
+                </button>
 
                 {/* Concierge Helper Card */}
                 <div className="mt-8 pt-8 border-t border-gray-100">

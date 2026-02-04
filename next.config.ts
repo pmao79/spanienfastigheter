@@ -25,6 +25,20 @@ const nextConfig: NextConfig = {
     config.resolve.alias.canvas = false;
     return config;
   },
+  async redirects() {
+    return [
+      {
+        source: '/:locale/omraden/costa-de-almeria',
+        destination: '/:locale/omraden/costa-almeria',
+        permanent: true,
+      },
+      {
+        source: '/omraden/costa-de-almeria',
+        destination: '/omraden/costa-almeria',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default withNextIntl(nextConfig);
