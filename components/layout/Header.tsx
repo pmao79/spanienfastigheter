@@ -115,13 +115,13 @@ export default function Header() {
 
                     {/* Mobile Menu Button */}
                     <button
-                        className={`lg:hidden z-[60] p-2 transition-colors ${shouldBeSolid ? 'text-navy' : 'text-white'
-                            }`}
                         onClick={() => setIsMobileMenuOpen(true)}
+                        className={`lg:hidden w-10 h-10 rounded-full flex items-center justify-center transition-colors ${shouldBeSolid ? 'bg-gray-100 hover:bg-gray-200 text-navy' : 'bg-white/10 hover:bg-white/20 text-white'
+                            }`}
                         aria-expanded={isMobileMenuOpen}
                         aria-label="Öppna meny"
                     >
-                        <Menu size={24} />
+                        <Menu size={20} />
                     </button>
                 </div>
             </header>

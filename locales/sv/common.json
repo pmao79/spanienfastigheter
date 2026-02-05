@@ -1,10 +1,11 @@
 {
     "nav": {
         "forSale": "Till Salu",
+        "newBuild": "Nyproduktion",
         "viewingTrip": "Visningsresa",
         "guide": "Guide",
         "areas": "Områden",
-        "sell": "Sälja",
+        "sell": "Sälja bostad",
         "contact": "Kontakt",
         "favorites": "Favoriter",
         "savedSearches": "Sparade sökningar",

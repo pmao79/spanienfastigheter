@@ -1,10 +1,11 @@
 {
     "nav": {
         "forSale": "En Venta",
+        "newBuild": "Obra nueva",
         "viewingTrip": "Viaje de Visita",
         "guide": "Guía",
         "areas": "Zonas",
-        "sell": "Vender",
+        "sell": "Vender vivienda",
         "contact": "Contacto",
         "favorites": "Favoritos",
         "savedSearches": "Búsquedas guardadas",

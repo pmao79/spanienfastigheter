@@ -1,10 +1,11 @@
 {
     "nav": {
         "forSale": "For Sale",
+        "newBuild": "New build",
         "viewingTrip": "Viewing Trip",
         "guide": "Guide",
         "areas": "Areas",
-        "sell": "Sell",
+        "sell": "Sell property",
         "contact": "Contact",
         "favorites": "Favorites",
         "savedSearches": "Saved Searches",
