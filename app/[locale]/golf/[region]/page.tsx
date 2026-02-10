@@ -149,7 +149,7 @@ export default async function GolfRegionPage({ params }: RegionPageProps) {
                     </div>
 
                     {courses.length === 0 && (
-                        <div className="text-center py-20 bg-white rounded-sm">
+                        <div className="text-center py-20 bg-white rounded-lg">
                             <p className="text-gray-500">Inga golfbanor hittades i denna region än.</p>
                             <p className="text-xs text-gray-400 mt-2">(Data laddas...)</p>
                         </div>

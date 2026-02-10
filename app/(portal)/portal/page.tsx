@@ -29,7 +29,7 @@ export default function PortalDashboard() {
         return (
             <div className="space-y-8">
                 {/* Fallback for no active deal */}
-                <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-xl shadow-sm text-center border border-slate-100">
+                <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-sm text-center border border-slate-100">
                     <Home className="h-12 w-12 text-slate-300 mx-auto mb-4" />
                     <h2 className="text-xl font-bold text-slate-900 mb-2">Välkommen!</h2>
                     <p className="text-slate-600">
@@ -46,7 +46,7 @@ export default function PortalDashboard() {
                         <h2 className="text-xl font-bold text-slate-900 mb-4">Förslag till dig</h2>
                         <div className="grid gap-6">
                             {mailings.map(mailing => (
-                                <div key={mailing._id} className="bg-white rounded-xl border p-6 shadow-sm">
+                                <div key={mailing._id} className="bg-white rounded-lg border p-6 shadow-sm">
                                     <h3 className="font-bold text-lg text-[#1a365d] mb-2">{mailing.subject}</h3>
                                     <p className="text-slate-600 mb-4 whitespace-pre-line">{mailing.personalMessage}</p>
 
@@ -94,7 +94,7 @@ export default function PortalDashboard() {
             </div>
 
             {/* Progress */}
-            <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
+            <div className="bg-white rounded-lg border border-slate-200 p-6 shadow-sm">
                 <h2 className="text-lg font-semibold text-slate-900 mb-6">Status</h2>
                 <div className="relative">
                     <div className="overflow-hidden rounded-full bg-slate-100 h-2 mb-8 absolute top-4 left-0 right-0 -z-0">
@@ -144,7 +144,7 @@ export default function PortalDashboard() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Property Card */}
-                <div className="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm">
+                <div className="bg-white rounded-lg border border-slate-200 overflow-hidden shadow-sm">
                     {deal.property?.images?.[0] ? (
                         <div className="h-48 relative">
                             <Image
@@ -197,7 +197,7 @@ export default function PortalDashboard() {
                 </div>
 
                 {/* Contacts Card */}
-                <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
+                <div className="bg-white rounded-lg border border-slate-200 p-6 shadow-sm">
                     <h3 className="text-lg font-semibold text-slate-900 mb-4">Dina Kontakter</h3>
                     <div className="space-y-6">
                         {deal.assignedTo ? (

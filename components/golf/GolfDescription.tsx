@@ -110,7 +110,7 @@ export default function GolfDescription({ description, longDescription, maxLengt
     };
 
     return (
-        <div className="bg-white p-8 rounded-sm shadow-soft">
+        <div className="bg-white p-8 rounded-lg shadow-soft">
             <h2 className="font-serif text-3xl text-navy mb-6">Om banan</h2>
 
             <div className="prose max-w-none space-y-4">

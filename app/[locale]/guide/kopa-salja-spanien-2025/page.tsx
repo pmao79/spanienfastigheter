@@ -69,7 +69,7 @@ const Hero = () => (
         <div className="relative z-10 max-w-[1200px] mx-auto px-6 md:px-12 py-24 md:py-32">
             <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
                 <div>
-                    <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-sm text-xs uppercase tracking-[0.3em] text-sand border border-white/10 mb-6">
+                    <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded text-xs uppercase tracking-[0.3em] text-sand border border-white/10 mb-6">
                         <Sparkles size={14} className="text-sand" /> Uppdaterad för 2026
                     </span>
                     <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-tight mb-6">
@@ -81,14 +81,14 @@ const Hero = () => (
                     <div className="flex flex-wrap gap-4">
                         <Link
                             href="#kalkylator"
-                            className="inline-flex items-center gap-2 bg-sand text-navy px-6 py-3 text-xs uppercase tracking-[0.2em] font-bold hover:bg-white transition-colors"
+                            className="inline-flex items-center gap-2 bg-sand text-navy px-6 py-3 text-xs uppercase tracking-[0.2em] font-bold hover:bg-white transition-colors rounded-md"
                         >
                             Beräkna din kostnad
                             <ArrowRight size={14} />
                         </Link>
                         <Link
                             href="#process"
-                            className="inline-flex items-center gap-2 border border-white/30 text-white px-6 py-3 text-xs uppercase tracking-[0.2em] font-semibold hover:bg-white/10 transition-colors"
+                            className="inline-flex items-center gap-2 border border-white/30 text-white px-6 py-3 text-xs uppercase tracking-[0.2em] font-semibold hover:bg-white/10 transition-colors rounded-md"
                         >
                             Läs guiden
                             <ArrowDown size={14} />
@@ -139,7 +139,7 @@ const StickyNav = () => (
                 <li><Link href="#misstag" className="hover:text-sand transition-colors whitespace-nowrap">Misstag</Link></li>
                 <li><Link href="#faq" className="hover:text-sand transition-colors whitespace-nowrap">FAQ</Link></li>
                 <li className="ml-auto">
-                    <Link href="#contact" className="px-4 py-2 bg-navy text-white rounded-full hover:bg-charcoal transition-colors text-xs">
+                    <Link href="#contact" className="px-4 py-2 bg-navy text-white rounded-md hover:bg-charcoal transition-colors text-xs">
                         Boka rådgivning
                     </Link>
                 </li>
@@ -164,7 +164,7 @@ const WhySpain = () => (
                 ].map((item) => {
                     const Icon = item.icon;
                     return (
-                        <div key={item.label} className="bg-white rounded-sm p-6 text-center border border-greige shadow-soft">
+                        <div key={item.label} className="bg-white rounded-lg p-6 text-center border border-greige shadow-soft">
                             <Icon size={18} className="text-sand mx-auto mb-3" />
                             <p className="font-serif text-3xl text-sand mb-2">{item.value}</p>
                             <p className="text-xs uppercase tracking-[0.2em] text-charcoal/60 mb-2">{item.label}</p>
@@ -180,7 +180,7 @@ const WhySpain = () => (
 const LifestyleSection = () => (
     <Section className="bg-white">
         <div className="max-w-[1200px] mx-auto grid lg:grid-cols-2 gap-10 items-center">
-            <div className="relative h-[260px] lg:h-[420px] rounded-sm overflow-hidden">
+            <div className="relative h-[260px] lg:h-[420px] rounded-lg overflow-hidden">
                 <Image
                     src="/images/guide/2026-02-10-14-35-05-terrace-lifestyle.png"
                     alt="Terrass med havsutsikt i Spanien"
@@ -202,7 +202,7 @@ const LifestyleSection = () => (
                         { value: '3.5h', label: 'Flygtid' },
                         { value: '50%', label: 'Lägre kostnad' }
                     ].map((item) => (
-                        <div key={item.label} className="bg-alabaster p-4 rounded-sm border border-greige text-center">
+                        <div key={item.label} className="bg-alabaster p-4 rounded-lg border border-greige text-center">
                             <p className="font-serif text-2xl text-sand">{item.value}</p>
                             <p className="text-[10px] uppercase tracking-[0.2em] text-charcoal/60 mt-1">{item.label}</p>
                         </div>
@@ -222,7 +222,7 @@ const ComparisonTable = () => (
                 <p className="text-gray-600 mt-3 max-w-2xl mx-auto">En strategisk jämförelse för investerare och bostadsköpare 2026.</p>
             </div>
 
-            <div className="overflow-x-auto rounded-xl shadow-soft border border-greige bg-white">
+            <div className="overflow-x-auto rounded-lg shadow-soft border border-greige bg-white">
                 <table className="w-full text-left border-collapse min-w-[720px]">
                     <thead>
                         <tr className="text-xs uppercase tracking-[0.2em]">
@@ -280,8 +280,8 @@ const TaxSection = () => (
             </div>
             <div className="grid md:grid-cols-2 gap-8">
                 {/* Resale */}
-                <div className="bg-white p-8 rounded-xl shadow-soft border border-greige relative overflow-hidden">
-                    <div className="absolute top-0 right-0 bg-navy text-white text-xs font-bold px-3 py-1 rounded-bl-lg">BEGAGNAT</div>
+                <div className="bg-white p-8 rounded-lg shadow-soft border border-greige relative overflow-hidden">
+                    <div className="absolute top-0 right-0 bg-navy text-white text-xs font-bold px-3 py-1 rounded-bl">BEGAGNAT</div>
                     <h3 className="font-serif text-xl text-navy mb-4">Överföringsskatt (ITP)</h3>
                     <div className="space-y-6">
                         <div>
@@ -302,8 +302,8 @@ const TaxSection = () => (
                 </div>
 
                 {/* New Build */}
-                <div className="bg-white p-8 rounded-xl shadow-soft border border-greige relative overflow-hidden">
-                    <div className="absolute top-0 right-0 bg-sand text-navy text-xs font-bold px-3 py-1 rounded-bl-lg">NYPRODUKTION</div>
+                <div className="bg-white p-8 rounded-lg shadow-soft border border-greige relative overflow-hidden">
+                    <div className="absolute top-0 right-0 bg-sand text-navy text-xs font-bold px-3 py-1 rounded-bl">NYPRODUKTION</div>
                     <h3 className="font-serif text-xl text-navy mb-4">Moms (IVA) + AJD</h3>
 
                     <div className="mb-6">
@@ -355,7 +355,7 @@ const RentalRules = () => (
             </div>
 
             <div className="grid md:grid-cols-3 gap-6 mb-12">
-                <div className="bg-red-50 border border-red-100 p-6 rounded-xl">
+                <div className="bg-red-50 border border-red-100 p-6 rounded-lg">
                     <div className="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center mb-4 text-red-600">
                         <AlertTriangle size={18} />
                     </div>
@@ -364,7 +364,7 @@ const RentalRules = () => (
                     <p className="text-xs text-red-800 font-medium">Saknas ID blockeras annonsen automatiskt.</p>
                 </div>
 
-                <div className="bg-white border border-greige p-6 rounded-xl">
+                <div className="bg-white border border-greige p-6 rounded-lg">
                     <div className="w-10 h-10 bg-alabaster rounded-full flex items-center justify-center mb-4 text-sand">
                         <Building2 size={18} />
                     </div>
@@ -376,7 +376,7 @@ const RentalRules = () => (
                     </ul>
                 </div>
 
-                <div className="bg-sage/10 border border-sage/20 p-6 rounded-xl">
+                <div className="bg-sage/10 border border-sage/20 p-6 rounded-lg">
                     <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center mb-4 text-sand">
                         <ShieldCheck size={18} />
                     </div>
@@ -418,7 +418,7 @@ const ProcessTimeline = () => (
                     <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-white bg-navy group-[.is-active]:bg-sand group-[.is-active]:border-sand text-white group-[.is-active]:text-navy font-bold shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow shadow-white/20">
                         1
                     </div>
-                    <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 bg-white/5 border border-white/10 rounded-xl backdrop-blur-sm">
+                    <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 bg-white/5 border border-white/10 rounded-lg backdrop-blur-sm">
                         <h3 className="font-serif text-xl text-sand mb-2">Förberedelse & NIE</h3>
                         <p className="text-white/80 text-sm">Du måste ha ett spanskt skatte-ID. Via ambassaden tar det 3-5 månader. Vi hjälper dig göra det på plats (3-4 veckor).</p>
                     </div>
@@ -429,7 +429,7 @@ const ProcessTimeline = () => (
                     <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-white/30 bg-navy text-white font-bold shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
                         2
                     </div>
-                    <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 bg-white/5 border border-white/10 rounded-xl">
+                    <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 bg-white/5 border border-white/10 rounded-lg">
                         <h3 className="font-serif text-xl text-sand mb-2">Boka & Reservera</h3>
                         <p className="text-white/80 text-sm">Reservationsavgift (ca 6 000 €) för att ta bostaden av marknaden. Betala aldrig direkt till säljaren!</p>
                     </div>
@@ -440,7 +440,7 @@ const ProcessTimeline = () => (
                     <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-white/30 bg-navy text-white font-bold shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
                         3
                     </div>
-                    <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 bg-white/5 border border-sand rounded-xl relative">
+                    <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 bg-white/5 border border-sand rounded-lg relative">
                         <div className="absolute top-0 right-0 bg-sand text-navy text-[10px] font-bold px-2 py-1 rounded-bl">VIKTIGAST</div>
                         <h3 className="font-serif text-xl text-sand mb-2">Due Diligence (Besiktning)</h3>
                         <p className="text-white/80 text-sm">Vi kontrollerar LPO (Licencia de Primera Ocupación), skulder och olagliga byggnationer. Här räddar vi dig från problem.</p>
@@ -452,7 +452,7 @@ const ProcessTimeline = () => (
                     <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-white/30 bg-navy text-white font-bold shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
                         4
                     </div>
-                    <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 bg-white/5 border border-white/10 rounded-xl">
+                    <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 bg-white/5 border border-white/10 rounded-lg">
                         <h3 className="font-serif text-xl text-sand mb-2">Arras (Handpenning)</h3>
                         <p className="text-white/80 text-sm">Kontrakt skrivs och 10% betalas. Om säljaren drar sig ur nu måste de betala tillbaka dubbelt.</p>
                     </div>
@@ -463,7 +463,7 @@ const ProcessTimeline = () => (
                     <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-white/30 bg-navy text-white font-bold shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
                         5
                     </div>
-                    <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 bg-white/5 border border-white/10 rounded-xl">
+                    <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 bg-white/5 border border-white/10 rounded-lg">
                         <h3 className="font-serif text-xl text-sand mb-2">Notarie & Tillträde</h3>
                         <p className="text-white/80 text-sm">Resterande belopp betalas. Du får nycklarna och blir formell ägare!</p>
                     </div>
@@ -524,7 +524,7 @@ const FAQ = () => (
                 {FAQ_ITEMS.map((item) => (
                     <details
                         key={item.question}
-                        className="group bg-white rounded-xl shadow-soft border border-greige p-4 [&_summary::-webkit-details-marker]:hidden cursor-pointer"
+                        className="group bg-white rounded-lg shadow-soft border border-greige p-4 [&_summary::-webkit-details-marker]:hidden cursor-pointer"
                     >
                         <summary className="flex items-center justify-between font-bold text-navy group-open:text-sand transition-colors">
                             {item.question}
@@ -555,26 +555,26 @@ const ContactSection = () => (
                     <li className="flex items-center gap-2"><CheckCircle size={16} className="text-sand" /> Tillgång till hela marknaden</li>
                 </ul>
             </div>
-            <div className="bg-white rounded-sm p-8 shadow-soft">
+            <div className="bg-white rounded-lg p-8 shadow-soft">
                 <form className="space-y-4">
                     <div>
                         <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2">Namn</label>
-                        <input type="text" className="w-full px-4 py-3 border border-greige rounded-sm focus:outline-none focus:border-navy" placeholder="Ditt namn" />
+                        <input type="text" className="w-full px-4 py-3 border border-greige rounded-md focus:outline-none focus:border-navy" placeholder="Ditt namn" />
                     </div>
                     <div>
                         <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2">E-post</label>
-                        <input type="email" className="w-full px-4 py-3 border border-greige rounded-sm focus:outline-none focus:border-navy" placeholder="din@email.se" />
+                        <input type="email" className="w-full px-4 py-3 border border-greige rounded-md focus:outline-none focus:border-navy" placeholder="din@email.se" />
                     </div>
                     <div>
                         <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2">Jag är intresserad av</label>
-                        <select className="w-full px-4 py-3 border border-greige rounded-sm focus:outline-none focus:border-navy bg-white text-charcoal">
+                        <select className="w-full px-4 py-3 border border-greige rounded-md focus:outline-none focus:border-navy bg-white text-charcoal">
                             <option>Köpa bostad</option>
                             <option>Sälja bostad</option>
                             <option>Visningsresa</option>
                             <option>Rådgivning</option>
                         </select>
                     </div>
-                    <button type="button" className="w-full py-4 bg-sand text-navy font-bold rounded-sm hover:bg-navy hover:text-white transition-colors cursor-pointer">
+                    <button type="button" className="w-full py-4 bg-sand text-navy font-bold rounded-md hover:bg-navy hover:text-white transition-colors cursor-pointer">
                         Kontakta mig
                     </button>
                 </form>
@@ -599,7 +599,7 @@ const CommonMistakes = () => (
                     'Köpa utan besiktning.',
                     'Inte förstå gemenskapsregler och avgifter.'
                 ].map((item) => (
-                    <div key={item} className="bg-red-50 border-l-4 border-red-200 p-6 rounded-sm">
+                    <div key={item} className="bg-red-50 border-l-4 border-red-200 p-6 rounded-lg">
                         <XCircle size={16} className="text-red-500 mb-3" />
                         <p className="text-sm text-charcoal">{item}</p>
                     </div>
@@ -629,7 +629,7 @@ const ChecklistSection = () => (
                     'Notariebesök',
                     'Registrering av köpet'
                 ].map((item) => (
-                    <div key={item} className="flex items-center gap-3 bg-emerald-50/60 border border-emerald-100 p-4 rounded-sm">
+                    <div key={item} className="flex items-center gap-3 bg-emerald-50/60 border border-emerald-100 p-4 rounded-lg">
                         <CheckCircle size={16} className="text-emerald-600" />
                         <span className="text-sm text-charcoal">{item}</span>
                     </div>
@@ -660,7 +660,7 @@ const ResourcesSection = () => (
                             href={item.href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="bg-white border border-greige rounded-sm p-5 hover:border-sand transition-colors"
+                            className="bg-white border border-greige rounded-lg p-5 hover:border-sand transition-colors"
                         >
                             <Icon size={18} className="text-sand mb-3" />
                             <p className="text-sm font-semibold text-navy">{item.label}</p>

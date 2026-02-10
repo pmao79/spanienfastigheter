@@ -134,7 +134,7 @@ export default function ViewingReportPage() {
                 {/* STEP: Property Feedback */}
                 {isPropertyStep && currentProperty && (
                     <div className="space-y-6">
-                        <div className="overflow-hidden rounded-xl bg-white shadow-sm">
+                        <div className="overflow-hidden rounded-lg bg-white shadow-sm">
                             <div className="relative h-32 bg-slate-200">
                                 {/* Ideally show property image here */}
                                 {currentProperty.images?.[0] && (
@@ -155,7 +155,7 @@ export default function ViewingReportPage() {
                             </div>
                         </div>
 
-                        <div className="rounded-xl bg-white p-6 shadow-sm space-y-6">
+                        <div className="rounded-lg bg-white p-6 shadow-sm space-y-6">
                             <h3 className="font-medium text-slate-900">Vad tyckte kunden?</h3>
 
                             {/* Reaction */}
@@ -222,7 +222,7 @@ export default function ViewingReportPage() {
                             <h2 className="text-xl font-bold text-slate-900">Kundstatus</h2>
                         </div>
 
-                        <div className="rounded-xl bg-white p-6 shadow-sm space-y-6">
+                        <div className="rounded-lg bg-white p-6 shadow-sm space-y-6">
                             <div>
                                 <label className="mb-2 block text-sm font-medium text-slate-700">Tidsplan</label>
                                 <select
@@ -277,7 +277,7 @@ export default function ViewingReportPage() {
                             <h2 className="text-xl font-bold text-slate-900">Din Bedömning</h2>
                         </div>
 
-                        <div className="rounded-xl bg-white p-6 shadow-sm space-y-6">
+                        <div className="rounded-lg bg-white p-6 shadow-sm space-y-6">
                             <div>
                                 <label className="mb-3 block text-sm font-medium text-slate-700">Sannolikhet till köp</label>
                                 <div className="grid grid-cols-2 gap-3">
@@ -347,7 +347,7 @@ export default function ViewingReportPage() {
                     {step > 1 && (
                         <button
                             onClick={handleBack}
-                            className="flex-1 rounded-xl border border-slate-300 py-3 text-sm font-bold text-slate-700 active:bg-slate-50"
+                            className="flex-1 rounded-md border border-slate-300 py-3 text-sm font-bold text-slate-700 active:bg-slate-50"
                         >
                             Tillbaka
                         </button>
@@ -356,7 +356,7 @@ export default function ViewingReportPage() {
                     {step < totalSteps ? (
                         <button
                             onClick={handleNext}
-                            className="flex-[2] rounded-xl bg-[#1a365d] py-3 text-sm font-bold text-white shadow-lg active:scale-[0.98] active:bg-[#153e75]"
+                            className="flex-[2] rounded-md bg-[#1a365d] py-3 text-sm font-bold text-white shadow-lg active:scale-[0.98] active:bg-[#153e75]"
                         >
                             Nästa
                         </button>
@@ -364,7 +364,7 @@ export default function ViewingReportPage() {
                         <button
                             onClick={handleSubmit}
                             disabled={isSubmitting}
-                            className="flex-[2] flex items-center justify-center gap-2 rounded-xl bg-green-600 py-3 text-sm font-bold text-white shadow-lg active:scale-[0.98] disabled:opacity-50"
+                            className="flex-[2] flex items-center justify-center gap-2 rounded-md bg-green-600 py-3 text-sm font-bold text-white shadow-lg active:scale-[0.98] disabled:opacity-50"
                         >
                             {isSubmitting ? 'Sparar...' : <><Save className="h-4 w-4" /> Slutför rapport</>}
                         </button>

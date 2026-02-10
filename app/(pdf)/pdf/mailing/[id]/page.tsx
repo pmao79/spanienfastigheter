@@ -69,7 +69,7 @@ export default function MailingPdfPage() {
                         </div>
 
                         {/* Main Image */}
-                        <div className="relative h-[300px] w-full rounded-xl overflow-hidden mb-4 bg-slate-100">
+                        <div className="relative h-[300px] w-full rounded-lg overflow-hidden mb-4 bg-slate-100">
                             {property.images?.[0] && (
                                 <Image
                                     src={property.images[0]}

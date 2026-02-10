@@ -38,22 +38,22 @@ export default function AreaClimate({
 
             {/* Climate Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                <div className="bg-white border border-greige/50 rounded-sm p-5 text-center group hover:border-sand/50 transition-all shadow-sm">
+                <div className="bg-white border border-greige/50 rounded-lg p-5 text-center group hover:border-sand/50 transition-all shadow-sm">
                     <Sun size={28} className="text-sand mx-auto mb-2 group-hover:rotate-12 transition-transform" />
                     <p className="text-3xl font-serif text-navy">{sunshineHours}</p>
                     <p className="text-xs text-charcoal/60 uppercase tracking-wide">Soltimmar/år</p>
                 </div>
-                <div className="bg-white border border-greige/50 rounded-sm p-5 text-center group hover:border-sand/50 transition-all shadow-sm">
+                <div className="bg-white border border-greige/50 rounded-lg p-5 text-center group hover:border-sand/50 transition-all shadow-sm">
                     <Droplets size={28} className="text-navy mx-auto mb-2 group-hover:translate-y-1 transition-transform" />
                     <p className="text-3xl font-serif text-navy">{rainyDays}</p>
                     <p className="text-xs text-charcoal/60 uppercase tracking-wide">Regndagar/år</p>
                 </div>
-                <div className="bg-white border border-greige/50 rounded-sm p-5 text-center group hover:border-sand/50 transition-all shadow-sm">
+                <div className="bg-white border border-greige/50 rounded-lg p-5 text-center group hover:border-sand/50 transition-all shadow-sm">
                     <Thermometer size={28} className="text-sage mx-auto mb-2 group-hover:scale-110 transition-transform" />
                     <p className="text-3xl font-serif text-navy">{data.find(d => d.month === 'Juli')?.areaTemp || 28}°C</p>
                     <p className="text-xs text-charcoal/60 uppercase tracking-wide">Juli snitt</p>
                 </div>
-                <div className="bg-white border border-greige/50 rounded-sm p-5 text-center group hover:border-sand/50 transition-all shadow-sm">
+                <div className="bg-white border border-greige/50 rounded-lg p-5 text-center group hover:border-sand/50 transition-all shadow-sm">
                     <Waves size={28} className="text-navy/70 mx-auto mb-2 group-hover:translate-x-1 transition-transform" />
                     <p className="text-3xl font-serif text-navy">{data.find(d => d.month === 'Juli')?.seaTemp || 25}°C</p>
                     <p className="text-xs text-charcoal/60 uppercase tracking-wide">Havstemp juli</p>
@@ -61,7 +61,7 @@ export default function AreaClimate({
             </div>
 
             {/* Comparison Table */}
-            <div className="bg-white rounded-sm shadow-soft overflow-hidden">
+            <div className="bg-white rounded-lg shadow-soft overflow-hidden">
                 <table className="w-full">
                     <thead>
                         <tr className="bg-navy text-white">

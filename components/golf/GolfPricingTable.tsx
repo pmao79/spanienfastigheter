@@ -38,10 +38,10 @@ export default function GolfPricingTable({ course }: GolfPricingTableProps) {
     // If no prices available, show helpful message
     if (!hasPrices) {
         return (
-            <div className="bg-white rounded-sm shadow-soft p-6 md:p-8">
+            <div className="bg-white rounded-lg shadow-soft p-6 md:p-8">
                 <h3 className="font-serif text-2xl text-navy mb-6">Green Fee & Priser</h3>
 
-                <div className="bg-greige/50 rounded-sm p-6 text-center">
+                <div className="bg-greige/50 rounded-lg p-6 text-center">
                     <svg className="w-12 h-12 mx-auto mb-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
@@ -68,7 +68,7 @@ export default function GolfPricingTable({ course }: GolfPricingTableProps) {
                             href={course.contact.website.startsWith('http') ? course.contact.website : `https://${course.contact.website}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="block w-full bg-navy text-white py-4 rounded-sm uppercase tracking-widest text-sm font-bold hover:bg-navy/90 transition-colors"
+                            className="block w-full bg-navy text-white py-4 rounded-md uppercase tracking-widest text-sm font-bold hover:bg-navy/90 transition-colors"
                         >
                             Besök klubbens hemsida
                         </a>
@@ -79,7 +79,7 @@ export default function GolfPricingTable({ course }: GolfPricingTableProps) {
     }
 
     return (
-        <div className="bg-white rounded-sm shadow-soft p-6 md:p-8">
+        <div className="bg-white rounded-lg shadow-soft p-6 md:p-8">
             <h3 className="font-serif text-2xl text-navy mb-6">Green Fee & Priser</h3>
 
             {/* High Season */}
@@ -140,25 +140,25 @@ export default function GolfPricingTable({ course }: GolfPricingTableProps) {
                     Tillval
                 </h4>
                 <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-greige/50 p-3 rounded-sm flex flex-col">
+                    <div className="bg-greige/50 p-3 rounded-lg flex flex-col">
                         <span className="text-xs text-gray-500 uppercase">Buggy</span>
                         <span className="font-serif text-lg text-navy">
                             {(course.pricing.extras.buggy ?? 0) > 0 ? `€${course.pricing.extras.buggy}` : '—'}
                         </span>
                     </div>
-                    <div className="bg-greige/50 p-3 rounded-sm flex flex-col">
+                    <div className="bg-greige/50 p-3 rounded-lg flex flex-col">
                         <span className="text-xs text-gray-500 uppercase">Klubbor</span>
                         <span className="font-serif text-lg text-navy">
                             {(course.pricing.extras.clubRental ?? 0) > 0 ? `€${course.pricing.extras.clubRental}` : '—'}
                         </span>
                     </div>
-                    <div className="bg-greige/50 p-3 rounded-sm flex flex-col">
+                    <div className="bg-greige/50 p-3 rounded-lg flex flex-col">
                         <span className="text-xs text-gray-500 uppercase">Vagn</span>
                         <span className="font-serif text-lg text-navy">
                             {(course.pricing.extras.trolley ?? 0) > 0 ? `€${course.pricing.extras.trolley}` : '—'}
                         </span>
                     </div>
-                    <div className="bg-greige/50 p-3 rounded-sm flex flex-col">
+                    <div className="bg-greige/50 p-3 rounded-lg flex flex-col">
                         <span className="text-xs text-gray-500 uppercase">Rangebollar</span>
                         <span className="font-serif text-lg text-navy">
                             {(course.pricing.extras.rangeBalls ?? 0) > 0 ? `€${course.pricing.extras.rangeBalls}` : '—'}
@@ -172,7 +172,7 @@ export default function GolfPricingTable({ course }: GolfPricingTableProps) {
                     href={course.contact.bookingUrl || (course.contact.website?.startsWith('http') ? course.contact.website : `https://${course.contact.website}`)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block w-full bg-navy text-white py-4 rounded-sm uppercase tracking-widest text-sm font-bold hover:bg-navy/90 transition-colors"
+                    className="block w-full bg-navy text-white py-4 rounded-md uppercase tracking-widest text-sm font-bold hover:bg-navy/90 transition-colors"
                 >
                     Boka Starttid
                 </a>

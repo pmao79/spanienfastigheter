@@ -54,7 +54,7 @@ export default function MailingDetailPage() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 {/* Left Column: Content Preview */}
                 <div className="lg:col-span-2 space-y-6">
-                    <div className="bg-white rounded-xl shadow-sm border p-8">
+                    <div className="bg-white rounded-lg shadow-sm border p-8">
                         <h2 className="text-lg font-semibold mb-4 text-slate-900 border-b pb-2">Innehåll</h2>
 
                         <div className="prose prose-slate max-w-none mb-8">
@@ -97,7 +97,7 @@ export default function MailingDetailPage() {
                 {/* Right Column: Meta & Timeline */}
                 <div className="space-y-6">
                     {/* Activity Timeline */}
-                    <div className="bg-white rounded-xl shadow-sm border p-6">
+                    <div className="bg-white rounded-lg shadow-sm border p-6">
                         <h3 className="font-semibold text-slate-900 mb-4">Händelselogg</h3>
                         <div className="space-y-4">
                             {timeline.map((event, idx) => (
@@ -128,7 +128,7 @@ export default function MailingDetailPage() {
                     </div>
 
                     {/* Sender Info */}
-                    <div className="bg-white rounded-xl shadow-sm border p-6">
+                    <div className="bg-white rounded-lg shadow-sm border p-6">
                         <h3 className="font-semibold text-slate-900 mb-4">Avsändare</h3>
                         <div className="flex items-center gap-3">
                             <div className="h-10 w-10 rounded-full bg-blue-50 flex items-center justify-center text-blue-600">

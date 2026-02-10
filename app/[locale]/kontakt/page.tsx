@@ -109,7 +109,7 @@ export default function ContactPage() {
 
                         {/* Contact Form */}
                         <div className="order-2 lg:order-1">
-                            <div className="bg-white p-8 md:p-10 rounded-sm shadow-soft">
+                            <div className="bg-white p-8 md:p-10 rounded-lg shadow-soft">
                                 <h2 className="text-2xl font-serif text-navy mb-2">Skicka ett meddelande</h2>
                                 <p className="text-gray-500 text-sm mb-8">Vi svarar vanligtvis inom 24 timmar</p>
 
@@ -132,7 +132,7 @@ export default function ContactPage() {
                                                     type="text"
                                                     name="firstName"
                                                     required
-                                                    className="w-full px-4 py-3 border border-gray-200 rounded-sm focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors"
+                                                    className="w-full px-4 py-3 border border-gray-200 rounded-md focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors"
                                                     placeholder="Ditt förnamn"
                                                 />
                                             </div>
@@ -144,7 +144,7 @@ export default function ContactPage() {
                                                     type="text"
                                                     name="lastName"
                                                     required
-                                                    className="w-full px-4 py-3 border border-gray-200 rounded-sm focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors"
+                                                    className="w-full px-4 py-3 border border-gray-200 rounded-md focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors"
                                                     placeholder="Ditt efternamn"
                                                 />
                                             </div>
@@ -158,7 +158,7 @@ export default function ContactPage() {
                                                 type="email"
                                                 name="email"
                                                 required
-                                                className="w-full px-4 py-3 border border-gray-200 rounded-sm focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors"
+                                                className="w-full px-4 py-3 border border-gray-200 rounded-md focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors"
                                                 placeholder="din@email.com"
                                             />
                                         </div>
@@ -170,7 +170,7 @@ export default function ContactPage() {
                                             <input
                                                 type="tel"
                                                 name="phone"
-                                                className="w-full px-4 py-3 border border-gray-200 rounded-sm focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors"
+                                                className="w-full px-4 py-3 border border-gray-200 rounded-md focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors"
                                                 placeholder="+46 70 123 45 67"
                                             />
                                         </div>
@@ -179,7 +179,7 @@ export default function ContactPage() {
                                             <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2">
                                                 Ärende
                                             </label>
-                                            <select name="subject" className="w-full px-4 py-3 border border-gray-200 rounded-sm focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors bg-white">
+                                            <select name="subject" className="w-full px-4 py-3 border border-gray-200 rounded-md focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors bg-white">
                                                 <option>Fråga om fastighet</option>
                                                 <option>Boka visning</option>
                                                 <option>Sälja min fastighet</option>
@@ -195,7 +195,7 @@ export default function ContactPage() {
                                                 required
                                                 name="message"
                                                 rows={5}
-                                                className="w-full px-4 py-3 border border-gray-200 rounded-sm focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors resize-none"
+                                                className="w-full px-4 py-3 border border-gray-200 rounded-md focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors resize-none"
                                                 placeholder="Beskriv vad du söker eller har frågor om..."
                                             />
                                         </div>
@@ -203,7 +203,7 @@ export default function ContactPage() {
                                         <button
                                             type="submit"
                                             disabled={isLoading}
-                                            className="w-full bg-navy text-white py-4 uppercase tracking-[0.2em] text-xs font-bold hover:bg-charcoal transition-colors flex items-center justify-center gap-2 disabled:opacity-50"
+                                            className="w-full bg-navy text-white py-4 uppercase tracking-[0.2em] text-xs font-bold hover:bg-charcoal transition-colors flex items-center justify-center gap-2 disabled:opacity-50 rounded-md"
                                         >
                                             {isLoading ? (
                                                 'Skickar...'
@@ -222,7 +222,7 @@ export default function ContactPage() {
                         {/* Contact Info & Agent */}
                         <div className="order-1 lg:order-2 space-y-8">
                             {/* Agent Card */}
-                            <div className="bg-white p-8 rounded-sm shadow-soft">
+                            <div className="bg-white p-8 rounded-lg shadow-soft">
                                 <h3 className="text-xs uppercase tracking-widest text-sand font-bold mb-6">Din kontakt</h3>
 
                                 <div className="flex items-start gap-5">
@@ -260,7 +260,7 @@ export default function ContactPage() {
                             <div className="grid sm:grid-cols-2 gap-4">
                                 <a
                                     href="tel:+46708625253"
-                                    className="group bg-navy text-white p-6 rounded-sm hover:bg-charcoal transition-colors"
+                                    className="group bg-navy text-white p-6 rounded-lg hover:bg-charcoal transition-colors"
                                 >
                                     <Phone size={24} className="text-sand mb-4" />
                                     <p className="text-xs uppercase tracking-widest text-white/60 mb-1">Ring oss</p>
@@ -271,7 +271,7 @@ export default function ContactPage() {
 
                                 <a
                                     href="mailto:info@spanienfastigheter.se"
-                                    className="group bg-navy text-white p-6 rounded-sm hover:bg-charcoal transition-colors"
+                                    className="group bg-navy text-white p-6 rounded-lg hover:bg-charcoal transition-colors"
                                 >
                                     <Mail size={24} className="text-sand mb-4" />
                                     <p className="text-xs uppercase tracking-widest text-white/60 mb-1">E-post</p>
@@ -282,7 +282,7 @@ export default function ContactPage() {
                             </div>
 
                             {/* Office Hours */}
-                            <div className="bg-greige/30 p-6 rounded-sm">
+                            <div className="bg-greige/30 p-6 rounded-lg">
                                 <div className="flex items-center gap-3 mb-4">
                                     <Clock size={18} className="text-sand" />
                                     <h3 className="font-serif text-navy">Öppettider</h3>
@@ -304,7 +304,7 @@ export default function ContactPage() {
                             </div>
 
                             {/* Location Note */}
-                            <div className="flex items-start gap-4 p-6 bg-white rounded-sm shadow-soft">
+                            <div className="flex items-start gap-4 p-6 bg-white rounded-lg shadow-soft">
                                 <MapPin size={20} className="text-sand flex-shrink-0 mt-1" />
                                 <div>
                                     <h4 className="font-serif text-navy mb-1">Vi jobbar digitalt</h4>

@@ -99,7 +99,7 @@ export default function StrandnaraTorreviejaPage() {
                                 bestFor: 'Premium-läge'
                             }
                         ].map((area) => (
-                            <div key={area.name} className="bg-alabaster p-6 rounded-sm border border-greige">
+                            <div key={area.name} className="bg-alabaster p-6 rounded-lg border border-greige">
                                 <h3 className="text-lg font-serif text-navy mb-2">{area.name}</h3>
                                 <p className="text-sm text-gray-500 mb-3">Pris: {area.price}</p>
                                 <p className="text-sm text-gray-600">{area.perks}</p>

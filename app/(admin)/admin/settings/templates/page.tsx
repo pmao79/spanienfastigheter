@@ -66,7 +66,7 @@ export default function EmailTemplatesPage() {
 
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
                 {filteredTemplates?.map((template) => (
-                    <div key={template._id} className="flex flex-col rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition-shadow hover:shadow-md">
+                    <div key={template._id} className="flex flex-col rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition-shadow hover:shadow-md">
                         <div className="flex items-start justify-between">
                             <span className={`rounded-full px-2 py-1 text-xs font-medium uppercase tracking-wider ${template.category === 'welcome' ? 'bg-green-50 text-green-700' :
                                     template.category === 'follow_up' ? 'bg-blue-50 text-blue-700' :
@@ -103,7 +103,7 @@ export default function EmailTemplatesPage() {
 
             {isModalOpen && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-                    <div className="w-full max-w-2xl rounded-xl bg-white shadow-2xl">
+                    <div className="w-full max-w-2xl rounded-lg bg-white shadow-2xl">
                         <div className="flex items-center justify-between border-b p-6">
                             <h2 className="text-xl font-bold">{editingTemplate ? 'Redigera mall' : 'Ny mall'}</h2>
                             <button onClick={() => setIsModalOpen(false)}><X className="h-5 w-5 text-slate-400" /></button>

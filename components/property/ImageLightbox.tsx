@@ -138,7 +138,7 @@ export default function ImageLightbox({
                             setCurrentIndex(idx);
                             setIsLoading(true);
                         }}
-                        className={`relative w-16 h-16 flex-shrink-0 rounded-sm overflow-hidden transition-all duration-300 ${currentIndex === idx
+                        className={`relative w-16 h-16 flex-shrink-0 rounded-lg overflow-hidden transition-all duration-300 ${currentIndex === idx
                                 ? 'ring-2 ring-white opacity-100 scale-110'
                                 : 'opacity-40 hover:opacity-80'
                             }`}

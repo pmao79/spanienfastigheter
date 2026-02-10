@@ -29,6 +29,7 @@ export default function AnimatedCTA({
         font-sans font-semibold uppercase tracking-widest
         transition-all duration-300 ease-out
         group cursor-pointer
+        rounded-md
     `;
 
     const sizeStyles = {
@@ -120,12 +121,13 @@ export function PulseCTA({
                 transition-all duration-300
                 hover:bg-navy hover:text-white
                 group cursor-pointer
+                rounded-md
                 ${className}
             `}
         >
             {/* Pulse rings */}
-            <span className="absolute inset-0 animate-ping bg-sand/30 rounded-sm opacity-0 group-hover:opacity-100" />
-            <span className="absolute inset-0 animate-pulse bg-sand/20 rounded-sm" style={{ animationDelay: '150ms' }} />
+            <span className="absolute inset-0 animate-ping bg-sand/30 rounded-md opacity-0 group-hover:opacity-100" />
+            <span className="absolute inset-0 animate-pulse bg-sand/20 rounded-md" style={{ animationDelay: '150ms' }} />
 
             <span className="relative z-10">{text}</span>
             <ArrowRight size={16} className="relative z-10 group-hover:translate-x-1 transition-transform" />
@@ -156,12 +158,13 @@ export function GradientBorderCTA({
                 transition-all duration-300
                 hover:text-white
                 group cursor-pointer
+                rounded-md
                 ${className}
             `}
         >
             {/* Animated gradient border */}
             <span className="
-                absolute inset-0 rounded-sm
+                absolute inset-0 rounded-md
                 bg-gradient-to-r from-navy via-sand to-sage
                 p-[2px]
                 animate-gradient-x

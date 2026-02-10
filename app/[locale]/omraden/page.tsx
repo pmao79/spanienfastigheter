@@ -164,7 +164,7 @@ export default function AreasPage() {
                                         )}
                                         {/* Region Badge */}
                                         <div className="absolute top-3 right-3">
-                                            <span className={`px-2.5 py-1.5 text-[10px] uppercase tracking-widest font-bold rounded-sm backdrop-blur-md shadow-sm ${{
+                                            <span className={`px-2.5 py-1.5 text-[10px] uppercase tracking-widest font-bold rounded backdrop-blur-md shadow-sm ${{
                                                 'costa-blanca': 'bg-white/20 text-white border border-white/30',
                                                 'costa-del-sol': 'bg-amber-100/40 text-amber-950 border border-amber-200/50',
                                                 'costa-calida': 'bg-cyan-100/40 text-cyan-950 border border-cyan-200/50',

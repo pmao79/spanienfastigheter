@@ -76,7 +76,7 @@ export default function ExploreSection() {
                         <Link
                             key={card.href}
                             href={card.href}
-                            className="group bg-white rounded-sm overflow-hidden shadow-soft hover:shadow-xl transition-all duration-300"
+                            className="group bg-white rounded-lg overflow-hidden shadow-soft hover:shadow-xl transition-all duration-300"
                         >
                             {/* Image */}
                             <div className="aspect-[16/10] relative overflow-hidden">
@@ -88,7 +88,7 @@ export default function ExploreSection() {
                                 />
                                 {/* Badge */}
                                 <div className="absolute top-3 left-3">
-                                    <span className="bg-navy/90 text-white text-[10px] uppercase tracking-widest font-bold px-3 py-1.5 rounded-sm">
+                                    <span className="bg-navy/90 text-white text-[10px] uppercase tracking-widest font-bold px-3 py-1.5 rounded">
                                         {card.badge}
                                     </span>
                                 </div>

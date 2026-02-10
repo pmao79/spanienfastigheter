@@ -28,7 +28,7 @@ export default function AreaPractical({
     swedishServices
 }: AreaPracticalProps) {
     return (
-        <section className="py-12 bg-alabaster/50 rounded-sm">
+        <section className="py-12 bg-alabaster/50 rounded-lg">
             <div className="max-w-6xl mx-auto px-4 md:px-0">
                 {/* Header */}
                 <div className="flex items-center gap-4 mb-8">
@@ -40,7 +40,7 @@ export default function AreaPractical({
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {/* Flights & Transport */}
-                    <div className="bg-white p-6 rounded-sm shadow-soft">
+                    <div className="bg-white p-6 rounded-lg shadow-soft">
                         <div className="flex items-center gap-3 mb-6 border-b border-greige pb-4">
                             <div className="w-10 h-10 rounded-full bg-navy/5 flex items-center justify-center text-navy">
                                 <Plane size={20} />
@@ -59,7 +59,7 @@ export default function AreaPractical({
                                 </div>
                             ))}
 
-                            <div className="bg-greige/20 p-4 rounded-sm mt-4">
+                            <div className="bg-greige/20 p-4 rounded-lg mt-4">
                                 <p className="text-sm font-semibold text-navy mb-1">Transfer till området:</p>
                                 <p className="text-sm text-charcoal/80 italic">{airportTransfer}</p>
                             </div>
@@ -69,7 +69,7 @@ export default function AreaPractical({
                     {/* Admin & Healthcare */}
                     <div className="space-y-6">
                         {/* Healthcare */}
-                        <div className="bg-white p-6 rounded-sm shadow-soft">
+                        <div className="bg-white p-6 rounded-lg shadow-soft">
                             <div className="flex items-center gap-3 mb-4">
                                 <div className="w-8 h-8 rounded-full bg-sage/10 flex items-center justify-center text-sage">
                                     <Activity size={16} />
@@ -86,7 +86,7 @@ export default function AreaPractical({
                         </div>
 
                         {/* NIE & Legal */}
-                        <div className="bg-white p-6 rounded-sm shadow-soft">
+                        <div className="bg-white p-6 rounded-lg shadow-soft">
                             <div className="flex items-center gap-3 mb-4">
                                 <div className="w-8 h-8 rounded-full bg-sand/20 flex items-center justify-center text-navy">
                                     <FileText size={16} />
@@ -101,7 +101,7 @@ export default function AreaPractical({
                 </div>
 
                 {/* Swedish Services */}
-                <div className="mt-8 bg-white p-6 rounded-sm shadow-soft">
+                <div className="mt-8 bg-white p-6 rounded-lg shadow-soft">
                     <h3 className="text-lg font-serif text-navy mb-4 flex items-center gap-2">
                         <Image
                             src="https://flagcdn.com/w20/se.png"

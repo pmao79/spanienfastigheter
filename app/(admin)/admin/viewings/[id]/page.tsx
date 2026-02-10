@@ -97,7 +97,7 @@ export default function ViewingDetailPage() {
                 {/* Main Info */}
                 <div className="lg:col-span-2 space-y-6">
                     {/* Date & Time Card */}
-                    <div className="rounded-xl bg-white p-6 shadow-sm">
+                    <div className="rounded-lg bg-white p-6 shadow-sm">
                         <h3 className="mb-4 text-xs font-semibold uppercase text-slate-500">Tid & Plats</h3>
                         <div className="grid grid-cols-2 gap-6">
                             <div className="flex items-start gap-3">
@@ -140,7 +140,7 @@ export default function ViewingDetailPage() {
                     </div>
 
                     {/* Properties List */}
-                    <div className="rounded-xl bg-white shadow-sm overflow-hidden">
+                    <div className="rounded-lg bg-white shadow-sm overflow-hidden">
                         <div className="border-b border-slate-200 bg-slate-50 px-6 py-4">
                             <h3 className="text-sm font-medium text-slate-900">Objekt ({viewing.properties?.length || 0})</h3>
                         </div>
@@ -192,7 +192,7 @@ export default function ViewingDetailPage() {
                 {/* Sidebar Info */}
                 <div className="space-y-6">
                     {/* Lead Card */}
-                    <div className="rounded-xl bg-white p-6 shadow-sm">
+                    <div className="rounded-lg bg-white p-6 shadow-sm">
                         <div className="mb-4 flex items-center justify-between">
                             <h3 className="text-xs font-semibold uppercase text-slate-500">Kund</h3>
                             <Link href={`/admin/leads/${viewing.lead?._id}`} className="text-xs font-medium text-[#1a365d] hover:underline">
@@ -221,7 +221,7 @@ export default function ViewingDetailPage() {
                     </div>
 
                     {/* Assigned Partner */}
-                    <div className="rounded-xl bg-white p-6 shadow-sm">
+                    <div className="rounded-lg bg-white p-6 shadow-sm">
                         <h3 className="mb-4 text-xs font-semibold uppercase text-slate-500">Ansvarig Partner</h3>
                         {viewing.assignedTo ? (
                             <div className="flex items-center gap-3">

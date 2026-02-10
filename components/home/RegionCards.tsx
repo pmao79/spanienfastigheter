@@ -54,7 +54,7 @@ export default function RegionCards() {
                 <Link
                     key={region.slug}
                     href={`/omraden/${region.slug}`}
-                    className="group relative overflow-hidden rounded-sm aspect-[4/5] shadow-lg hover:shadow-2xl transition-all duration-500"
+                    className="group relative overflow-hidden rounded-lg aspect-[4/5] shadow-lg hover:shadow-2xl transition-all duration-500"
                 >
                     {/* Background Image */}
                     <Image

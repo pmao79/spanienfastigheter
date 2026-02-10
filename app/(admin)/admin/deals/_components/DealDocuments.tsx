@@ -78,7 +78,7 @@ export default function DealDocuments({ dealId, uploadedById }: DealDocumentsPro
     if (!documents) return <div className="p-4 text-center text-slate-500">Laddar dokument...</div>;
 
     return (
-        <div className="rounded-xl border border-slate-200 bg-white shadow-sm overflow-hidden">
+        <div className="rounded-lg border border-slate-200 bg-white shadow-sm overflow-hidden">
             <div className="border-b border-slate-100 bg-slate-50 p-4 flex items-center justify-between">
                 <h3 className="font-semibold text-slate-900 flex items-center gap-2">
                     <FileText className="h-5 w-5 text-blue-600" />

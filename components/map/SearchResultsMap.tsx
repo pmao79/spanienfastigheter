@@ -119,7 +119,7 @@ export default function SearchResultsMap({
                                     <span className="font-bold text-navy">{popupInfo.price.toLocaleString()} €</span>
                                     <Link
                                         href={`/fastigheter/${popupInfo.slug}`}
-                                        className="text-[10px] uppercase font-bold text-white bg-navy px-2 py-1 rounded-sm hover:bg-sand transition-colors"
+                                        className="text-[10px] uppercase font-bold text-white bg-navy px-2 py-1 rounded hover:bg-sand transition-colors"
                                     >
                                         Visa
                                     </Link>

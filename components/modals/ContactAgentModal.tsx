@@ -61,7 +61,7 @@ export default function ContactAgentModal({ isOpen, onClose, property }: Contact
             ></div>
 
             {/* Modal Content */}
-            <div className="bg-white w-full max-w-lg overflow-hidden rounded-sm shadow-2xl relative z-10 animate-fade-in-up">
+            <div className="bg-white w-full max-w-lg overflow-hidden rounded-lg shadow-2xl relative z-10 animate-fade-in-up">
                 {/* Close Button */}
                 <button
                     onClick={onClose}
@@ -99,7 +99,7 @@ export default function ContactAgentModal({ isOpen, onClose, property }: Contact
                         {/* Form Body */}
                         <div className="p-8">
                             <h4 className="text-xl font-serif text-navy mb-6">Kontakta mig om detta objekt</h4>
-                            <p className="text-sm text-gray-500 mb-6 bg-gray-50 p-3 rounded-sm border border-gray-100 flex flex-col gap-1">
+                            <p className="text-sm text-gray-500 mb-6 bg-gray-50 p-3 rounded-lg border border-gray-100 flex flex-col gap-1">
                                 <span><span className="font-bold text-navy">Objekt:</span> {property.type} i {property.town} ({property.price.toLocaleString()} €)</span>
                                 <span className="text-xs text-navy/60 font-medium">Ref: {property.ref}</span>
                             </p>
@@ -136,7 +136,7 @@ export default function ContactAgentModal({ isOpen, onClose, property }: Contact
                                     <textarea
                                         required
                                         name="message"
-                                        className="w-full bg-white border border-gray-200 rounded-sm p-3 text-sm outline-none focus:border-navy transition-all placeholder:text-gray-300 min-h-[100px] text-charcoal resize-none"
+                                        className="w-full bg-white border border-gray-200 rounded-md p-3 text-sm outline-none focus:border-navy transition-all placeholder:text-gray-300 min-h-[100px] text-charcoal resize-none"
                                         defaultValue={`Hej! Jag är intresserad av ${property.type} i ${property.town} för ${property.price.toLocaleString()} €. Kontakta mig!`}
                                     />
                                 </div>

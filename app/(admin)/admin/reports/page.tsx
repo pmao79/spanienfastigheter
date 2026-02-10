@@ -145,7 +145,7 @@ export default function ReportsPage() {
                 {activeTab === "sales" && (
                     <>
                         {/* Revenue Chart */}
-                        <div className="rounded-xl bg-white p-6 shadow-sm">
+                        <div className="rounded-lg bg-white p-6 shadow-sm">
                             <h3 className="mb-4 text-base font-semibold text-slate-900">Försäljning per månad</h3>
                             <div className="h-80">
                                 <ResponsiveContainer width="100%" height="100%">
@@ -162,7 +162,7 @@ export default function ReportsPage() {
 
                         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
                             {/* Sales by Region */}
-                            <div className="rounded-xl bg-white p-6 shadow-sm">
+                            <div className="rounded-lg bg-white p-6 shadow-sm">
                                 <h3 className="mb-4 text-base font-semibold text-slate-900">Försäljning per Region</h3>
                                 <div className="space-y-4">
                                     {salesStats.byRegion.slice(0, 5).map((item, index) => (
@@ -183,7 +183,7 @@ export default function ReportsPage() {
                             </div>
 
                             {/* Sales by Type */}
-                            <div className="rounded-xl bg-white p-6 shadow-sm">
+                            <div className="rounded-lg bg-white p-6 shadow-sm">
                                 <h3 className="mb-4 text-base font-semibold text-slate-900">Försäljning per Typ</h3>
                                 <div className="h-64">
                                     <ResponsiveContainer width="100%" height="100%">
@@ -224,7 +224,7 @@ export default function ReportsPage() {
                     <>
                         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
                             {/* Funnel */}
-                            <div className="rounded-xl bg-white p-6 shadow-sm">
+                            <div className="rounded-lg bg-white p-6 shadow-sm">
                                 <h3 className="mb-4 text-base font-semibold text-slate-900">Konverteringstratt</h3>
                                 <div className="space-y-6">
                                     <FunnelStage label="Total Leads" count={leadStats.funnel.total} percent={100} color="bg-blue-100" barColor="bg-blue-500" />
@@ -235,7 +235,7 @@ export default function ReportsPage() {
                             </div>
 
                             {/* Sources */}
-                            <div className="rounded-xl bg-white p-6 shadow-sm">
+                            <div className="rounded-lg bg-white p-6 shadow-sm">
                                 <h3 className="mb-4 text-base font-semibold text-slate-900">Leads per Källa</h3>
                                 <div className="h-80">
                                     <ResponsiveContainer width="100%" height="100%">
@@ -255,7 +255,7 @@ export default function ReportsPage() {
 
                 {/* TEAM TAB */}
                 {activeTab === "team" && agentStats && (
-                    <div className="rounded-xl bg-white shadow-sm overflow-hidden">
+                    <div className="rounded-lg bg-white shadow-sm overflow-hidden">
                         <table className="min-w-full divide-y divide-slate-200">
                             <thead className="bg-slate-50">
                                 <tr>
@@ -296,7 +296,7 @@ export default function ReportsPage() {
 
 function KpiCard({ title, value, change, trend, icon: Icon }: any) {
     return (
-        <div className="rounded-xl bg-white p-6 shadow-sm">
+        <div className="rounded-lg bg-white p-6 shadow-sm">
             <div className="flex items-center justify-between">
                 <div>
                     <p className="text-sm font-medium text-slate-500">{title}</p>

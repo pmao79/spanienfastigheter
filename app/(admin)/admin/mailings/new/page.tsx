@@ -156,7 +156,7 @@ export default function NewMailingPage() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 min-h-[600px]">
 
                 {/* Main Area */}
-                <div className="lg:col-span-8 bg-white rounded-xl shadow-sm border p-6">
+                <div className="lg:col-span-8 bg-white rounded-lg shadow-sm border p-6">
 
                     {/* STEP 1: LEAD & PROPERTIES */}
                     {currentStep === 1 && (
@@ -298,7 +298,7 @@ export default function NewMailingPage() {
                         <div className="h-full flex flex-col">
                             <h2 className="text-lg font-medium text-[#1a365d] mb-6">Granska & Skicka</h2>
 
-                            <div className="bg-slate-50 rounded-xl border p-8 flex justify-center flex-1 mb-8 overflow-y-auto max-h-[600px]">
+                            <div className="bg-slate-50 rounded-lg border p-8 flex justify-center flex-1 mb-8 overflow-y-auto max-h-[600px]">
                                 <div className="w-full max-w-md bg-white shadow-lg rounded-lg overflow-hidden flex flex-col h-fit">
                                     <div className="bg-[#1a365d] p-4 text-center">
                                         <span className="text-white font-serif font-bold text-lg">SF</span>
@@ -351,7 +351,7 @@ export default function NewMailingPage() {
                 <div className="lg:col-span-4 space-y-6">
                     {/* CUSTOMER CONTEXT - Only Step 1 & 2 */}
                     {(currentStep === 1 || currentStep === 2) && (
-                        <div className="bg-white rounded-xl shadow-sm border p-5 sticky top-6">
+                        <div className="bg-white rounded-lg shadow-sm border p-5 sticky top-6">
                             <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider mb-4 border-b pb-2">
                                 Kundkontext
                             </h3>
@@ -414,7 +414,7 @@ export default function NewMailingPage() {
 
                     {/* ACTIONS - Step 3 (Summary moved inside main area for better flow, kept empty here or maybe tips) */}
                     {currentStep === 3 && (
-                        <div className="bg-blue-50 rounded-xl shadow-sm border border-blue-100 p-5 sticky top-6">
+                        <div className="bg-blue-50 rounded-lg shadow-sm border border-blue-100 p-5 sticky top-6">
                             <h3 className="text-sm font-bold text-blue-900 mb-2">Redo att skicka?</h3>
                             <div className="space-y-3">
                                 <button

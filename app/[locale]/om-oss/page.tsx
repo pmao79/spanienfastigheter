@@ -114,13 +114,13 @@ export default function AboutPage() {
                         </div>
 
                         <div className="relative">
-                            <div className="aspect-[4/5] bg-navy rounded-sm overflow-hidden flex items-center justify-center">
+                            <div className="aspect-[4/5] bg-navy rounded-lg overflow-hidden flex items-center justify-center">
                                 <div className="text-center p-8">
                                     <span className="text-[120px] font-serif text-sand/20">SF</span>
                                     <p className="text-white/60 text-sm uppercase tracking-widest mt-4">Spanienfastigheter.se</p>
                                 </div>
                             </div>
-                            <div className="absolute -bottom-6 -right-6 bg-sand text-navy p-6 rounded-sm shadow-lg">
+                            <div className="absolute -bottom-6 -right-6 bg-sand text-navy p-6 rounded-lg shadow-lg">
                                 <p className="text-4xl font-serif font-bold">1000+</p>
                                 <p className="text-xs uppercase tracking-widest">Nöjda kunder</p>
                             </div>
@@ -145,7 +145,7 @@ export default function AboutPage() {
                         {values.map((value, idx) => (
                             <div
                                 key={idx}
-                                className="text-center p-8 border border-gray-100 rounded-sm hover:border-sand/50 transition-colors"
+                                className="text-center p-8 border border-gray-100 rounded-lg hover:border-sand/50 transition-colors"
                             >
                                 <div className="w-16 h-16 bg-navy rounded-full flex items-center justify-center mx-auto mb-6">
                                     <value.icon size={28} className="text-sand" />
@@ -171,7 +171,7 @@ export default function AboutPage() {
                     </div>
 
                     <div className="max-w-md mx-auto">
-                        <div className="bg-white p-8 rounded-sm shadow-soft text-center">
+                        <div className="bg-white p-8 rounded-lg shadow-soft text-center">
                             <div className="w-24 h-24 bg-navy rounded-full flex items-center justify-center mx-auto mb-6">
                                 <span className="text-sand text-3xl font-serif">MO</span>
                             </div>

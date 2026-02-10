@@ -38,7 +38,7 @@ export default function AreaDistricts({ districts, areaName, onShowOnMap }: Area
                     <div
                         key={index}
                         className="
-                            group bg-white rounded-sm shadow-soft
+                            group bg-white rounded-lg shadow-soft
                             hover:shadow-hover transition-all duration-300
                             overflow-hidden border border-transparent hover:border-sand/30
                             flex flex-col
@@ -118,7 +118,7 @@ export default function AreaDistricts({ districts, areaName, onShowOnMap }: Area
                                 <button
                                     onClick={() => onShowOnMap(district.coordinates!)}
                                     className="
-                                        w-full py-2 px-4 rounded-sm border border-navy/10 
+                                        w-full py-2 px-4 rounded-md border border-navy/10 
                                         text-navy text-sm font-medium
                                         flex items-center justify-center gap-2
                                         hover:bg-navy hover:text-white hover:border-navy

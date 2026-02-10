@@ -59,7 +59,7 @@ export default async function HomePage() {
                     <div className="flex flex-col lg:flex-row gap-16">
                         {/* Filter Sidebar - Desktop */}
                         <aside className="hidden lg:block w-80 flex-shrink-0">
-                            <Suspense fallback={<div className="h-96 bg-gray-100 animate-pulse rounded-sm" />}>
+                            <Suspense fallback={<div className="h-96 bg-gray-100 animate-pulse rounded-lg" />}>
                                 <FilterWithModal />
                             </Suspense>
                         </aside>
@@ -74,7 +74,7 @@ export default async function HomePage() {
             <section className="py-24 bg-slate-50 relative">
                 <div className="max-w-[1400px] mx-auto px-6 md:px-12">
                     {/* Dark Navy Header Block */}
-                    <div className="bg-navy p-10 md:p-16 mb-12 rounded-sm shadow-xl flex flex-col md:flex-row justify-between items-end gap-8 relative overflow-hidden group">
+                    <div className="bg-navy p-10 md:p-16 mb-12 rounded-lg shadow-xl flex flex-col md:flex-row justify-between items-end gap-8 relative overflow-hidden group">
                         {/* Decorative subtle light leak */}
                         <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2 pointer-events-none transition-opacity duration-700 group-hover:opacity-70" />
                         <div className="absolute bottom-0 left-0 w-64 h-64 bg-sand/5 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2 pointer-events-none" />

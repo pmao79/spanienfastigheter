@@ -34,7 +34,7 @@ export default function DealChecklist({ dealId, currentStage }: DealChecklistPro
 
     if (!currentChecklist) {
         return (
-            <div className="rounded-xl border border-dashed border-slate-300 p-8 text-center text-slate-500">
+            <div className="rounded-lg border border-dashed border-slate-300 p-8 text-center text-slate-500">
                 Ingen checklista för denna fas ({currentStage}).
             </div>
         );
@@ -47,7 +47,7 @@ export default function DealChecklist({ dealId, currentStage }: DealChecklistPro
     return (
         <div className="space-y-6">
             {/* Current Stage Card */}
-            <div className="rounded-xl border border-slate-200 bg-white shadow-sm overflow-hidden">
+            <div className="rounded-lg border border-slate-200 bg-white shadow-sm overflow-hidden">
                 <div className="border-b border-slate-100 bg-slate-50 p-4">
                     <div className="flex items-center justify-between mb-2">
                         <h3 className="font-semibold text-slate-900 capitalize flex items-center gap-2">

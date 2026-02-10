@@ -5,7 +5,7 @@ import { ArrowRight, Home } from 'lucide-react';
 
 export default function GolfCTA() {
     return (
-        <div className="bg-navy text-white p-8 rounded-sm shadow-soft">
+        <div className="bg-navy text-white p-8 rounded-lg shadow-soft">
             <div className="flex items-start gap-4 mb-4">
                 <div className="bg-sand p-3 rounded-full text-navy">
                     <Home size={24} />

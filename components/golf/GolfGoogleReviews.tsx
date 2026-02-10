@@ -97,7 +97,7 @@ export default function GolfGoogleReviews({ courseName, location, googlePlaceId 
     // Loading skeleton
     if (loading) {
         return (
-            <div className="bg-white rounded-sm shadow-soft p-6 md:p-8">
+            <div className="bg-white rounded-lg shadow-soft p-6 md:p-8">
                 <div className="animate-pulse">
                     <div className="h-6 bg-gray-200 rounded w-48 mb-6"></div>
                     <div className="flex items-center gap-4 mb-6">
@@ -127,7 +127,7 @@ export default function GolfGoogleReviews({ courseName, location, googlePlaceId 
     }
 
     return (
-        <div className="bg-white rounded-sm shadow-soft p-6 md:p-8">
+        <div className="bg-white rounded-lg shadow-soft p-6 md:p-8">
             <div className="flex items-center justify-between mb-6">
                 <h3 className="font-serif text-2xl text-navy">Gästrecensioner</h3>
                 <a
@@ -149,7 +149,7 @@ export default function GolfGoogleReviews({ courseName, location, googlePlaceId 
 
             {/* Overall Rating */}
             <div className="flex items-center gap-4 mb-6 pb-6 border-b border-greige">
-                <div className="flex flex-col items-center justify-center w-20 h-20 bg-navy rounded-sm text-white">
+                <div className="flex flex-col items-center justify-center w-20 h-20 bg-navy rounded-lg text-white">
                     <span className="text-2xl font-bold">{reviewsData.rating.toFixed(1)}</span>
                     <div className="flex gap-0.5 mt-1">
                         {[1, 2, 3, 4, 5].map(star => (

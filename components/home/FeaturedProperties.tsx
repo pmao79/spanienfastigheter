@@ -92,7 +92,7 @@ export default function FeaturedProperties() {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
                     {[...Array(4)].map((_, i) => (
-                        <div key={i} className="bg-white animate-pulse rounded-sm h-96" />
+                        <div key={i} className="bg-white animate-pulse rounded-lg h-96" />
                     ))}
                 </div>
             </div>
@@ -136,7 +136,7 @@ export default function FeaturedProperties() {
             <div className="mt-20 text-center">
                 <Link
                     href="/fastigheter"
-                    className="bg-transparent border border-navy text-navy px-12 py-5 uppercase tracking-[0.2em] text-xs font-semibold hover:bg-navy hover:text-white transition-all duration-300 inline-block"
+                    className="bg-transparent border border-navy text-navy px-12 py-5 uppercase tracking-[0.2em] text-xs font-semibold hover:bg-navy hover:text-white transition-all duration-300 inline-block rounded-md"
                 >
                     Visa alla bostäder till salu i Spanien
                 </Link>

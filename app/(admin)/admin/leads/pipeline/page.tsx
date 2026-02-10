@@ -162,7 +162,7 @@ export default function PipelinePage() {
             >
                 <div className="flex h-[calc(100vh-12rem)] min-w-[1000px] gap-4 pb-4">
                     {COLUMNS.map((col) => (
-                        <div key={col.id} className={`flex w-72 flex-col rounded-xl bg-slate-50/50 border border-slate-100 shadow-sm ${col.color === 'bg-blue-50 border-blue-200' ? '' : ''}`}>
+                        <div key={col.id} className={`flex w-72 flex-col rounded-lg bg-slate-50/50 border border-slate-100 shadow-sm ${col.color === 'bg-blue-50 border-blue-200' ? '' : ''}`}>
                             <div className={`rounded-t-xl border-b p-3 font-semibold text-slate-700 ${col.color}`}>
                                 <div className="flex items-center justify-between">
                                     <span>{col.title}</span>

@@ -184,13 +184,13 @@ export default function GolfPage() {
                     <div className="flex gap-4 justify-center">
                         <Link
                             href="/fastigheter?golf=true"
-                            className="bg-sand text-navy px-8 py-4 rounded-sm font-bold uppercase tracking-widest hover:bg-white transition-colors"
+                            className="bg-sand text-navy px-8 py-4 rounded-md font-bold uppercase tracking-widest hover:bg-white transition-colors"
                         >
                             Visa golffastigheter
                         </Link>
                         <Link
                             href="/kontakt"
-                            className="border border-white/30 px-8 py-4 rounded-sm font-bold uppercase tracking-widest hover:bg-white/10 transition-colors"
+                            className="border border-white/30 px-8 py-4 rounded-md font-bold uppercase tracking-widest hover:bg-white/10 transition-colors"
                         >
                             Kontakta mäklare
                         </Link>

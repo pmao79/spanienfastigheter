@@ -210,7 +210,7 @@ export default async function RegionPage({
                     </nav>
 
                     <div className="max-w-4xl">
-                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full mb-6">
+                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded mb-6">
                             <MapPin size={14} className="text-sand" />
                             <span className="text-xs uppercase tracking-widest">
                                 {areas.length} områden • {propertyCount.toLocaleString('sv-SE')} fastigheter
@@ -282,7 +282,7 @@ export default async function RegionPage({
                         </div>
 
                         <div className="lg:col-span-2">
-                            <div className="bg-alabaster rounded-2xl p-6 md:p-8 border border-sand/10 shadow-soft">
+                            <div className="bg-alabaster rounded-lg p-6 md:p-8 border border-sand/10 shadow-soft">
                                 <h3 className="text-lg font-semibold text-navy mb-6">
                                     {region.name} i korthet
                                 </h3>
@@ -355,7 +355,7 @@ export default async function RegionPage({
                         ].map((stat, index) => (
                             <div
                                 key={index}
-                                className="bg-white/10 backdrop-blur-md rounded-2xl p-6 md:p-8 border border-white/10 text-center hover:bg-white/15 transition-colors"
+                                className="bg-white/10 backdrop-blur-md rounded-lg p-6 md:p-8 border border-white/10 text-center hover:bg-white/15 transition-colors"
                             >
                                 <div className="w-12 h-12 rounded-full bg-sand/20 flex items-center justify-center mx-auto mb-4">
                                     <stat.icon className="w-6 h-6 text-sand" />
@@ -391,9 +391,9 @@ export default async function RegionPage({
                             return (
                                 <div
                                     key={index}
-                                    className="group p-6 rounded-2xl bg-white border border-gray-100 hover:border-sand/30 hover:shadow-lg transition-all duration-300"
+                                    className="group p-6 rounded-lg bg-white border border-gray-100 hover:border-sand/30 hover:shadow-lg transition-all duration-300"
                                 >
-                                    <div className="w-14 h-14 rounded-2xl bg-navy/5 group-hover:bg-sand/10 flex items-center justify-center mb-5 transition-colors">
+                                    <div className="w-14 h-14 rounded-lg bg-navy/5 group-hover:bg-sand/10 flex items-center justify-center mb-5 transition-colors">
                                         <Icon className="w-7 h-7 text-navy group-hover:text-sand transition-colors" />
                                     </div>
                                     <h3 className="text-lg font-semibold text-navy mb-2">
@@ -408,7 +408,7 @@ export default async function RegionPage({
                     </div>
 
                     <div className="mt-12 grid md:grid-cols-2 gap-8 items-center">
-                        <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-soft">
+                        <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-soft">
                             <Image
                                 src={region.lifestyleImage}
                                 alt={`Livsstil i ${region.name}`}
@@ -416,7 +416,7 @@ export default async function RegionPage({
                                 className="object-cover"
                             />
                         </div>
-                        <div className="bg-alabaster rounded-2xl p-8 border border-sand/10">
+                        <div className="bg-alabaster rounded-lg p-8 border border-sand/10">
                             <h3 className="text-xl font-semibold text-navy mb-4">
                                 Svensk trygghet på plats
                             </h3>
@@ -469,9 +469,9 @@ export default async function RegionPage({
                         ].map((type, index) => (
                             <div
                                 key={index}
-                                className="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border-b-4 border-transparent hover:border-sand"
+                                className="group bg-white rounded-lg p-8 shadow-sm hover:shadow-xl transition-all duration-300 border-b-4 border-transparent hover:border-sand"
                             >
-                                <div className="w-16 h-16 rounded-2xl bg-navy/5 flex items-center justify-center mb-6">
+                                <div className="w-16 h-16 rounded-lg bg-navy/5 flex items-center justify-center mb-6">
                                     <type.icon className="w-8 h-8 text-navy" />
                                 </div>
 
@@ -531,7 +531,7 @@ export default async function RegionPage({
                             ))}
                         </div>
                     ) : (
-                        <div className="text-center py-16 bg-white rounded-sm shadow-soft">
+                        <div className="text-center py-16 bg-white rounded-lg shadow-soft">
                             <p className="text-gray-500">Inga områden hittades i denna region.</p>
                         </div>
                     )}
@@ -542,9 +542,9 @@ export default async function RegionPage({
             <section className="py-20 md:py-28">
                 <div className="container mx-auto px-4 max-w-6xl">
                     <div className="grid lg:grid-cols-2 gap-8 md:gap-12">
-                        <div className="bg-gradient-to-br from-navy to-[#2d4a7c] rounded-3xl p-8 md:p-10 text-white">
+                        <div className="bg-gradient-to-br from-navy to-[#2d4a7c] rounded-lg p-8 md:p-10 text-white">
                             <div className="flex items-center gap-3 mb-8">
-                                <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center">
+                                <div className="w-12 h-12 rounded-lg bg-white/10 flex items-center justify-center">
                                     <Sun className="w-6 h-6 text-sand" />
                                 </div>
                                 <h3 className="text-2xl font-serif">Klimat och väder</h3>
@@ -571,9 +571,9 @@ export default async function RegionPage({
                             </div>
                         </div>
 
-                        <div className="bg-white rounded-3xl p-8 md:p-10 border border-gray-100 shadow-sm">
+                        <div className="bg-white rounded-lg p-8 md:p-10 border border-gray-100 shadow-sm">
                             <div className="flex items-center gap-3 mb-8">
-                                <div className="w-12 h-12 rounded-xl bg-sand/10 flex items-center justify-center">
+                                <div className="w-12 h-12 rounded-lg bg-sand/10 flex items-center justify-center">
                                     <Heart className="w-6 h-6 text-sand" />
                                 </div>
                                 <h3 className="text-2xl font-serif text-navy">Livsstil och faciliteter</h3>
@@ -626,7 +626,7 @@ export default async function RegionPage({
                             {region.airports.map((airport, index) => (
                                 <div
                                     key={index}
-                                    className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow"
+                                    className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow"
                                 >
                                     <div className="bg-navy px-6 py-4">
                                         <div className="flex items-center gap-3">
@@ -662,7 +662,7 @@ export default async function RegionPage({
                                             href={`https://www.google.com/flights?q=flights+to+${airport.code}`}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="block w-full py-3 text-center border border-navy text-navy rounded-xl font-medium hover:bg-navy hover:text-white transition-colors"
+                                            className="block w-full py-3 text-center border border-navy text-navy rounded-md font-medium hover:bg-navy hover:text-white transition-colors"
                                         >
                                             Sök flyg
                                         </a>
@@ -671,7 +671,7 @@ export default async function RegionPage({
                             ))}
                         </div>
                     ) : (
-                        <div className="text-center py-10 bg-white rounded-2xl shadow-soft">
+                        <div className="text-center py-10 bg-white rounded-lg shadow-soft">
                             <p className="text-gray-500">Transportinformation uppdateras efter research.</p>
                         </div>
                     )}
@@ -686,7 +686,7 @@ export default async function RegionPage({
             <section className="py-20 md:py-28">
                 <div className="container mx-auto px-4 max-w-5xl">
                     <div className="grid md:grid-cols-2 gap-8">
-                        <div className="bg-emerald-50/50 border border-emerald-100 rounded-2xl p-8">
+                        <div className="bg-emerald-50/50 border border-emerald-100 rounded-lg p-8">
                             <div className="flex items-center gap-3 mb-6">
                                 <div className="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center">
                                     <CheckCircle className="w-5 h-5 text-emerald-600" />
@@ -704,7 +704,7 @@ export default async function RegionPage({
                             </ul>
                         </div>
 
-                        <div className="bg-amber-50/50 border border-amber-100 rounded-2xl p-8">
+                        <div className="bg-amber-50/50 border border-amber-100 rounded-lg p-8">
                             <div className="flex items-center gap-3 mb-6">
                                 <div className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center">
                                     <AlertCircle className="w-5 h-5 text-amber-600" />
@@ -745,7 +745,7 @@ export default async function RegionPage({
                         ].map((item, index) => (
                             <div
                                 key={index}
-                                className="bg-white/5 backdrop-blur-sm rounded-xl p-5 text-center border border-white/10"
+                                className="bg-white/5 backdrop-blur-sm rounded-lg p-5 text-center border border-white/10"
                             >
                                 <div className="w-10 h-10 rounded-full bg-sand/20 flex items-center justify-center mx-auto mb-3">
                                     <item.icon className="w-5 h-5 text-sand" />
@@ -785,7 +785,7 @@ export default async function RegionPage({
                             }}
                         />
                         <div className="text-center mb-16">
-                            <div className="w-16 h-16 rounded-2xl bg-sand/10 flex items-center justify-center mx-auto mb-6">
+                            <div className="w-16 h-16 rounded-lg bg-sand/10 flex items-center justify-center mx-auto mb-6">
                                 <HelpCircle className="w-8 h-8 text-sand" />
                             </div>
                             <h2 className="text-3xl md:text-4xl font-serif text-navy">
@@ -797,7 +797,7 @@ export default async function RegionPage({
                             {region.faqs.map((faq, index) => (
                                 <details
                                     key={index}
-                                    className="group rounded-2xl border border-gray-200 bg-white hover:border-gray-300 transition-all"
+                                    className="group rounded-lg border border-gray-200 bg-white hover:border-gray-300 transition-all"
                                 >
                                     <summary className="flex items-center justify-between p-6 cursor-pointer list-none marker:content-none">
                                         <span className="font-medium text-gray-700 pr-4 group-open:text-navy">

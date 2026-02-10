@@ -61,7 +61,7 @@ export default async function GolfCoursePage({ params }: PageProps) {
             <GolfCourseHero course={course} />
 
             <div className="container mx-auto px-4 -mt-10 relative z-10">
-                <div className="bg-white rounded-sm shadow-lg p-6 mb-8 text-sm text-center md:text-left flex flex-col md:flex-row gap-4 justify-between items-center text-gray-500">
+                <div className="bg-white rounded-lg shadow-lg p-6 mb-8 text-sm text-center md:text-left flex flex-col md:flex-row gap-4 justify-between items-center text-gray-500">
                     <GolfBreadcrumbs region={course.region} courseName={course.name} />
 
                 </div>
@@ -78,7 +78,7 @@ export default async function GolfCoursePage({ params }: PageProps) {
 
                         {/* Course details box */}
                         {(course.courseLayout || course.difficulty.description || (course.signatureHoles && course.signatureHoles.length > 0)) && (
-                            <div className="bg-white p-6 rounded-sm shadow-soft">
+                            <div className="bg-white p-6 rounded-lg shadow-soft">
                                 <div className="grid md:grid-cols-2 gap-6">
                                     <div>
                                         <h4 className="font-bold text-navy mb-2">Banans karaktär</h4>
@@ -121,7 +121,7 @@ export default async function GolfCoursePage({ params }: PageProps) {
                         />
 
                         {/* Map */}
-                        <div className="bg-white p-8 rounded-sm shadow-soft">
+                        <div className="bg-white p-8 rounded-lg shadow-soft">
                             <h3 className="font-serif text-2xl text-navy mb-4">Hitta hit</h3>
                             <GolfCourseMap
                                 coordinates={course.coordinates}

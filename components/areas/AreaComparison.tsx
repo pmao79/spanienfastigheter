@@ -32,7 +32,7 @@ export default function AreaComparison({ areas, currentArea, region }: AreaCompa
             </div>
 
             {/* Comparison Table */}
-            <div className="bg-white rounded-sm shadow-soft overflow-hidden">
+            <div className="bg-white rounded-lg shadow-soft overflow-hidden">
                 <div className="overflow-x-auto">
                     <table className="w-full min-w-[600px]">
                         <thead>

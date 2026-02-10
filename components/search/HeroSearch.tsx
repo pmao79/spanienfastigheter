@@ -141,7 +141,7 @@ function DualRangeSlider({
                     <button
                         key={preset.value}
                         onClick={() => onChange([localValues[0], preset.value])}
-                        className={`px-3 py-1.5 text-xs border rounded-sm transition-colors ${localValues[1] === preset.value
+                        className={`px-3 py-1.5 text-xs border rounded-md transition-colors ${localValues[1] === preset.value
                                 ? 'bg-navy text-white border-navy'
                                 : 'border-gray-200 text-gray-600 hover:border-navy'
                             }`}
@@ -386,7 +386,7 @@ export default function HeroSearch({ variant = 'hero' }: HeroSearchProps) {
     return (
         <div
             ref={searchContainerRef}
-            className="w-full max-w-5xl mx-auto bg-white rounded-md shadow-2xl transition-all duration-300 relative"
+            className="w-full max-w-5xl mx-auto bg-white rounded-lg shadow-2xl transition-all duration-300 relative"
         >
             {/* Main Search Layout */}
             <div className="flex flex-col md:grid md:grid-cols-12 gap-0 divide-y md:divide-y-0 md:divide-x divide-gray-100 p-2 relative">
@@ -410,12 +410,12 @@ export default function HeroSearch({ variant = 'hero' }: HeroSearchProps) {
 
                     {/* Region Dropdown */}
                     {openDropdown === 'region' && (
-                        <div className="absolute top-full left-0 w-64 bg-white shadow-xl border border-gray-100 rounded-b-sm z-50 animate-fade-in mt-2 md:mt-0">
+                        <div className="absolute top-full left-0 w-64 bg-white shadow-xl border border-gray-100 rounded-b-lg z-50 animate-fade-in mt-2 md:mt-0">
                             <div className="p-2 space-y-1">
                                 {filterOptions?.regions?.map((region) => (
                                     <label
                                         key={region.name}
-                                        className="flex items-center gap-3 px-4 py-3 hover:bg-greige/30 rounded-sm cursor-pointer"
+                                        className="flex items-center gap-3 px-4 py-3 hover:bg-greige/30 rounded-md cursor-pointer"
                                         onClick={(e) => {
                                             e.stopPropagation();
                                             toggleRegion(region.name);
@@ -423,7 +423,7 @@ export default function HeroSearch({ variant = 'hero' }: HeroSearchProps) {
                                     >
                                         <div className="relative flex items-center">
                                             <div
-                                                className={`w-4 h-4 border rounded-sm transition-colors ${selectedRegions.includes(region.name)
+                                                className={`w-4 h-4 border rounded-md transition-colors ${selectedRegions.includes(region.name)
                                                         ? 'bg-navy border-navy'
                                                         : 'border-gray-300'
                                                     }`}
@@ -464,7 +464,7 @@ export default function HeroSearch({ variant = 'hero' }: HeroSearchProps) {
 
                     {/* Area Dropdown */}
                     {openDropdown === 'area' && (
-                        <div className="absolute top-full left-0 w-80 bg-white shadow-xl border border-gray-100 rounded-b-sm z-50 animate-fade-in mt-2 md:mt-0">
+                        <div className="absolute top-full left-0 w-80 bg-white shadow-xl border border-gray-100 rounded-b-lg z-50 animate-fade-in mt-2 md:mt-0">
                             {/* Search input */}
                             <div className="p-3 border-b border-gray-100">
                                 <div className="relative">
@@ -475,7 +475,7 @@ export default function HeroSearch({ variant = 'hero' }: HeroSearchProps) {
                                         value={areaSearch}
                                         onChange={(e) => setAreaSearch(e.target.value)}
                                         onClick={(e) => e.stopPropagation()}
-                                        className="w-full pl-9 pr-3 py-2 bg-greige/50 text-sm rounded-sm focus:outline-none focus:ring-1 focus:ring-navy"
+                                        className="w-full pl-9 pr-3 py-2 bg-greige/50 text-sm rounded-md focus:outline-none focus:ring-1 focus:ring-navy"
                                     />
                                     {areaSearch && (
                                         <button
@@ -497,7 +497,7 @@ export default function HeroSearch({ variant = 'hero' }: HeroSearchProps) {
                                     {selectedAreas.map((area) => (
                                         <span
                                             key={area}
-                                            className="inline-flex items-center gap-1 px-2 py-1 bg-navy text-white text-xs rounded-sm"
+                                    className="inline-flex items-center gap-1 px-2 py-1 bg-navy text-white text-xs rounded"
                                         >
                                             {area}
                                             <X
@@ -519,7 +519,7 @@ export default function HeroSearch({ variant = 'hero' }: HeroSearchProps) {
                                     filteredAreas.map((area) => (
                                         <label
                                             key={area.name}
-                                            className="flex items-center gap-3 px-4 py-2 hover:bg-greige/30 rounded-sm cursor-pointer"
+                                        className="flex items-center gap-3 px-4 py-2 hover:bg-greige/30 rounded-md cursor-pointer"
                                             onClick={(e) => {
                                                 e.stopPropagation();
                                                 toggleArea(area.name);
@@ -527,7 +527,7 @@ export default function HeroSearch({ variant = 'hero' }: HeroSearchProps) {
                                         >
                                             <div className="relative flex items-center">
                                                 <div
-                                                    className={`w-4 h-4 border rounded-sm transition-colors ${selectedAreas.includes(area.name)
+                                                    className={`w-4 h-4 border rounded-md transition-colors ${selectedAreas.includes(area.name)
                                                             ? 'bg-navy border-navy'
                                                             : 'border-gray-300'
                                                         }`}
@@ -571,12 +571,12 @@ export default function HeroSearch({ variant = 'hero' }: HeroSearchProps) {
 
                     {/* Type Dropdown */}
                     {openDropdown === 'type' && (
-                        <div className="absolute top-full left-0 w-56 bg-white shadow-xl border border-gray-100 rounded-b-sm z-50 animate-fade-in mt-2 md:mt-0">
+                        <div className="absolute top-full left-0 w-56 bg-white shadow-xl border border-gray-100 rounded-b-lg z-50 animate-fade-in mt-2 md:mt-0">
                             <div className="p-2 space-y-1">
                                 {filterOptions?.types?.map((type) => (
                                     <label
                                         key={type}
-                                        className="flex items-center gap-3 px-4 py-3 hover:bg-greige/30 rounded-sm cursor-pointer"
+                                        className="flex items-center gap-3 px-4 py-3 hover:bg-greige/30 rounded-md cursor-pointer"
                                         onClick={(e) => {
                                             e.stopPropagation();
                                             toggleType(type);
@@ -584,7 +584,7 @@ export default function HeroSearch({ variant = 'hero' }: HeroSearchProps) {
                                     >
                                         <div className="relative flex items-center">
                                             <div
-                                                className={`w-4 h-4 border rounded-sm transition-colors ${selectedTypes.includes(type)
+                                                className={`w-4 h-4 border rounded-md transition-colors ${selectedTypes.includes(type)
                                                         ? 'bg-navy border-navy'
                                                         : 'border-gray-300'
                                                     }`}
@@ -623,7 +623,7 @@ export default function HeroSearch({ variant = 'hero' }: HeroSearchProps) {
                     {/* Price Dropdown with Dual Range Slider */}
                     {openDropdown === 'price' && (
                         <div
-                            className="absolute top-full left-0 w-80 bg-white shadow-xl border border-gray-100 rounded-b-sm z-50 animate-fade-in mt-2 md:mt-0"
+                            className="absolute top-full left-0 w-80 bg-white shadow-xl border border-gray-100 rounded-b-lg z-50 animate-fade-in mt-2 md:mt-0"
                             onClick={(e) => e.stopPropagation()}
                         >
                             <DualRangeSlider
@@ -657,7 +657,7 @@ export default function HeroSearch({ variant = 'hero' }: HeroSearchProps) {
 
                     {/* Beds Dropdown */}
                     {openDropdown === 'beds' && (
-                        <div className="absolute top-full left-0 w-48 bg-white shadow-xl border border-gray-100 rounded-b-sm z-50 animate-fade-in mt-2 md:mt-0 p-3">
+                        <div className="absolute top-full left-0 w-48 bg-white shadow-xl border border-gray-100 rounded-b-lg z-50 animate-fade-in mt-2 md:mt-0 p-3">
                             <div className="flex flex-wrap gap-2">
                                 {[null, 1, 2, 3, 4, 5].map((beds) => (
                                     <button
@@ -667,7 +667,7 @@ export default function HeroSearch({ variant = 'hero' }: HeroSearchProps) {
                                             setSelectedBeds(beds);
                                             setOpenDropdown(null);
                                         }}
-                                        className={`w-10 h-10 border text-sm font-medium transition-all rounded-sm ${selectedBeds === beds
+                                        className={`w-10 h-10 border text-sm font-medium transition-all rounded-md ${selectedBeds === beds
                                                 ? 'bg-navy text-white border-navy'
                                                 : 'border-gray-200 text-gray-500 hover:border-navy hover:text-navy'
                                             }`}
@@ -684,7 +684,7 @@ export default function HeroSearch({ variant = 'hero' }: HeroSearchProps) {
                 <div className="md:col-span-2 p-2">
                     <button
                         onClick={handleSearch}
-                        className="w-full h-14 md:h-full bg-navy text-white rounded-sm hover:bg-charcoal transition-all duration-300 flex flex-row md:flex-col items-center justify-center gap-2 shadow-lg group"
+                        className="w-full h-14 md:h-full bg-navy text-white rounded-md hover:bg-charcoal transition-all duration-300 flex flex-row md:flex-col items-center justify-center gap-2 shadow-lg group"
                     >
                         <Search
                             size={20}
@@ -709,7 +709,7 @@ export default function HeroSearch({ variant = 'hero' }: HeroSearchProps) {
                         {/* Nyproduktion */}
                         <label className="flex items-center gap-2 cursor-pointer group flex-shrink-0">
                             <div
-                                className={`w-4 h-4 rounded-sm border flex items-center justify-center transition-colors ${isNewBuild ? 'bg-navy border-navy' : 'border-gray-300 bg-white group-hover:border-navy'
+                                className={`w-4 h-4 rounded-md border flex items-center justify-center transition-colors ${isNewBuild ? 'bg-navy border-navy' : 'border-gray-300 bg-white group-hover:border-navy'
                                     }`}
                                 onClick={() => setIsNewBuild(!isNewBuild)}
                             >
@@ -723,7 +723,7 @@ export default function HeroSearch({ variant = 'hero' }: HeroSearchProps) {
                         {/* Pool */}
                         <label className="flex items-center gap-2 cursor-pointer group flex-shrink-0">
                             <div
-                                className={`w-4 h-4 rounded-sm border flex items-center justify-center transition-colors ${hasPool ? 'bg-navy border-navy' : 'border-gray-300 bg-white group-hover:border-navy'
+                                className={`w-4 h-4 rounded-md border flex items-center justify-center transition-colors ${hasPool ? 'bg-navy border-navy' : 'border-gray-300 bg-white group-hover:border-navy'
                                     }`}
                                 onClick={() => setHasPool(!hasPool)}
                             >
@@ -737,7 +737,7 @@ export default function HeroSearch({ variant = 'hero' }: HeroSearchProps) {
                         {/* Parkering */}
                         <label className="flex items-center gap-2 cursor-pointer group flex-shrink-0">
                             <div
-                                className={`w-4 h-4 rounded-sm border flex items-center justify-center transition-colors ${hasParking ? 'bg-navy border-navy' : 'border-gray-300 bg-white group-hover:border-navy'
+                                className={`w-4 h-4 rounded-md border flex items-center justify-center transition-colors ${hasParking ? 'bg-navy border-navy' : 'border-gray-300 bg-white group-hover:border-navy'
                                     }`}
                                 onClick={() => setHasParking(!hasParking)}
                             >
@@ -760,7 +760,7 @@ export default function HeroSearch({ variant = 'hero' }: HeroSearchProps) {
                             <Plus size={14} className={showAdvanced ? 'rotate-45' : ''} />
                             Fler
                             {activeAdvancedCount > 0 && (
-                                <span className="bg-navy text-white text-[10px] px-1.5 py-0.5 rounded-full">
+                                <span className="bg-navy text-white text-[10px] px-1.5 py-0.5 rounded">
                                     {activeAdvancedCount}
                                 </span>
                             )}
@@ -790,7 +790,7 @@ export default function HeroSearch({ variant = 'hero' }: HeroSearchProps) {
                                     className="flex items-center gap-2 cursor-pointer group"
                                 >
                                     <div
-                                        className={`w-4 h-4 rounded-sm border flex items-center justify-center transition-colors ${advancedFilters[key]
+                                        className={`w-4 h-4 rounded-md border flex items-center justify-center transition-colors ${advancedFilters[key]
                                                 ? 'bg-navy border-navy'
                                                 : 'border-gray-300 bg-white group-hover:border-navy'
                                             }`}

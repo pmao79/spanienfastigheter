@@ -59,22 +59,22 @@ export default function CommissionsPage() {
 
             {/* Summary Cards */}
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-4">
-                <div className="rounded-xl bg-orange-50 p-4 border border-orange-100">
+                <div className="rounded-lg bg-orange-50 p-4 border border-orange-100">
                     <p className="text-xs font-medium text-orange-600 uppercase">Väntar</p>
                     <p className="mt-2 text-2xl font-bold text-orange-900">€{summary.pendingTotal.toLocaleString()}</p>
                     <p className="text-sm text-orange-700">{summary.pendingCount} affärer</p>
                 </div>
-                <div className="rounded-xl bg-green-50 p-4 border border-green-100">
+                <div className="rounded-lg bg-green-50 p-4 border border-green-100">
                     <p className="text-xs font-medium text-green-600 uppercase">Godkända</p>
                     <p className="mt-2 text-2xl font-bold text-green-900">€{summary.approvedTotal.toLocaleString()}</p>
                     <p className="text-sm text-green-700">{summary.approvedCount} affärer</p>
                 </div>
-                <div className="rounded-xl bg-slate-50 p-4 border border-slate-200">
+                <div className="rounded-lg bg-slate-50 p-4 border border-slate-200">
                     <p className="text-xs font-medium text-slate-600 uppercase">Utbetalt {new Date().getFullYear()}</p>
                     <p className="mt-2 text-2xl font-bold text-slate-900">€{summary.paidThisYear.toLocaleString()}</p>
                     <p className="text-sm text-slate-500">{summary.paidCount} affärer</p>
                 </div>
-                <div className="rounded-xl bg-white p-4 border border-slate-200 shadow-sm flex items-center justify-center text-center">
+                <div className="rounded-lg bg-white p-4 border border-slate-200 shadow-sm flex items-center justify-center text-center">
                     <div>
                         <p className="text-slate-500 text-sm">Totalt provision</p>
                         <p className="font-medium text-slate-900">{(summary.paidThisYear + summary.approvedTotal + summary.pendingTotal).toLocaleString()} €</p>
@@ -101,7 +101,7 @@ export default function CommissionsPage() {
             </div>
 
             {/* List */}
-            <div className="rounded-xl bg-white shadow-sm overflow-hidden border border-slate-200">
+            <div className="rounded-lg bg-white shadow-sm overflow-hidden border border-slate-200">
                 {payouts.length === 0 ? (
                     <div className="p-8 text-center text-slate-500">Inga provisioner hittades med status &quot;{statusFilter}&quot;.</div>
                 ) : (

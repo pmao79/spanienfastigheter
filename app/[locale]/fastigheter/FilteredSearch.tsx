@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo } from 'react';
+import { useEffect } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import ConvexPropertySearch from '@/components/search/ConvexPropertySearch';
 
@@ -13,13 +13,11 @@ export default function FilteredSearch({ defaultParams }: FilteredSearchProps) {
     const pathname = usePathname();
     const searchParams = useSearchParams();
 
-    const stableDefaults = useMemo(() => defaultParams, [JSON.stringify(defaultParams)]);
-
     useEffect(() => {
         const params = new URLSearchParams(searchParams.toString());
         let updated = false;
 
-        Object.entries(stableDefaults).forEach(([key, value]) => {
+        Object.entries(defaultParams).forEach(([key, value]) => {
             if (!params.has(key)) {
                 params.set(key, value);
                 updated = true;
@@ -29,7 +27,7 @@ export default function FilteredSearch({ defaultParams }: FilteredSearchProps) {
         if (updated) {
             router.replace(`${pathname}?${params.toString()}`, { scroll: false });
         }
-    }, [searchParams, pathname, router, stableDefaults]);
+    }, [searchParams, pathname, router, defaultParams]);
 
     return <ConvexPropertySearch />;
 }

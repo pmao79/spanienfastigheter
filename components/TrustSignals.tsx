@@ -95,7 +95,7 @@ export default function TrustSignals() {
           {/* Right Side: Contact Form Placeholder */}
           <div className="relative">
             <div className="absolute top-0 left-8 right-8 h-1 bg-sand z-20" />
-            <div className="bg-white p-8 md:p-12 shadow-2xl rounded-sm relative z-10">
+            <div className="bg-white p-8 md:p-12 shadow-2xl rounded-lg relative z-10">
               <div className="mb-8">
                 <h3 className="text-3xl font-serif text-navy mb-2">
                   Boka rådgivning
@@ -107,7 +107,7 @@ export default function TrustSignals() {
               </div>
 
               {isSubmitted ? (
-                <div className="bg-green-50 p-8 rounded-sm text-center">
+                <div className="bg-green-50 p-8 rounded-lg text-center">
                   <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 text-green-600">
                     <Check size={32} />
                   </div>
@@ -127,7 +127,7 @@ export default function TrustSignals() {
                         type="text"
                         name="firstName"
                         required
-                        className="w-full bg-greige/30 border border-transparent focus:bg-white focus:border-navy focus:ring-4 focus:ring-gray-100 transition-all duration-300 rounded-sm px-4 py-3.5 text-sm outline-none placeholder-gray-400 text-charcoal"
+                        className="w-full bg-greige/30 border border-transparent focus:bg-white focus:border-navy focus:ring-4 focus:ring-gray-100 transition-all duration-300 rounded-md px-4 py-3.5 text-sm outline-none placeholder-gray-400 text-charcoal"
                         placeholder="Anna"
                       />
                     </div>
@@ -139,7 +139,7 @@ export default function TrustSignals() {
                         type="text"
                         name="lastName"
                         required
-                        className="w-full bg-greige/30 border border-transparent focus:bg-white focus:border-navy focus:ring-4 focus:ring-gray-100 transition-all duration-300 rounded-sm px-4 py-3.5 text-sm outline-none placeholder-gray-400 text-charcoal"
+                        className="w-full bg-greige/30 border border-transparent focus:bg-white focus:border-navy focus:ring-4 focus:ring-gray-100 transition-all duration-300 rounded-md px-4 py-3.5 text-sm outline-none placeholder-gray-400 text-charcoal"
                         placeholder="Andersson"
                       />
                     </div>
@@ -153,7 +153,7 @@ export default function TrustSignals() {
                       type="email"
                       name="email"
                       required
-                      className="w-full bg-greige/30 border border-transparent focus:bg-white focus:border-navy focus:ring-4 focus:ring-gray-100 transition-all duration-300 rounded-sm px-4 py-3.5 text-sm outline-none placeholder-gray-400 text-charcoal"
+                      className="w-full bg-greige/30 border border-transparent focus:bg-white focus:border-navy focus:ring-4 focus:ring-gray-100 transition-all duration-300 rounded-md px-4 py-3.5 text-sm outline-none placeholder-gray-400 text-charcoal"
                       placeholder="anna@exempel.se"
                     />
                   </div>
@@ -166,7 +166,7 @@ export default function TrustSignals() {
                       type="tel"
                       name="phone"
                       required
-                      className="w-full bg-greige/30 border border-transparent focus:bg-white focus:border-navy focus:ring-4 focus:ring-gray-100 transition-all duration-300 rounded-sm px-4 py-3.5 text-sm outline-none placeholder-gray-400 text-charcoal"
+                      className="w-full bg-greige/30 border border-transparent focus:bg-white focus:border-navy focus:ring-4 focus:ring-gray-100 transition-all duration-300 rounded-md px-4 py-3.5 text-sm outline-none placeholder-gray-400 text-charcoal"
                       placeholder="+46..."
                     />
                   </div>
@@ -175,7 +175,7 @@ export default function TrustSignals() {
                     <button
                       type="submit"
                       disabled={isLoading}
-                      className="w-full bg-navy text-white py-4 uppercase tracking-[0.2em] text-xs font-bold hover:bg-charcoal transition-all duration-300 flex items-center justify-center gap-3 shadow-lg shadow-navy/20 hover:shadow-xl hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed"
+                      className="w-full bg-navy text-white py-4 uppercase tracking-[0.2em] text-xs font-bold hover:bg-charcoal transition-all duration-300 flex items-center justify-center gap-3 shadow-lg shadow-navy/20 hover:shadow-xl hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed rounded-md"
                     >
                       {isLoading ? <Loader2 className="animate-spin" size={16} /> : 'Bli kontaktad'}
                     </button>

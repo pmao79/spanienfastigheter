@@ -50,7 +50,7 @@ export default function AreaMarket({
                 {/* Key KPIs */}
                 <div className="space-y-4">
                     {/* Price Trend */}
-                    <div className="bg-white p-6 rounded-sm shadow-soft border border-greige/50 group hover:shadow-hover transition-all">
+                    <div className="bg-white p-6 rounded-lg shadow-soft border border-greige/50 group hover:shadow-hover transition-all">
                         <div className="flex items-start justify-between mb-4">
                             <div>
                                 <p className="text-xs text-charcoal/60 uppercase tracking-wide">Prisutveckling (5 år)</p>
@@ -77,7 +77,7 @@ export default function AreaMarket({
                     </div>
 
                     {/* Rental Yield */}
-                    <div className="bg-white p-6 rounded-sm shadow-soft border border-greige/50 group hover:shadow-hover transition-all">
+                    <div className="bg-white p-6 rounded-lg shadow-soft border border-greige/50 group hover:shadow-hover transition-all">
                         <div className="flex items-start justify-between mb-4">
                             <div>
                                 <p className="text-xs text-charcoal/60 uppercase tracking-wide">Estimerad Hyresavkastning</p>
@@ -99,7 +99,7 @@ export default function AreaMarket({
                     </div>
 
                     {/* Tourist License */}
-                    <div className="bg-white p-6 rounded-sm shadow-soft border border-greige/50 group hover:shadow-hover transition-all">
+                    <div className="bg-white p-6 rounded-lg shadow-soft border border-greige/50 group hover:shadow-hover transition-all">
                         <div className="flex items-start justify-between mb-4">
                             <div>
                                 <p className="text-xs text-charcoal/60 uppercase tracking-wide">Turistlicens</p>
@@ -123,7 +123,7 @@ export default function AreaMarket({
                 </div>
 
                 {/* Price Table */}
-                <div className="lg:col-span-2 bg-white rounded-sm shadow-soft overflow-hidden border border-greige/50">
+                <div className="lg:col-span-2 bg-white rounded-lg shadow-soft overflow-hidden border border-greige/50">
                     <div className="bg-navy px-6 py-4">
                         <h3 className="text-white font-serif text-lg">Vad kostar en bostad?</h3>
                         <p className="text-white/60 text-xs mt-1">Genomsnittliga prisspann för standardbostäder i gott skick.</p>

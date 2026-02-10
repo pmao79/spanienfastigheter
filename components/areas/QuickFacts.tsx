@@ -41,7 +41,7 @@ export default function QuickFacts({ facts, areaName }: QuickFactsProps) {
     };
 
     return (
-        <div className="bg-white rounded-sm shadow-soft overflow-hidden">
+        <div className="bg-white rounded-lg shadow-soft overflow-hidden">
             {/* Header */}
             <div className="bg-navy px-6 py-4">
                 <h3 className="text-white font-serif text-xl">

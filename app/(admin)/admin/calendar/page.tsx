@@ -147,7 +147,7 @@ export default function CalendarPage() {
     return (
         <div className="h-auto lg:h-[calc(100vh-6rem)] flex flex-col gap-4">
             {/* 1. FILTER BAR */}
-            <div className="p-4 bg-white rounded-xl border border-slate-100 shadow-sm">
+            <div className="p-4 bg-white rounded-lg border border-slate-100 shadow-sm">
                 <div className="flex flex-col md:flex-row items-center gap-4 mb-3">
                     <div className="flex-1 relative w-full">
                         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
@@ -210,7 +210,7 @@ export default function CalendarPage() {
             {/* 2. MAIN CONTENT GRID */}
             <div className="flex flex-col-reverse lg:flex-row gap-4 lg:gap-6 flex-1 min-h-0">
                 {/* CALENDAR (3/4) */}
-                <div className="flex-1 bg-white rounded-xl shadow-sm border border-slate-100 p-2 sm:p-4 overflow-hidden flex flex-col min-h-[500px] lg:min-h-0">
+                <div className="flex-1 bg-white rounded-lg shadow-sm border border-slate-100 p-2 sm:p-4 overflow-hidden flex flex-col min-h-[500px] lg:min-h-0">
                     <style jsx global>{`
                         .fc { font-family: inherit; --fc-border-color: #e2e8f0; --fc-button-text-color: #fff; --fc-button-bg-color: #1a365d; --fc-button-border-color: #1a365d; --fc-button-hover-bg-color: #153e75; --fc-button-hover-border-color: #153e75; --fc-button-active-bg-color: #1a365d; --fc-button-active-border-color: #1a365d; --fc-today-bg-color: #f8fafc; }
                         .fc-toolbar-title { font-size: 1.1rem !important; font-weight: 700; color: #1e293b; }
@@ -250,7 +250,7 @@ export default function CalendarPage() {
                     <MiniMonthCalendar onDateSelect={handleSidebarDateSelect} />
 
                     {/* Today */}
-                    <div className="bg-white rounded-xl border border-slate-100 p-4 shadow-sm">
+                    <div className="bg-white rounded-lg border border-slate-100 p-4 shadow-sm">
                         <h3 className="font-bold text-slate-800 flex items-center gap-2 mb-3 text-sm">
                             <ClipboardList className="w-4 h-4 text-[#1a365d]" />
                             Idag ({format(today, 'd MMM', { locale: sv })})
@@ -270,7 +270,7 @@ export default function CalendarPage() {
                     </div>
 
                     {/* Upcoming */}
-                    <div className="bg-white rounded-xl border border-slate-100 p-4 shadow-sm">
+                    <div className="bg-white rounded-lg border border-slate-100 p-4 shadow-sm">
                         <h3 className="font-bold text-slate-800 flex items-center gap-2 mb-3 text-sm">
                             <MapPin className="w-4 h-4 text-[#1a365d]" />
                             Kommande
@@ -420,7 +420,7 @@ function CalendarEventWithHover({ eventInfo }: { eventInfo: any }) {
                     <div
                         ref={popoverRef}
                         onClick={(e) => e.stopPropagation()}
-                        className="relative w-full max-w-md bg-white rounded-xl shadow-2xl border border-slate-200 overflow-hidden"
+                        className="relative w-full max-w-md bg-white rounded-lg shadow-2xl border border-slate-200 overflow-hidden"
                         style={{ animation: 'scale-in 0.15s ease-out' }}
                     >
                         {/* Header with close button */}
@@ -596,7 +596,7 @@ function MiniMonthCalendar({ onDateSelect }: { onDateSelect: (date: string) => v
     const startPadding = Array(getDay(monthStart) === 0 ? 6 : getDay(monthStart) - 1).fill(null);
 
     return (
-        <div className="bg-white rounded-xl border border-slate-100 p-4 shadow-sm">
+        <div className="bg-white rounded-lg border border-slate-100 p-4 shadow-sm">
             <div className="flex items-center justify-between mb-4">
                 <h3 className="font-bold text-slate-800 text-sm flex items-center gap-2">
                     <CalendarIcon className="w-4 h-4 text-[#1a365d]" />

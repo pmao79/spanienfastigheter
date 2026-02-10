@@ -152,7 +152,7 @@ export default function DealDetailPage() {
 
                 {/* Middle Column: Checklist (Scrollable) */}
                 <div className="overflow-y-auto pr-2 pb-6 flex flex-col gap-6">
-                    <div className="rounded-xl border border-blue-100 bg-blue-50/50 p-4">
+                    <div className="rounded-lg border border-blue-100 bg-blue-50/50 p-4">
                         <h3 className="font-semibold text-blue-900 flex items-center gap-2 mb-2">
                             <AlertCircle className="h-4 w-4" />
                             Aktuell Fas: {STAGES[currentStageIndex]?.label || deal.stage}

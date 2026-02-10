@@ -51,7 +51,7 @@ export default function TeamPage() {
                 </button>
             </div>
 
-            <div className="overflow-hidden rounded-xl bg-white shadow-sm">
+            <div className="overflow-hidden rounded-lg bg-white shadow-sm">
                 <div className="overflow-x-auto">
                     <table className="w-full text-left text-sm">
                         <thead className="bg-slate-50 text-xs uppercase text-slate-500">
@@ -124,7 +124,7 @@ export default function TeamPage() {
             {/* Invite Modal */}
             {isInviteModalOpen && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-                    <div className="w-full max-w-md rounded-xl bg-white p-6 shadow-xl">
+                    <div className="w-full max-w-md rounded-lg bg-white p-6 shadow-xl">
                         <div className="mb-4 flex items-center justify-between">
                             <h2 className="text-xl font-bold text-slate-900">Skapa ny användare</h2>
                             <button onClick={() => setIsInviteModalOpen(false)} className="rounded-full p-2 text-slate-400 hover:bg-slate-50">

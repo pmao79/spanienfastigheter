@@ -195,7 +195,7 @@ export default function LeadDetailPage() {
                 <div className="lg:col-span-2">
                     {activeTab === 'overview' && (
                         <div className="space-y-6">
-                            <div className="rounded-xl bg-white p-6 shadow-sm">
+                            <div className="rounded-lg bg-white p-6 shadow-sm">
                                 <div className="flex items-center justify-between mb-4">
                                     <h3 className="text-lg font-medium text-slate-900">Information</h3>
                                     <button onClick={() => setIsEditModalOpen(true)} className="text-sm text-[#1a365d] hover:underline">Ändra</button>
@@ -295,7 +295,7 @@ export default function LeadDetailPage() {
                                     <Plus className="h-4 w-4" /> Ny uppgift
                                 </button>
                             </div>
-                            <ul className="divide-y divide-slate-100 rounded-xl bg-white shadow-sm">
+                            <ul className="divide-y divide-slate-100 rounded-lg bg-white shadow-sm">
                                 {tasks?.map((task) => (
                                     <li key={task._id} className="flex items-center justify-between p-4 hover:bg-slate-50">
                                         <div className="flex items-center gap-3">
@@ -332,7 +332,7 @@ export default function LeadDetailPage() {
                                     <Plus className="h-4 w-4" /> Boka visning
                                 </Link>
                             </div>
-                            <div className="rounded-xl bg-white shadow-sm overflow-hidden">
+                            <div className="rounded-lg bg-white shadow-sm overflow-hidden">
                                 {viewings?.map((viewing) => (
                                     <div key={viewing._id} className="flex flex-col sm:flex-row p-4 border-b border-slate-100 gap-4 hover:bg-slate-50 transition-colors">
                                         {/* Status Strip */}
@@ -401,7 +401,7 @@ export default function LeadDetailPage() {
 
                 {/* Sidebar */}
                 <div className="space-y-6">
-                    <div className="rounded-xl bg-white p-6 shadow-sm">
+                    <div className="rounded-lg bg-white p-6 shadow-sm">
                         <h3 className="mb-4 text-sm font-semibold uppercase text-slate-500">Info</h3>
                         <div className="space-y-4">
                             <div>
@@ -429,7 +429,7 @@ export default function LeadDetailPage() {
             {/* Modals */}
             {isEditModalOpen && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-                    <div className="w-full max-w-lg rounded-xl bg-white p-6 shadow-xl max-h-[90vh] overflow-y-auto">
+                    <div className="w-full max-w-lg rounded-lg bg-white p-6 shadow-xl max-h-[90vh] overflow-y-auto">
                         <h3 className="mb-4 text-xl font-bold text-slate-900">Redigera Lead</h3>
                         <form onSubmit={handleUpdateLead} className="space-y-4">
                             <div className="grid grid-cols-2 gap-4">
@@ -480,7 +480,7 @@ export default function LeadDetailPage() {
 
             {isNoteModalOpen && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-                    <div className="w-full max-w-md rounded-xl bg-white p-6 shadow-xl">
+                    <div className="w-full max-w-md rounded-lg bg-white p-6 shadow-xl">
                         <h3 className="mb-4 text-lg font-bold">Ny anteckning</h3>
                         <form onSubmit={handleAddNote}>
                             <textarea
@@ -502,7 +502,7 @@ export default function LeadDetailPage() {
 
             {isCallModalOpen && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-                    <div className="w-full max-w-md rounded-xl bg-white p-6 shadow-xl">
+                    <div className="w-full max-w-md rounded-lg bg-white p-6 shadow-xl">
                         <h3 className="mb-4 text-lg font-bold">Logga samtal</h3>
                         <form onSubmit={handleLogCall}>
                             <textarea
@@ -524,7 +524,7 @@ export default function LeadDetailPage() {
 
             {isTaskModalOpen && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-                    <div className="w-full max-w-md rounded-xl bg-white p-6 shadow-xl">
+                    <div className="w-full max-w-md rounded-lg bg-white p-6 shadow-xl">
                         <h3 className="mb-4 text-lg font-bold">Ny uppgift</h3>
                         <form onSubmit={handleCreateTask}>
                             <input

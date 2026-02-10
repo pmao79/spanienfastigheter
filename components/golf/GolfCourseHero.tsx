@@ -68,11 +68,11 @@ export default function GolfCourseHero({ course }: GolfCourseHeroProps) {
                     <div className="max-w-4xl">
                         {/* Badges */}
                         <div className="flex flex-wrap gap-2 mb-6">
-                            <span className="bg-sand text-navy text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-sm">
+                            <span className="bg-sand text-navy text-xs font-bold uppercase tracking-widest px-3 py-1 rounded">
                                 {course.region === 'costa-blanca' ? 'Costa Blanca' : 'Costa del Sol'}
                             </span>
                             {rating >= 4.5 && (
-                                <span className="bg-white/10 backdrop-blur-md text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-sm flex items-center gap-2">
+                                <span className="bg-white/10 backdrop-blur-md text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded flex items-center gap-2">
                                     <Trophy size={14} className="text-sand" />
                                     Top Rated
                                 </span>

@@ -24,7 +24,7 @@ export default function TownLandingContent({
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-600">
                     {highlights.map((item) => (
-                        <div key={item.title} className="bg-alabaster border border-greige p-4 rounded-sm">
+                        <div key={item.title} className="bg-alabaster border border-greige p-4 rounded-lg">
                             <h3 className="text-sm uppercase tracking-widest text-sage font-bold mb-2">
                                 {item.title}
                             </h3>
@@ -49,7 +49,7 @@ export default function TownLandingContent({
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {areaHighlights.map((area) => (
-                        <div key={area} className="bg-white border border-gray-100 p-6 rounded-sm shadow-soft">
+                        <div key={area} className="bg-white border border-gray-100 p-6 rounded-lg shadow-soft">
                             <p className="text-sm text-gray-600">{area}</p>
                         </div>
                     ))}

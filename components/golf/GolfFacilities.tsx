@@ -70,14 +70,14 @@ export default function GolfFacilities({ course }: GolfFacilitiesProps) {
     ];
 
     return (
-        <div className="bg-white rounded-sm shadow-soft p-6 md:p-8">
+        <div className="bg-white rounded-lg shadow-soft p-6 md:p-8">
             <h3 className="font-serif text-2xl text-navy mb-6">Faciliteter</h3>
 
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 {items.map((item, idx) => (
                     <div
                         key={idx}
-                        className={`flex items-center gap-3 p-3 rounded-sm border ${item.active
+                        className={`flex items-center gap-3 p-3 rounded-md border ${item.active
                                 ? 'border-greige bg-alabaster text-navy'
                                 : 'border-transparent bg-gray-50 text-gray-300'
                             }`}

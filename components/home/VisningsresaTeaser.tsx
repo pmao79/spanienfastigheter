@@ -16,7 +16,7 @@ export default function VisningsresaTeaser() {
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
                     {/* Image Side - 45% */}
                     <div className="lg:col-span-5 relative">
-                        <div className="aspect-[4/3] relative rounded-sm overflow-hidden shadow-xl">
+                        <div className="aspect-[4/3] relative rounded-lg overflow-hidden shadow-xl">
                             <Image
                                 src="/images/visningsresa-hero.png"
                                 alt="Visningsresa till Spanien - besök bostäder på Costa Blanca och Costa del Sol"
@@ -25,7 +25,7 @@ export default function VisningsresaTeaser() {
                             />
                         </div>
                         {/* Decorative accent */}
-                        <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-sand/20 rounded-sm -z-10 hidden lg:block" />
+                        <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-sand/20 rounded-lg -z-10 hidden lg:block" />
                     </div>
 
                     {/* Text Side - 55% */}
@@ -55,7 +55,7 @@ export default function VisningsresaTeaser() {
                         {/* CTA */}
                         <Link
                             href="/visningsresa"
-                            className="inline-flex items-center gap-3 bg-navy text-white px-8 py-4 uppercase tracking-[0.15em] text-xs font-bold hover:bg-charcoal transition-colors group"
+                            className="inline-flex items-center gap-3 bg-navy text-white px-8 py-4 uppercase tracking-[0.15em] text-xs font-bold hover:bg-charcoal transition-colors group rounded-md"
                         >
                             Läs mer om visningsresor
                             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />

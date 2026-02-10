@@ -81,7 +81,7 @@ export default function GolfCourseCard({ course, showPrice = true }: GolfCourseC
     return (
         <Link
             href={`/golf/${course.region}/${course.slug}`}
-            className="group block bg-white rounded-sm overflow-hidden shadow-soft golf-card h-full flex flex-col"
+            className="group block bg-white rounded-lg overflow-hidden shadow-soft golf-card h-full flex flex-col"
         >
             {/* Image Container */}
             <div className="relative h-48 md:h-56 overflow-hidden">
@@ -106,7 +106,7 @@ export default function GolfCourseCard({ course, showPrice = true }: GolfCourseC
                         </span>
                     )}
                     {rating >= 4.5 && (
-                        <span className="bg-navy text-white text-[10px] uppercase tracking-[0.2em] px-3 py-1 rounded-sm flex items-center gap-1">
+                        <span className="bg-navy text-white text-[10px] uppercase tracking-[0.2em] px-3 py-1 rounded flex items-center gap-1">
                             <Trophy size={10} className="text-sand" />
                             Top Rated
                         </span>
@@ -114,7 +114,7 @@ export default function GolfCourseCard({ course, showPrice = true }: GolfCourseC
                 </div>
 
                 {/* Rating */}
-                <div className={`absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-sm flex items-center gap-1 transition-opacity duration-500 ${isLoading ? 'opacity-70' : 'opacity-100'}`}>
+                <div className={`absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-2 py-1 rounded flex items-center gap-1 transition-opacity duration-500 ${isLoading ? 'opacity-70' : 'opacity-100'}`}>
                     <Star size={12} className="fill-sand text-sand" />
                     <span className="text-xs font-medium text-navy">{rating.toFixed(1)}</span>
                     <span className="text-[10px] text-gray-500">({totalReviews})</span>

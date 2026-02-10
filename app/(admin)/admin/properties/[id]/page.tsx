@@ -93,13 +93,13 @@ export default function PropertyDetailPage() {
             <div className="grid gap-6 lg:grid-cols-3">
                 {/* Left Column: Images & Key Info */}
                 <div className="space-y-6 lg:col-span-1">
-                    <div className="aspect-video relative overflow-hidden rounded-xl bg-slate-100">
+                    <div className="aspect-video relative overflow-hidden rounded-lg bg-slate-100">
                         {property.images?.[0] && (
                             <Image src={property.images[0]} alt={property.ref} fill className="object-cover" />
                         )}
                     </div>
 
-                    <div className="rounded-xl bg-white p-6 shadow-sm">
+                    <div className="rounded-lg bg-white p-6 shadow-sm">
                         <h3 className="mb-4 font-medium text-slate-900">Status & Synlighet</h3>
                         <div className="space-y-4">
                             <div>
@@ -144,7 +144,7 @@ export default function PropertyDetailPage() {
                         </div>
                     </div>
 
-                    <div className="rounded-xl bg-white p-6 shadow-sm">
+                    <div className="rounded-lg bg-white p-6 shadow-sm">
                         <h3 className="mb-4 font-medium text-slate-900">XML Data</h3>
                         <dl className="space-y-2 text-sm">
                             <div className="flex justify-between">
@@ -165,7 +165,7 @@ export default function PropertyDetailPage() {
 
                 {/* Right Column: Editable Fields */}
                 <div className="space-y-6 lg:col-span-2">
-                    <div className="rounded-xl bg-white p-6 shadow-sm">
+                    <div className="rounded-lg bg-white p-6 shadow-sm">
                         <h3 className="mb-4 font-medium text-slate-900">Redigera information</h3>
                         <div className="space-y-4">
                             <div>
@@ -205,7 +205,7 @@ export default function PropertyDetailPage() {
                         </div>
                     </div>
 
-                    <div className="rounded-xl bg-white p-6 shadow-sm">
+                    <div className="rounded-lg bg-white p-6 shadow-sm">
                         <h3 className="mb-4 font-medium text-slate-900">Original Data</h3>
                         <div className="grid grid-cols-2 gap-4 text-sm">
                             <div>

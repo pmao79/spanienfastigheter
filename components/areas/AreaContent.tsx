@@ -151,7 +151,7 @@ export default function AreaContent({
                     <div className="lg:col-span-8 space-y-16">
 
                         {area.slug === 'torrevieja' && (
-                            <section className="bg-white border border-gray-100 p-6 rounded-sm shadow-soft">
+                            <section className="bg-white border border-gray-100 p-6 rounded-lg shadow-soft">
                                 <div className="flex items-center gap-4 mb-4">
                                     <div className="h-px bg-navy/10 w-12"></div>
                                     <h2 className="text-xl md:text-2xl font-serif text-navy">
@@ -164,19 +164,19 @@ export default function AreaContent({
                                 <div className="flex flex-wrap gap-3">
                                     <Link
                                         href="/fastigheter/torrevieja/strandnara"
-                                        className="px-4 py-2 text-xs uppercase tracking-widest font-semibold border border-sand text-sand hover:bg-sand hover:text-navy transition-colors"
+                                        className="px-4 py-2 text-xs uppercase tracking-widest font-semibold border border-sand text-sand hover:bg-sand hover:text-navy transition-colors rounded-md"
                                     >
                                         Strandnära lägenheter
                                     </Link>
                                     <Link
                                         href="/fastigheter/torrevieja/radhus"
-                                        className="px-4 py-2 text-xs uppercase tracking-widest font-semibold border border-sand text-sand hover:bg-sand hover:text-navy transition-colors"
+                                        className="px-4 py-2 text-xs uppercase tracking-widest font-semibold border border-sand text-sand hover:bg-sand hover:text-navy transition-colors rounded-md"
                                     >
                                         Radhus i Torrevieja
                                     </Link>
                                     <Link
                                         href="/fastigheter/torrevieja/bungalow"
-                                        className="px-4 py-2 text-xs uppercase tracking-widest font-semibold border border-sand text-sand hover:bg-sand hover:text-navy transition-colors"
+                                        className="px-4 py-2 text-xs uppercase tracking-widest font-semibold border border-sand text-sand hover:bg-sand hover:text-navy transition-colors rounded-md"
                                     >
                                         Bungalow i Torrevieja
                                     </Link>
@@ -197,7 +197,7 @@ export default function AreaContent({
 
                                 {/* Why Swedes Love It */}
                                 {area.whySwedes && (
-                                    <div className="bg-alabaster p-6 rounded-sm border-l-4 border-sand my-8">
+                                    <div className="bg-alabaster p-6 rounded-lg border-l-4 border-sand my-8">
                                         <h3 className="text-lg font-serif text-navy mb-3 flex items-center gap-2">
                                             <Heart size={18} className="text-sand" />
                                             Varför svenskar älskar {area.name}
@@ -215,7 +215,7 @@ export default function AreaContent({
 
                                 {/* Honest Assessment */}
                                 {area.notSuitableFor && area.notSuitableFor.length > 0 && (
-                                    <div className="bg-gray-50 p-6 rounded-sm border-l-4 border-gray-300 my-8">
+                                    <div className="bg-gray-50 p-6 rounded-lg border-l-4 border-gray-300 my-8">
                                         <h3 className="text-lg font-serif text-gray-700 mb-3 flex items-center gap-2">
                                             <span className="text-xl">🤔</span>
                                             Vem passar det INTE för?
@@ -271,13 +271,13 @@ export default function AreaContent({
                         )}
 
                         {/* Highlights Grid */}
-                        <section className="bg-alabaster p-8 rounded-sm">
+                        <section className="bg-alabaster p-8 rounded-lg">
                             <h3 className="text-xl font-serif text-navy mb-6 text-center">Det bästa med {area.name}</h3>
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                                 {area.highlights.map((highlight, index) => {
                                     const IconComponent = iconMap[highlight.icon] || Heart;
                                     return (
-                                        <div key={index} className="text-center p-4 bg-white rounded-sm shadow-sm hover:shadow-md transition-shadow">
+                                        <div key={index} className="text-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
                                             <div className="w-10 h-10 mx-auto mb-3 rounded-full bg-sand/10 flex items-center justify-center">
                                                 <IconComponent size={20} className="text-sand" />
                                             </div>
@@ -304,7 +304,7 @@ export default function AreaContent({
                         )}
 
                         {/* Buying Tips */}
-                        <div className="p-8 bg-white border border-gray-100 rounded-sm shadow-soft">
+                        <div className="p-8 bg-white border border-gray-100 rounded-lg shadow-soft">
                             <h2 className="text-2xl font-serif text-navy mb-6 flex items-center gap-3">
                                 <div className="w-8 h-8 rounded-full bg-sand/20 flex items-center justify-center text-sand">
                                     💡
@@ -329,9 +329,9 @@ export default function AreaContent({
                     <div className="lg:col-span-4 space-y-8">
 
                         {/* Sticky Map Card */}
-                        <div className="bg-white p-4 rounded-sm shadow-soft sticky top-24">
+                        <div className="bg-white p-4 rounded-lg shadow-soft sticky top-24">
                             <h3 className="font-serif text-lg text-navy mb-4">Plats</h3>
-                            <div className="aspect-square bg-gray-100 rounded-sm overflow-hidden mb-4 relative group">
+                            <div className="aspect-square bg-gray-100 rounded-lg overflow-hidden mb-4 relative group">
                                 <AreaMap
                                     lat={area.coordinates.lat}
                                     lng={area.coordinates.lng}
@@ -400,7 +400,7 @@ export default function AreaContent({
                                 <Link
                                     key={property.id}
                                     href={`/fastigheter/${property.slug}`}
-                                    className="group bg-white rounded-sm shadow-soft hover:shadow-hover transition-all duration-300 overflow-hidden"
+                                    className="group bg-white rounded-lg shadow-soft hover:shadow-hover transition-all duration-300 overflow-hidden"
                                 >
                                     {/* Image */}
                                     <div className="relative aspect-[4/3] overflow-hidden">
@@ -452,7 +452,7 @@ export default function AreaContent({
                             ))}
                         </div>
                     ) : (
-                        <div className="text-center py-16 bg-white rounded-sm shadow-soft">
+                        <div className="text-center py-16 bg-white rounded-lg shadow-soft">
                             <p className="text-gray-500 mb-4">Inga fastigheter tillgängliga i detta område just nu.</p>
                             <Link
                                 href="/fastigheter"
@@ -487,7 +487,7 @@ export default function AreaContent({
                                 <Link
                                     key={relatedArea.slug}
                                     href={`/omraden/${relatedArea.region}/${relatedArea.slug}`}
-                                    className="group relative aspect-[4/5] overflow-hidden rounded-sm"
+                                    className="group relative aspect-[4/5] overflow-hidden rounded-lg"
                                 >
                                     {relatedArea.image && (
                                         <Image

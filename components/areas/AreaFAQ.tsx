@@ -57,7 +57,7 @@ export default function AreaFAQ({ items, areaName }: AreaFAQProps) {
                         <div
                             key={index}
                             className={`
-                                border rounded-sm overflow-hidden transition-all duration-300
+                                border rounded-lg overflow-hidden transition-all duration-300
                                 ${isOpen ? 'border-navy shadow-soft' : 'border-greige hover:border-sage'}
                             `}
                         >

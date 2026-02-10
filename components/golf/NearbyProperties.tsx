@@ -50,7 +50,7 @@ export default function NearbyProperties({
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Link
                                 href={`/fastigheter?region=${region}`}
-                                className="inline-flex items-center justify-center gap-2 bg-navy text-white px-6 py-3 rounded-sm font-medium hover:bg-navy/90 transition-colors"
+                                className="inline-flex items-center justify-center gap-2 bg-navy text-white px-6 py-3 rounded-md font-medium hover:bg-navy/90 transition-colors"
                             >
                                 Visa alla fastigheter i {region === 'costa-blanca' ? 'Costa Blanca' : 'Costa del Sol'}
                                 <ArrowRight className="w-4 h-4" />
@@ -58,7 +58,7 @@ export default function NearbyProperties({
 
                             <Link
                                 href="/kontakt"
-                                className="inline-flex items-center justify-center gap-2 border border-navy text-navy px-6 py-3 rounded-sm font-medium hover:bg-navy hover:text-white transition-colors"
+                                className="inline-flex items-center justify-center gap-2 border border-navy text-navy px-6 py-3 rounded-md font-medium hover:bg-navy hover:text-white transition-colors"
                             >
                                 Kontakta oss
                             </Link>

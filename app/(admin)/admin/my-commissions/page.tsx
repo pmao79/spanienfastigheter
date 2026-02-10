@@ -34,7 +34,7 @@ export default function MyCommissionsPage() {
 
             {/* Stats */}
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-                <div className="rounded-xl bg-white p-6 shadow-sm border border-slate-100">
+                <div className="rounded-lg bg-white p-6 shadow-sm border border-slate-100">
                     <div className="flex items-center justify-between">
                         <div>
                             <p className="text-sm font-medium text-slate-500">Väntar utbetalning</p>
@@ -45,7 +45,7 @@ export default function MyCommissionsPage() {
                         </div>
                     </div>
                 </div>
-                <div className="rounded-xl bg-white p-6 shadow-sm border border-slate-100">
+                <div className="rounded-lg bg-white p-6 shadow-sm border border-slate-100">
                     <div className="flex items-center justify-between">
                         <div>
                             <p className="text-sm font-medium text-slate-500">Utbetalt totalt</p>
@@ -56,7 +56,7 @@ export default function MyCommissionsPage() {
                         </div>
                     </div>
                 </div>
-                <div className="rounded-xl bg-white p-6 shadow-sm border border-slate-100">
+                <div className="rounded-lg bg-white p-6 shadow-sm border border-slate-100">
                     <div className="flex items-center justify-between">
                         <div>
                             <p className="text-sm font-medium text-slate-500">Antal affärer</p>
@@ -70,7 +70,7 @@ export default function MyCommissionsPage() {
             </div>
 
             {/* List */}
-            <div className="rounded-xl bg-white shadow-sm overflow-hidden border border-slate-200">
+            <div className="rounded-lg bg-white shadow-sm overflow-hidden border border-slate-200">
                 <div className="px-6 py-4 border-b border-slate-100">
                     <h3 className="font-medium text-slate-900">Historik</h3>
                 </div>

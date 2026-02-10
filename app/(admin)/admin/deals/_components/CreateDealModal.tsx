@@ -81,7 +81,7 @@ export default function CreateDealModal({ isOpen, onClose }: CreateDealModalProp
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm">
-            <div className="w-full max-w-2xl rounded-2xl bg-white shadow-xl">
+            <div className="w-full max-w-2xl rounded-lg bg-white shadow-xl">
                 <div className="flex items-center justify-between border-b border-slate-100 p-6">
                     <h2 className="text-xl font-bold text-slate-900">Skapa ny deal</h2>
                     <button onClick={onClose} className="rounded-full p-2 text-slate-400 hover:bg-slate-50 hover:text-slate-600">
@@ -128,7 +128,7 @@ export default function CreateDealModal({ isOpen, onClose }: CreateDealModalProp
                     </div>
 
                     {/* Economics */}
-                    <div className="rounded-xl bg-slate-50 p-4 border border-slate-100 space-y-4">
+                    <div className="rounded-lg bg-slate-50 p-4 border border-slate-100 space-y-4">
                         <h3 className="text-sm font-semibold text-slate-900">Ekonomi</h3>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                             <div>

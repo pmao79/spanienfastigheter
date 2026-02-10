@@ -11,7 +11,7 @@ export default function AreaCard({ area }: AreaCardProps) {
     return (
         <Link
             href={`/omraden/${area.region}/${area.slug}`}
-            className="group relative aspect-[4/5] overflow-hidden rounded-sm"
+            className="group relative aspect-[4/5] overflow-hidden rounded-lg"
         >
             {/* Background Image */}
             {area.image && (

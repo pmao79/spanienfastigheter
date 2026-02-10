@@ -78,7 +78,7 @@ export default function CommissionProfilesPage() {
             {/* List */}
             <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
                 {profiles.map((profile) => (
-                    <div key={profile._id} className="rounded-xl bg-white p-6 shadow-sm border border-slate-200">
+                    <div key={profile._id} className="rounded-lg bg-white p-6 shadow-sm border border-slate-200">
                         <div className="flex items-start justify-between">
                             <div>
                                 <h3 className="font-semibold text-slate-900">{profile.name}</h3>
@@ -118,7 +118,7 @@ export default function CommissionProfilesPage() {
             {/* Modal */}
             {isModalOpen && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-                    <div className="w-full max-w-lg rounded-xl bg-white p-6 shadow-xl">
+                    <div className="w-full max-w-lg rounded-lg bg-white p-6 shadow-xl">
                         <div className="mb-4 flex items-center justify-between">
                             <h2 className="text-lg font-bold text-slate-900">Skapa Provisionsprofil</h2>
                             <button onClick={() => setIsModalOpen(false)}><X className="h-5 w-5 text-slate-400" /></button>

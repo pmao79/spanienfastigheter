@@ -162,7 +162,7 @@ export default function SellPage() {
                         {benefits.map((benefit, idx) => (
                             <div
                                 key={idx}
-                                className="bg-white p-8 rounded-sm shadow-soft text-center group hover:shadow-hover transition-all duration-300"
+                                className="bg-white p-8 rounded-lg shadow-soft text-center group hover:shadow-hover transition-all duration-300"
                             >
                                 <div className="w-16 h-16 bg-navy rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-sand transition-colors">
                                     <benefit.icon size={28} className="text-sand group-hover:text-navy transition-colors" />
@@ -189,7 +189,7 @@ export default function SellPage() {
                         {processSteps.map((step, idx) => (
                             <div
                                 key={idx}
-                                className="relative p-6 border border-gray-100 rounded-sm group hover:border-sand/50 transition-colors"
+                                className="relative p-6 border border-gray-100 rounded-lg group hover:border-sand/50 transition-colors"
                             >
                                 <div className="absolute -top-3 -left-3 w-8 h-8 bg-sand text-navy rounded-full flex items-center justify-center text-sm font-bold">
                                     {idx + 1}
@@ -218,7 +218,7 @@ export default function SellPage() {
                             </p>
                         </div>
 
-                        <div className="bg-white p-8 md:p-10 rounded-sm shadow-soft">
+                        <div className="bg-white p-8 md:p-10 rounded-lg shadow-soft">
                             {isSubmitted ? (
                                 <div className="text-center py-12">
                                     <div className="w-16 h-16 bg-sage/20 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -237,7 +237,7 @@ export default function SellPage() {
                                             <input
                                                 type="text"
                                                 required
-                                                className="w-full px-4 py-3 border border-gray-200 rounded-sm focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors"
+                                                className="w-full px-4 py-3 border border-gray-200 rounded-md focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors"
                                             />
                                         </div>
                                         <div>
@@ -247,7 +247,7 @@ export default function SellPage() {
                                             <input
                                                 type="text"
                                                 required
-                                                className="w-full px-4 py-3 border border-gray-200 rounded-sm focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors"
+                                                className="w-full px-4 py-3 border border-gray-200 rounded-md focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors"
                                             />
                                         </div>
                                     </div>
@@ -259,7 +259,7 @@ export default function SellPage() {
                                         <input
                                             type="email"
                                             required
-                                            className="w-full px-4 py-3 border border-gray-200 rounded-sm focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors"
+                                            className="w-full px-4 py-3 border border-gray-200 rounded-md focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors"
                                         />
                                     </div>
 
@@ -270,7 +270,7 @@ export default function SellPage() {
                                         <input
                                             type="tel"
                                             required
-                                            className="w-full px-4 py-3 border border-gray-200 rounded-sm focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors"
+                                            className="w-full px-4 py-3 border border-gray-200 rounded-md focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors"
                                         />
                                     </div>
 
@@ -281,7 +281,7 @@ export default function SellPage() {
                                         <input
                                             type="text"
                                             placeholder="t.ex. Torrevieja, Costa Blanca"
-                                            className="w-full px-4 py-3 border border-gray-200 rounded-sm focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors"
+                                            className="w-full px-4 py-3 border border-gray-200 rounded-md focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors"
                                         />
                                     </div>
 
@@ -292,14 +292,14 @@ export default function SellPage() {
                                         <textarea
                                             rows={4}
                                             placeholder="Berätta om din fastighet (typ, storlek, skick, etc.)"
-                                            className="w-full px-4 py-3 border border-gray-200 rounded-sm focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors resize-none"
+                                            className="w-full px-4 py-3 border border-gray-200 rounded-md focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors resize-none"
                                         />
                                     </div>
 
                                     <button
                                         type="submit"
                                         disabled={isLoading}
-                                        className="w-full bg-navy text-white py-4 uppercase tracking-[0.2em] text-xs font-bold hover:bg-charcoal transition-colors flex items-center justify-center gap-2 disabled:opacity-50"
+                                        className="w-full bg-navy text-white py-4 uppercase tracking-[0.2em] text-xs font-bold hover:bg-charcoal transition-colors flex items-center justify-center gap-2 disabled:opacity-50 rounded-md"
                                     >
                                         {isLoading ? 'Skickar...' : (
                                             <>
@@ -326,7 +326,7 @@ export default function SellPage() {
                     </p>
                     <a
                         href="tel:+46708625253"
-                        className="inline-flex items-center gap-2 px-8 py-4 bg-sand text-navy uppercase tracking-widest text-xs font-bold hover:bg-white transition-colors"
+                        className="inline-flex items-center gap-2 px-8 py-4 bg-sand text-navy uppercase tracking-widest text-xs font-bold hover:bg-white transition-colors rounded-md"
                     >
                         +46 0708 62 52 53
                     </a>

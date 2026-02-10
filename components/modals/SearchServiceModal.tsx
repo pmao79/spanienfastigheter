@@ -64,7 +64,7 @@ export default function SearchServiceModal({
         return (
             <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
                 <div className="absolute inset-0 bg-navy/60 backdrop-blur-sm transition-opacity" onClick={onClose}></div>
-                <div className="bg-white w-full max-w-md p-8 rounded-sm shadow-2xl relative z-10 flex flex-col items-center text-center animate-fade-in-up">
+                <div className="bg-white w-full max-w-md p-8 rounded-lg shadow-2xl relative z-10 flex flex-col items-center text-center animate-fade-in-up">
                     <button onClick={onClose} className="absolute top-4 right-4 p-2 hover:bg-gray-100 rounded-full">
                         <X size={20} />
                     </button>
@@ -75,7 +75,7 @@ export default function SearchServiceModal({
                     <p className="text-gray-500 mb-8 max-w-xs">
                         Vi har mottagit dina önskemål och börjar leta direkt. En bekräftelse har skickats till {email}.
                     </p>
-                    <button onClick={onClose} className="bg-navy text-white px-8 py-3 uppercase tracking-widest text-xs font-bold rounded-sm">
+                    <button onClick={onClose} className="bg-navy text-white px-8 py-3 uppercase tracking-widest text-xs font-bold rounded-md">
                         Stäng fönstret
                     </button>
                 </div>
@@ -92,7 +92,7 @@ export default function SearchServiceModal({
             ></div>
 
             {/* Modal Content */}
-            <div className="bg-white w-full max-w-5xl h-[90vh] md:h-auto md:max-h-[90vh] overflow-y-auto md:overflow-hidden rounded-sm shadow-2xl relative z-10 flex flex-col md:flex-row animate-fade-in">
+            <div className="bg-white w-full max-w-5xl h-[90vh] md:h-auto md:max-h-[90vh] overflow-y-auto md:overflow-hidden rounded-lg shadow-2xl relative z-10 flex flex-col md:flex-row animate-fade-in">
                 {/* Close Button */}
                 <button
                     onClick={onClose}
@@ -155,7 +155,7 @@ export default function SearchServiceModal({
                     </div>
 
                     <div className="relative z-10 mt-12 md:mt-0">
-                        <div className="bg-white/10 backdrop-blur-md p-4 rounded-sm border border-white/10">
+                        <div className="bg-white/10 backdrop-blur-md p-4 rounded-lg border border-white/10">
                             <p className="text-xs italic text-white/80">
                                 &quot;Vi letade i 6 månader utan resultat. Efter att vi anmälde
                                 oss här hittade Spanienfastigheter vårt drömhus på 2
@@ -199,7 +199,7 @@ export default function SearchServiceModal({
                                                 checked={selectedAreas.includes(region)}
                                                 onChange={() => toggleArea(region)}
                                             />
-                                            <span className="px-4 py-2 border border-gray-200 text-sm text-charcoal rounded-sm hover:border-navy peer-checked:bg-navy peer-checked:text-white peer-checked:border-navy transition-all block">
+                                            <span className="px-4 py-2 border border-gray-200 text-sm text-charcoal rounded-md hover:border-navy peer-checked:bg-navy peer-checked:text-white peer-checked:border-navy transition-all block">
                                                 {region}
                                             </span>
                                         </label>
@@ -256,7 +256,7 @@ export default function SearchServiceModal({
                                         required
                                         value={name}
                                         onChange={(e) => setName(e.target.value)}
-                                        className="w-full bg-greige/30 border border-transparent focus:bg-white focus:border-navy px-4 py-3 text-sm rounded-sm outline-none transition-all"
+                                        className="w-full bg-greige/30 border border-transparent focus:bg-white focus:border-navy px-4 py-3 text-sm rounded-md outline-none transition-all"
                                         placeholder="För- och efternamn"
                                     />
                                 </div>
@@ -269,7 +269,7 @@ export default function SearchServiceModal({
                                         required
                                         value={phone}
                                         onChange={(e) => setPhone(e.target.value)}
-                                        className="w-full bg-greige/30 border border-transparent focus:bg-white focus:border-navy px-4 py-3 text-sm rounded-sm outline-none transition-all"
+                                        className="w-full bg-greige/30 border border-transparent focus:bg-white focus:border-navy px-4 py-3 text-sm rounded-md outline-none transition-all"
                                         placeholder="+46..."
                                     />
                                 </div>
@@ -283,7 +283,7 @@ export default function SearchServiceModal({
                                     required
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
-                                    className="w-full bg-greige/30 border border-transparent focus:bg-white focus:border-navy px-4 py-3 text-sm rounded-sm outline-none transition-all"
+                                        className="w-full bg-greige/30 border border-transparent focus:bg-white focus:border-navy px-4 py-3 text-sm rounded-md outline-none transition-all"
                                     placeholder="din@email.se"
                                 />
                             </div>
@@ -292,7 +292,7 @@ export default function SearchServiceModal({
                         <button
                             type="submit"
                             disabled={isLoading}
-                            className="w-full bg-navy text-white py-4 uppercase tracking-[0.2em] text-xs font-bold hover:bg-charcoal transition-all shadow-lg shadow-navy/20 flex items-center justify-center gap-2 group disabled:opacity-70 disabled:cursor-not-allowed"
+                            className="w-full bg-navy text-white py-4 uppercase tracking-[0.2em] text-xs font-bold hover:bg-charcoal transition-all shadow-lg shadow-navy/20 flex items-center justify-center gap-2 group disabled:opacity-70 disabled:cursor-not-allowed rounded-md"
                         >
                             {isLoading ? 'Skickar...' : 'Starta bevakning'}
                             {!isLoading && <ArrowRight

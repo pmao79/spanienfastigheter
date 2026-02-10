@@ -123,7 +123,7 @@ const ClientOnlyPDFDownload = ({ property }: { property: Property }) => {
         >
             {/* Using 'any' for the render prop because typings with dynamic imports can be tricky */}
             {({ blob, url, loading, error }: any) => (
-                <div className="bg-charcoal text-white p-6 flex justify-between items-center cursor-pointer hover:bg-navy transition-colors group">
+                <div className="bg-charcoal text-white p-6 flex justify-between items-center cursor-pointer hover:bg-navy transition-colors group rounded-lg">
                     <div>
                         <span className="text-[10px] uppercase tracking-widest opacity-60 block mb-1">
                             Dokument
@@ -449,24 +449,24 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
                             <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-4">
                                 <div className="flex flex-wrap items-center gap-2">
                                     {property.isNewBuild && (
-                                        <span className="px-3 py-1 bg-navy/5 text-navy text-[10px] uppercase tracking-widest font-semibold rounded-sm">
+                                        <span className="px-3 py-1 bg-navy/5 text-navy text-[10px] uppercase tracking-widest font-semibold rounded">
                                             Nyproduktion
                                         </span>
                                     )}
-                                    <span className="px-3 py-1 bg-sand/10 text-charcoal text-[10px] uppercase tracking-widest font-semibold rounded-sm flex items-center gap-1">
+                                    <span className="px-3 py-1 bg-sand/10 text-charcoal text-[10px] uppercase tracking-widest font-semibold rounded flex items-center gap-1">
                                         <MapPin size={10} />
                                         {property.region === 'costa-del-sol'
                                             ? 'Costa del Sol'
                                             : 'Costa Blanca'}
                                     </span>
-                                    <span className="px-3 py-1 bg-navy/5 text-navy text-[10px] uppercase tracking-widest font-semibold rounded-sm">
+                                    <span className="px-3 py-1 bg-navy/5 text-navy text-[10px] uppercase tracking-widest font-semibold rounded">
                                         Ref: {property.ref}
                                     </span>
-                                    <span className="px-3 py-1 bg-navy/5 text-navy text-[10px] uppercase tracking-widest font-semibold rounded-sm">
+                                    <span className="px-3 py-1 bg-navy/5 text-navy text-[10px] uppercase tracking-widest font-semibold rounded">
                                         {translatePropertyType(property.type)}
                                     </span>
                                     {property.energyRating && (
-                                        <span className="px-3 py-1 bg-navy/5 text-navy text-[10px] uppercase tracking-widest font-semibold rounded-sm flex items-center gap-1">
+                                        <span className="px-3 py-1 bg-navy/5 text-navy text-[10px] uppercase tracking-widest font-semibold rounded flex items-center gap-1">
                                             <Zap size={10} />
                                             Energiklass: {property.energyRating}
                                         </span>
@@ -504,7 +504,7 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
                         {/* Updated Key Specs Grid - Compact & Expanded */}
                         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mb-12">
                             {/* 1. Bedrooms */}
-                            <div className="p-3 bg-white border border-gray-100 rounded-sm hover:shadow-soft transition-shadow">
+                            <div className="p-3 bg-white border border-gray-100 rounded-lg hover:shadow-soft transition-shadow">
                                 <div className="flex items-center gap-2 mb-1">
                                     <Bed size={18} className="text-sand" />
                                     <span className="text-[10px] uppercase tracking-widest text-gray-400 font-bold">
@@ -517,7 +517,7 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
                             </div>
 
                             {/* 2. Bathrooms */}
-                            <div className="p-3 bg-white border border-gray-100 rounded-sm hover:shadow-soft transition-shadow">
+                            <div className="p-3 bg-white border border-gray-100 rounded-lg hover:shadow-soft transition-shadow">
                                 <div className="flex items-center gap-2 mb-1">
                                     <Bath size={18} className="text-sand" />
                                     <span className="text-[10px] uppercase tracking-widest text-gray-400 font-bold">
@@ -530,7 +530,7 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
                             </div>
 
                             {/* 3. Build Area */}
-                            <div className="p-3 bg-white border border-gray-100 rounded-sm hover:shadow-soft transition-shadow">
+                            <div className="p-3 bg-white border border-gray-100 rounded-lg hover:shadow-soft transition-shadow">
                                 <div className="flex items-center gap-2 mb-1">
                                     <Expand size={18} className="text-sand" />
                                     <span className="text-[10px] uppercase tracking-widest text-gray-400 font-bold">
@@ -544,7 +544,7 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
 
                             {/* 4. Terrace */}
                             {(property.terraceArea || property.features.terrace) && (
-                                <div className="p-3 bg-white border border-gray-100 rounded-sm hover:shadow-soft transition-shadow">
+                                <div className="p-3 bg-white border border-gray-100 rounded-lg hover:shadow-soft transition-shadow">
                                     <div className="flex items-center gap-2 mb-1">
                                         <Sun size={18} className="text-sand" />
                                         <span className="text-[10px] uppercase tracking-widest text-gray-400 font-bold">
@@ -559,7 +559,7 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
 
                             {/* 5. Plot */}
                             {(property.plotArea && property.plotArea > 0) ? (
-                                <div className="p-3 bg-white border border-gray-100 rounded-sm hover:shadow-soft transition-shadow">
+                                <div className="p-3 bg-white border border-gray-100 rounded-lg hover:shadow-soft transition-shadow">
                                     <div className="flex items-center gap-2 mb-1">
                                         <Scan size={18} className="text-sand" />
                                         <span className="text-[10px] uppercase tracking-widest text-gray-400 font-bold">
@@ -574,7 +574,7 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
 
                             {/* 6. Pool */}
                             {property.features.pool !== 'none' && (
-                                <div className="p-3 bg-white border border-gray-100 rounded-sm hover:shadow-soft transition-shadow">
+                                <div className="p-3 bg-white border border-gray-100 rounded-lg hover:shadow-soft transition-shadow">
                                     <div className="flex items-center gap-2 mb-1">
                                         <Waves size={18} className="text-sand" />
                                         <span className="text-[10px] uppercase tracking-widest text-gray-400 font-bold">
@@ -589,7 +589,7 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
 
                             {/* 7. Elevator */}
                             {property.features.elevator && (
-                                <div className="p-3 bg-white border border-gray-100 rounded-sm hover:shadow-soft transition-shadow">
+                                <div className="p-3 bg-white border border-gray-100 rounded-lg hover:shadow-soft transition-shadow">
                                     <div className="flex items-center gap-2 mb-1">
                                         <ArrowUpDown size={18} className="text-sand" />
                                         <span className="text-[10px] uppercase tracking-widest text-gray-400 font-bold">
@@ -604,7 +604,7 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
 
                             {/* 8. Parking */}
                             {property.features.parking && (
-                                <div className="p-3 bg-white border border-gray-100 rounded-sm hover:shadow-soft transition-shadow">
+                                <div className="p-3 bg-white border border-gray-100 rounded-lg hover:shadow-soft transition-shadow">
                                     <div className="flex items-center gap-2 mb-1">
                                         <Car size={18} className="text-sand" />
                                         <span className="text-[10px] uppercase tracking-widest text-gray-400 font-bold">
@@ -619,7 +619,7 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
 
                             {/* 9. AC */}
                             {property.features.airConditioning && (
-                                <div className="p-3 bg-white border border-gray-100 rounded-sm hover:shadow-soft transition-shadow">
+                                <div className="p-3 bg-white border border-gray-100 rounded-lg hover:shadow-soft transition-shadow">
                                     <div className="flex items-center gap-2 mb-1">
                                         <Wind size={18} className="text-sand" />
                                         <span className="text-[10px] uppercase tracking-widest text-gray-400 font-bold">
@@ -634,7 +634,7 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
 
                             {/* 10. Heating */}
                             {property.features.heating && (
-                                <div className="p-3 bg-white border border-gray-100 rounded-sm hover:shadow-soft transition-shadow">
+                                <div className="p-3 bg-white border border-gray-100 rounded-lg hover:shadow-soft transition-shadow">
                                     <div className="flex items-center gap-2 mb-1">
                                         <Thermometer size={18} className="text-sand" />
                                         <span className="text-[10px] uppercase tracking-widest text-gray-400 font-bold">
@@ -649,7 +649,7 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
 
                             {/* 11. Garden */}
                             {property.features.garden && (
-                                <div className="p-3 bg-white border border-gray-100 rounded-sm hover:shadow-soft transition-shadow">
+                                <div className="p-3 bg-white border border-gray-100 rounded-lg hover:shadow-soft transition-shadow">
                                     <div className="flex items-center gap-2 mb-1">
                                         <Trees size={18} className="text-sand" />
                                         <span className="text-[10px] uppercase tracking-widest text-gray-400 font-bold">
@@ -664,7 +664,7 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
 
                             {/* 12. Storage */}
                             {property.features.storage && (
-                                <div className="p-3 bg-white border border-gray-100 rounded-sm hover:shadow-soft transition-shadow">
+                                <div className="p-3 bg-white border border-gray-100 rounded-lg hover:shadow-soft transition-shadow">
                                     <div className="flex items-center gap-2 mb-1">
                                         <Box size={18} className="text-sand" />
                                         <span className="text-[10px] uppercase tracking-widest text-gray-400 font-bold">
@@ -679,7 +679,7 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
 
                             {/* 13. Gated */}
                             {property.features.gated && (
-                                <div className="p-3 bg-white border border-gray-100 rounded-sm hover:shadow-soft transition-shadow">
+                                <div className="p-3 bg-white border border-gray-100 rounded-lg hover:shadow-soft transition-shadow">
                                     <div className="flex items-center gap-2 mb-1">
                                         <Shield size={18} className="text-sand" />
                                         <span className="text-[10px] uppercase tracking-widest text-gray-400 font-bold">
@@ -694,7 +694,7 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
 
                             {/* 14. Beach Distance */}
                             {property.distances.beach && (
-                                <div className="p-3 bg-white border border-gray-100 rounded-sm hover:shadow-soft transition-shadow">
+                                <div className="p-3 bg-white border border-gray-100 rounded-lg hover:shadow-soft transition-shadow">
                                     <div className="flex items-center gap-2 mb-1">
                                         <Umbrella size={18} className="text-sand" />
                                         <span className="text-[10px] uppercase tracking-widest text-gray-400 font-bold">
@@ -711,7 +711,7 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
 
                             {/* 15. Near Golf */}
                             {property.distances.golf && (
-                                <div className="p-3 bg-white border border-gray-100 rounded-sm hover:shadow-soft transition-shadow">
+                                <div className="p-3 bg-white border border-gray-100 rounded-lg hover:shadow-soft transition-shadow">
                                     <div className="flex items-center gap-2 mb-1">
                                         <Trees size={18} className="text-sand" />
                                         <span className="text-[10px] uppercase tracking-widest text-gray-400 font-bold">
@@ -778,7 +778,7 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
                                 {displayFeatures.map((feature, idx) => (
                                     <div
                                         key={idx}
-                                        className="group relative p-3 rounded-xl bg-navy border border-navy/5 hover:border-sand/30 hover:shadow-lg hover:shadow-navy/20 transition-all duration-300 hover:-translate-y-1 flex flex-col items-center justify-center text-center gap-2 overflow-hidden"
+                                        className="group relative p-3 rounded-lg bg-navy border border-navy/5 hover:border-sand/30 hover:shadow-lg hover:shadow-navy/20 transition-all duration-300 hover:-translate-y-1 flex flex-col items-center justify-center text-center gap-2 overflow-hidden"
                                     >
                                         {/* Subtle internal gradient/glow on hover */}
                                         <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
@@ -800,7 +800,7 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
                                 Avstånd & Område
                             </h3>
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                                <div className="flex flex-col items-center justify-center p-3 md:p-4 bg-white border border-sand text-center gap-2 shadow-soft transition-all duration-300">
+                                <div className="flex flex-col items-center justify-center p-3 md:p-4 bg-white border border-sand text-center gap-2 shadow-soft transition-all duration-300 rounded-lg">
                                     <Waves
                                         size={18}
                                         className="text-sage"
@@ -815,7 +815,7 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
                                             : 'N/A')}
                                     </span>
                                 </div>
-                                <div className="flex flex-col items-center justify-center p-3 md:p-4 bg-white border border-sand text-center gap-2 shadow-soft transition-all duration-300">
+                                <div className="flex flex-col items-center justify-center p-3 md:p-4 bg-white border border-sand text-center gap-2 shadow-soft transition-all duration-300 rounded-lg">
                                     <Plane
                                         size={18}
                                         className="text-sage"
@@ -828,7 +828,7 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
                                         {googleDistances.airport || '45 min'}
                                     </span>
                                 </div>
-                                <div className="flex flex-col items-center justify-center p-3 md:p-4 bg-white border border-sand text-center gap-2 shadow-soft transition-all duration-300">
+                                <div className="flex flex-col items-center justify-center p-3 md:p-4 bg-white border border-sand text-center gap-2 shadow-soft transition-all duration-300 rounded-lg">
                                     <Trees
                                         size={18}
                                         className="text-sage"
@@ -841,7 +841,7 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
                                         {googleDistances.golf || (property.distances.golf ? 'Nära' : 'N/A')}
                                     </span>
                                 </div>
-                                <div className="flex flex-col items-center justify-center p-3 md:p-4 bg-white border border-sand text-center gap-2 shadow-soft transition-all duration-300">
+                                <div className="flex flex-col items-center justify-center p-3 md:p-4 bg-white border border-sand text-center gap-2 shadow-soft transition-all duration-300 rounded-lg">
                                     <Home
                                         size={18}
                                         className="text-sage"
@@ -855,7 +855,7 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
                                     </span>
                                 </div>
                                 {(property.distances.schools || googleDistances.shopping) && (
-                                    <div className="flex flex-col items-center justify-center p-3 md:p-4 bg-white border border-sand text-center gap-2 shadow-soft transition-all duration-300">
+                                    <div className="flex flex-col items-center justify-center p-3 md:p-4 bg-white border border-sand text-center gap-2 shadow-soft transition-all duration-300 rounded-lg">
                                         <School
                                             size={18}
                                             className="text-sage"
@@ -868,7 +868,7 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
                                     </div>
                                 )}
                                 {(property.distances.commercialCenter || googleDistances.shopping) && (
-                                    <div className="flex flex-col items-center justify-center p-3 md:p-4 bg-white border border-sand text-center gap-2 shadow-soft transition-all duration-300">
+                                    <div className="flex flex-col items-center justify-center p-3 md:p-4 bg-white border border-sand text-center gap-2 shadow-soft transition-all duration-300 rounded-lg">
                                         <ShoppingBag
                                             size={18}
                                             className="text-sage"
@@ -887,7 +887,7 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
 
                         {/* Map Section */}
                         {(property.coordinates?.lat && property.coordinates?.lng) && (
-                            <div className="mt-8 rounded-sm overflow-hidden border border-gray-100 shadow-sm relative z-0">
+                            <div className="mt-8 rounded-lg overflow-hidden border border-gray-100 shadow-sm relative z-0">
                                 <PropertyMap
                                     latitude={property.coordinates.lat}
                                     longitude={property.coordinates.lng}
@@ -899,7 +899,7 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
 
                         {/* Concierge CTA */}
                         <div
-                            className="mb-12 relative rounded-sm overflow-hidden group cursor-pointer"
+                            className="mb-12 relative rounded-lg overflow-hidden group cursor-pointer"
                             onClick={() => setIsSearchModalOpen(true)}
                         >
                             <Image
@@ -923,7 +923,7 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
                                     bostäder innan de når den öppna marknaden. Berätta vad du
                                     söker, så gör vi jobbet.
                                 </p>
-                                <button className="bg-white text-navy px-8 py-4 uppercase tracking-[0.15em] text-xs font-bold hover:bg-sand hover:text-white transition-all duration-300 flex items-center gap-3 shadow-lg">
+                                <button className="bg-white text-navy px-8 py-4 uppercase tracking-[0.15em] text-xs font-bold hover:bg-sand hover:text-white transition-all duration-300 flex items-center gap-3 shadow-lg rounded-md">
                                     Ange dina önskemål <ArrowRight size={16} />
                                 </button>
                             </div>
@@ -934,7 +934,7 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
                     <div className="lg:w-96 flex-shrink-0">
                         <div className="sticky top-32 space-y-6">
                             {/* Agent Card - Premium Redesign */}
-                            <div className="bg-white p-8 border border-gray-100 shadow-xl shadow-navy/5 relative overflow-hidden group">
+                            <div className="bg-white p-8 border border-gray-100 shadow-xl shadow-navy/5 relative overflow-hidden group rounded-lg">
                                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-navy via-sand to-navy"></div>
 
                                 <div className="flex items-center gap-5 mb-8">
@@ -978,14 +978,14 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
                                 <div className="space-y-3">
                                     <button
                                         onClick={() => setIsBookingModalOpen(true)}
-                                        className="w-full bg-navy text-white h-12 uppercase tracking-[0.2em] text-xs font-bold hover:bg-charcoal transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl hover:-translate-y-0.5 group/btn"
+                                        className="w-full bg-navy text-white h-12 uppercase tracking-[0.2em] text-xs font-bold hover:bg-charcoal transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl hover:-translate-y-0.5 group/btn rounded-md"
                                     >
                                         <Calendar size={16} className="group-hover/btn:text-sand transition-colors" />
                                         Boka Visning
                                     </button>
                                     <button
                                         onClick={() => setIsContactModalOpen(true)}
-                                        className="w-full bg-white border border-navy text-navy h-12 uppercase tracking-[0.2em] text-xs font-bold hover:bg-navy hover:text-white transition-all duration-300 flex items-center justify-center gap-3"
+                                        className="w-full bg-white border border-navy text-navy h-12 uppercase tracking-[0.2em] text-xs font-bold hover:bg-navy hover:text-white transition-all duration-300 flex items-center justify-center gap-3 rounded-md"
                                     >
                                         <Mail size={16} />
                                         Kontakta mig
@@ -1021,13 +1021,13 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
                 <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4 md:hidden z-50 flex gap-3 shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">
                     <button
                         onClick={() => setIsContactModalOpen(true)}
-                        className="flex-1 bg-white border border-navy text-navy py-3 uppercase tracking-widest text-xs font-bold rounded-sm flex items-center justify-center gap-2"
+                        className="flex-1 bg-white border border-navy text-navy py-3 uppercase tracking-widest text-xs font-bold rounded-md flex items-center justify-center gap-2"
                     >
                         Kontakta
                     </button>
                     <button
                         onClick={() => setIsBookingModalOpen(true)}
-                        className="flex-[2] bg-navy text-white py-3 uppercase tracking-widest text-xs font-bold rounded-sm flex items-center justify-center gap-2"
+                        className="flex-[2] bg-navy text-white py-3 uppercase tracking-widest text-xs font-bold rounded-md flex items-center justify-center gap-2"
                     >
                         Boka Visning
                     </button>

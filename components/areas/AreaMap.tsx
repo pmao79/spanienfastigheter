@@ -54,7 +54,7 @@ export default function AreaMap({
     }
 
     return (
-        <div className={`relative overflow-hidden rounded-sm ${className}`}>
+        <div className={`relative overflow-hidden rounded-lg ${className}`}>
             <Map
                 ref={mapRef}
                 {...viewState}

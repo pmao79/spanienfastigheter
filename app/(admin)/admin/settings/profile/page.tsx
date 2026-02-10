@@ -70,7 +70,7 @@ export default function ProfilePage() {
                 <div className="space-y-6">
 
                     {/* AVATAR */}
-                    <div className="p-6 bg-white rounded-xl border border-slate-200 shadow-sm flex items-center gap-6">
+                    <div className="p-6 bg-white rounded-lg border border-slate-200 shadow-sm flex items-center gap-6">
                         <div className="relative w-20 h-20 rounded-full bg-[#1a365d] text-white flex items-center justify-center text-2xl font-bold shrink-0 overflow-hidden">
                             {formData.avatarUrl ? (
                                 <Image
@@ -98,7 +98,7 @@ export default function ProfilePage() {
                         </div>
                     </div>
 
-                    <div className="space-y-5 bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                    <div className="space-y-5 bg-white p-6 rounded-lg border border-slate-200 shadow-sm">
                         <h2 className="text-lg font-semibold text-slate-800 border-b pb-4 mb-4">Personuppgifter</h2>
 
                         <div>
@@ -180,7 +180,7 @@ export default function ProfilePage() {
 
                 {/* VISUALIZATION */}
                 <div className="space-y-6">
-                    <div className="bg-slate-50 border border-slate-200 rounded-xl p-8 sticky top-8">
+                    <div className="bg-slate-50 border border-slate-200 rounded-lg p-8 sticky top-8">
                         <div className="flex justify-between items-center mb-6">
                             <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider">Förhandsgranskning Signatur</h3>
                             {showSuccess && (

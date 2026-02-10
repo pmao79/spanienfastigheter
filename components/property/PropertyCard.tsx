@@ -78,7 +78,7 @@ export default function PropertyCard({ property }: PropertyCardProps) {
     return (
         <Link
             href={`/fastigheter/${property.slug}`}
-            className="group bg-white rounded-sm overflow-hidden hover:shadow-hover transition-all duration-500 border border-gray-100 flex flex-col h-full"
+            className="group bg-white rounded-lg overflow-hidden hover:shadow-hover transition-all duration-500 border border-gray-100 flex flex-col h-full"
         >
             {/* Image Section */}
             <div className="relative aspect-[16/10] overflow-hidden bg-gray-100">
@@ -123,11 +123,11 @@ export default function PropertyCard({ property }: PropertyCardProps) {
                     <div className="flex justify-between items-start mb-3">
                         <div className="flex flex-wrap gap-2">
                             {property.isNewBuild && (
-                                <span className="bg-navy/5 text-navy px-2 py-1 text-[9px] uppercase tracking-widest font-semibold rounded-sm">
+                                <span className="bg-navy/5 text-navy px-2 py-1 text-[9px] uppercase tracking-widest font-semibold rounded">
                                     Nyproduktion
                                 </span>
                             )}
-                            <span className="bg-navy/5 text-navy px-2 py-1 text-[9px] uppercase tracking-widest font-semibold rounded-sm">
+                            <span className="bg-navy/5 text-navy px-2 py-1 text-[9px] uppercase tracking-widest font-semibold rounded">
                                 {translatePropertyType(property.type)}
                             </span>
                         </div>

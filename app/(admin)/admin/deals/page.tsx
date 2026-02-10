@@ -76,7 +76,7 @@ export default function DealsPage() {
     return (
         <div className="flex h-[calc(100vh-6rem)] flex-col gap-6">
             {/* 1. PAGE Header */}
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 rounded-xl bg-white p-4 shadow-sm border border-slate-100">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 rounded-lg bg-white p-4 shadow-sm border border-slate-100">
                 <div className="min-w-0">
                     <h1 className="text-xl font-bold text-[#1a365d]">Deals Pipeline</h1>
                     <div className="flex flex-col sm:flex-row sm:gap-4 gap-2 text-sm text-slate-500 mt-1">
@@ -102,7 +102,7 @@ export default function DealsPage() {
             </div>
 
             {/* 2. FILTER RAD */}
-            <div className="flex flex-col md:flex-row items-center gap-4 bg-white p-4 rounded-xl border border-slate-100 shadow-sm">
+            <div className="flex flex-col md:flex-row items-center gap-4 bg-white p-4 rounded-lg border border-slate-100 shadow-sm">
                 <div className="flex-1 relative w-full">
                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                     <input
@@ -153,7 +153,7 @@ export default function DealsPage() {
                         const colors = COLUMN_COLORS[stage.color];
 
                         return (
-                            <div key={stage.id} className="flex h-full w-[280px] sm:w-[340px] flex-col rounded-xl bg-slate-50/50">
+                            <div key={stage.id} className="flex h-full w-[280px] sm:w-[340px] flex-col rounded-lg bg-slate-50/50">
                                 {/* Column Header */}
                                 <div className={`p-3 rounded-t-xl border-b-2 ${colors.bg} ${colors.border} !border-b-${stage.color}-200`}>
                                     <div className="flex items-center justify-between">

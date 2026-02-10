@@ -14,7 +14,7 @@ export default function DealInfo({ deal }: DealInfoProps) {
     return (
         <div className="space-y-6">
             {/* Financials Card */}
-            <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
                 <h3 className="flex items-center gap-2 text-lg font-semibold text-slate-900 mb-4">
                     <Euro className="h-5 w-5 text-blue-600" />
                     Ekonomi
@@ -54,7 +54,7 @@ export default function DealInfo({ deal }: DealInfoProps) {
             </div>
 
             {/* Contacts Card */}
-            <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
                 <h3 className="flex items-center gap-2 text-lg font-semibold text-slate-900 mb-4">
                     <User className="h-5 w-5 text-blue-600" />
                     Kontakter
@@ -128,7 +128,7 @@ export default function DealInfo({ deal }: DealInfoProps) {
             </div>
 
             {/* Key Dates Card */}
-            <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
                 <h3 className="flex items-center gap-2 text-lg font-semibold text-slate-900 mb-4">
                     <Calendar className="h-5 w-5 text-blue-600" />
                     Viktiga Datum
@@ -157,7 +157,7 @@ export default function DealInfo({ deal }: DealInfoProps) {
 
             {/* Notes */}
             {deal.notes && (
-                <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+                <div className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
                     <h3 className="text-sm font-semibold text-slate-900 mb-2">Anteckningar</h3>
                     <p className="text-sm text-slate-600 whitespace-pre-wrap">{deal.notes}</p>
                 </div>

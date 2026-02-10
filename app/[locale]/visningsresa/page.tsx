@@ -314,7 +314,7 @@ export default function VisningsresaPage() {
                 </div>
 
                 <div className="relative z-10 max-w-3xl px-6">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full mb-8">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded mb-8">
                         <Plane size={14} className="text-sand" />
                         <span className="text-xs uppercase tracking-widest">Upplev Spanien på plats</span>
                     </div>
@@ -326,7 +326,7 @@ export default function VisningsresaPage() {
                     </p>
                     <button
                         onClick={scrollToForm}
-                        className="inline-flex items-center gap-2 bg-sand text-navy px-8 py-4 uppercase tracking-widest text-xs font-bold hover:bg-white transition-colors"
+                        className="inline-flex items-center gap-2 bg-sand text-navy px-8 py-4 uppercase tracking-widest text-xs font-bold hover:bg-white transition-colors rounded-md"
                     >
                         Anmäl intresse
                         <ArrowRight size={16} />
@@ -356,7 +356,7 @@ export default function VisningsresaPage() {
                         {offerCards.map((card) => {
                             const Icon = card.icon;
                             return (
-                                <div key={card.label} className="bg-white/5 border border-white/10 p-6 rounded-sm">
+                                <div key={card.label} className="bg-white/5 border border-white/10 p-6 rounded-lg">
                                     <Icon size={24} className="text-sand mb-4" />
                                     <p className="text-xs uppercase tracking-[0.2em] text-white/60 mb-2">{card.label}</p>
                                     <p className="text-2xl font-serif text-sand mb-2">{card.value}</p>
@@ -414,7 +414,7 @@ export default function VisningsresaPage() {
                         {includedItems.map((item) => {
                             const Icon = item.icon;
                             return (
-                                <div key={item.title} className="bg-white rounded-sm p-6 shadow-soft border border-gray-100">
+                                <div key={item.title} className="bg-white rounded-lg p-6 shadow-soft border border-gray-100">
                                     <div className="w-12 h-12 rounded-full bg-alabaster flex items-center justify-center mb-4">
                                         <Icon size={20} className="text-sand" />
                                     </div>
@@ -472,7 +472,7 @@ export default function VisningsresaPage() {
                     </div>
                     <div className="grid md:grid-cols-3 gap-6">
                         {testimonials.map((item) => (
-                            <div key={item.name} className="bg-greige/30 rounded-sm p-6 border border-greige relative">
+                            <div key={item.name} className="bg-greige/30 rounded-lg p-6 border border-greige relative">
                                 <div className="text-sand text-xs tracking-[0.2em] mb-4">★★★★★</div>
                                 <p className="text-sm text-gray-600 italic mb-6">“{item.text}”</p>
                                 <div className="flex items-center gap-3">
@@ -499,7 +499,7 @@ export default function VisningsresaPage() {
                     </div>
                     <div className="grid md:grid-cols-2 gap-8">
                         {areaCards.map((area) => (
-                            <div key={area.name} className="relative overflow-hidden rounded-sm shadow-soft group">
+                            <div key={area.name} className="relative overflow-hidden rounded-lg shadow-soft group">
                                 <div className="aspect-[4/3] relative">
                                     <Image src={area.image} alt={area.name} fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
                                     <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/40 to-transparent" />
@@ -530,7 +530,7 @@ export default function VisningsresaPage() {
                         {prepItems.map((item) => {
                             const Icon = item.icon;
                             return (
-                                <div key={item.title} className="bg-alabaster p-6 rounded-sm border border-greige">
+                                <div key={item.title} className="bg-alabaster p-6 rounded-lg border border-greige">
                                     <div className="flex items-center gap-3 mb-3">
                                         <Icon size={18} className="text-sand" />
                                         <h3 className="font-serif text-lg text-navy">{item.title}</h3>
@@ -550,7 +550,7 @@ export default function VisningsresaPage() {
                         <p className="text-xs uppercase tracking-[0.3em] text-sand mb-4">Vanliga frågor</p>
                         <h2 className="text-3xl md:text-4xl font-serif text-navy">Frågor om visningsresan</h2>
                     </div>
-                    <div className="bg-alabaster rounded-sm p-8">
+                    <div className="bg-alabaster rounded-lg p-8">
                         {faqItems.map((item) => (
                             <FAQItem key={item.question} question={item.question} answer={item.answer} />
                         ))}
@@ -588,7 +588,7 @@ export default function VisningsresaPage() {
                         </p>
                     </div>
 
-                    <div className="bg-alabaster text-navy p-8 md:p-10 rounded-sm shadow-soft border border-greige">
+                    <div className="bg-alabaster text-navy p-8 md:p-10 rounded-lg shadow-soft border border-greige">
                         {isSubmitted ? (
                             <div className="text-center py-12">
                                 <div className="w-16 h-16 bg-sage/20 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -609,7 +609,7 @@ export default function VisningsresaPage() {
                                         <input
                                             type="text"
                                             required
-                                            className="w-full px-4 py-3 border border-gray-200 rounded-sm focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors bg-white"
+                                            className="w-full px-4 py-3 border border-gray-200 rounded-md focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors bg-white"
                                             placeholder="Ditt förnamn"
                                         />
                                     </div>
@@ -620,7 +620,7 @@ export default function VisningsresaPage() {
                                         <input
                                             type="text"
                                             required
-                                            className="w-full px-4 py-3 border border-gray-200 rounded-sm focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors bg-white"
+                                            className="w-full px-4 py-3 border border-gray-200 rounded-md focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors bg-white"
                                             placeholder="Ditt efternamn"
                                         />
                                     </div>
@@ -634,7 +634,7 @@ export default function VisningsresaPage() {
                                         <input
                                             type="email"
                                             required
-                                            className="w-full px-4 py-3 border border-gray-200 rounded-sm focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors bg-white"
+                                            className="w-full px-4 py-3 border border-gray-200 rounded-md focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors bg-white"
                                             placeholder="din@email.com"
                                         />
                                     </div>
@@ -645,7 +645,7 @@ export default function VisningsresaPage() {
                                         <input
                                             type="tel"
                                             required
-                                            className="w-full px-4 py-3 border border-gray-200 rounded-sm focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors bg-white"
+                                            className="w-full px-4 py-3 border border-gray-200 rounded-md focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors bg-white"
                                             placeholder="+46 70 123 45 67"
                                         />
                                     </div>
@@ -655,7 +655,7 @@ export default function VisningsresaPage() {
                                     <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2">
                                         Föredraget område
                                     </label>
-                                    <select className="w-full px-4 py-3 border border-gray-200 rounded-sm focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors bg-white">
+                                        <select className="w-full px-4 py-3 border border-gray-200 rounded-md focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors bg-white">
                                         <option value="">Välj område...</option>
                                         <option value="costa-blanca">Costa Blanca</option>
                                         <option value="costa-del-sol">Costa del Sol</option>
@@ -674,7 +674,7 @@ export default function VisningsresaPage() {
                                                     type="checkbox"
                                                     name="propertyType"
                                                     value={type}
-                                                    className="w-4 h-4 text-sand border-gray-300 rounded focus:ring-sand"
+                                                    className="w-4 h-4 text-sand border-gray-300 rounded-md focus:ring-sand"
                                                 />
                                                 <span className="text-gray-700">{type}</span>
                                             </label>
@@ -686,7 +686,7 @@ export default function VisningsresaPage() {
                                     <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2">
                                         Budget
                                     </label>
-                                    <select className="w-full px-4 py-3 border border-gray-200 rounded-sm focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors bg-white">
+                                        <select className="w-full px-4 py-3 border border-gray-200 rounded-md focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors bg-white">
                                         <option value="">Välj budget...</option>
                                         <option value="under-100k">Under 100 000 €</option>
                                         <option value="100k-200k">100 000 - 200 000 €</option>
@@ -702,7 +702,7 @@ export default function VisningsresaPage() {
                                     </label>
                                     <input
                                         type="text"
-                                        className="w-full px-4 py-3 border border-gray-200 rounded-sm focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors bg-white"
+                                        className="w-full px-4 py-3 border border-gray-200 rounded-md focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors bg-white"
                                         placeholder="T.ex. mars 2025, våren, flexibel..."
                                     />
                                 </div>
@@ -713,7 +713,7 @@ export default function VisningsresaPage() {
                                     </label>
                                     <textarea
                                         rows={4}
-                                        className="w-full px-4 py-3 border border-gray-200 rounded-sm focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors resize-none bg-white"
+                                        className="w-full px-4 py-3 border border-gray-200 rounded-md focus:border-sand focus:ring-1 focus:ring-sand outline-none transition-colors resize-none bg-white"
                                         placeholder="Beskriv vad du söker eller har frågor om..."
                                     />
                                 </div>
@@ -723,7 +723,7 @@ export default function VisningsresaPage() {
                                         <input
                                             type="checkbox"
                                             required
-                                            className="w-4 h-4 mt-1 text-sand border-gray-300 rounded focus:ring-sand"
+                                            className="w-4 h-4 mt-1 text-sand border-gray-300 rounded-md focus:ring-sand"
                                         />
                                         <span className="text-sm text-gray-600">
                                             Jag godkänner att mina uppgifter sparas och behandlas enligt GDPR för att Spanienfastigheter ska kunna kontakta mig angående visningsresor.
@@ -734,7 +734,7 @@ export default function VisningsresaPage() {
                                 <button
                                     type="submit"
                                     disabled={isLoading}
-                                    className="w-full bg-navy text-white py-4 uppercase tracking-[0.2em] text-xs font-bold hover:bg-charcoal transition-colors flex items-center justify-center gap-2 disabled:opacity-50"
+                                    className="w-full bg-navy text-white py-4 uppercase tracking-[0.2em] text-xs font-bold hover:bg-charcoal transition-colors flex items-center justify-center gap-2 disabled:opacity-50 rounded-md"
                                 >
                                     {isLoading ? 'Skickar...' : 'Skicka intresseanmälan'}
                                 </button>

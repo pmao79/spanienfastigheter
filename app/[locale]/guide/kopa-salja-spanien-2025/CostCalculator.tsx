@@ -116,7 +116,7 @@ export default function CostCalculator({ initialPrice = 300000, fixedRegion }: C
     };
 
     return (
-        <div className="bg-white rounded-xl shadow-soft border border-greige overflow-hidden flex flex-col h-full">
+        <div className="bg-white rounded-lg shadow-soft border border-greige overflow-hidden flex flex-col h-full">
             {/* Header */}
             <div className="bg-navy p-6 text-white text-center shrink-0">
                 <h3 className="font-serif text-2xl flex items-center justify-center gap-2">

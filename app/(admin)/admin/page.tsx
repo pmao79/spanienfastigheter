@@ -200,8 +200,8 @@ export default function DashboardPage() {
                 {kpis.map((kpi, idx) => {
                     const Icon = kpi.icon;
                     return (
-                        <div key={idx} className="relative overflow-hidden rounded-xl bg-white p-6 shadow-[0_1px_3px_rgba(0,0,0,0.08)]">
-                            <div className={`w-12 h-12 rounded-xl ${kpi.bg} flex items-center justify-center mb-3`}>
+                        <div key={idx} className="relative overflow-hidden rounded-lg bg-white p-6 shadow-[0_1px_3px_rgba(0,0,0,0.08)]">
+                            <div className={`w-12 h-12 rounded-lg ${kpi.bg} flex items-center justify-center mb-3`}>
                                 <Icon className={`h-6 w-6 ${kpi.iconColor}`} />
                             </div>
                             <div className="mt-2">
@@ -224,7 +224,7 @@ export default function DashboardPage() {
                 <div className="space-y-8 lg:col-span-2">
 
                     {/* 5. FÖRSÄLJNINGSÖVERSIKT */}
-                    <div className="rounded-xl bg-white p-6 shadow-sm border border-slate-100">
+                    <div className="rounded-lg bg-white p-6 shadow-sm border border-slate-100">
                         <div className="mb-6 flex items-center justify-between">
                             <div>
                                 <h2 className="text-lg font-bold text-[#1a365d]">Försäljning senaste 6 månaderna</h2>
@@ -279,7 +279,7 @@ export default function DashboardPage() {
                     </div>
 
                     {/* 4. LEADS PER STATUS */}
-                    <div className="rounded-xl bg-white p-6 shadow-sm border border-slate-100">
+                    <div className="rounded-lg bg-white p-6 shadow-sm border border-slate-100">
                         <div className="mb-6 flex items-center justify-between">
                             <h2 className="text-lg font-bold text-[#1a365d]">Leads per status</h2>
                             <Link href="/admin/leads" className="text-sm font-medium text-[#1a365d] hover:underline">
@@ -309,7 +309,7 @@ export default function DashboardPage() {
                     </div>
 
                     {/* 8. AKTIVA AFFÄRER */}
-                    <div className="rounded-xl bg-white p-6 shadow-sm border border-slate-100">
+                    <div className="rounded-lg bg-white p-6 shadow-sm border border-slate-100">
                         <div className="mb-6 flex items-center justify-between">
                             <h2 className="text-lg font-bold text-[#1a365d]">Aktiva Affärer</h2>
                             <Link href="/admin/deals" className="text-sm font-medium text-[#1a365d] hover:underline">
@@ -320,7 +320,7 @@ export default function DashboardPage() {
                             {(stats.activeDeals || []).length > 0 ? (stats.activeDeals.map((deal: any, i: number) => {
                                 const currentStageIdx = getStageIndex(deal.stage);
                                 return (
-                                    <div key={deal._id || i} className="border rounded-xl p-4 hover:border-[#1a365d] transition-colors">
+                                    <div key={deal._id || i} className="border rounded-lg p-4 hover:border-[#1a365d] transition-colors">
                                         <div className="flex justify-between items-start mb-4">
                                             <div>
                                                 <div className="flex items-center gap-2 mb-1">
@@ -368,7 +368,7 @@ export default function DashboardPage() {
                     </div>
 
                     {/* 9. SENASTE UTSKICK */}
-                    <div className="rounded-xl bg-white p-6 shadow-sm border border-slate-100">
+                    <div className="rounded-lg bg-white p-6 shadow-sm border border-slate-100">
                         <div className="mb-6 flex items-center justify-between">
                             <h2 className="text-lg font-bold text-[#1a365d]">Senaste utskick</h2>
                             <Link href="/admin/mailings" className="text-sm font-medium text-[#1a365d] hover:underline">
@@ -420,7 +420,7 @@ export default function DashboardPage() {
                 <div className="space-y-6">
 
                     {/* 6. ATT GÖRA IDAG */}
-                    <div className="rounded-xl bg-white p-0 shadow-sm border border-slate-100 overflow-hidden">
+                    <div className="rounded-lg bg-white p-0 shadow-sm border border-slate-100 overflow-hidden">
                         <div className="p-5 border-b border-slate-100 bg-slate-50/50">
                             <h2 className="text-lg font-bold text-[#1a365d] flex items-center gap-2">
                                 <CheckSquare className="h-5 w-5" /> Att göra idag
@@ -465,7 +465,7 @@ export default function DashboardPage() {
                     </div>
 
                     {/* 7. KOMMANDE */}
-                    <div className="rounded-xl bg-white p-0 shadow-sm border border-slate-100 overflow-hidden">
+                    <div className="rounded-lg bg-white p-0 shadow-sm border border-slate-100 overflow-hidden">
                         <div className="p-5 border-b border-slate-100 bg-slate-50/50">
                             <h2 className="text-lg font-bold text-[#1a365d] flex items-center gap-2">
                                 <Calendar className="h-5 w-5" /> Kommande
@@ -521,8 +521,8 @@ export default function DashboardPage() {
 
 function QuickAction({ href, icon: Icon, label, color }: { href: string, icon: any, label: string, color: string }) {
     return (
-        <Link href={href} className="flex flex-col items-center justify-center p-6 bg-white rounded-xl border-2 border-slate-100 hover:border-[#1a365d] hover:shadow-lg hover:-translate-y-0.5 transition-all cursor-pointer group">
-            <div className={`w-12 h-12 ${color} text-white rounded-xl flex items-center justify-center mb-3 text-xl group-hover:scale-110 transition-transform`}>
+        <Link href={href} className="flex flex-col items-center justify-center p-6 bg-white rounded-lg border-2 border-slate-100 hover:border-[#1a365d] hover:shadow-lg hover:-translate-y-0.5 transition-all cursor-pointer group">
+            <div className={`w-12 h-12 ${color} text-white rounded-lg flex items-center justify-center mb-3 text-xl group-hover:scale-110 transition-transform`}>
                 <Icon className="h-6 w-6" />
             </div>
             <span className="font-semibold text-slate-700">{label}</span>

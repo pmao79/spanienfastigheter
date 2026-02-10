@@ -186,7 +186,7 @@ export default function Footer() {
                         innan de når publika marknaden.
                     </p>
                     {isSubmitted ? (
-                        <div className="flex items-center gap-3 text-sand bg-white/5 p-3 rounded-sm border border-sand/30">
+                        <div className="flex items-center gap-3 text-sand bg-white/5 p-3 rounded-lg border border-sand/30">
                             <div className="w-8 h-8 rounded-full bg-sand/20 flex items-center justify-center flex-shrink-0">
                                 <Check size={16} />
                             </div>

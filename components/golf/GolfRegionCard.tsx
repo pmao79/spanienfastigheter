@@ -24,7 +24,7 @@ export default function GolfRegionCard({
     return (
         <Link
             href={`/golf/${region}`}
-            className="group relative h-[500px] w-full block overflow-hidden rounded-sm"
+            className="group relative h-[500px] w-full block overflow-hidden rounded-lg"
         >
             <Image
                 src={image}

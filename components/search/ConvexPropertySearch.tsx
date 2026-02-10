@@ -134,7 +134,7 @@ export default function ConvexPropertySearch() {
                         {[...Array(4)].map((_, i) => (
                             <div
                                 key={i}
-                                className="bg-white animate-pulse rounded-sm h-96"
+                                className="bg-white animate-pulse rounded-lg h-96"
                             />
                         ))}
                     </div>

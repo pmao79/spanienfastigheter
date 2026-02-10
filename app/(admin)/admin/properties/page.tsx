@@ -515,7 +515,7 @@ export default function PropertiesPage() {
             <PropertyKPIs properties={results || []} />
 
             {/* Filters */}
-            <div className="bg-white rounded-xl border border-slate-100 p-4 mb-6 shadow-sm">
+            <div className="bg-white rounded-lg border border-slate-100 p-4 mb-6 shadow-sm">
                 <div className="flex flex-col lg:flex-row gap-4">
                     {/* Search */}
                     <div className="flex-1 relative">
@@ -611,7 +611,7 @@ export default function PropertiesPage() {
 
             {/* Content */}
             {filteredAndSortedProperties.length === 0 ? (
-                <div className="text-center py-16 bg-white rounded-xl border border-slate-100">
+                <div className="text-center py-16 bg-white rounded-lg border border-slate-100">
                     <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gray-100 flex items-center justify-center">
                         <Home className="w-8 h-8 text-gray-400" />
                     </div>

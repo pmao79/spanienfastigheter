@@ -615,7 +615,7 @@ export default function LeadsPage() {
             {/* New Lead Modal - Simplified */}
             {isModalOpen && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm">
-                    <div className="w-full max-w-lg rounded-xl bg-white p-6 shadow-2xl animate-in fade-in zoom-in duration-200">
+                    <div className="w-full max-w-lg rounded-lg bg-white p-6 shadow-2xl animate-in fade-in zoom-in duration-200">
                         <h2 className="mb-4 text-xl font-bold text-slate-900 border-b pb-2">Ny Lead</h2>
                         <form onSubmit={handleCreate} className="space-y-4">
                             <div className="grid grid-cols-2 gap-4">

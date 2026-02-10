@@ -73,7 +73,7 @@ function ViewingsKPIs({ viewings }: { viewings: any[] }) {
 
     return (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 mb-6">
-            <div className="bg-white rounded-xl border border-gray-200 p-4 shadow-sm">
+            <div className="bg-white rounded-lg border border-gray-200 p-4 shadow-sm">
                 <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0">
                         <Calendar className="w-5 h-5 text-blue-600" />
@@ -85,7 +85,7 @@ function ViewingsKPIs({ viewings }: { viewings: any[] }) {
                 </div>
             </div>
 
-            <div className="bg-white rounded-xl border border-gray-200 p-4 shadow-sm">
+            <div className="bg-white rounded-lg border border-gray-200 p-4 shadow-sm">
                 <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center flex-shrink-0">
                         <CheckCircle className="w-5 h-5 text-green-600" />
@@ -97,7 +97,7 @@ function ViewingsKPIs({ viewings }: { viewings: any[] }) {
                 </div>
             </div>
 
-            <div className="bg-white rounded-xl border border-gray-200 p-4 shadow-sm">
+            <div className="bg-white rounded-lg border border-gray-200 p-4 shadow-sm">
                 <div className="flex items-center gap-3">
                     <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${missingReports.length > 0 ? 'bg-amber-100' : 'bg-gray-100'}`}>
                         <AlertTriangle className={`w-5 h-5 ${missingReports.length > 0 ? 'text-amber-600' : 'text-gray-400'}`} />
@@ -111,7 +111,7 @@ function ViewingsKPIs({ viewings }: { viewings: any[] }) {
                 </div>
             </div>
 
-            <div className="bg-white rounded-xl border border-gray-200 p-4 shadow-sm">
+            <div className="bg-white rounded-lg border border-gray-200 p-4 shadow-sm">
                 <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-lg bg-purple-100 flex items-center justify-center flex-shrink-0">
                         <FileText className="w-5 h-5 text-purple-600" />
@@ -143,7 +143,7 @@ function ViewingCard({ viewing }: { viewing: any }) {
         (Date.now() - viewingDate.getTime()) > 48 * 60 * 60 * 1000; // 48 hours
 
     return (
-        <div className="bg-white rounded-xl border border-gray-200 p-4 sm:p-5 hover:shadow-md transition-shadow">
+        <div className="bg-white rounded-lg border border-gray-200 p-4 sm:p-5 hover:shadow-md transition-shadow">
             <div className="flex flex-col sm:flex-row gap-4">
                 {/* Property Image */}
                 <div className="relative w-full sm:w-24 h-48 sm:h-24 rounded-lg bg-gray-100 overflow-hidden flex-shrink-0">
@@ -424,7 +424,7 @@ export default function ViewingsPage() {
 
                 {/* Empty State */}
                 {filteredViewings.length === 0 && (
-                    <div className="text-center py-16 bg-white rounded-xl border border-gray-200">
+                    <div className="text-center py-16 bg-white rounded-lg border border-gray-200">
                         <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gray-100 flex items-center justify-center">
                             <Calendar className="w-8 h-8 text-gray-400" />
                         </div>

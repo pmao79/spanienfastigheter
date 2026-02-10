@@ -285,7 +285,7 @@ export default function FilterSidebar({ onOpenSearchService, propertyCount }: Fi
                                         type="checkbox"
                                         checked={currentRegions.includes(r.name)}
                                         onChange={() => toggleArrayParam('regions', r.name, currentRegions)}
-                                        className="peer appearance-none w-4 h-4 border border-gray-300 rounded-sm checked:bg-navy checked:border-navy transition-colors"
+                                        className="peer appearance-none w-4 h-4 border border-gray-300 rounded-md checked:bg-navy checked:border-navy transition-colors"
                                     />
                                     {currentRegions.includes(r.name) && (
                                         <Check size={12} className="absolute left-0.5 top-0.5 text-white pointer-events-none" />
@@ -319,7 +319,7 @@ export default function FilterSidebar({ onOpenSearchService, propertyCount }: Fi
                             placeholder="Sök område..."
                             value={areaSearch}
                             onChange={(e) => setAreaSearch(e.target.value)}
-                            className="w-full pl-9 pr-8 py-2 bg-greige/50 text-sm rounded-sm focus:outline-none focus:ring-1 focus:ring-navy"
+                            className="w-full pl-9 pr-8 py-2 bg-greige/50 text-sm rounded-md focus:outline-none focus:ring-1 focus:ring-navy"
                         />
                         {areaSearch && (
                             <button
@@ -337,7 +337,7 @@ export default function FilterSidebar({ onOpenSearchService, propertyCount }: Fi
                             {currentTowns.map((town) => (
                                 <span
                                     key={town}
-                                    className="inline-flex items-center gap-1 px-2 py-1 bg-navy text-white text-xs rounded-sm"
+                                    className="inline-flex items-center gap-1 px-2 py-1 bg-navy text-white text-xs rounded"
                                 >
                                     {town}
                                     <X
@@ -364,7 +364,7 @@ export default function FilterSidebar({ onOpenSearchService, propertyCount }: Fi
                                                 type="checkbox"
                                                 checked={currentTowns.includes(area.name)}
                                                 onChange={() => toggleArrayParam('towns', area.name, currentTowns)}
-                                                className="peer appearance-none w-4 h-4 border border-gray-300 rounded-sm checked:bg-navy checked:border-navy transition-colors"
+                                                className="peer appearance-none w-4 h-4 border border-gray-300 rounded-md checked:bg-navy checked:border-navy transition-colors"
                                             />
                                             {currentTowns.includes(area.name) && (
                                                 <Check size={12} className="absolute left-0.5 top-0.5 text-white pointer-events-none" />
@@ -406,7 +406,7 @@ export default function FilterSidebar({ onOpenSearchService, propertyCount }: Fi
                                         type="checkbox"
                                         checked={currentTypes.includes(type)}
                                         onChange={() => toggleArrayParam('types', type, currentTypes)}
-                                        className="peer appearance-none w-4 h-4 border border-gray-300 rounded-sm checked:bg-navy checked:border-navy transition-colors"
+                                        className="peer appearance-none w-4 h-4 border border-gray-300 rounded-md checked:bg-navy checked:border-navy transition-colors"
                                     />
                                     {currentTypes.includes(type) && (
                                         <Check size={12} className="absolute left-0.5 top-0.5 text-white pointer-events-none" />
@@ -447,7 +447,7 @@ export default function FilterSidebar({ onOpenSearchService, propertyCount }: Fi
                                 <button
                                     key={num}
                                     onClick={() => handleBedChange(num)}
-                                    className={`w-10 h-10 border text-sm font-medium transition-all ${isActive
+                                    className={`w-10 h-10 border text-sm font-medium transition-all rounded-md ${isActive
                                         ? 'bg-navy text-white border-navy'
                                         : 'border-gray-200 text-gray-500 hover:border-navy hover:text-navy'
                                         }`}
@@ -479,7 +479,7 @@ export default function FilterSidebar({ onOpenSearchService, propertyCount }: Fi
                                         type="checkbox"
                                         checked={searchParams.get(feature.key) === 'true'}
                                         onChange={(e) => handleFeatureChange(feature.key, e.target.checked)}
-                                        className="peer appearance-none w-4 h-4 border border-gray-300 rounded-sm checked:bg-navy checked:border-navy transition-colors"
+                                        className="peer appearance-none w-4 h-4 border border-gray-300 rounded-md checked:bg-navy checked:border-navy transition-colors"
                                     />
                                     {searchParams.get(feature.key) === 'true' && (
                                         <Check size={12} className="absolute left-0.5 top-0.5 text-white pointer-events-none" />
@@ -522,7 +522,7 @@ export default function FilterSidebar({ onOpenSearchService, propertyCount }: Fi
                                             type="checkbox"
                                             checked={searchParams.get(feature.key) === 'true'}
                                             onChange={(e) => handleFeatureChange(feature.key, e.target.checked)}
-                                            className="peer appearance-none w-4 h-4 border border-gray-300 rounded-sm checked:bg-navy checked:border-navy transition-colors"
+                                        className="peer appearance-none w-4 h-4 border border-gray-300 rounded-md checked:bg-navy checked:border-navy transition-colors"
                                         />
                                         {searchParams.get(feature.key) === 'true' && (
                                             <Check size={12} className="absolute left-0.5 top-0.5 text-white pointer-events-none" />
@@ -540,7 +540,7 @@ export default function FilterSidebar({ onOpenSearchService, propertyCount }: Fi
                 <button
                     type="button"
                     onClick={() => router.push(`${basePath}?${searchParams.toString()}`, { scroll: false })}
-                    className="w-full bg-navy text-white py-4 uppercase tracking-[0.15em] text-xs font-semibold text-center shadow-lg shadow-navy/20 cursor-pointer"
+                    className="w-full bg-navy text-white py-4 uppercase tracking-[0.15em] text-xs font-semibold text-center shadow-lg shadow-navy/20 cursor-pointer rounded-md"
                 >
                     {propertyCount === undefined
                         ? 'Visa bostäder'
@@ -550,7 +550,7 @@ export default function FilterSidebar({ onOpenSearchService, propertyCount }: Fi
                 {/* Concierge Helper Card */}
                 <div className="mt-8 pt-8 border-t border-gray-100">
                     <div
-                        className="bg-navy p-6 text-center rounded-sm relative overflow-hidden group cursor-pointer"
+                        className="bg-navy p-6 text-center rounded-lg relative overflow-hidden group cursor-pointer"
                         onClick={onOpenSearchService}
                     >
                         <div className="absolute top-0 right-0 w-24 h-24 bg-white/5 rounded-full blur-2xl translate-x-1/2 -translate-y-1/2"></div>

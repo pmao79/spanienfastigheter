@@ -24,7 +24,7 @@ export default function PropertyListing({ properties, totalProperties }: Propert
                 <div className="flex items-center gap-2 bg-white p-1 rounded-md border border-gray-200 shadow-sm">
                     <button
                         onClick={() => setViewMode('grid')}
-                        className={`flex items-center gap-2 px-3 py-2 text-xs uppercase tracking-wider font-bold rounded-sm transition-all ${viewMode === 'grid'
+                        className={`flex items-center gap-2 px-3 py-2 text-xs uppercase tracking-wider font-bold rounded-md transition-all ${viewMode === 'grid'
                                 ? 'bg-navy text-white shadow-md'
                                 : 'text-gray-500 hover:text-navy hover:bg-gray-50'
                             }`}
@@ -34,7 +34,7 @@ export default function PropertyListing({ properties, totalProperties }: Propert
                     </button>
                     <button
                         onClick={() => setViewMode('map')}
-                        className={`flex items-center gap-2 px-3 py-2 text-xs uppercase tracking-wider font-bold rounded-sm transition-all ${viewMode === 'map'
+                        className={`flex items-center gap-2 px-3 py-2 text-xs uppercase tracking-wider font-bold rounded-md transition-all ${viewMode === 'map'
                                 ? 'bg-navy text-white shadow-md'
                                 : 'text-gray-500 hover:text-navy hover:bg-gray-50'
                             }`}

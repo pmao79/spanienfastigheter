@@ -60,7 +60,7 @@ export default function BookingModal({ isOpen, onClose, property }: BookingModal
             ></div>
 
             {/* Modal Content */}
-            <div className="bg-white w-full max-w-2xl overflow-hidden rounded-sm shadow-2xl relative z-10 flex flex-col animate-fade-in-up max-h-[90vh]">
+            <div className="bg-white w-full max-w-2xl overflow-hidden rounded-lg shadow-2xl relative z-10 flex flex-col animate-fade-in-up max-h-[90vh]">
                 {/* Header */}
                 <div className="p-6 md:p-8 bg-navy text-white flex justify-between items-start relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2 pointer-events-none" />
@@ -105,7 +105,7 @@ export default function BookingModal({ isOpen, onClose, property }: BookingModal
                             <div className="grid grid-cols-2 gap-4">
                                 <button
                                     onClick={() => setViewingType('physical')}
-                                    className={`p-4 rounded-sm border transition-all text-center flex flex-col items-center gap-3 group ${viewingType === 'physical' ? 'bg-white border-navy shadow-md' : 'bg-transparent border-gray-200 hover:border-gray-300'}`}
+                                    className={`p-4 rounded-lg border transition-all text-center flex flex-col items-center gap-3 group ${viewingType === 'physical' ? 'bg-white border-navy shadow-md' : 'bg-transparent border-gray-200 hover:border-gray-300'}`}
                                 >
                                     <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors ${viewingType === 'physical' ? 'bg-navy text-white' : 'bg-gray-100 text-gray-400 group-hover:bg-gray-200'}`}>
                                         <MapPin size={18} />
@@ -114,7 +114,7 @@ export default function BookingModal({ isOpen, onClose, property }: BookingModal
                                 </button>
                                 <button
                                     onClick={() => setViewingType('video')}
-                                    className={`p-4 rounded-sm border transition-all text-center flex flex-col items-center gap-3 group ${viewingType === 'video' ? 'bg-white border-navy shadow-md' : 'bg-transparent border-gray-200 hover:border-gray-300'}`}
+                                    className={`p-4 rounded-lg border transition-all text-center flex flex-col items-center gap-3 group ${viewingType === 'video' ? 'bg-white border-navy shadow-md' : 'bg-transparent border-gray-200 hover:border-gray-300'}`}
                                 >
                                     <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors ${viewingType === 'video' ? 'bg-navy text-white' : 'bg-gray-100 text-gray-400 group-hover:bg-gray-200'}`}>
                                         <Phone size={18} />
@@ -165,7 +165,7 @@ export default function BookingModal({ isOpen, onClose, property }: BookingModal
                                                 disabled={isPast}
                                                 onClick={() => handleDateClick(d)}
                                                 className={`
-                                                    aspect-square flex items-center justify-center rounded-sm text-sm font-medium transition-all
+                                                    aspect-square flex items-center justify-center rounded-md text-sm font-medium transition-all
                                                     ${isSelected ? 'bg-navy text-white shadow-md' : 'bg-white hover:bg-sand/20 text-charcoal'}
                                                     ${isPast ? 'opacity-30 cursor-not-allowed hover:bg-white' : ''}
                                                 `}
@@ -187,7 +187,7 @@ export default function BookingModal({ isOpen, onClose, property }: BookingModal
                                                 key={time}
                                                 onClick={() => setSelectedTime(time)}
                                                 className={`
-                                                    py-2 px-3 rounded-sm text-sm font-medium border transition-all
+                                                    py-2 px-3 rounded-md text-sm font-medium border transition-all
                                                     ${selectedTime === time
                                                         ? 'bg-navy border-navy text-white shadow-md'
                                                         : 'bg-white border-gray-200 text-charcoal hover:border-sand'}
@@ -204,7 +204,7 @@ export default function BookingModal({ isOpen, onClose, property }: BookingModal
 
                     {step === 2 && (
                         <div className="space-y-6 animate-slide-in-right">
-                            <div className="bg-white p-4 rounded-sm border border-gray-100 flex items-center gap-4">
+                            <div className="bg-white p-4 rounded-lg border border-gray-100 flex items-center gap-4">
                                 <div className="w-12 h-12 bg-sand/10 rounded-full flex items-center justify-center text-navy shrink-0">
                                     <Calendar size={20} />
                                 </div>
@@ -270,7 +270,7 @@ export default function BookingModal({ isOpen, onClose, property }: BookingModal
                                     <textarea
                                         value={message}
                                         onChange={(e) => setMessage(e.target.value)}
-                                        className="w-full bg-white border border-gray-200 rounded-sm p-4 text-sm outline-none focus:border-navy transition-all placeholder:text-gray-300 min-h-[100px] text-charcoal resize-none"
+                                        className="w-full bg-white border border-gray-200 rounded-md p-4 text-sm outline-none focus:border-navy transition-all placeholder:text-gray-300 min-h-[100px] text-charcoal resize-none"
                                         placeholder="Är det något särskilt du undrar över inför visningen?"
                                     />
                                 </div>
@@ -287,7 +287,7 @@ export default function BookingModal({ isOpen, onClose, property }: BookingModal
                             <p className="text-gray-500 max-w-md mb-8 leading-relaxed">
                                 Vi har mottagit din förfrågan om visning. En mäklare kommer att bekräfta tiden inom kort via e-post eller telefon.
                             </p>
-                            <div className="bg-alabaster p-6 rounded-sm w-full max-w-sm border border-gray-100 mb-8">
+                            <div className="bg-alabaster p-6 rounded-lg w-full max-w-sm border border-gray-100 mb-8">
                                 <p className="text-xs uppercase tracking-widest text-gray-400 font-bold mb-2">Bokningsdetaljer</p>
                                 <p className="font-serif text-xl text-navy mb-1">{property.type} i {property.town}</p>
                                 <p className="text-xs text-navy/60 font-medium mb-3">Ref: {property.ref}</p>
@@ -297,7 +297,7 @@ export default function BookingModal({ isOpen, onClose, property }: BookingModal
                             </div>
                             <button
                                 onClick={onClose}
-                                className="bg-navy text-white px-8 py-3 uppercase tracking-widest text-xs font-bold rounded-sm hover:bg-charcoal transition-colors"
+                                className="bg-navy text-white px-8 py-3 uppercase tracking-widest text-xs font-bold rounded-md hover:bg-charcoal transition-colors"
                             >
                                 Stäng fönstret
                             </button>
