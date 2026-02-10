@@ -9,7 +9,7 @@ export default function Hero() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://morganlawgroup.com/wp-content/uploads/2022/02/multi-gen-family-beach-1024x674.jpg"
+          src="/images/bakgrundsspanfast.webp"
           alt="Tre generationer av en familj blickar ut över havet i solnedgången"
           fill
           sizes="100vw"

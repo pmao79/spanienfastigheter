@@ -52,13 +52,14 @@ export default function Header() {
             >
                 <div className="max-w-[1400px] mx-auto px-6 md:px-12 flex justify-between items-center">
                     {/* Logo */}
-                    <div className="flex items-center gap-2 z-50">
-                        <Link
-                            href="/"
-                            className={`text-2xl md:text-3xl font-serif font-medium tracking-tight ${shouldBeSolid ? 'text-navy' : 'text-white'
-                                }`}
-                        >
-                            Spanienfastigheter<span className="text-sand">.se</span>
+                    <div className="flex items-center gap-3 z-50 lg:mr-12">
+                        <Link href="/" className="flex items-center gap-2">
+                            <span
+                                className={`text-2xl md:text-3xl font-serif font-medium tracking-tight leading-none ${shouldBeSolid ? 'text-navy' : 'text-white'
+                                    }`}
+                            >
+                                Spanienfastigheter<span className="text-sand">.se</span>
+                            </span>
                         </Link>
                     </div>
 
