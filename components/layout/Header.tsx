@@ -64,14 +64,14 @@ export default function Header() {
 
                     {/* Desktop Nav */}
                     <nav
-                        className={`hidden lg:flex items-center gap-10 ${shouldBeSolid ? 'text-charcoal' : 'text-white/90'
+                        className={`hidden lg:flex items-center gap-8 whitespace-nowrap ${shouldBeSolid ? 'text-charcoal' : 'text-white/90'
                             }`}
                     >
                         {navItems.map((item) => (
                             <Link
                                 key={item.key}
                                 href={item.href}
-                                className="text-[11px] uppercase tracking-[0.2em] font-semibold hover:text-sand transition-colors relative group"
+                                className="text-[11px] uppercase tracking-[0.2em] font-semibold hover:text-sand transition-colors relative group whitespace-nowrap"
                             >
                                 {t(item.key)}
                                 <span className="absolute -bottom-2 left-0 w-0 h-0.5 bg-sand transition-all duration-300 group-hover:w-full" />
@@ -81,14 +81,14 @@ export default function Header() {
 
                     {/* Utilities */}
                     <div
-                        className={`hidden lg:flex items-center gap-6 ${shouldBeSolid ? 'text-navy' : 'text-white'
+                        className={`hidden lg:flex items-center gap-5 whitespace-nowrap ${shouldBeSolid ? 'text-navy' : 'text-white'
                             }`}
                     >
                         <LanguageSwitcher />
 
                         <Link
                             href="/portal"
-                            className="text-[11px] uppercase tracking-[0.2em] font-semibold hover:text-sand transition-colors"
+                            className="text-[11px] uppercase tracking-[0.2em] font-semibold hover:text-sand transition-colors whitespace-nowrap"
                         >
                             {t('login')}
                         </Link>
