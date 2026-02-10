@@ -99,6 +99,7 @@ function DualRangeSlider({
                     onChange={handleMinChange}
                     onMouseUp={handleMouseUp}
                     onTouchEnd={handleMouseUp}
+                    aria-label="Minsta pris"
                     className="absolute w-full h-2 appearance-none bg-transparent pointer-events-none 
             [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:appearance-none 
             [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full 
@@ -120,6 +121,7 @@ function DualRangeSlider({
                     onChange={handleMaxChange}
                     onMouseUp={handleMouseUp}
                     onTouchEnd={handleMouseUp}
+                    aria-label="Högsta pris"
                     className="absolute w-full h-2 appearance-none bg-transparent pointer-events-none 
             [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:appearance-none 
             [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full 
@@ -144,7 +146,7 @@ function DualRangeSlider({
                         onClick={() => onChange([localValues[0], preset.value])}
                         className={`px-3 py-1.5 text-xs border rounded-md transition-colors ${localValues[1] === preset.value
                                 ? 'bg-navy text-white border-navy'
-                                : 'border-gray-200 text-gray-600 hover:border-navy'
+                                : 'border-gray-200 text-gray-700 hover:border-navy'
                             }`}
                     >
                         {preset.label}
@@ -477,6 +479,7 @@ export default function HeroSearch({ variant = 'hero' }: HeroSearchProps) {
                                         onChange={(e) => setAreaSearch(e.target.value)}
                                         onClick={(e) => e.stopPropagation()}
                                         className="w-full pl-9 pr-3 py-2 bg-greige/50 text-sm rounded-md focus:outline-none focus:ring-1 focus:ring-navy"
+                                        aria-label="Sök område"
                                     />
                                     {areaSearch && (
                                         <button
@@ -485,6 +488,7 @@ export default function HeroSearch({ variant = 'hero' }: HeroSearchProps) {
                                                 setAreaSearch('');
                                             }}
                                             className="absolute right-3 top-2.5 text-gray-400 hover:text-navy"
+                                            aria-label="Rensa område"
                                         >
                                             <X size={14} />
                                         </button>
@@ -501,14 +505,17 @@ export default function HeroSearch({ variant = 'hero' }: HeroSearchProps) {
                                     className="inline-flex items-center gap-1 px-2 py-1 bg-navy text-white text-xs rounded"
                                         >
                                             {area}
-                                            <X
-                                                size={12}
-                                                className="cursor-pointer hover:text-sand"
+                                            <button
+                                                type="button"
+                                                className="cursor-pointer hover:text-sand p-0 bg-transparent"
+                                                aria-label={`Ta bort ${area}`}
                                                 onClick={(e) => {
                                                     e.stopPropagation();
                                                     toggleArea(area);
                                                 }}
-                                            />
+                                            >
+                                                <X size={12} />
+                                            </button>
                                         </span>
                                     ))}
                                 </div>

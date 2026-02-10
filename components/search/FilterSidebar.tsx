@@ -79,16 +79,17 @@ function DualRangeSlider({
                 />
 
                 {/* Min thumb */}
-                <input
-                    type="range"
-                    min={min}
-                    max={max}
-                    step={step}
-                    value={localValues[0]}
-                    onChange={handleMinChange}
-                    onMouseUp={handleMouseUp}
-                    onTouchEnd={handleMouseUp}
-                    className="absolute w-full h-2 appearance-none bg-transparent pointer-events-none 
+                    <input
+                        type="range"
+                        min={min}
+                        max={max}
+                        step={step}
+                        value={localValues[0]}
+                        onChange={handleMinChange}
+                        onMouseUp={handleMouseUp}
+                        onTouchEnd={handleMouseUp}
+                        aria-label="Minsta pris"
+                        className="absolute w-full h-2 appearance-none bg-transparent pointer-events-none 
             [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:appearance-none 
             [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full 
             [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-navy 
@@ -100,16 +101,17 @@ function DualRangeSlider({
                 />
 
                 {/* Max thumb */}
-                <input
-                    type="range"
-                    min={min}
-                    max={max}
-                    step={step}
-                    value={localValues[1]}
-                    onChange={handleMaxChange}
-                    onMouseUp={handleMouseUp}
-                    onTouchEnd={handleMouseUp}
-                    className="absolute w-full h-2 appearance-none bg-transparent pointer-events-none 
+                    <input
+                        type="range"
+                        min={min}
+                        max={max}
+                        step={step}
+                        value={localValues[1]}
+                        onChange={handleMaxChange}
+                        onMouseUp={handleMouseUp}
+                        onTouchEnd={handleMouseUp}
+                        aria-label="Högsta pris"
+                        className="absolute w-full h-2 appearance-none bg-transparent pointer-events-none 
             [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:appearance-none 
             [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full 
             [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-navy 
@@ -246,7 +248,7 @@ export default function FilterSidebar({ onOpenSearchService, propertyCount }: Fi
     return (
         <div className="bg-white p-8 border border-gray-100 sticky top-32 shadow-soft">
             <div className="flex justify-between items-center mb-8 border-b border-greige pb-4">
-                <h3 className="text-xl font-serif text-navy">Filtrera</h3>
+                <h2 className="text-xl font-serif text-navy">Filtrera</h2>
                 <button
                     onClick={clearAllFilters}
                     className="text-[10px] uppercase tracking-widest text-gray-400 hover:text-navy transition-colors"
@@ -321,11 +323,13 @@ export default function FilterSidebar({ onOpenSearchService, propertyCount }: Fi
                             value={areaSearch}
                             onChange={(e) => setAreaSearch(e.target.value)}
                             className="w-full pl-9 pr-8 py-2 bg-greige/50 text-sm rounded-md focus:outline-none focus:ring-1 focus:ring-navy"
+                            aria-label="Sök område"
                         />
                         {areaSearch && (
                             <button
                                 onClick={() => setAreaSearch('')}
                                 className="absolute right-3 top-2.5 text-gray-400 hover:text-navy"
+                                aria-label="Rensa område"
                             >
                                 <X size={14} />
                             </button>

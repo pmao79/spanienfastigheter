@@ -95,7 +95,11 @@ export default function Header() {
 
                         <div className="h-4 w-px bg-current opacity-20" />
 
-                        <Link href="/favoriter" className="relative hover:text-sand transition-colors">
+                        <Link
+                            href="/favoriter"
+                            className="relative hover:text-sand transition-colors"
+                            aria-label="Favoriter"
+                        >
                             <Heart size={18} />
                             {favoritesCount > 0 && (
                                 <span className="absolute -top-2 -right-2 w-4 h-4 bg-sand text-navy text-[10px] font-bold rounded-full flex items-center justify-center animate-scale-in">
@@ -104,7 +108,7 @@ export default function Header() {
                             )}
                         </Link>
 
-                        <button className="hover:text-sand transition-colors">
+                        <button className="hover:text-sand transition-colors" aria-label="Sök">
                             <Search size={18} />
                         </button>
                     </div>

@@ -80,9 +80,9 @@ export default function TrustSignals() {
                     <Check size={18} strokeWidth={2.5} />
                   </div>
                   <div>
-                    <h4 className="font-serif text-lg text-white mb-1 group-hover:text-sand transition-colors">
+                    <h3 className="font-serif text-lg text-white mb-1 group-hover:text-sand transition-colors">
                       {item.title}
-                    </h4>
+                    </h3>
                     <p className="text-white/50 font-light text-sm group-hover:text-white/70 transition-colors">
                       {item.text}
                     </p>
@@ -100,7 +100,7 @@ export default function TrustSignals() {
                 <h3 className="text-3xl font-serif text-navy mb-2">
                   Boka rådgivning
                 </h3>
-                <p className="text-gray-400 font-light text-sm">
+                <p className="text-gray-500 font-light text-sm">
                   Fyll i formuläret så kontaktar en av våra mäklare dig inom
                   24h.
                 </p>

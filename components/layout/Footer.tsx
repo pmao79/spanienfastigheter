@@ -218,7 +218,7 @@ export default function Footer() {
                 </div>
             </div>
 
-            <div className="max-w-[1400px] mx-auto px-6 md:px-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-white/30 uppercase tracking-widest">
+            <div className="max-w-[1400px] mx-auto px-6 md:px-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-white/50 uppercase tracking-widest">
                 <p>&copy; {new Date().getFullYear()} Spanienfastigheter AB.</p>
                 <div className="flex gap-8">
                     <Link href="/integritet" className="hover:text-white transition-colors">
