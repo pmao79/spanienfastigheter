@@ -72,7 +72,7 @@ export default function CookieConsent() {
                                     Endast nödvändiga
                                 </button>
                                 <Link
-                                    href="/integritetspolicy"
+                                    href="/integritet"
                                     className="flex items-center justify-center text-sm text-white/50 hover:text-white underline underline-offset-4"
                                 >
                                     Läs mer om integritetspolicyn

@@ -9,7 +9,6 @@ import MobileMenu from './MobileMenu';
 import { useFavoritesCount } from '@/components/ui/FavoriteButton';
 
 import { usePathname } from 'next/navigation';
-import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
 
 export default function Header() {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -87,16 +86,12 @@ export default function Header() {
                     >
                         <LanguageSwitcher />
 
-                        <SignedOut>
-                            <SignInButton mode="modal">
-                                <button className="text-[11px] uppercase tracking-[0.2em] font-semibold hover:text-sand transition-colors">
-                                    Sign In
-                                </button>
-                            </SignInButton>
-                        </SignedOut>
-                        <SignedIn>
-                            <UserButton />
-                        </SignedIn>
+                        <Link
+                            href="/portal"
+                            className="text-[11px] uppercase tracking-[0.2em] font-semibold hover:text-sand transition-colors"
+                        >
+                            {t('login')}
+                        </Link>
 
                         <div className="h-4 w-px bg-current opacity-20" />
 

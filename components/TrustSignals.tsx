@@ -179,7 +179,7 @@ export default function TrustSignals() {
                     >
                       {isLoading ? <Loader2 className="animate-spin" size={16} /> : 'Bli kontaktad'}
                     </button>
-                    <p className="text-center text-[10px] text-gray-400 mt-4">
+                    <p className="text-center text-[10px] text-gray-500 mt-4">
                       Genom att skicka godkänner du vår integritetspolicy.
                     </p>
                   </div>

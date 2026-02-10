@@ -45,7 +45,7 @@ export default function AreaFAQ({ items, areaName }: AreaFAQProps) {
             <div className="flex items-center gap-4 mb-8">
                 <div className="h-px bg-navy/10 w-12" />
                 <h2 className="text-2xl md:text-3xl font-serif text-navy">
-                    Vanliga frågor om <span className="text-sand italic">{areaName}</span>
+                    Vanliga frågor om <span className="text-navy/70 italic">{areaName}</span>
                 </h2>
             </div>
 

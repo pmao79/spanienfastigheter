@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { Playfair_Display, DM_Sans } from 'next/font/google';
 import './globals.css';
 import ConvexClientProvider from './ConvexClientProvider';
-import { ClerkProvider } from '@clerk/nextjs';
 import { getLocale } from 'next-intl/server';
 
 const playfair = Playfair_Display({
@@ -72,24 +71,15 @@ export default async function RootLayout({
     const locale = await getLocale();
 
     return (
-        <ClerkProvider>
-            <html lang={locale} suppressHydrationWarning>
-                <head>
-                    <link
-                        rel="preconnect"
-                        href="https://clerk.spanienfastigheter.se"
-                        crossOrigin="anonymous"
-                    />
-                </head>
-                <body
-                    className={`${playfair.variable} ${dmSans.variable} font-sans antialiased`}
-                    suppressHydrationWarning
-                >
-                    <ConvexClientProvider>
-                        {children}
-                    </ConvexClientProvider>
-                </body>
-            </html>
-        </ClerkProvider>
+        <html lang={locale} suppressHydrationWarning>
+            <body
+                className={`${playfair.variable} ${dmSans.variable} font-sans antialiased`}
+                suppressHydrationWarning
+            >
+                <ConvexClientProvider>
+                    {children}
+                </ConvexClientProvider>
+            </body>
+        </html>
     );
 }

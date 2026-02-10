@@ -59,7 +59,7 @@ export default function ExploreSection() {
             <div className="max-w-[1400px] mx-auto px-6 md:px-12">
                 {/* Section Header */}
                 <div className="text-center mb-16">
-                    <span className="text-sand text-[10px] uppercase tracking-[0.25em] font-bold mb-4 block">
+                    <span className="text-navy/70 text-[10px] uppercase tracking-[0.25em] font-bold mb-4 block">
                         Utforska
                     </span>
                     <h2 className="text-3xl md:text-4xl font-serif text-navy mb-6">

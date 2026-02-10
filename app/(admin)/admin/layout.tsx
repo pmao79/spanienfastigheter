@@ -1,4 +1,5 @@
 import AdminShell from "./_components/AdminShell";
+import ConvexAuthedProvider from "@/app/ConvexAuthedProvider";
 
 export default function AdminLayout({
     children,
@@ -6,8 +7,10 @@ export default function AdminLayout({
     children: React.ReactNode;
 }) {
     return (
-        <AdminShell>
-            {children}
-        </AdminShell>
+        <ConvexAuthedProvider>
+            <AdminShell>
+                {children}
+            </AdminShell>
+        </ConvexAuthedProvider>
     );
 }

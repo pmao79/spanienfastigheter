@@ -757,7 +757,7 @@ export default function HeroSearch({ variant = 'hero' }: HeroSearchProps) {
                         {/* "+ Fler" toggle */}
                         <button
                             onClick={() => setShowAdvanced(!showAdvanced)}
-                            className={`flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest transition-colors ${showAdvanced || activeAdvancedCount > 0 ? 'text-navy' : 'text-gray-400 hover:text-navy'
+                            className={`flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest transition-colors ${showAdvanced || activeAdvancedCount > 0 ? 'text-navy' : 'text-navy/60 hover:text-navy'
                                 }`}
                         >
                             <Plus size={14} className={showAdvanced ? 'rotate-45' : ''} />

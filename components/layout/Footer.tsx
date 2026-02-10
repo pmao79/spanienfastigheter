@@ -47,18 +47,21 @@ export default function Footer() {
                         <a
                             href="#"
                             className="text-white/40 hover:text-sand transition-colors"
+                            aria-label="Följ oss på Instagram"
                         >
                             <Instagram size={20} strokeWidth={1.5} />
                         </a>
                         <a
                             href="#"
                             className="text-white/40 hover:text-sand transition-colors"
+                            aria-label="Följ oss på Facebook"
                         >
                             <Facebook size={20} strokeWidth={1.5} />
                         </a>
                         <a
                             href="#"
                             className="text-white/40 hover:text-sand transition-colors"
+                            aria-label="Följ oss på LinkedIn"
                         >
                             <Linkedin size={20} strokeWidth={1.5} />
                         </a>

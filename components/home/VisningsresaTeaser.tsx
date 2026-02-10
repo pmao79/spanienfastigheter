@@ -30,7 +30,7 @@ export default function VisningsresaTeaser() {
 
                     {/* Text Side - 55% */}
                     <div className="lg:col-span-7">
-                        <span className="text-sand text-[10px] uppercase tracking-[0.25em] font-bold mb-4 block">
+                        <span className="text-navy/70 text-[10px] uppercase tracking-[0.25em] font-bold mb-4 block">
                             Visningsresa
                         </span>
                         <h2 className="text-3xl md:text-4xl font-serif text-navy mb-6 leading-tight">
