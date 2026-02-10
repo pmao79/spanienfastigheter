@@ -80,6 +80,24 @@ function PrepItem({ title, content }: { title: string; content: string }) {
 }
 
 export default function VisningsresaPage() {
+    const breadcrumbSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+            {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Hem',
+                item: 'https://spanienfastigheter.se'
+            },
+            {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Visningsresa',
+                item: 'https://spanienfastigheter.se/visningsresa'
+            }
+        ]
+    };
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -195,6 +213,10 @@ export default function VisningsresaPage() {
 
     return (
         <div className="min-h-screen bg-alabaster">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+            />
             {/* Hero Section */}
             <section className="relative bg-navy text-white py-24 md:py-40 overflow-hidden">
                 {/* Background Image */}

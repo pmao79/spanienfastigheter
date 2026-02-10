@@ -9,6 +9,24 @@ import { ALL_COSTA_BLANCA_AREAS, ALL_COSTA_DEL_SOL_AREAS, ALL_COSTA_CALIDA_AREAS
 type RegionTab = 'all' | 'costa-blanca' | 'costa-del-sol' | 'costa-calida' | 'costa-almeria';
 
 export default function AreasPage() {
+    const breadcrumbSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+            {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Hem',
+                item: 'https://spanienfastigheter.se'
+            },
+            {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Områden',
+                item: 'https://spanienfastigheter.se/omraden'
+            }
+        ]
+    };
     const [activeTab, setActiveTab] = useState<RegionTab>('all');
     const [searchQuery, setSearchQuery] = useState('');
 
@@ -66,6 +84,10 @@ export default function AreasPage() {
 
     return (
         <div className="min-h-screen bg-alabaster">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+            />
             {/* Hero Section */}
             <section className="relative bg-navy text-white pt-24 pb-16 md:pt-32 md:pb-20">
                 <div className="container mx-auto px-4 relative z-10">

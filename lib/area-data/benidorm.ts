@@ -101,6 +101,26 @@ export const BENIDORM_ENHANCED_DATA: Partial<AreaDetail> = {
         {
             question: 'Hur är säkerheten?',
             answer: 'Benidorm är tryggt med hög polisnärvaro. Fickstölder förekommer i turistområdena, men våldsbrott är ovanliga.'
+        },
+        {
+            question: 'Är det en bra investering att köpa lägenhet i Spanien?',
+            answer: 'Ja, Torrevieja och Costa Blanca är utmärkta investeringar tack vare:\n\nFördelar:\n- Stark hyresmarknad: Turister + vinterboende ger 8-12 månaders uthyrning/år\n- Prisökning: Historiskt 3-5% per år\n- Låga driftskostnader: Avgifter från 300-800 EUR/år\n- Hög efterfrågan: Många svenska köpare = lätt att sälja vidare\n- Klimat: 300 soldagar/år = attraktivt året runt\n\nHyresavkastning: 4-7% per år (beroende på läge och uthyrningsgrad)\n\nPrisexempel Torrevieja:\n- 2015: 100 000 EUR\n- 2020: 120 000 EUR (+20%)\n- 2025: 145 000 EUR (+21%)'
+        },
+        {
+            question: 'Vad kostar det att köpa en lägenhet i Spanien?',
+            answer: 'Utöver köpesumman tillkommer följande kostnader:\n\nObligatoriska kostnader:\n- Stämpelskatt (ITP): 8-10% av köpesumman\n- Notariekostnader: 600-1 200 EUR\n- Registrering: 400-800 EUR\n- Juridisk rådgivning: 1 000-2 000 EUR\n\nTotalt: Räkna med 10-13% av köpesumman i tillkommande kostnader.\n\nExempel: Lägenhet för 150 000 EUR = 15 000-19 500 EUR i tillkommande kostnader.'
+        },
+        {
+            question: 'Hur köper man bostad i Spanien?',
+            answer: 'Steg-för-steg guide:\n\n1. Förberedelser (1-2 veckor)\n- Ansök om NIE-nummer (skattenummer)\n- Öppna spanskt bankkonto\n- Anlita svensk-talande mäklare\n\n2. Hitta bostad (2-8 veckor)\n- Besök fastigheter\n- Jämför priser och områden\n- Gör besiktning (rekommenderas)\n\n3. Förhandsavtal (1 vecka)\n- Skriva under förhandsavtal (contrato de arras)\n- Betala handpenning (10% av köpesumman)\n\n4. Slutavtal (4-8 veckor)\n- Notariebesök\n- Betala resterande summa + kostnader\n- Få nycklar!\n\nTotal tid: 2-4 månader från start till färdigt.'
+        },
+        {
+            question: 'Behöver man NIE-nummer för att köpa bostad i Spanien?',
+            answer: 'Ja, NIE-nummer är OBLIGATORISKT för att köpa fastighet i Spanien.\n\nVad är NIE?\n- Número de Identificación de Extranjero\n- Spanskt skattenummer för utlänningar\n- Behövs för alla ekonomiska transaktioner\n\nHur får man NIE?\n1. Boka tid på spanska konsulatet i Sverige\n2. Fyll i ansökan (EX-15)\n3. Betala avgift (~10 EUR)\n4. Vänta 2-4 veckor\n\nEller: Ansök direkt i Spanien (snabbare, 1-2 dagar)'
+        },
+        {
+            question: 'Hur lång tid tar det att köpa hus i Spanien?',
+            answer: 'Total tid: 2-4 månader\n\nTidsplan:\n- Vecka 1-2: NIE-nummer + bankkonto\n- Vecka 3-8: Hitta bostad\n- Vecka 9: Förhandsavtal + handpenning\n- Vecka 10-16: Juridisk granskning\n- Vecka 16: Slutavtal hos notarie\n\nSnabbaste: 6 veckor (om allt går smidigt)\nLångsammaste: 6 månader (vid komplikationer)'
         }
     ],
     comparison: [

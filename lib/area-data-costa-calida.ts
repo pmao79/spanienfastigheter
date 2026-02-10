@@ -12,8 +12,8 @@ export const COSTA_CALIDA_AREAS: AreaDetail[] = [
         avgPrice: 485000,
         image: '/images/areas/la-manga.png',
         description: 'Unik sandremsa mellan Medelhavet och Mar Menor-lagunen – Europas största saltvattenlagung.',
-        headline: 'Köp bostad i La Manga – Mitt emellan två hav',
-        metaDescription: 'La Manga del Mar Menor erbjuder unikt läge mellan Medelhavet och Europas största saltvattenlagung. Prisbelönta stränder, golf och 300+ soldagar. Kontakta oss.',
+        headline: 'Fastigheter i La Manga | Mellan två hav',
+        metaDescription: 'Köp bostad i La Manga med svensk rådgivning. Unikt läge mellan Medelhavet och Mar Menor.',
         keywords: ['köpa bostad la manga', 'la manga del mar menor', 'mar menor fastigheter', 'costa calida bostad'],
         coordinates: { lat: 37.6417, lng: -0.7250 },
         content: {
@@ -44,8 +44,8 @@ export const COSTA_CALIDA_AREAS: AreaDetail[] = [
         avgPrice: 195000,
         image: '/images/areas/mazarron.png',
         description: 'Orörd kustpärla med dramatiska klippor, kristallklart vatten och autentiskt spanskt liv.',
-        headline: 'Köp bostad i Mazarrón – Orört paradis på Costa Cálida',
-        metaDescription: 'Mazarrón erbjuder orörda stränder, dramatiska klipplandskap och prisvärt boende på Costa Cálida. Dykparadis och genuint spanskt. Kontakta oss.',
+        headline: 'Fastigheter i Mazarrón | Orörd kust och vikar',
+        metaDescription: 'Köp bostad i Mazarrón med svensk mäklare. Orörda stränder, klippor och prisvärt boende.',
         keywords: ['köpa bostad mazarron', 'mazarron fastigheter', 'costa calida prisvärt', 'puerto de mazarron'],
         coordinates: { lat: 37.5986, lng: -1.3144 },
         content: {
@@ -76,8 +76,8 @@ export const COSTA_CALIDA_AREAS: AreaDetail[] = [
         avgPrice: 185000,
         image: '/images/areas/los-alcazares.png',
         description: 'Familjevänlig badort vid Mar Menor med kilometerlånga stränder och stark internationell gemenskap.',
-        headline: 'Köp bostad i Los Alcázares – Mar Menors familjevänliga pärla',
-        metaDescription: 'Los Alcázares vid Mar Menor erbjuder grunda stränder perfekta för barn, stark nordisk gemenskap och prisvärt boende. Utforska våra fastigheter.',
+        headline: 'Fastigheter i Los Alcázares | Mar Menor',
+        metaDescription: 'Köp bostad i Los Alcázares med svensk rådgivning. Familjevänliga stränder vid Mar Menor.',
         keywords: ['köpa bostad los alcazares', 'los alcazares mar menor', 'familj costa calida', 'grunda stränder spanien'],
         coordinates: { lat: 37.7433, lng: -0.8556 },
         content: {

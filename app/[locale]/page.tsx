@@ -8,10 +8,49 @@ import ExploreSection from '@/components/home/ExploreSection';
 import VisningsresaTeaser from '@/components/home/VisningsresaTeaser';
 import RegionCards from '@/components/home/RegionCards';
 import FeaturedProperties from '@/components/home/FeaturedProperties';
+import HomeFAQSection from '@/components/home/HomeFAQSection';
 
 export default async function HomePage() {
+    const jsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'LocalBusiness',
+        name: 'Spanienfastigheter.se',
+        url: 'https://spanienfastigheter.se',
+        telephone: '+34 965 020 951',
+        areaServed: 'ES',
+        address: {
+            '@type': 'PostalAddress',
+            addressCountry: 'ES'
+        },
+        sameAs: [
+            'https://www.facebook.com/spanienfastigheter',
+            'https://www.instagram.com/spanienfastigheter'
+        ]
+    };
+
+    const breadcrumbSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+            {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Hem',
+                item: 'https://spanienfastigheter.se'
+            }
+        ]
+    };
+
     return (
         <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+            />
             <Hero />
 
             {/* Properties Section - MOVED UP */}
@@ -75,6 +114,8 @@ export default async function HomePage() {
 
             {/* Visningsresa Teaser - NEW */}
             <VisningsresaTeaser />
+
+            <HomeFAQSection />
 
             <TrustSignals />
         </>

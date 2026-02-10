@@ -2,14 +2,50 @@ import { Suspense } from 'react';
 import ConvexPropertySearch from '@/components/search/ConvexPropertySearch';
 
 export const metadata = {
-    title: 'Fastigheter till salu i Spanien | Spanienfastigheter.se',
+    title: 'Fastigheter till salu i Spanien | Costa Blanca & Costa del Sol',
     description:
-        'Upptäck vårt utbud av fastigheter till salu på Costa del Sol och Costa Blanca. Villor, lägenheter och radhus i Spaniens mest eftertraktade områden.',
+        'Hitta bostäder till salu i Spanien: lägenheter, villor och radhus på Costa Blanca och Costa del Sol. Svensk mäklare, trygg köpprocess och personlig rådgivning.',
+    alternates: {
+        canonical: 'https://spanienfastigheter.se/fastigheter'
+    }
 };
 
 export default function PropertiesPage() {
+    const itemListSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        name: 'Fastigheter till salu i Spanien',
+        itemListOrder: 'https://schema.org/ItemListUnordered'
+    };
+    const breadcrumbSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+            {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Hem',
+                item: 'https://spanienfastigheter.se'
+            },
+            {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Fastigheter',
+                item: 'https://spanienfastigheter.se/fastigheter'
+            }
+        ]
+    };
+
     return (
         <main className="min-h-screen bg-alabaster">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+            />
             {/* Hero */}
             <section className="bg-navy py-20">
                 <div className="max-w-[1400px] mx-auto px-6 md:px-12">

@@ -4,16 +4,41 @@ import { fetchProperties } from '@/lib/xml-parser';
 
 export const metadata = {
     title: 'Mina favoriter | Spanienfastigheter.se',
-    description: 'Dina sparade fastigheter på Spanienfastigheter.se',
+    description: 'Spara och jämför dina favoriter. Dina sparade fastigheter hos Spanienfastigheter.se.',
+    alternates: {
+        canonical: 'https://spanienfastigheter.se/favoriter'
+    }
 };
 
 export default async function FavoritesPage() {
+    const breadcrumbSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+            {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Hem',
+                item: 'https://spanienfastigheter.se'
+            },
+            {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Favoriter',
+                item: 'https://spanienfastigheter.se/favoriter'
+            }
+        ]
+    };
     // Fetch all properties server-side
     // This allows us to have the full dataset available for filtering by ID on the client
     const properties = await fetchProperties();
 
     return (
         <div className="min-h-screen bg-alabaster">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+            />
             {/* Hero Section */}
             <section className="relative bg-navy text-white py-20 md:py-28">
                 <div className="container mx-auto px-4">

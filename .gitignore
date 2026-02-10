@@ -26,3 +26,6 @@ dist-ssr
 
 # clerk configuration (can include secrets)
 /.clerk/
+
+# Ignore SEO folder
+SEO/

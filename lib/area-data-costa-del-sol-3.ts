@@ -12,8 +12,8 @@ export const COSTA_DEL_SOL_AREAS_3: AreaDetail[] = [
         avgPrice: 650000,
         image: '/images/areas/ojen.png',
         description: 'Vacker vit bergsby bara minuter från Marbella – natur, lyx och lugn.',
-        headline: 'Köp bostad i Ojén – Marbellas gröna lunga',
-        metaDescription: 'Ojén erbjuder spektakulär utsikt över kusten och en charmig bykärna. Hem för lyxprojektet Palo Alto. Perfekt kombination av berg och hav.',
+        headline: 'Fastigheter i Ojén | Bergsby nära Marbella',
+        metaDescription: 'Köp bostad i Ojén med svensk rådgivning. Bergsby med utsikt och nära Marbella.',
         keywords: ['köpa hus ojen', 'palo alto marbella', 'bergsby costa del sol', 'havsutsikt marbella'],
         coordinates: { lat: 36.5650, lng: -4.8550 },
         content: {
@@ -44,8 +44,8 @@ export const COSTA_DEL_SOL_AREAS_3: AreaDetail[] = [
         avgPrice: 950000,
         image: '/images/areas/marbella-east.png',
         description: 'Kustens bästa stränder och exklusiva villaområden i tallskogsmiljö.',
-        headline: 'Köp bostad i Östra Marbella – Stränder och lyx',
-        metaDescription: 'Östra Marbella (Los Monteros, Elviria, Cabopino) har kustens finaste sandstränder. Exklusiva villor och lugn atmosfär. Hitta ditt drömhem.',
+        headline: 'Fastigheter i Östra Marbella | Stränder och lyx',
+        metaDescription: 'Köp bostad i Östra Marbella med svensk rådgivning. Elviria, Los Monteros och Cabopino med strand och lugn.',
         keywords: ['köpa villa elviria', 'los monteros', 'cabopino', 'marbella strand'],
         coordinates: { lat: 36.5000, lng: -4.8000 },
         content: {

@@ -93,11 +93,57 @@ export default async function AreaDetailPage({
         })
     };
 
+    const itemListSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        name: `Fastigheter i ${area.name}`,
+        itemListOrder: 'https://schema.org/ItemListUnordered'
+    };
+
+    const breadcrumbLd = {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+            {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Hem',
+                item: 'https://spanienfastigheter.se'
+            },
+            {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Områden',
+                item: 'https://spanienfastigheter.se/omraden'
+            },
+            {
+                '@type': 'ListItem',
+                position: 3,
+                name: regionName,
+                item: `https://spanienfastigheter.se/omraden/${regionSlug}`
+            },
+            {
+                '@type': 'ListItem',
+                position: 4,
+                name: area.name,
+                item: `https://spanienfastigheter.se/omraden/${regionSlug}/${area.slug}`
+            }
+        ]
+    };
+
     return (
         <>
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
             />
 
             <AreaContent

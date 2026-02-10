@@ -134,6 +134,31 @@ export default async function RegionPage({
         }
     };
 
+    const breadcrumbSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+            {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Hem',
+                item: 'https://spanienfastigheter.se'
+            },
+            {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Områden',
+                item: 'https://spanienfastigheter.se/omraden'
+            },
+            {
+                '@type': 'ListItem',
+                position: 3,
+                name: region.name,
+                item: `https://spanienfastigheter.se/omraden/${region.slug}`
+            }
+        ]
+    };
+
     const formatNumber = (value?: number | null) =>
         value === null || value === undefined ? '—' : value.toLocaleString('sv-SE');
 
@@ -149,6 +174,10 @@ export default async function RegionPage({
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
             />
 
             {/* Hero Section */}

@@ -88,6 +88,35 @@ export default function Footer() {
                             </Link>
                         </li>
                     </ul>
+                    <h4 className="text-[10px] uppercase tracking-[0.2em] font-bold mt-10 mb-6 text-sand">
+                        Populära sökningar
+                    </h4>
+                    <ul className="space-y-4 text-sm text-white/60 font-light">
+                        <li>
+                            <Link
+                                href="/fastigheter/torrevieja/strandnara"
+                                className="hover:text-white transition-colors block"
+                            >
+                                Strandnära Torrevieja
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                href="/fastigheter/torrevieja/radhus"
+                                className="hover:text-white transition-colors block"
+                            >
+                                Radhus i Torrevieja
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                href="/fastigheter/torrevieja/bungalow"
+                                className="hover:text-white transition-colors block"
+                            >
+                                Bungalow i Torrevieja
+                            </Link>
+                        </li>
+                    </ul>
                 </div>
 
                 {/* Links - Col 2 */}
@@ -130,10 +159,10 @@ export default function Footer() {
                         </li>
                         <li>
                             <Link
-                                href="/guide/kopa-salja-spanien-2025"
+                                href="/guide/kopa-bostad-spanien"
                                 className="hover:text-white transition-colors block"
                             >
-                                Guide: Köpa & Sälja
+                                Guide: Köpa bostad i Spanien
                             </Link>
                         </li>
                         <li>

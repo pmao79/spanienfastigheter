@@ -150,6 +150,40 @@ export default function AreaContent({
                     {/* Left Column (Content) */}
                     <div className="lg:col-span-8 space-y-16">
 
+                        {area.slug === 'torrevieja' && (
+                            <section className="bg-white border border-gray-100 p-6 rounded-sm shadow-soft">
+                                <div className="flex items-center gap-4 mb-4">
+                                    <div className="h-px bg-navy/10 w-12"></div>
+                                    <h2 className="text-xl md:text-2xl font-serif text-navy">
+                                        Populära sökningar i <span className="text-sand italic">Torrevieja</span>
+                                    </h2>
+                                </div>
+                                <p className="text-sm text-gray-600 mb-4">
+                                    Utforska specifika bostadstyper och lägen som är extra efterfrågade just nu.
+                                </p>
+                                <div className="flex flex-wrap gap-3">
+                                    <Link
+                                        href="/fastigheter/torrevieja/strandnara"
+                                        className="px-4 py-2 text-xs uppercase tracking-widest font-semibold border border-sand text-sand hover:bg-sand hover:text-navy transition-colors"
+                                    >
+                                        Strandnära lägenheter
+                                    </Link>
+                                    <Link
+                                        href="/fastigheter/torrevieja/radhus"
+                                        className="px-4 py-2 text-xs uppercase tracking-widest font-semibold border border-sand text-sand hover:bg-sand hover:text-navy transition-colors"
+                                    >
+                                        Radhus i Torrevieja
+                                    </Link>
+                                    <Link
+                                        href="/fastigheter/torrevieja/bungalow"
+                                        className="px-4 py-2 text-xs uppercase tracking-widest font-semibold border border-sand text-sand hover:bg-sand hover:text-navy transition-colors"
+                                    >
+                                        Bungalow i Torrevieja
+                                    </Link>
+                                </div>
+                            </section>
+                        )}
+
                         {/* Lifestyle Section */}
                         <section>
                             <div className="flex items-center gap-4 mb-6">

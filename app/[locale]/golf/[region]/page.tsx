@@ -37,6 +37,9 @@ export async function generateMetadata({ params }: RegionPageProps): Promise<Met
     return {
         title: `Golfbanor i ${regionName} | Golfguiden Spanien`,
         description: `Utforska alla golfbanor i ${regionName}. Se greenfee priser, boka starttider och läs recensioner.`,
+        alternates: {
+            canonical: `https://spanienfastigheter.se/golf/${region}`
+        }
     };
 }
 
@@ -50,6 +53,31 @@ export default async function GolfRegionPage({ params }: RegionPageProps) {
     const typedRegion = region as 'costa-blanca' | 'costa-del-sol' | 'costa-calida' | 'costa-almeria';
     const regionName = getRegionDisplayName(region);
     const courses = GOLF_COURSES.filter(c => c.region === typedRegion);
+
+    const breadcrumbSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+            {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Hem',
+                item: 'https://spanienfastigheter.se'
+            },
+            {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Golf',
+                item: 'https://spanienfastigheter.se/golf'
+            },
+            {
+                '@type': 'ListItem',
+                position: 3,
+                name: regionName,
+                item: `https://spanienfastigheter.se/golf/${region}`
+            }
+        ]
+    };
 
     // Region specific content
     let heroImage = '/images/golf/las-colinas-hero.png'; // Default
@@ -76,6 +104,10 @@ export default async function GolfRegionPage({ params }: RegionPageProps) {
 
     return (
         <div className="min-h-screen bg-alabaster">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+            />
             {/* Hero */}
             <section className="relative h-[40vh] min-h-[400px]">
                 <div className="absolute inset-0 bg-navy">

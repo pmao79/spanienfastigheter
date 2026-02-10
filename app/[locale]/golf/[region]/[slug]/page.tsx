@@ -28,8 +28,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     if (!course) return {};
 
     return {
-        title: `${course.name} - Golf i ${course.region === 'costa-blanca' ? 'Costa Blanca' : 'Costa del Sol'}`,
+        title: `${course.name} - Golf i ${course.region === 'costa-blanca' ? 'Costa Blanca' : course.region === 'costa-del-sol' ? 'Costa del Sol' : course.region === 'costa-calida' ? 'Costa Calida' : 'Costa de Almeria'}`,
         description: course.description,
+        alternates: {
+            canonical: `https://spanienfastigheter.se/golf/${course.region}/${course.slug}`
+        },
         openGraph: {
             images: course.media?.heroImage ? [course.media.heroImage] : [],
         },

@@ -34,12 +34,12 @@ const guideCards: GuideCard[] = [
         ctaText: 'Utforska banor',
     },
     {
-        badge: '2025/2026',
-        title: 'Köpa & sälja fastighet',
-        description: 'Skatter, köpprocess, uthyrningsregler och vanliga fällor – komplett guide',
+        badge: '2026',
+        title: 'Köpa bostad i Spanien',
+        description: 'Skatter, köpprocess, kostnader och vanliga fällor – komplett guide',
         image: '/images/guide-hero-2025.png',
-        imageAlt: 'Guide till att köpa bostad i Spanien 2025',
-        href: '/guide/kopa-salja-spanien-2025',
+        imageAlt: 'Guide till att köpa bostad i Spanien 2026',
+        href: '/guide/kopa-bostad-spanien',
         ctaText: 'Läs guiden',
     },
     {

@@ -165,6 +165,45 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
         property.descriptions.sv || property.descriptions.en || ''
     );
 
+    const listingUrl = `https://spanienfastigheter.se/fastigheter/${property.slug || property.ref}`;
+    const listingName = `${translatePropertyType(property.type)} i ${primaryLocation}`;
+    const listingDescription = descriptionText || `Bostad till salu i ${primaryLocation}.`;
+
+    const amenityFeatures = [
+        property.features.pool !== 'none'
+            ? {
+                '@type': 'LocationFeatureSpecification',
+                name: property.features.pool === 'private' ? 'Privat pool' : 'Gemensam pool',
+                value: true
+            }
+            : null,
+        property.features.parking
+            ? { '@type': 'LocationFeatureSpecification', name: 'Parkering', value: true }
+            : null,
+        property.features.elevator
+            ? { '@type': 'LocationFeatureSpecification', name: 'Hiss', value: true }
+            : null,
+        property.features.garden
+            ? { '@type': 'LocationFeatureSpecification', name: 'Trädgård', value: true }
+            : null,
+        property.features.terrace
+            ? { '@type': 'LocationFeatureSpecification', name: 'Terrass', value: true }
+            : null,
+        property.features.airConditioning
+            ? { '@type': 'LocationFeatureSpecification', name: 'AC', value: true }
+            : null,
+        property.features.heating
+            ? { '@type': 'LocationFeatureSpecification', name: 'Uppvärmning', value: true }
+            : null,
+        property.features.storage
+            ? { '@type': 'LocationFeatureSpecification', name: 'Förråd', value: true }
+            : null,
+        property.features.gated
+            ? { '@type': 'LocationFeatureSpecification', name: 'Gated community', value: true }
+            : null
+    ].filter(Boolean);
+
+
     const { distances: googleDistances, isLoaded: googleLoaded } = usePropertyDistances(
         property.coordinates?.lat || 0,
         property.coordinates?.lng || 0,
@@ -175,6 +214,68 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
         property.images.length > 0
             ? property.images
             : ['https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2070'];
+
+    const listingSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'RealEstateListing',
+        name: listingName,
+        description: listingDescription,
+        url: listingUrl,
+        image: galleryImages,
+        offers: {
+            '@type': 'Offer',
+            price: String(property.price),
+            priceCurrency: 'EUR',
+            availability: 'https://schema.org/InStock',
+            url: listingUrl
+        },
+        address: {
+            '@type': 'PostalAddress',
+            addressLocality: town || locationDetail || province || undefined,
+            addressRegion: province || undefined,
+            addressCountry: 'ES'
+        },
+        geo: property.coordinates?.lat && property.coordinates?.lng
+            ? {
+                '@type': 'GeoCoordinates',
+                latitude: String(property.coordinates.lat),
+                longitude: String(property.coordinates.lng)
+            }
+            : undefined,
+        numberOfRooms: property.beds || undefined,
+        numberOfBathroomsTotal: property.baths || undefined,
+        floorSize: property.builtArea
+            ? {
+                '@type': 'QuantitativeValue',
+                value: String(property.builtArea),
+                unitCode: 'MTK'
+            }
+            : undefined,
+        amenityFeature: amenityFeatures.length > 0 ? amenityFeatures : undefined
+    };
+
+    const breadcrumbItems = [
+        { name: 'Hem', item: 'https://spanienfastigheter.se' },
+        { name: 'Fastigheter', item: 'https://spanienfastigheter.se/fastigheter' },
+        town
+            ? {
+                name: town,
+                item: `https://spanienfastigheter.se/fastigheter?towns=${encodeURIComponent(town)}`
+            }
+            : null,
+        { name: listingName, item: listingUrl }
+    ].filter(Boolean) as { name: string; item: string }[];
+
+    const breadcrumbSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: breadcrumbItems.map((item, index) => ({
+            '@type': 'ListItem',
+            position: index + 1,
+            name: item.name,
+            item: item.item
+        }))
+    };
 
     const handleNextImage = (e: React.MouseEvent) => {
         e.stopPropagation();
@@ -209,6 +310,14 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
 
     return (
         <div className="bg-alabaster min-h-screen pb-32 animate-fade-in pt-[69px] md:pt-[73px]">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(listingSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+            />
             <SearchServiceModal
                 isOpen={isSearchModalOpen}
                 onClose={() => setIsSearchModalOpen(false)}

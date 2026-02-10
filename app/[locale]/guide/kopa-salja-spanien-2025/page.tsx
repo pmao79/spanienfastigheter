@@ -16,14 +16,20 @@ export async function generateMetadata({ params }: Props) {
     const { locale } = await params;
     // In a real app, we would fetch these from i18n
     const title = locale === 'sv'
-        ? 'Guide: Köpa & sälja fastighet i Spanien 2025/2026 | Spanienfastigheter.se'
-        : 'Guide: Buying & Selling Property in Spain 2025/2026 | Spanienfastigheter.se';
+        ? 'Köpa bostad i Spanien 2026 | Komplett guide | Spanienfastigheter.se'
+        : 'Buying Property in Spain 2026 | Complete Guide | Spanienfastigheter.se';
 
     const description = locale === 'sv'
-        ? 'Den ultimata guiden för 2025/2026. Lär dig allt om skatter, nya uthyrningsregler (VUD-ID), köpprocessen och fällor att undvika på Costa del Sol och Costa Blanca.'
-        : 'The ultimate guide for 2025/2026. Learn everything about taxes, new rental regulations (VUD-ID), the buying process, and pitfalls to avoid on Costa del Sol and Costa Blanca.';
+        ? 'Komplett guide till att köpa bostad i Spanien: skatter, NIE, köpprocess, kostnader och uthyrningsregler. Uppdaterad för 2026.'
+        : 'Complete guide to buying property in Spain: taxes, NIE, buying process, costs, and rental rules. Updated for 2026.';
 
-    return { title, description };
+    return {
+        title,
+        description,
+        alternates: {
+            canonical: '/guide/kopa-bostad-spanien'
+        }
+    };
 }
 
 // --- Components ---
@@ -88,6 +94,9 @@ const StickyNav = () => (
                 <li><Link href="#taxes" className="hover:text-sand transition-colors whitespace-nowrap">Skatter</Link></li>
                 <li><Link href="#rental" className="hover:text-sand transition-colors whitespace-nowrap">Uthyrningsregler</Link></li>
                 <li><Link href="#process" className="hover:text-sand transition-colors whitespace-nowrap">Köpprocess</Link></li>
+                <li><Link href="#misstag" className="hover:text-sand transition-colors whitespace-nowrap">Misstag</Link></li>
+                <li><Link href="#checklista" className="hover:text-sand transition-colors whitespace-nowrap">Checklista</Link></li>
+                <li><Link href="#resurser" className="hover:text-sand transition-colors whitespace-nowrap">Resurser</Link></li>
                 <li><Link href="#faq" className="hover:text-sand transition-colors whitespace-nowrap">FAQ</Link></li>
                 <li className="ml-auto">
                     <Link href="#contact" className="px-4 py-2 bg-navy text-white rounded-full hover:bg-charcoal transition-colors text-xs">
@@ -363,40 +372,68 @@ const ProcessTimeline = () => (
     </Section>
 );
 
+const FAQ_ITEMS = [
+    {
+        question: 'Kan jag hyra ut min lägenhet på Airbnb?',
+        answer: 'Ja, men du behöver det nya VUD-ID:t. I Andalusien är det svårt i mättade områden (t.ex. Málaga centrum). I Valenciaregionen krävs licens för korttidsuthyrning, men inte för säsongsuthyrning (över 11 dagar).'
+    },
+    {
+        question: 'Måste jag betala förmögenhetsskatt?',
+        answer: 'Andalusien har 100 % bonifiering (noll skatt) upp till 3 miljoner euro. Valencia har ett fribelopp på 700 000 € för icke-residenta och skatten är därefter progressiv.'
+    },
+    {
+        question: 'Vad är "Cuerpo Cierto"?',
+        answer: 'Det betyder att du köper bostaden "som den står och går". Om det efter köpet visar sig vara 95 kvm istället för 100 kvm, kan du oftast inte kräva prisavdrag då du köpt det fysiska objektet du sett.'
+    },
+    {
+        question: 'Hur mycket kostar det totalt att köpa bostad i Spanien?',
+        answer: 'Räkna med 10-13% extra utöver köpesumman. Det inkluderar stämpelskatt (ITP) 8-10%, notarie, registrering och juridisk rådgivning.'
+    },
+    {
+        question: 'Vad är skillnaden mellan ITP och IVA?',
+        answer: 'ITP (8-10%) gäller vid köp av befintliga bostäder. IVA (moms 10%) gäller vid nyproduktion. Välj rätt skatt baserat på bostadstyp.'
+    },
+    {
+        question: 'Behöver man advokat vid köp?',
+        answer: 'Det är starkt rekommenderat. En oberoende advokat kontrollerar LPO, skulder, bygglov och kontrakt innan du skriver under.'
+    },
+    {
+        question: 'Kan man köpa bostad utan NIE-nummer?',
+        answer: 'Nej, NIE-nummer är obligatoriskt för alla köp och måste finnas på plats innan kontrakt skrivs hos notarie.'
+    },
+    {
+        question: 'Hur lång tid tar det att få NIE-nummer?',
+        answer: 'I Sverige tar det oftast 2-4 veckor via konsulat. I Spanien kan det gå på 1-2 dagar om du bokar rätt tid.'
+    },
+    {
+        question: 'Vad händer om säljaren drar sig ur efter handpenning?',
+        answer: 'Om säljaren drar sig ur måste de betala tillbaka dubbel handpenning enligt arras‑kontraktet.'
+    },
+    {
+        question: 'Måste man vara på plats vid köpet?',
+        answer: 'Nej, du kan använda fullmakt (poder) och låta en advokat eller representant skriva under åt dig.'
+    }
+];
+
 const FAQ = () => (
     <Section id="faq" className="bg-alabaster">
         <div className="max-w-3xl mx-auto">
             <h2 className="font-serif text-3xl md:text-4xl text-navy mb-8 text-center">Vanliga frågor</h2>
             <div className="space-y-4">
-                <details className="group bg-white rounded-xl shadow-soft border border-greige p-4 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
-                    <summary className="flex items-center justify-between font-bold text-navy group-open:text-sand transition-colors">
-                        Kan jag hyra ut min lägenhet på Airbnb?
-                        <span className="ml-4 transition-transform group-open:rotate-180">▼</span>
-                    </summary>
-                    <p className="mt-4 text-charcoal text-sm leading-relaxed">
-                        Ja, men du behöver det nya VUD-ID:t. I Andalusien är det svårt i mättade områden (t.ex. Málaga centrum). I Valenciaregionen krävs licens för korttidsuthyrning, men inte för säsongsuthyrning (över 11 dagar).
-                    </p>
-                </details>
-
-                <details className="group bg-white rounded-xl shadow-soft border border-greige p-4 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
-                    <summary className="flex items-center justify-between font-bold text-navy group-open:text-sand transition-colors">
-                        Måste jag betala förmögenhetsskatt?
-                        <span className="ml-4 transition-transform group-open:rotate-180">▼</span>
-                    </summary>
-                    <p className="mt-4 text-charcoal text-sm leading-relaxed">
-                        Andalusien har 100 % bonifiering (noll skatt) upp till 3 miljoner euro. Valencia har ett fribelopp på 700 000 € för icke-residenta och skatten är därefter progressiv.
-                    </p>
-                </details>
-
-                <details className="group bg-white rounded-xl shadow-soft border border-greige p-4 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
-                    <summary className="flex items-center justify-between font-bold text-navy group-open:text-sand transition-colors">
-                        Vad är &quot;Cuerpo Cierto&quot;?
-                        <span className="ml-4 transition-transform group-open:rotate-180">▼</span>
-                    </summary>
-                    <p className="mt-4 text-charcoal text-sm leading-relaxed">
-                        Det betyder att du köper bostaden &quot;som den står och går&quot;. Om det efter köpet visar sig vara 95 kvm istället för 100 kvm, kan du oftast inte kräva prisavdrag då du köpt det fysiska objektet du sett.
-                    </p>
-                </details>
+                {FAQ_ITEMS.map((item) => (
+                    <details
+                        key={item.question}
+                        className="group bg-white rounded-xl shadow-soft border border-greige p-4 [&_summary::-webkit-details-marker]:hidden cursor-pointer"
+                    >
+                        <summary className="flex items-center justify-between font-bold text-navy group-open:text-sand transition-colors">
+                            {item.question}
+                            <span className="ml-4 transition-transform group-open:rotate-180">▼</span>
+                        </summary>
+                        <p className="mt-4 text-charcoal text-sm leading-relaxed">
+                            {item.answer}
+                        </p>
+                    </details>
+                ))}
             </div>
         </div>
     </Section>
@@ -441,14 +478,98 @@ const ContactSection = () => (
     </Section>
 );
 
+const CommonMistakes = () => (
+    <Section id="misstag" className="bg-white">
+        <div className="max-w-5xl mx-auto">
+            <div className="flex items-center gap-4 mb-10">
+                <div className="h-px bg-navy/10 w-12"></div>
+                <h2 className="font-serif text-3xl md:text-4xl text-navy">Vanliga misstag att undvika</h2>
+            </div>
+            <div className="grid md:grid-cols-2 gap-6">
+                {[
+                    'Köpa utan Licencia de Primera Ocupación (LPO).',
+                    'Inte kontrollera skulder och pantbrev på fastigheten.',
+                    'Betala direkt till säljaren utan juridisk kontroll.',
+                    'Inte budgetera för alla kostnader (ITP, notarie, registrering).',
+                    'Köpa utan besiktning.',
+                    'Inte förstå gemenskapsregler och avgifter.'
+                ].map((item) => (
+                    <div key={item} className="bg-alabaster p-6 rounded-xl border border-greige">
+                        <p className="text-sm text-charcoal">{item}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </Section>
+);
+
+const ChecklistSection = () => (
+    <Section id="checklista" className="bg-greige/30">
+        <div className="max-w-5xl mx-auto">
+            <div className="flex items-center gap-4 mb-10">
+                <div className="h-px bg-navy/10 w-12"></div>
+                <h2 className="font-serif text-3xl md:text-4xl text-navy">Checklista för köpet</h2>
+            </div>
+            <div className="grid md:grid-cols-2 gap-4">
+                {[
+                    'Skaffa NIE-nummer',
+                    'Öppna spanskt bankkonto',
+                    'Anlita advokat',
+                    'Gör besiktning',
+                    'Kontrollera LPO',
+                    'Kontrollera skulder',
+                    'Skriv förhandsavtal (arras)',
+                    'Betala handpenning',
+                    'Notariebesök',
+                    'Registrering av köpet'
+                ].map((item) => (
+                    <div key={item} className="bg-white rounded-xl border border-gray-100 p-4 shadow-soft">
+                        <p className="text-sm text-charcoal">✓ {item}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </Section>
+);
+
+const ResourcesSection = () => (
+    <Section id="resurser" className="bg-white">
+        <div className="max-w-5xl mx-auto">
+            <div className="flex items-center gap-4 mb-10">
+                <div className="h-px bg-navy/10 w-12"></div>
+                <h2 className="font-serif text-3xl md:text-4xl text-navy">Resurser och länkar</h2>
+            </div>
+            <div className="grid md:grid-cols-2 gap-6">
+                {[
+                    { label: 'NIE-ansökan', href: 'https://www.exteriores.gob.es/Consulados/estocolmo/sv/ServiciosConsulares/Paginas/index.aspx' },
+                    { label: 'Spanska konsulatet', href: 'https://www.exteriores.gob.es/Consulados/estocolmo/sv/Paginas/index.aspx' },
+                    { label: 'Spanska Skatteverket (AEAT)', href: 'https://www.agenciatributaria.es' },
+                    { label: 'Notarieföreningen', href: 'https://www.notariado.org' }
+                ].map((item) => (
+                    <a
+                        key={item.label}
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-alabaster p-6 rounded-xl border border-greige hover:border-sand transition-colors"
+                    >
+                        <p className="text-sm font-semibold text-navy">{item.label}</p>
+                        <p className="text-xs text-gray-500 mt-2">Öppnas i ny flik</p>
+                    </a>
+                ))}
+            </div>
+        </div>
+    </Section>
+);
+
 const SchemaMarkup = () => {
     const schemaData = {
         "@context": "https://schema.org",
         "@graph": [
             {
                 "@type": "Article",
-                "headline": "Guide: Köpa & sälja fastighet i Spanien 2025/2026",
-                "description": "Den ultimata guiden för 2025/2026. Lär dig allt om skatter, nya uthyrningsregler (VUD-ID), köpprocessen och fällor att undvika.",
+                "headline": "Köpa bostad i Spanien 2026",
+                "description": "Komplett guide till att köpa bostad i Spanien: skatter, NIE, köpprocess, kostnader och uthyrningsregler.",
                 "image": "https://spanienfastigheter.se/images/guide-hero-2025.png",
                 "author": {
                     "@type": "Organization",
@@ -466,36 +587,41 @@ const SchemaMarkup = () => {
                 "dateModified": "2025-01-22"
             },
             {
-                "@type": "FAQPage",
-                "mainEntity": [
+                "@type": "BreadcrumbList",
+                "itemListElement": [
                     {
-                        "@type": "Question",
-                        "name": "Kan jag hyra ut min lägenhet på Airbnb?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "Ja, men du behöver det nya VUD-ID:t. I Andalusien är det svårt i mättade områden (t.ex. Málaga centrum). I Valenciaregionen krävs licens för korttidsuthyrning, men inte för säsongsuthyrning (över 11 dagar)."
-                        }
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Hem",
+                        "item": "https://spanienfastigheter.se"
                     },
                     {
-                        "@type": "Question",
-                        "name": "Måste jag betala förmögenhetsskatt?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "Andalusien har 100 % bonifiering (noll skatt) upp till 3 miljoner euro. Valencia har ett fribelopp på 700 000 € för icke-residenta och skatten är därefter progressiv."
-                        }
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "Guide",
+                        "item": "https://spanienfastigheter.se/guide"
                     },
                     {
-                        "@type": "Question",
-                        "name": "Vad är \"Cuerpo Cierto\"?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "Det betyder att du köper bostaden \"som den står och går\". Om det efter köpet visar sig vara 95 kvm istället för 100 kvm, kan du oftast inte kräva prisavdrag då du köpt det fysiska objektet du sett."
-                        }
+                        "@type": "ListItem",
+                        "position": 3,
+                        "name": "Köpa bostad i Spanien",
+                        "item": "https://spanienfastigheter.se/guide/kopa-bostad-spanien"
                     }
                 ]
-            }
-        ]
-    };
+            },
+            {
+                "@type": "FAQPage",
+                    "mainEntity": FAQ_ITEMS.map((item) => ({
+                        "@type": "Question",
+                        "name": item.question,
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": item.answer
+                        }
+                    }))
+                }
+            ]
+        };
 
     return (
         <script
@@ -518,6 +644,9 @@ export default async function GuidePage({ params }: Props) {
             <TaxSection />
             <RentalRules />
             <ProcessTimeline />
+            <CommonMistakes />
+            <ChecklistSection />
+            <ResourcesSection />
             <FAQ />
             <ContactSection />
         </main>

@@ -105,6 +105,22 @@ export const GUARDAMAR_ENHANCED_DATA: Partial<AreaDetail> = {
         {
             question: 'Finns det svenska skolor?',
             answer: 'Närmaste svenska skola är Skandinaviska Skolan i Torrevieja, ca 20 minuters bilresa bort.'
+        },
+        {
+            question: 'Var ska man köpa hus i Spanien?',
+            answer: 'Bästa områdena för svenska köpare:\n\nCosta Blanca (populärast):\n- Torrevieja – Störst svensk community, billigare\n- Orihuela Costa – Strandnära, golfbanor\n- Guardamar – Lugnare, familjevänligt\n- Alicante – Storstad, flygplats nära\n\nCosta del Sol:\n- Marbella – Exklusivt, dyrare\n- Fuengirola – Svensk community\n- Estepona – Charmigt, växande\n\nVälj baserat på:\n- Budget (Torrevieja billigast, Marbella dyrast)\n- Livsstil (lugnt vs. puls)\n- Avstånd till flygplats\n- Svensk community (viktigt för många)'
+        },
+        {
+            question: 'Vad kostar det att köpa hus i Spanien?',
+            answer: 'För hus/villor gäller samma kostnader som lägenheter, men ofta högre belopp:\n\n- Stämpelskatt: 8-10% (vid befintlig bostad) eller 10% moms (vid nyproduktion)\n- Notarie: 1 000-2 000 EUR (högre för dyrare fastigheter)\n- Registrering: 600-1 200 EUR\n- Juridisk rådgivning: 1 500-3 000 EUR\n- Besiktning: 300-600 EUR (rekommenderas starkt)\n\nTotalt: 10-15% av köpesumman.'
+        },
+        {
+            question: 'Hur köper man bostad i Spanien?',
+            answer: 'Steg-för-steg guide:\n\n1. Förberedelser (1-2 veckor)\n- Ansök om NIE-nummer (skattenummer)\n- Öppna spanskt bankkonto\n- Anlita svensk-talande mäklare\n\n2. Hitta bostad (2-8 veckor)\n- Besök fastigheter\n- Jämför priser och områden\n- Gör besiktning (rekommenderas)\n\n3. Förhandsavtal (1 vecka)\n- Skriva under förhandsavtal (contrato de arras)\n- Betala handpenning (10% av köpesumman)\n\n4. Slutavtal (4-8 veckor)\n- Notariebesök\n- Betala resterande summa + kostnader\n- Få nycklar!\n\nTotal tid: 2-4 månader från start till färdigt.'
+        },
+        {
+            question: 'Behöver man NIE-nummer för att köpa bostad i Spanien?',
+            answer: 'Ja, NIE-nummer är OBLIGATORISKT för att köpa fastighet i Spanien.\n\nVad är NIE?\n- Número de Identificación de Extranjero\n- Spanskt skattenummer för utlänningar\n- Behövs för alla ekonomiska transaktioner\n\nHur får man NIE?\n1. Boka tid på spanska konsulatet i Sverige\n2. Fyll i ansökan (EX-15)\n3. Betala avgift (~10 EUR)\n4. Vänta 2-4 veckor\n\nEller: Ansök direkt i Spanien (snabbare, 1-2 dagar)'
         }
     ],
     comparison: [

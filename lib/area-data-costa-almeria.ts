@@ -12,8 +12,8 @@ export const COSTA_ALMERIA_AREAS: AreaDetail[] = [
         avgPrice: 265000,
         image: '/images/areas/mojacar.png',
         description: 'Ikonisk vit bergsby med spektakulär utsikt och livlig strandpromenad – Andalusiens östra pärla.',
-        headline: 'Köp bostad i Mojácar – Vita hus och medelhavsdrömmar',
-        metaDescription: 'Mojácar erbjuder pittoresk vit by på berget och livlig strand. Prisvärt alternativ till Costa del Sol med samma charm. Kontakta oss.',
+        headline: 'Fastigheter i Mojácar | Vit by och strand',
+        metaDescription: 'Köp bostad i Mojácar med svensk rådgivning. Vit by, strand och många soldagar.',
         keywords: ['köpa bostad mojacar', 'mojacar pueblo', 'mojacar playa', 'costa almeria bostad'],
         coordinates: { lat: 37.1389, lng: -1.8514 },
         content: {
@@ -44,8 +44,8 @@ export const COSTA_ALMERIA_AREAS: AreaDetail[] = [
         avgPrice: 195000,
         image: '/images/areas/vera.png',
         description: 'Naturistparadis och familjevänlig kust – känt för sina otroliga stränder och avslappnade livsstil.',
-        headline: 'Köp bostad i Vera – Strandparadis på Costa de Almería',
-        metaDescription: 'Vera Playa erbjuder kilometerlånga stränder, naturistområden och familjevänligt boende. Prisvärt med hög livskvalitet. Utforska våra objekt.',
+        headline: 'Fastigheter i Vera | Strand och natur',
+        metaDescription: 'Köp bostad i Vera med svensk rådgivning. Vera Playa med långa stränder och prisvärt boende.',
         keywords: ['köpa bostad vera', 'vera playa', 'costa almeria familj', 'naturism spanien'],
         coordinates: { lat: 37.2450, lng: -1.8617 },
         content: {
@@ -76,8 +76,8 @@ export const COSTA_ALMERIA_AREAS: AreaDetail[] = [
         avgPrice: 175000,
         image: '/images/areas/almeria.png',
         description: 'Historisk hamnstad med moriskt arv, filmhistoria och Andalusiens sista orörda kust.',
-        headline: 'Köp bostad i Almería – Historisk stad vid orörda stränder',
-        metaDescription: 'Almería stad erbjuder morisk historia, filmlocations och prisvärt stadsliv. Nära Cabo de Gata naturreservat. Utforska våra fastigheter.',
+        headline: 'Fastigheter i Almería | Historisk stad vid havet',
+        metaDescription: 'Köp bostad i Almería med svensk rådgivning. Moriskt arv och nära Cabo de Gata.',
         keywords: ['köpa bostad almeria', 'almeria stad', 'cabo de gata', 'andalusien öst'],
         coordinates: { lat: 36.8340, lng: -2.4637 },
         content: {

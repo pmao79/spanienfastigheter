@@ -28,6 +28,16 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: '/:locale/guide/kopa-salja-spanien-2025',
+        destination: '/:locale/guide/kopa-bostad-spanien',
+        permanent: true,
+      },
+      {
+        source: '/guide/kopa-salja-spanien-2025',
+        destination: '/guide/kopa-bostad-spanien',
+        permanent: true,
+      },
+      {
         source: '/:locale/omraden/costa-de-almeria',
         destination: '/:locale/omraden/costa-almeria',
         permanent: true,

@@ -11,6 +11,25 @@ import { GOLF_COURSES } from '@/data/golf/courses';
 export default function GolfPage() {
     const t = useTranslations('golf');
 
+    const breadcrumbSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+            {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Hem',
+                item: 'https://spanienfastigheter.se'
+            },
+            {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Golf',
+                item: 'https://spanienfastigheter.se/golf'
+            }
+        ]
+    };
+
     // Featured courses (Top rated > 4.6)
     const topCourses = [...GOLF_COURSES]
         .filter(course => course.rating.overall >= 4.6)
@@ -25,6 +44,10 @@ export default function GolfPage() {
 
     return (
         <div className="min-h-screen">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+            />
             {/* Hero */}
             <section className="relative h-[70vh] min-h-[500px]">
                 {/* Placeholder hero image until we generate one specific for main page */}

@@ -6,6 +6,24 @@ import Image from 'next/image';
 import { sendContactConfirmation } from '@/actions/email/send-contact';
 
 export default function ContactPage() {
+    const breadcrumbSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+            {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Hem',
+                item: 'https://spanienfastigheter.se'
+            },
+            {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Kontakt',
+                item: 'https://spanienfastigheter.se/kontakt'
+            }
+        ]
+    };
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -45,6 +63,10 @@ export default function ContactPage() {
 
     return (
         <div className="min-h-screen bg-alabaster">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+            />
             {/* Hero Section */}
             <section className="relative bg-navy text-white py-24 md:py-32 overflow-hidden">
                 {/* Background Pattern */}
