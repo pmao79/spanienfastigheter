@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import Link from 'next/link';
+import { Suspense } from 'react';
 import AreaFAQ from '@/components/areas/AreaFAQ';
 import FilteredSearch from './FilteredSearch';
 
@@ -93,7 +94,9 @@ export default function SeoLandingPage({
                             Aktuella bostäder i <span className="text-sand italic">{cityLabel}</span>
                         </h2>
                     </div>
-                    <FilteredSearch defaultParams={defaultFilters} />
+                    <Suspense fallback={<div className="py-12 text-center text-gray-400">Laddar bostader...</div>}>
+                        <FilteredSearch defaultParams={defaultFilters} />
+                    </Suspense>
                 </div>
             </section>
 
