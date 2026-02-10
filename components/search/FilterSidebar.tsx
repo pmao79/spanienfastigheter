@@ -5,6 +5,7 @@ import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { useCallback, useState, useEffect, useRef } from 'react';
+import { translatePropertyType } from '@/lib/property-utils';
 
 interface FilterSidebarProps {
     onOpenSearchService?: () => void;
@@ -413,7 +414,7 @@ export default function FilterSidebar({ onOpenSearchService, propertyCount }: Fi
                                     )}
                                 </div>
                                 <span className="text-sm font-light text-charcoal group-hover:text-navy transition-colors">
-                                    {type}
+                                    {translatePropertyType(type)}
                                 </span>
                             </label>
                         ))}

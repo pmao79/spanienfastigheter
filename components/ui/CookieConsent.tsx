@@ -75,7 +75,7 @@ export default function CookieConsent() {
                                     href="/integritetspolicy"
                                     className="flex items-center justify-center text-sm text-white/50 hover:text-white underline underline-offset-4"
                                 >
-                                    Läs mer
+                                    Läs mer om integritetspolicyn
                                 </Link>
                             </div>
                         </div>

@@ -4,6 +4,7 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { useQuery } from 'convex/react';
 import { api } from '@/convex/_generated/api';
+import { translatePropertyType } from '@/lib/property-utils';
 import {
     Search,
     MapPin,
@@ -321,7 +322,7 @@ export default function HeroSearch({ variant = 'hero' }: HeroSearchProps) {
 
     const getTypeDisplayText = () => {
         if (selectedTypes.length === 0) return 'Alla typer';
-        if (selectedTypes.length === 1) return selectedTypes[0];
+        if (selectedTypes.length === 1) return translatePropertyType(selectedTypes[0]);
         return `${selectedTypes.length} typer`;
     };
 
@@ -594,7 +595,9 @@ export default function HeroSearch({ variant = 'hero' }: HeroSearchProps) {
                                                 )}
                                             </div>
                                         </div>
-                                        <span className="text-sm font-medium text-navy">{type}</span>
+                                        <span className="text-sm font-medium text-navy">
+                                            {translatePropertyType(type)}
+                                        </span>
                                     </label>
                                 ))}
                             </div>

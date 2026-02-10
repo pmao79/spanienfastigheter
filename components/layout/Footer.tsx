@@ -205,7 +205,8 @@ export default function Footer() {
                             <button
                                 type="submit"
                                 disabled={isLoading}
-                                className="text-white/40 group-hover:text-sand transition-colors absolute right-0 top-2 disabled:opacity-50"
+                                className="text-white/40 group-hover:text-sand transition-colors absolute right-0 top-1/2 -translate-y-1/2 p-2 disabled:opacity-50"
+                                aria-label="Prenumerera på nyhetsbrev"
                             >
                                 {isLoading ? <Loader2 className="animate-spin" size={18} /> : <ArrowRight size={18} />}
                             </button>

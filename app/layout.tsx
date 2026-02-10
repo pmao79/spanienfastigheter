@@ -3,6 +3,7 @@ import { Playfair_Display, DM_Sans } from 'next/font/google';
 import './globals.css';
 import ConvexClientProvider from './ConvexClientProvider';
 import { ClerkProvider } from '@clerk/nextjs';
+import { getLocale } from 'next-intl/server';
 
 const playfair = Playfair_Display({
     subsets: ['latin'],
@@ -63,14 +64,23 @@ export const metadata: Metadata = {
     },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
     children,
 }: {
     children: React.ReactNode;
 }) {
+    const locale = await getLocale();
+
     return (
         <ClerkProvider>
-            <html suppressHydrationWarning>
+            <html lang={locale} suppressHydrationWarning>
+                <head>
+                    <link
+                        rel="preconnect"
+                        href="https://clerk.spanienfastigheter.se"
+                        crossOrigin="anonymous"
+                    />
+                </head>
                 <body
                     className={`${playfair.variable} ${dmSans.variable} font-sans antialiased`}
                     suppressHydrationWarning
