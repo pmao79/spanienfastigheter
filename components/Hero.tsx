@@ -13,7 +13,7 @@ export default function Hero() {
           alt="Tre generationer av en familj blickar ut över havet i solnedgången"
           fill
           sizes="100vw"
-          className="object-cover opacity-90 scale-105 animate-slow-zoom"
+          className="object-cover object-[center_70%] opacity-90 scale-105 animate-slow-zoom"
           unoptimized
         />
         <div className="absolute inset-0 bg-navy/30 mix-blend-multiply" />
