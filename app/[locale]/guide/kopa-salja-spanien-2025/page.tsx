@@ -1,10 +1,23 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { getTranslations } from 'next-intl/server';
-import { useTranslations } from 'next-intl';
+import {
+    ArrowDown,
+    ArrowRight,
+    BadgeCheck,
+    Building2,
+    CheckCircle,
+    FileText,
+    Landmark,
+    Plane,
+    Percent,
+    ShieldCheck,
+    AlertTriangle,
+    XCircle,
+    Sparkles,
+    Sun
+} from 'lucide-react';
 import CostCalculator from './CostCalculator';
-import ChecklistButton from './ChecklistButton';
 
 // --- Types ---
 type Props = {
@@ -41,62 +54,89 @@ const Section = ({ id, className, children }: { id?: string; className?: string;
 );
 
 const Hero = () => (
-    <div className="relative min-h-[80vh] flex items-center justify-center text-white overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
+    <section className="relative bg-navy text-white overflow-hidden">
+        <div className="absolute inset-0">
             <Image
-                src="/images/guide-hero-2025.png"
-                alt="Luxury Villa in Spain"
+                src="/images/guide/2026-02-10-14-35-00-hero-villa.png"
+                alt="Lyxig villa vid spansk kust"
                 fill
                 className="object-cover"
                 priority
             />
-            <div className="absolute inset-0 bg-navy/60 mix-blend-multiply" />
+            <div className="absolute inset-0 bg-gradient-to-b from-navy/70 via-navy/60 to-navy/90" />
         </div>
 
-        {/* Content */}
-        <div className="relative z-10 container mx-auto px-4 text-center max-w-4xl">
-            <span className="inline-block py-1 px-3 rounded-full bg-sand/20 border border-sand/30 text-sand text-sm font-semibold mb-6 backdrop-blur-sm">
-                Uppdaterad för 2025/2026
-            </span>
-            <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-                Guide: Köpa & sälja fastighet i Spanien 2025/2026
-            </h1>
-            <p className="text-xl md:text-2xl text-greige mb-10 max-w-2xl mx-auto font-light">
-                Skatter, process, uthyrningsregler, dokument och fällor – för Costa del Sol & Costa Blanca.
-            </p>
+        <div className="relative z-10 max-w-[1200px] mx-auto px-6 md:px-12 py-24 md:py-32">
+            <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
+                <div>
+                    <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-sm text-xs uppercase tracking-[0.3em] text-sand border border-white/10 mb-6">
+                        <Sparkles size={14} className="text-sand" /> Uppdaterad för 2026
+                    </span>
+                    <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-tight mb-6">
+                        Köpa bostad i <span className="text-sand italic">Spanien</span> – komplett guide
+                    </h1>
+                    <p className="text-white/75 text-lg md:text-xl font-light max-w-xl mb-8">
+                        Skatter, köpprocess, uthyrningsregler, finansiering och vanliga fällor. Allt du behöver veta för att köpa tryggt på Costa del Sol och Costa Blanca.
+                    </p>
+                    <div className="flex flex-wrap gap-4">
+                        <Link
+                            href="#kalkylator"
+                            className="inline-flex items-center gap-2 bg-sand text-navy px-6 py-3 text-xs uppercase tracking-[0.2em] font-bold hover:bg-white transition-colors"
+                        >
+                            Beräkna din kostnad
+                            <ArrowRight size={14} />
+                        </Link>
+                        <Link
+                            href="#process"
+                            className="inline-flex items-center gap-2 border border-white/30 text-white px-6 py-3 text-xs uppercase tracking-[0.2em] font-semibold hover:bg-white/10 transition-colors"
+                        >
+                            Läs guiden
+                            <ArrowDown size={14} />
+                        </Link>
+                    </div>
+                    <div className="mt-10 flex flex-wrap gap-6 text-xs uppercase tracking-[0.2em] text-white/60">
+                        <span className="flex items-center gap-2"><BadgeCheck size={14} className="text-sand" /> Svensktalande rådgivning</span>
+                        <span className="flex items-center gap-2"><ShieldCheck size={14} className="text-sand" /> Juridisk due diligence</span>
+                        <span className="flex items-center gap-2"><CheckCircle size={14} className="text-sand" /> Trygg process</span>
+                    </div>
+                </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link
-                    href="#contact"
-                    className="inline-flex items-center justify-center px-8 py-4 bg-sand text-navy font-bold rounded-full hover:bg-white transition-colors duration-300 shadow-lg hover:shadow-xl cursor-pointer"
-                >
-                    Boka kostnadsfri rådgivning
-                </Link>
-                <ChecklistButton />
-            </div>
-
-            <div className="mt-12 text-sm text-greige/80 flex flex-wrap justify-center gap-6">
-                <span className="flex items-center gap-2">✓ Svensktalande rådgivning</span>
-                <span className="flex items-center gap-2">✓ Juridisk due diligence</span>
-                <span className="flex items-center gap-2">✓ Trygg process</span>
+                <div className="bg-white/5 border border-white/10 rounded-lg p-6 backdrop-blur">
+                    <p className="text-xs uppercase tracking-[0.3em] text-sand mb-6">Snabba insikter 2026</p>
+                    <div className="space-y-5">
+                        <div className="border-b border-white/10 pb-4">
+                            <p className="text-[10px] uppercase tracking-[0.2em] text-white/50">Överföringsskatt (ITP)</p>
+                            <p className="font-serif text-lg text-sand">7% Andalusien · 10% Valencia</p>
+                            <p className="text-xs text-white/50">Valencia sänks till 9% den 1 juni 2026</p>
+                        </div>
+                        <div className="border-b border-white/10 pb-4">
+                            <p className="text-[10px] uppercase tracking-[0.2em] text-white/50">Korttidsuthyrning</p>
+                            <p className="font-serif text-lg text-sand">VUD-ID krävs från 1 juli 2025</p>
+                            <p className="text-xs text-white/50">Utan ID blockeras annonsen automatiskt</p>
+                        </div>
+                        <div>
+                            <p className="text-[10px] uppercase tracking-[0.2em] text-white/50">Prisökning Costa Blanca</p>
+                            <p className="font-serif text-lg text-sand">+3–5% årligen</p>
+                            <p className="text-xs text-white/50">Stabil värdeutveckling sedan 2019</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 );
 
 const StickyNav = () => (
     <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-greige/50 shadow-sm hidden md:block">
-        <div className="container mx-auto px-4">
-            <ul className="flex items-center gap-6 overflow-x-auto py-4 text-sm font-medium text-charcoal scrollbar-hide">
-                <li><Link href="#market" className="hover:text-sand transition-colors whitespace-nowrap">Marknadsöverblick</Link></li>
-                <li><Link href="#comparison" className="hover:text-sand transition-colors whitespace-nowrap">Solkusten vs Costa Blanca</Link></li>
+        <div className="max-w-[1200px] mx-auto px-6 md:px-12">
+            <ul className="flex items-center gap-4 overflow-x-auto py-4 text-xs font-semibold text-charcoal scrollbar-hide">
+                <li><Link href="#varfor" className="hover:text-sand transition-colors whitespace-nowrap">Varför Spanien</Link></li>
+                <li><Link href="#comparison" className="hover:text-sand transition-colors whitespace-nowrap">Solkusten vs Blanca</Link></li>
                 <li><Link href="#taxes" className="hover:text-sand transition-colors whitespace-nowrap">Skatter</Link></li>
-                <li><Link href="#rental" className="hover:text-sand transition-colors whitespace-nowrap">Uthyrningsregler</Link></li>
+                <li><Link href="#kalkylator" className="hover:text-sand transition-colors whitespace-nowrap">Kalkylator</Link></li>
+                <li><Link href="#rental" className="hover:text-sand transition-colors whitespace-nowrap">Uthyrning</Link></li>
                 <li><Link href="#process" className="hover:text-sand transition-colors whitespace-nowrap">Köpprocess</Link></li>
                 <li><Link href="#misstag" className="hover:text-sand transition-colors whitespace-nowrap">Misstag</Link></li>
-                <li><Link href="#checklista" className="hover:text-sand transition-colors whitespace-nowrap">Checklista</Link></li>
-                <li><Link href="#resurser" className="hover:text-sand transition-colors whitespace-nowrap">Resurser</Link></li>
                 <li><Link href="#faq" className="hover:text-sand transition-colors whitespace-nowrap">FAQ</Link></li>
                 <li className="ml-auto">
                     <Link href="#contact" className="px-4 py-2 bg-navy text-white rounded-full hover:bg-charcoal transition-colors text-xs">
@@ -108,76 +148,111 @@ const StickyNav = () => (
     </nav>
 );
 
-const TlDr = () => (
-    <Section className="bg-alabaster border-b border-greige">
-        <div className="bg-white border border-greige rounded-xl p-8 shadow-soft max-w-4xl mx-auto">
-            <h2 className="font-serif text-2xl text-navy mb-6 flex items-center gap-3">
-                <span className="w-8 h-8 rounded-full bg-sand text-navy flex items-center justify-center text-sm font-bold">i</span>
-                Snabba insikter för 2025
-            </h2>
-            <div className="grid md:grid-cols-2 gap-6">
-                <ul className="space-y-4">
-                    <li className="flex gap-3">
-                        <span className="text-sand mt-1">●</span>
-                        <p className="text-charcoal"><strong className="text-navy">Marknaden:</strong> Costa del Sol drivs av &quot;lyx-inflation&quot; och brist på bostäder, medan Costa Blanca erbjuder högre direktavkastning (yield).</p>
-                    </li>
-                    <li className="flex gap-3">
-                        <span className="text-sand mt-1">●</span>
-                        <p className="text-charcoal"><strong className="text-navy">Uthyrning:</strong> Från <span className="bg-yellow-100 px-1 rounded">1 juli 2025</span> krävs VUD-ID för all korttidsuthyrning.</p>
-                    </li>
-                </ul>
-                <ul className="space-y-4">
-                    <li className="flex gap-3">
-                        <span className="text-sand mt-1">●</span>
-                        <p className="text-charcoal"><strong className="text-navy">Skatter:</strong> Andalusien har en platt överföringsskatt (ITP) på 7 %. Valencia har 10 % (sänks till 9 % den 1 juni 2026).</p>
-                    </li>
-                    <li className="flex gap-3">
-                        <span className="text-red-500 mt-1">●</span>
-                        <p className="text-charcoal"><strong className="text-red-600">Varning:</strong> Köp aldrig utan <em>Licencia de Primera Ocupación</em> (LPO) och <em>Certificado de No Infracción</em>.</p>
-                    </li>
-                </ul>
+const WhySpain = () => (
+    <Section id="varfor" className="bg-greige/30">
+        <div className="max-w-[1200px] mx-auto">
+            <div className="text-center mb-12">
+                <p className="text-xs uppercase tracking-[0.3em] text-sand mb-4">Varför Spanien?</p>
+                <h2 className="font-serif text-3xl md:text-4xl text-navy">Europas mest populära land för fastighetsköp</h2>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {[
+                    { value: '320+', label: 'Soldagar', desc: 'Medelhavsklimat året runt', icon: Sun },
+                    { value: '3.5h', label: 'Flygtid', desc: 'Direktflyg från Sverige', icon: Plane },
+                    { value: '50%', label: 'Lägre priser', desc: 'Jämfört med södra Sverige', icon: Percent },
+                    { value: '4–6%', label: 'Hyresavkastning', desc: 'Costa Blanca direktavkastning', icon: Building2 }
+                ].map((item) => {
+                    const Icon = item.icon;
+                    return (
+                        <div key={item.label} className="bg-white rounded-sm p-6 text-center border border-greige shadow-soft">
+                            <Icon size={18} className="text-sand mx-auto mb-3" />
+                            <p className="font-serif text-3xl text-sand mb-2">{item.value}</p>
+                            <p className="text-xs uppercase tracking-[0.2em] text-charcoal/60 mb-2">{item.label}</p>
+                            <p className="text-sm text-gray-500">{item.desc}</p>
+                        </div>
+                    );
+                })}
+            </div>
+        </div>
+    </Section>
+);
+
+const LifestyleSection = () => (
+    <Section className="bg-white">
+        <div className="max-w-[1200px] mx-auto grid lg:grid-cols-2 gap-10 items-center">
+            <div className="relative h-[260px] lg:h-[420px] rounded-sm overflow-hidden">
+                <Image
+                    src="/images/guide/2026-02-10-14-35-05-terrace-lifestyle.png"
+                    alt="Terrass med havsutsikt i Spanien"
+                    fill
+                    className="object-cover"
+                />
+            </div>
+            <div>
+                <p className="text-xs uppercase tracking-[0.3em] text-sand mb-4">Livsstil</p>
+                <h2 className="font-serif text-3xl md:text-4xl text-navy mb-4">
+                    Upplev din framtida <span className="text-sand italic">vardag</span>
+                </h2>
+                <p className="text-gray-600 leading-relaxed mb-6">
+                    Att köpa bostad i Spanien handlar om mer än en adress. Det handlar om känslan: morgonkaffe på terrassen, promenader längs havet och en vardag där solen nästan alltid är med.
+                </p>
+                <div className="grid grid-cols-3 gap-4">
+                    {[
+                        { value: '320+', label: 'Soldagar' },
+                        { value: '3.5h', label: 'Flygtid' },
+                        { value: '50%', label: 'Lägre kostnad' }
+                    ].map((item) => (
+                        <div key={item.label} className="bg-alabaster p-4 rounded-sm border border-greige text-center">
+                            <p className="font-serif text-2xl text-sand">{item.value}</p>
+                            <p className="text-[10px] uppercase tracking-[0.2em] text-charcoal/60 mt-1">{item.label}</p>
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     </Section>
 );
 
 const ComparisonTable = () => (
-    <Section id="comparison" className="bg-white">
+    <Section id="comparison" className="bg-greige/30">
         <div className="max-w-5xl mx-auto">
-            <h2 className="font-serif text-3xl md:text-4xl text-navy mb-4 text-center">Costa del Sol vs Costa Blanca</h2>
-            <p className="text-charcoal text-center mb-12 max-w-2xl mx-auto">En strategisk jämförelse för investerare år 2025.</p>
+            <div className="text-center mb-12">
+                <p className="text-xs uppercase tracking-[0.3em] text-sand mb-4">Jämförelse</p>
+                <h2 className="font-serif text-3xl md:text-4xl text-navy">Costa del Sol vs Costa Blanca</h2>
+                <p className="text-gray-600 mt-3 max-w-2xl mx-auto">En strategisk jämförelse för investerare och bostadsköpare 2026.</p>
+            </div>
 
-            <div className="overflow-x-auto rounded-xl shadow-soft border border-greige">
-                <table className="w-full text-left border-collapse">
+            <div className="overflow-x-auto rounded-xl shadow-soft border border-greige bg-white">
+                <table className="w-full text-left border-collapse min-w-[720px]">
                     <thead>
-                        <tr className="bg-navy text-white">
-                            <th className="p-4 md:p-6 font-serif font-medium border-b border-white/10">Parameter</th>
-                            <th className="p-4 md:p-6 font-serif font-medium border-b border-white/10 bg-navy/90">Costa del Sol (Andalusien)</th>
-                            <th className="p-4 md:p-6 font-serif font-medium border-b border-white/10 bg-navy/80">Costa Blanca (Valencia)</th>
-                            <th className="p-4 md:p-6 font-serif font-medium border-b border-white/10 bg-sand text-navy">Strategisk Analys</th>
+                        <tr className="text-xs uppercase tracking-[0.2em]">
+                            <th className="p-4 md:p-6 font-semibold text-charcoal">Parameter</th>
+                            <th className="p-4 md:p-6 font-semibold text-white bg-navy">Costa del Sol (Andalusien)</th>
+                            <th className="p-4 md:p-6 font-semibold text-white bg-navy/90">Costa Blanca (Valencia)</th>
+                            <th className="p-4 md:p-6 font-semibold text-navy bg-sand">Strategisk analys</th>
                         </tr>
                     </thead>
                     <tbody className="text-sm md:text-base">
-                        <tr className="border-b border-greige hover:bg-alabaster transition-colors">
-                            <td className="p-4 md:p-6 font-bold text-navy">Prisnivå</td>
+                        <tr className="border-b border-greige">
+                            <td className="p-4 md:p-6 font-semibold text-navy">Prisnivå</td>
                             <td className="p-4 md:p-6 text-charcoal">Premium (Marbella: ca 5 569 €/m²)</td>
                             <td className="p-4 md:p-6 text-charcoal">Prisvärt (Torrevieja: 2 600 – 3 400 €/m²)</td>
                             <td className="p-4 md:p-6 text-charcoal bg-alabaster">Dubbelt så hög kapitalinsats krävs på Solkusten.</td>
                         </tr>
-                        <tr className="border-b border-greige bg-greige/30 hover:bg-alabaster transition-colors">
-                            <td className="p-4 md:p-6 font-bold text-navy">Värdeökning</td>
+                        <tr className="border-b border-greige bg-greige/30">
+                            <td className="p-4 md:p-6 font-semibold text-navy">Värdeökning</td>
                             <td className="p-4 md:p-6 text-charcoal">Hög potential (men volatil)</td>
                             <td className="p-4 md:p-6 text-charcoal">Stabil (3–5 % årligen)</td>
-                            <td className="p-4 md:p-6 text-charcoal bg-alabaster">Solkusten = Värdetillväxt.<br />Costa Blanca = Säkerhet.</td>
+                            <td className="p-4 md:p-6 text-charcoal bg-alabaster">Solkusten = Värdetillväxt. Costa Blanca = Säkerhet.</td>
                         </tr>
-                        <tr className="border-b border-greige hover:bg-alabaster transition-colors">
-                            <td className="p-4 md:p-6 font-bold text-navy">Hyresavkastning (Yield)</td>
+                        <tr className="border-b border-greige">
+                            <td className="p-4 md:p-6 font-semibold text-navy">Hyresavkastning</td>
                             <td className="p-4 md:p-6 text-charcoal">3,5 – 5,0 %</td>
                             <td className="p-4 md:p-6 text-charcoal">4,5 – 6,5 %</td>
-                            <td className="p-4 md:p-6 text-charcoal bg-alabaster">Costa Blanca är överlägset för kassaflöde (&quot;Buy-to-Let&quot;).</td>
+                            <td className="p-4 md:p-6 text-charcoal bg-alabaster">Costa Blanca är starkast för kassaflöde.</td>
                         </tr>
-                        <tr className="hover:bg-alabaster transition-colors">
-                            <td className="p-4 md:p-6 font-bold text-navy">Köparprofil</td>
+                        <tr>
+                            <td className="p-4 md:p-6 font-semibold text-navy">Köparprofil</td>
                             <td className="p-4 md:p-6 text-charcoal">Global elit, investeringsfonder</td>
                             <td className="p-4 md:p-6 text-charcoal">Europeisk medelklass, barnfamiljer</td>
                             <td className="p-4 md:p-6 text-charcoal bg-alabaster">Diversifierad risk på Costa Blanca.</td>
@@ -186,7 +261,7 @@ const ComparisonTable = () => (
                 </table>
             </div>
 
-            <div className="mt-8 bg-sand/10 border border-sand/20 p-6 rounded-lg text-center">
+            <div className="mt-8 bg-white border border-sand/30 p-6 rounded-lg text-center">
                 <p className="text-navy font-medium">
                     <strong>Vårt råd:</strong> Välj Costa del Sol för prestige och långsiktig värdeökning. Välj Costa Blanca för lägre driftskostnader och högre direktavkastning på hyra.
                 </p>
@@ -198,7 +273,11 @@ const ComparisonTable = () => (
 const TaxSection = () => (
     <Section id="taxes" className="bg-alabaster">
         <div className="max-w-4xl mx-auto">
-            <h2 className="font-serif text-3xl md:text-4xl text-navy mb-8 text-center">Skatter vid köp (Så mycket kostar det)</h2>
+            <div className="text-center mb-10">
+                <p className="text-xs uppercase tracking-[0.3em] text-sand mb-4">Skatter</p>
+                <h2 className="font-serif text-3xl md:text-4xl text-navy">Skatter vid köp – så mycket kostar det</h2>
+                <p className="text-gray-600 mt-3">Skatterna varierar beroende på region och om bostaden är nyproduktion eller begagnad.</p>
+            </div>
             <div className="grid md:grid-cols-2 gap-8">
                 {/* Resale */}
                 <div className="bg-white p-8 rounded-xl shadow-soft border border-greige relative overflow-hidden">
@@ -249,9 +328,19 @@ const TaxSection = () => (
                 </div>
             </div>
 
-            <div className="mt-10 max-w-2xl mx-auto">
-                <CostCalculator />
+        </div>
+    </Section>
+);
+
+const CalculatorSection = () => (
+    <Section id="kalkylator" className="bg-navy">
+        <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-10">
+                <p className="text-xs uppercase tracking-[0.3em] text-sand mb-4">Verktyg</p>
+                <h2 className="font-serif text-3xl md:text-4xl text-white">Beräkna din totala kostnad</h2>
+                <p className="text-white/60 mt-3">Se vad du betalar utöver köpesumman – skatter, avgifter och drift.</p>
             </div>
+            <CostCalculator />
         </div>
     </Section>
 );
@@ -259,47 +348,56 @@ const TaxSection = () => (
 const RentalRules = () => (
     <Section id="rental" className="bg-white">
         <div className="max-w-5xl mx-auto">
-            <h2 className="font-serif text-3xl md:text-4xl text-navy mb-4 text-center">Uthyrningsregler 2025</h2>
-            <p className="text-charcoal text-center mb-12 max-w-2xl mx-auto">Reglerna har skärpts drastiskt. Det går inte längre att hyra ut &quot;lite vid sidan av&quot;.</p>
+            <div className="text-center mb-12">
+                <p className="text-xs uppercase tracking-[0.3em] text-sand mb-4">Uthyrning 2025</p>
+                <h2 className="font-serif text-3xl md:text-4xl text-navy">Reglerna har skärpts – det här gäller</h2>
+                <p className="text-gray-600 mt-3 max-w-2xl mx-auto">Korttidsuthyrning kräver mer planering. Här är en snabb översikt per region.</p>
+            </div>
 
             <div className="grid md:grid-cols-3 gap-6 mb-12">
-                {/* Card 1: VUD ID */}
                 <div className="bg-red-50 border border-red-100 p-6 rounded-xl">
-                    <div className="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center mb-4 text-red-600 font-bold">!</div>
-                    <h3 className="font-serif text-lg text-navy font-bold mb-2">Det nya ID-kravet</h3>
-                    <p className="text-sm text-charcoal mb-4">Från <strong>1 juli 2025</strong> måste alla annonser på Airbnb/Booking ha ett unikt VUD-ID.</p>
+                    <div className="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center mb-4 text-red-600">
+                        <AlertTriangle size={18} />
+                    </div>
+                    <h3 className="font-serif text-lg text-navy font-bold mb-2">Nya ID‑kravet</h3>
+                    <p className="text-sm text-charcoal mb-4">Från <strong>1 juli 2025</strong> måste alla annonser på Airbnb/Booking ha ett unikt VUD‑ID.</p>
                     <p className="text-xs text-red-800 font-medium">Saknas ID blockeras annonsen automatiskt.</p>
                 </div>
 
-                {/* Card 2: Andalusien */}
-                <div className="bg-alabaster border border-greige p-6 rounded-xl">
+                <div className="bg-white border border-greige p-6 rounded-xl">
+                    <div className="w-10 h-10 bg-alabaster rounded-full flex items-center justify-center mb-4 text-sand">
+                        <Building2 size={18} />
+                    </div>
                     <h3 className="font-serif text-lg text-navy font-bold mb-2">Costa del Sol</h3>
                     <ul className="text-sm text-charcoal space-y-3">
-                        <li className="flex gap-2"><span className="text-red-500 font-bold">×</span> <strong>Moratorium i Málaga:</strong> Stopp för nya turistlicenser i staden till 2027.</li>
-                        <li className="flex gap-2"><span className="text-red-500 font-bold">×</span> <strong>Separat ingång:</strong> Många kommuner kräver egen entré från gatan.</li>
-                        <li className="flex gap-2"><span className="text-red-500 font-bold">×</span> <strong>Grannarnas veto:</strong> Samfälligheten måste godkänna.</li>
+                        <li><strong>Moratorium i Málaga:</strong> Stopp för nya turistlicenser i staden till 2027.</li>
+                        <li><strong>Separat ingång:</strong> Många kommuner kräver egen entré.</li>
+                        <li><strong>Grannarnas veto:</strong> Samfälligheten måste godkänna.</li>
                     </ul>
                 </div>
 
-                {/* Card 3: Valencia */}
                 <div className="bg-sage/10 border border-sage/20 p-6 rounded-xl">
+                    <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center mb-4 text-sand">
+                        <ShieldCheck size={18} />
+                    </div>
                     <h3 className="font-serif text-lg text-navy font-bold mb-2">Costa Blanca</h3>
                     <div className="space-y-4">
                         <div>
-                            <p className="text-xs font-bold text-sage uppercase tracking-wider mb-1">TURIST (&lt;10 DAGAR)</p>
-                            <p className="text-sm text-charcoal">Kräver licens, VUD-ID & samfällighetens tillstånd. Licens gäller 5 år.</p>
+                            <p className="text-xs font-bold text-sage uppercase tracking-wider mb-1">Turist (&lt;10 dagar)</p>
+                            <p className="text-sm text-charcoal">Kräver licens, VUD‑ID & samfällighetens tillstånd. Licens gäller 5 år.</p>
                         </div>
                         <div>
-                            <p className="text-xs font-bold text-navy uppercase tracking-wider mb-1">SÄSONG (&gt;11 DAGAR)</p>
-                            <p className="text-sm text-charcoal">Ingen turistlicens krävs! Går under vanlig hyreslag (LAU).</p>
+                            <p className="text-xs font-bold text-navy uppercase tracking-wider mb-1">Säsong (&gt;11 dagar)</p>
+                            <p className="text-sm text-charcoal">Ingen turistlicens krävs. Går under vanlig hyreslag (LAU).</p>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div className="flex justify-center">
-                <Link href="#contact" className="inline-flex items-center gap-2 text-navy font-bold hover:text-sand transition-colors cursor-pointer border-b-2 border-sand pb-1">
-                    Få hjälp att bedöma licensmöjlighet för en specifik bostad →
+                <Link href="#contact" className="inline-flex items-center gap-2 text-navy font-bold hover:text-sand transition-colors border-b-2 border-sand pb-1">
+                    Få hjälp att bedöma licensmöjlighet för en specifik bostad
+                    <ArrowRight size={14} />
                 </Link>
             </div>
         </div>
@@ -309,7 +407,10 @@ const RentalRules = () => (
 const ProcessTimeline = () => (
     <Section id="process" className="bg-navy text-white">
         <div className="max-w-4xl mx-auto">
-            <h2 className="font-serif text-3xl md:text-4xl text-white mb-12 text-center">Köpprocessen: Steg för steg</h2>
+            <div className="text-center mb-12">
+                <p className="text-xs uppercase tracking-[0.3em] text-sand mb-4">Steg för steg</p>
+                <h2 className="font-serif text-3xl md:text-4xl text-white">Köpprocessen i fem steg</h2>
+            </div>
 
             <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-white/20">
                 {/* Step 1 */}
@@ -440,36 +541,40 @@ const FAQ = () => (
 );
 
 const ContactSection = () => (
-    <Section id="contact" className="bg-white">
-        <div className="bg-navy rounded-2xl overflow-hidden max-w-5xl mx-auto shadow-2xl flex flex-col md:flex-row">
-            <div className="p-8 md:p-12 md:w-1/2 flex flex-col justify-center">
-                <h2 className="font-serif text-3xl md:text-4xl text-white mb-6">Redo att ta nästa steg?</h2>
-                <p className="text-greige mb-8">Vi guidar dig genom hela processen, från sökning till nyckelöverlämning och deklaration.</p>
-                <ul className="space-y-4 mb-8 text-white/90">
-                    <li className="flex gap-3"><span className="text-sand">✓</span> Vi talar ditt språk</li>
-                    <li className="flex gap-3"><span className="text-sand">✓</span> Oberoende juridisk kontroll</li>
-                    <li className="flex gap-3"><span className="text-sand">✓</span> Tillgång till hela marknaden</li>
+    <Section id="contact" className="bg-navy">
+        <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-10 items-center">
+            <div className="text-white">
+                <p className="text-xs uppercase tracking-[0.3em] text-sand mb-4">Redo att ta nästa steg?</p>
+                <h2 className="font-serif text-3xl md:text-4xl mb-4">Vi guidar dig genom hela processen</h2>
+                <p className="text-white/70 mb-6">
+                    Från sökning till nyckelöverlämning och deklaration – vi finns med hela vägen.
+                </p>
+                <ul className="space-y-3 text-sm text-white/80">
+                    <li className="flex items-center gap-2"><CheckCircle size={16} className="text-sand" /> Vi talar ditt språk</li>
+                    <li className="flex items-center gap-2"><CheckCircle size={16} className="text-sand" /> Oberoende juridisk kontroll</li>
+                    <li className="flex items-center gap-2"><CheckCircle size={16} className="text-sand" /> Tillgång till hela marknaden</li>
                 </ul>
             </div>
-            <div className="bg-white p-8 md:p-12 md:w-1/2">
+            <div className="bg-white rounded-sm p-8 shadow-soft">
                 <form className="space-y-4">
                     <div>
-                        <label className="block text-xs font-bold text-charcoal uppercase mb-1">Namn</label>
-                        <input type="text" className="w-full p-3 border border-greige rounded-lg focus:outline-none focus:border-navy" placeholder="Ditt namn" />
+                        <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2">Namn</label>
+                        <input type="text" className="w-full px-4 py-3 border border-greige rounded-sm focus:outline-none focus:border-navy" placeholder="Ditt namn" />
                     </div>
                     <div>
-                        <label className="block text-xs font-bold text-charcoal uppercase mb-1">E-post</label>
-                        <input type="email" className="w-full p-3 border border-greige rounded-lg focus:outline-none focus:border-navy" placeholder="din@email.se" />
+                        <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2">E-post</label>
+                        <input type="email" className="w-full px-4 py-3 border border-greige rounded-sm focus:outline-none focus:border-navy" placeholder="din@email.se" />
                     </div>
                     <div>
-                        <label className="block text-xs font-bold text-charcoal uppercase mb-1">Jag är intresserad av</label>
-                        <select className="w-full p-3 border border-greige rounded-lg focus:outline-none focus:border-navy bg-white text-charcoal">
+                        <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2">Jag är intresserad av</label>
+                        <select className="w-full px-4 py-3 border border-greige rounded-sm focus:outline-none focus:border-navy bg-white text-charcoal">
                             <option>Köpa bostad</option>
                             <option>Sälja bostad</option>
-                            <option>Allmän rådgivning</option>
+                            <option>Visningsresa</option>
+                            <option>Rådgivning</option>
                         </select>
                     </div>
-                    <button type="button" className="w-full py-4 bg-sand text-navy font-bold rounded-lg hover:bg-navy hover:text-white transition-colors cursor-pointer">
+                    <button type="button" className="w-full py-4 bg-sand text-navy font-bold rounded-sm hover:bg-navy hover:text-white transition-colors cursor-pointer">
                         Kontakta mig
                     </button>
                 </form>
@@ -479,13 +584,13 @@ const ContactSection = () => (
 );
 
 const CommonMistakes = () => (
-    <Section id="misstag" className="bg-white">
+    <Section id="misstag" className="bg-greige/30">
         <div className="max-w-5xl mx-auto">
-            <div className="flex items-center gap-4 mb-10">
-                <div className="h-px bg-navy/10 w-12"></div>
+            <div className="text-center mb-10">
+                <p className="text-xs uppercase tracking-[0.3em] text-sand mb-4">Var försiktig</p>
                 <h2 className="font-serif text-3xl md:text-4xl text-navy">Vanliga misstag att undvika</h2>
             </div>
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-3 gap-6">
                 {[
                     'Köpa utan Licencia de Primera Ocupación (LPO).',
                     'Inte kontrollera skulder och pantbrev på fastigheten.',
@@ -494,7 +599,8 @@ const CommonMistakes = () => (
                     'Köpa utan besiktning.',
                     'Inte förstå gemenskapsregler och avgifter.'
                 ].map((item) => (
-                    <div key={item} className="bg-alabaster p-6 rounded-xl border border-greige">
+                    <div key={item} className="bg-red-50 border-l-4 border-red-200 p-6 rounded-sm">
+                        <XCircle size={16} className="text-red-500 mb-3" />
                         <p className="text-sm text-charcoal">{item}</p>
                     </div>
                 ))}
@@ -504,27 +610,28 @@ const CommonMistakes = () => (
 );
 
 const ChecklistSection = () => (
-    <Section id="checklista" className="bg-greige/30">
-        <div className="max-w-5xl mx-auto">
-            <div className="flex items-center gap-4 mb-10">
-                <div className="h-px bg-navy/10 w-12"></div>
+    <Section id="checklista" className="bg-white">
+        <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-10">
+                <p className="text-xs uppercase tracking-[0.3em] text-sand mb-4">Allt du behöver</p>
                 <h2 className="font-serif text-3xl md:text-4xl text-navy">Checklista för köpet</h2>
             </div>
             <div className="grid md:grid-cols-2 gap-4">
                 {[
                     'Skaffa NIE-nummer',
                     'Öppna spanskt bankkonto',
-                    'Anlita advokat',
-                    'Gör besiktning',
+                    'Anlita oberoende advokat',
+                    'Gör besiktning (due diligence)',
                     'Kontrollera LPO',
-                    'Kontrollera skulder',
+                    'Kontrollera skulder & pantbrev',
                     'Skriv förhandsavtal (arras)',
-                    'Betala handpenning',
+                    'Betala handpenning (10%)',
                     'Notariebesök',
                     'Registrering av köpet'
                 ].map((item) => (
-                    <div key={item} className="bg-white rounded-xl border border-gray-100 p-4 shadow-soft">
-                        <p className="text-sm text-charcoal">✓ {item}</p>
+                    <div key={item} className="flex items-center gap-3 bg-emerald-50/60 border border-emerald-100 p-4 rounded-sm">
+                        <CheckCircle size={16} className="text-emerald-600" />
+                        <span className="text-sm text-charcoal">{item}</span>
                     </div>
                 ))}
             </div>
@@ -533,30 +640,34 @@ const ChecklistSection = () => (
 );
 
 const ResourcesSection = () => (
-    <Section id="resurser" className="bg-white">
+    <Section id="resurser" className="bg-greige/30">
         <div className="max-w-5xl mx-auto">
-            <div className="flex items-center gap-4 mb-10">
-                <div className="h-px bg-navy/10 w-12"></div>
-                <h2 className="font-serif text-3xl md:text-4xl text-navy">Resurser och länkar</h2>
+            <div className="text-center mb-10">
+                <p className="text-xs uppercase tracking-[0.3em] text-sand mb-4">Resurser</p>
+                <h2 className="font-serif text-3xl md:text-4xl text-navy">Viktiga länkar</h2>
             </div>
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {[
-                    { label: 'NIE-ansökan', href: 'https://www.exteriores.gob.es/Consulados/estocolmo/sv/ServiciosConsulares/Paginas/index.aspx' },
-                    { label: 'Spanska konsulatet', href: 'https://www.exteriores.gob.es/Consulados/estocolmo/sv/Paginas/index.aspx' },
-                    { label: 'Spanska Skatteverket (AEAT)', href: 'https://www.agenciatributaria.es' },
-                    { label: 'Notarieföreningen', href: 'https://www.notariado.org' }
-                ].map((item) => (
-                    <a
-                        key={item.label}
-                        href={item.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="bg-alabaster p-6 rounded-xl border border-greige hover:border-sand transition-colors"
-                    >
-                        <p className="text-sm font-semibold text-navy">{item.label}</p>
-                        <p className="text-xs text-gray-500 mt-2">Öppnas i ny flik</p>
-                    </a>
-                ))}
+                    { label: 'NIE-ansökan', href: 'https://www.exteriores.gob.es/Consulados/estocolmo/sv/ServiciosConsulares/Paginas/index.aspx', icon: FileText },
+                    { label: 'Spanska konsulatet', href: 'https://www.exteriores.gob.es/Consulados/estocolmo/sv/Paginas/index.aspx', icon: Landmark },
+                    { label: 'Skatteverket (AEAT)', href: 'https://www.agenciatributaria.es', icon: Building2 },
+                    { label: 'Notarieföreningen', href: 'https://www.notariado.org', icon: ShieldCheck }
+                ].map((item) => {
+                    const Icon = item.icon;
+                    return (
+                        <a
+                            key={item.label}
+                            href={item.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="bg-white border border-greige rounded-sm p-5 hover:border-sand transition-colors"
+                        >
+                            <Icon size={18} className="text-sand mb-3" />
+                            <p className="text-sm font-semibold text-navy">{item.label}</p>
+                            <p className="text-xs text-gray-500 mt-2">Öppnas i ny flik</p>
+                        </a>
+                    );
+                })}
             </div>
         </div>
     </Section>
@@ -570,7 +681,7 @@ const SchemaMarkup = () => {
                 "@type": "Article",
                 "headline": "Köpa bostad i Spanien 2026",
                 "description": "Komplett guide till att köpa bostad i Spanien: skatter, NIE, köpprocess, kostnader och uthyrningsregler.",
-                "image": "https://spanienfastigheter.se/images/guide-hero-2025.png",
+                "image": "https://spanienfastigheter.se/images/guide/2026-02-10-14-35-00-hero-villa.png",
                 "author": {
                     "@type": "Organization",
                     "name": "Spanienfastigheter.se"
@@ -639,9 +750,11 @@ export default async function GuidePage({ params }: Props) {
             <SchemaMarkup />
             <Hero />
             <StickyNav />
-            <TlDr />
+            <WhySpain />
+            <LifestyleSection />
             <ComparisonTable />
             <TaxSection />
+            <CalculatorSection />
             <RentalRules />
             <ProcessTimeline />
             <CommonMistakes />
