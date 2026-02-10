@@ -15,7 +15,7 @@ export default function Hero() {
           sizes="100vw"
           className="object-cover object-[center_70%] opacity-90 scale-105 animate-slow-zoom"
           priority
-          quality={70}
+          quality={60}
         />
         <div className="absolute inset-0 bg-navy/30 mix-blend-multiply" />
         <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/20 to-navy/40" />
